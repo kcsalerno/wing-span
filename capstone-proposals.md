@@ -8,27 +8,25 @@ Define a problem someone is having that can be solved with software.
 
 Note: the problem does not have to be original. It's absolutely okay to recreate an existing application: Instagram, Slack, etc.
 
-### Example
+### Problem
 
-> Running clubs across the world host group runs that are open to the public. **Group runs** range from an impromptu weekend run around the lake to a formal event (generate interest in the club, say thank you to friends, family, and sponsors, celebrate an occasion, etc). The important thing is that anyone can join a group run. You don't have to be a running club member.
+> Currently, there is no wold-wide competitive birding organization. Stepping in to fill the void is Wing<Span/>. Wing<SPan/> is the first competitive birding app that connects users across the world. Not only does Wing<Span/> track your sightings, it also allows you to view other user's sightings, and collect badges for your sightings too!
 > 
-> Group run discovery is difficult. Some running clubs post a message on their home page. Others post on social media. Still others don't post anything at all and hope that word-of-mouth will spread the message. When clubs do post a message, it's usually not on a formal calendar or easy to find on a map. It's not clear if the run has already occurred.
-> 
-> Worse, there's no easy way to sign up for a group run. Clubs never know who will show up. If a group run is limited, it's embarrassing when too many people show up. It's also a little embarrassing when no one shows up.
+> Having a "Life List" is great, but it's also nice to see how you stack up to other birder's across the globe! Plus, this provides valuable insights into which birds are likely to be seen in certain locations on various dates.
 
 ## 2. Technical Solution
 
 Briefly describe a technical solution to your problem with a couple concrete scenarios.
 
-### Example
+### Solution
 
-> Create an application for posting group runs on a formal calendar. Make it easy to sign up for runs.
+> Create an application for posting sightings. Making it easy to track your progress and compare yourself to other users.
 > 
 > ### Scenario 1
-> Emma is vacationing in Austin for two weeks. She wants to relax and enjoy her vacation, but she also wants to keep up on her running. Running helps her relax. She uses the Group Run application to quickly search for runs during her two-week window, located in Austin. She signs up for one or two. Running clubs in Austin know the best routes and she gets a chance to meet new people.
+> Jane has been a passive bird watcher for a while now, but she's been looking for a way to track the birds she's seen. She also wonders how her sightings compare to other bird watchers - not just in her area, but the world over. She finds Wing<Span/>, signs up for an account, and starts posting sightings. She gets her badge for posting 5 sightings and now she's hooked. Within a month, Jane has earned her 20 sightings badge. It's helping her get outdoors more and she's learned a lot about birds in the process.
 > 
 > ### Scenario 2
-> Kelsey isn't a member of a running club, he's not ready for that commitment, but he does like to run with a group once in a while. Each weekend, he uses the Group Run application to browse runs near his Chicago neighborhood. If it feels right, he signs up and runs. There are a few running clubs near him. He doesn't have to join a club. He can pick and choose only the runs that interest him.
+> 
 
 ## 3. Glossary
 
