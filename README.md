@@ -1,5 +1,10 @@
 # Capstone Project: Wing\<Span/>
 
+## User Stories
+* As a causal user, I want to be able to view birds that interest me and learn more about their traits.
+* As a authenicated user, I want to be able to add my sightings to the list of sightings and earn badges to my profile.
+* As a application administrator, I want to be able to upate and delete any and all sightings to keep our list of sightings accurate and up to date.
+
 ## High Level Requirements
 *  A schedule of concrete tasks (at most 4 hours per task) that represent all work required to finish your project along with task statuses
 * Diagrams: database schema, class, layer, flow
