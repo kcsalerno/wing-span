@@ -1,6 +1,4 @@
-# Capstone Proposals
-
-Should include the following.
+# Capstone Proposal
 
 ## 1. Problem Statement
 
@@ -22,24 +20,20 @@ Briefly describe a technical solution to your problem with a couple concrete sce
 > Jane has been a passive bird watcher for a while now, but she's been looking for a way to track the birds she's seen. She also wonders how her sightings compare to other bird watchers - not just in her area, but the world over. She finds Wing\<Span/>, signs up for an account, and starts posting sightings. She gets her badge for posting 5 sightings and now she's hooked. Within a month, Jane has earned her 20 sightings badge. It's helping her get outdoors more and she's learned a lot about birds in the process.
 > 
 > ### Scenario 2
-> 
+> John has been an avid bird watcher all of his life. He has a journal that he keeps with all of his sightings. John has been looking for a more convenient and permanent way to log his sightings. Something that might also offer easier insight into his bird watching stats. John discovers Wing\<Span/> from a friend. He uploads all his sightings from his journal and realizes he's earned a lot of badges. He's excited to find out that he has more badges than the friend that told him about the app in the first place. This motivates John to plan specific trips so he can log more sightings and get more badges.
 
 ## 3. Glossary
 
-Define key domain terms. This won't map one-to-one with model classes, but it may be close.
+### Terms
 
-### Example
-
-> ### Running Club
-> An organization based on a shared love of running. Clubs have members. They host runs. Some are informal with infrequent runs. Others are large, have budgets, and charge membership fees.
-> ### Runner
-> Anyone who signs up for a run. Runners can be members of a club, but don't have to be. All members are runners but not all runners are members.
-> ### Member
-> A runner who is formally affiliated with a running club. A runner can be a member of more than one club.
-> ### Club Admin
-> A running club member with an administrator role. They have more privileges in the Group Run application. All admins are members, but not all members are admins.
-> ### Run
-> A running event with a specific time, date, and location. A run may also include a route (stretch goal).
+> ### Bird
+> An actual bird with traits.
+> ### Sighting
+> A sighting of a particular bird on a date at a location.
+> ### Bird-Watcher
+> Anyone who watches birds and records their sightings.
+> ### Admin
+> Someone who maintains the bird sightings log.
 
 ## 4. High Level Requirement
 
