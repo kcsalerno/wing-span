@@ -68,7 +68,6 @@
 
 ## High Level Tasks
 
-
 ### Database Layer Tasks
 
 ### Data Layer Tasks
@@ -89,10 +88,6 @@
 
 ## Class Diagram
 
-## (?) UI Diagram (?)
-
-## (?) Hosting Diagram (?)
-
 ## Approach
 * Planning is absolutely essential for a project this large.
     * Create a complete list of concrete tasks required to finish
@@ -102,4 +97,5 @@
         * If behind, what do you have to adjust to complete the project? Don't just hope that things will improve. Take concrete steps to simplify or remove features.
 * Ask questions. Even though you control the specification, your classmates and instructors are invaluable resources.
     * Ask clarifying questions. Don't make assumptions when things aren't clear.
+* Work back to front - either by method or by layer.
 * Test as you go.
