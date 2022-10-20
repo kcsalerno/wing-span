@@ -6,7 +6,7 @@ Should include the following.
 
 ### Problem
 
-> Currently, there is no wold-wide competitive birding organization. Stepping in to fill the void is Wing<Span/>. Wing<SPan/> is the first competitive birding app that connects users across the world. Not only does Wing<Span/> track your sightings, it also allows you to view other user's sightings, and collect badges for your sightings too!
+> Currently, there is no wold-wide competitive birding organization. Stepping in to fill the void is Wing\<Span/>. Wing\<Span/> is the first competitive birding app that connects users across the world. Not only does Wing<Span/> track your sightings, it also allows you to view other user's sightings, and collect badges for your sightings too!
 > 
 > Having a "Life List" is great, but it's also nice to see how you stack up to other birder's across the globe! Plus, this provides valuable insights into which birds are likely to be seen in certain locations on various dates.
 
@@ -19,7 +19,7 @@ Briefly describe a technical solution to your problem with a couple concrete sce
 > Create an application for posting bird sightings. Making it easy to track your progress and compare yourself to other users.
 > 
 > ### Scenario 1
-> Jane has been a passive bird watcher for a while now, but she's been looking for a way to track the birds she's seen. She also wonders how her sightings compare to other bird watchers - not just in her area, but the world over. She finds Wing<Span/>, signs up for an account, and starts posting sightings. She gets her badge for posting 5 sightings and now she's hooked. Within a month, Jane has earned her 20 sightings badge. It's helping her get outdoors more and she's learned a lot about birds in the process.
+> Jane has been a passive bird watcher for a while now, but she's been looking for a way to track the birds she's seen. She also wonders how her sightings compare to other bird watchers - not just in her area, but the world over. She finds Wing\<Span/>, signs up for an account, and starts posting sightings. She gets her badge for posting 5 sightings and now she's hooked. Within a month, Jane has earned her 20 sightings badge. It's helping her get outdoors more and she's learned a lot about birds in the process.
 > 
 > ### Scenario 2
 > 
