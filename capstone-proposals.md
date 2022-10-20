@@ -16,7 +16,7 @@ Briefly describe a technical solution to your problem with a couple concrete sce
 
 ### Solution
 
-> Create an application for posting sightings. Making it easy to track your progress and compare yourself to other users.
+> Create an application for posting bird sightings. Making it easy to track your progress and compare yourself to other users.
 > 
 > ### Scenario 1
 > Jane has been a passive bird watcher for a while now, but she's been looking for a way to track the birds she's seen. She also wonders how her sightings compare to other bird watchers - not just in her area, but the world over. She finds Wing<Span/>, signs up for an account, and starts posting sightings. She gets her badge for posting 5 sightings and now she's hooked. Within a month, Jane has earned her 20 sightings badge. It's helping her get outdoors more and she's learned a lot about birds in the process.
