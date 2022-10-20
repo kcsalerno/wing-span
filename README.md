@@ -1,1 +1,1 @@
-# Wing<Span/>
+# wing-span
