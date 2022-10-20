@@ -1,6 +1,6 @@
 # Capstone Project: Wing\<Span/>
 
-## User Story
+## User Stories
 * As new user:
    * There is a welcome page where I can read all birds, their traits, and sightings without logging in.
    * There will be a navigation bar with:
