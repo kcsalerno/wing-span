@@ -4,10 +4,6 @@ Should include the following.
 
 ## 1. Problem Statement
 
-Define a problem someone is having that can be solved with software. 
-
-Note: the problem does not have to be original. It's absolutely okay to recreate an existing application: Instagram, Slack, etc.
-
 ### Problem
 
 > Currently, there is no wold-wide competitive birding organization. Stepping in to fill the void is Wing<Span/>. Wing<SPan/> is the first competitive birding app that connects users across the world. Not only does Wing<Span/> track your sightings, it also allows you to view other user's sightings, and collect badges for your sightings too!
