@@ -99,3 +99,4 @@
     * Ask clarifying questions. Don't make assumptions when things aren't clear.
 * Work back to front - either by method or by layer.
 * Test as you go.
+* Get the main CRUD features working back to front, then add in Security and extra features/pages.
