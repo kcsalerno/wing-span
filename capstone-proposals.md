@@ -6,7 +6,7 @@
 
 > Currently, there is no wold-wide competitive birding organization. Stepping in to fill the void is Wing\<Span/>. Wing\<Span/> is the first competitive birding app that connects users across the world. Not only does Wing\<Span/> track your sightings, it also allows you to view other user's sightings, and collect badges for your sightings too!
 > 
-> Having a "Life List" is great, but it's also nice to see how you stack up to other birder's across the globe! Plus, this provides valuable insights into which birds are likely to be seen in certain locations on various dates.
+> Having a "Life List" is great, but it's also nice to see how you stack up to other birders across the globe! Plus, this provides valuable insights into which birds are likely to be seen in certain locations on various dates.
 
 ## 2. Technical Solution
 
