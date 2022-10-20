@@ -1,10 +1,51 @@
 # Capstone Project: Wing\<Span/>
 
-## User Stories
-* As a causal user, I want to be able to view birds that interest me and learn more about their traits.
-* As a authenicated user, I want to be able to add my sightings to the list of sightings and earn badges to my profile.
-* As a application administrator, I want to be able to upate and delete any and all sightings to keep our list of sightings accurate and up to date.
-
+## User Story
+* As new user:
+   * There is a welcome page where I can read all birds, their traits, and sightings without logging in.
+   * There will be a navigation bar with:
+      * Home
+      * Birds
+      * Sightings
+      * Profile/Register
+   * I need to log in in order to add sightings.
+   * This will prompt a form where the following information is needed:
+      * First Name - Required
+      * Last Name - Required
+      * Username - Unique, Required
+      * Password - Required
+      * Email - Unique, Required
+   * If all the information is entered correctly, I will be brought back to the home page logged in.
+      * If any of the information is entered incorrectly, an error message will be displayed and the user will be reprompted to fill out the form.
+   * Once logged in and authenticated: 
+      * The login button will switch to a logout button and a view profile button will be appear next to it.
+         * A user can add an avatar to their profile from a list of provided birds photos.
+      * I will have the ability to read all birds and their traits.
+         * There will be a list of all birds and their traits listed below each bird.
+      * I will have the ability to create, edit and delete sightings attached to my profile.
+         * There will be an Add/Edit form the requies a:
+            * Bird
+            * Date
+         * I will not be able to edit or delete other user's sightings.
+   * If I am an application administator (back-end):
+      * I will be able to create, edit, and delete birds to keep our application correct and up to date.
+         * There will be an Add/Edit form that requires a: 
+            * Common Name
+            * Scentific Name
+            * Traits
+         * If a bird is deleted, so will the sighting.
+      * I will be able to create, edit, and delete traits to keep our application correct and up to date.
+         * There will be an Add/Edit form that requires a:
+            * Name
+         * If a trait is deleted, it will be deleted off the bird.
+      * I will be able to create, edit, and delete all sightings to keep our application correct and up to date.
+         * There will be an Add/Edit form the requies a:
+            * Username
+            * Bird
+            * Date
+         * If a sighting is deleted, it will be deleted from the user.
+   * I will be able to logout and returned to the home page when I do.
+ 
 ## High Level Requirements
 *  A schedule of concrete tasks (at most 4 hours per task) that represent all work required to finish your project along with task statuses
 * Diagrams: database schema, class, layer, flow
