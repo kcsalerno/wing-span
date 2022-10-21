@@ -99,7 +99,7 @@ wing-span
 |
 ├───wing-span-ui
 |    ├───public
-|    |       favicon.ico
+|    |       favicon.ico (optional)
 |    |       index.html
 |    | 
 │    └───src
@@ -145,6 +145,14 @@ wing-span
           │   │           │   |   AppUserRepository.java
           │   │           │   |   BirdJdbcTemplateRepository.java
           │   │           │   |   BirdRepository.java
+          │   │           │   |   SightingJdbcTemplateRepository.java
+          │   │           │   |   SightingRepository.java
+          │   │           │   |   TraitJdbcTemplateRepository.java
+          │   │           │   |   TraitRepository.java
+          │   │           │   |   BadgeJdbcTemplateRepository.java
+          │   │           │   |   BadgeRepository.java
+          │   │           │   |   AvatarJdbcTemplateRepository.java
+          │   │           │   |   AvatarRepository.java
           |   |           |   |
           │   │           │   └───mappers    
           |   |           |           AppUserMapper.java
@@ -155,15 +163,28 @@ wing-span
           │   │           │       ResultType.java
           │   │           │       Validations.java
           │   │           │       BirdService.java
+          │   │           │       SightingService.java
+          │   │           │       TraitService.java
+          │   │           │       BadgeService.java
+          │   │           │       AvatarService.java
           │   │           │
           │   │           ├───models
+          │   │           │       AppUser.java
           │   │           │       Bird.java
+          │   │           │       Sighting.java
+          │   │           │       Trait.java
+          │   │           │       Badge.java
+          │   │           │       Avatar.java
           │   │           │
           │   │           ├───controllers
           │   │           │       ErrorResponse.java
           │   │           │       GlobalExceptionHandler.java
           │   │           │       AuthController.java
           │   │           │       BirdController.java
+          │   │           │       SightingController.java
+          │   │           │       TraitController.java
+          │   │           │       BadgeController.java
+          │   │           │       AvatarController.java
           │   │           │
           |   |           └───security
           │   │                   AppUserService,java
@@ -178,15 +199,27 @@ wing-span
               |   └───wing-span
               |           ├───controllers
               |           |       BirdControllerTest.java
+              │           │       SightingControllerTest.java
+              │           │       TraitControllerTest.java
+              │           │       BadgeControllerTest.java
+              │           │       AvatarControllerTest.java
               |           |
               |           ├───data
               |           │       KnownGoodState
-              |           |       BirdJdbcTemplateRepository.java
+              |           |       BirdJdbcTemplateRepositoryTest.java
+              |           |       SightingJdbcTemplateRepositoryTest.java
+              |           |       TraitJdbcTemplateRepositoryTest.java
+              |           |       BadgeJdbcTemplateRepositoryTest.java
+              |           |       AvatarJdbcTemplateRepositoryTest.java
               |           |
               |           └───domain
               |                   BirdServiceTest.java
+              │                   SightingServiceTest.java
+              │                   TraitServiceTest.java
+              │                   BadgeServiceTest.java
+              │                   AvatarServiceTest.java
               └───resources
-                          application.propertie
+                          application.properties
 ```
 ## Approach
 * Planning is absolutely essential for a project this large.
