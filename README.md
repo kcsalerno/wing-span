@@ -308,15 +308,114 @@ View a list of all avatars available to use by a MEMBER.
 * [ ] Create data (#.# hours)
   * [ ] Enter initial data for each table
   * [ ] Enter data for the bird, badge, and avatar tables
-  * [] Run the provided SQL script
+  * [ ] Run the provided SQL script
 
 * [ ] Write the DML in a file named `data.sql` to populate the database tables (#.# hours)
   * [ ] Write insert-from-select statements to move the data from the denormalized table to the normalized tables
 
 ### Data Layer Tasks
+* [ ] Create AppUserJdbcTemplateRepository and AppUserRepository Interface
+  * [ ] Create appropriate CRUD methods
+    * Find a user by id
+    * Find all users
+    * Create/register user
+    * Update user profile (info)
+    * Delete/Disable user account
+
+* [ ] Create KnownGoodState in \test\java\wing-span\data
+
+* [ ] Create tests for AppUserJdbcTemplateRepository
+
+* [ ] Create BirdJdbcTemplateRepository and BirdRepository Interface
+  * [ ] Create appropriate CRUD methods
+    * Find a bird by id
+    * Find all birds
+    * Add a bird
+    * Update bird info
+    * Delete/Disable a bird
+
+* [ ] Create tests for BirdJdbcTemplateRepository
+
+* [ ] Create SightingJdbcTemplateRepository and SightingRepository Interface
+  * [ ] Create appropriate CRUD methods
+    * Find a sighting by id
+    * Find all sightings
+    * Add a sighting
+    * Update sighting info
+    * Delete/Disable a sighting
+
+* [ ] Create tests for SightingJdbcTemplateRepository
+
+* [ ] Create TraitJdbcTemplateRepository and TraitRepository Interface
+  * [ ] Create appropriate CRUD methods
+    * Find a trait by id
+    * Find all traits
+    * Add a trait
+    * Update trait info
+    * Delete/Disable a trait
+
+* [ ] Create tests for TraitJdbcTemplateRepository
+
+* [ ] Create BadgeJdbcTemplateRepository and BadgeRepository Interface
+  * [ ] Create appropriate CRUD methods
+    * Find a badge by id
+    * Find all badges
+    * Add a badge
+    * Update badge info
+    * Delete/Disable a badge
+
+* [ ] Create tests for BadgeJdbcTemplateRepository
+
+* [ ] Create AvatarJdbcTemplateRepository and AvatarRepository Interface
+  * [ ] Create appropriate CRUD methods
+    * Find an avatar by id
+    * Find all avatars
+    * Add an avatar
+    * Update avatar info
+    * Delete/Disable an avatar
+
+* [ ] Create tests for AvatarJdbcTemplateRepository
+ 
+* [ ] Create AppUserMapper
+* [ ] Create BirdMapper
+* [ ] Create SightingMapper
+* [ ] Create TraitMapper
+* [ ] Create BadgeMapper
+* [ ] Create AvatarMapper
 
 ### Domain Layer Tasks
+* [ ] domain.SightingService
+  * [ ] implement CRUD methods
+    * `findAll`
+    * `findSightingsById`
+    * `addSighting`
+    * `editSighting`
+    * `deleteSighting`
+  * [ ] Generate tests for domain.SightingService
+    * Happy/ Unhappy Path 
+ 
+* [ ] domain.TraitService
+  * [ ] implement CRUD methods
+    * `findTraitByBird`
+    * `addTrait`
+    * `editTrait`
+    * `deleteTrait`
+  * [ ] Generate tests for domain.SightingService
+    * Happy/ Unhappy Path
 
+* [ ] domain.BirdService
+  * [ ] implement CRUD methods
+    * `addBird`
+    * `editBird` (how can the admin edit a bird?)
+    * `deleteBird`
+  * [ ] Generate tests for domain.SightingService
+    * Happy/ Unhappy Path
+
+* [ ] domain.BadgeService
+    * `findAllBadges`
+    * `findBadgeById`
+  * [ ] Generate Tests for domain.BadgeService
+  
 ### MVC Layer Tasks
 
 ### UI (Front End) Layer Tasks
