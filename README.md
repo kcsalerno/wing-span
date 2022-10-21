@@ -446,24 +446,19 @@ View a list of all avatars available to use by a MEMBER.
 * [ ] Double check all annotations
 
 ### UI (Front End) Layer Tasks
-
 #### Sightings
 ##### Part 1
 * [ ] Create a new React project with CRA (create-react-app)
   * [ ] Remove the cruft
-
 * [ ] Add Bootstrap (or other CSS framework) to the `public/index.html` file
   * [ ] Add a link to the Bootstrap CSS using the [CDN from the official docs](https://getbootstrap.com/docs/4.6/getting-started/introduction/#css)
   * [ ] Add the [`container` CSS class](https://getbootstrap.com/docs/4.6/layout/overview/#containers) to the `<div id="root"></div>` element
-
 * [ ] Create `Sightings` component
   * [ ] Update `App` component to render `sightings`
-
 * [ ] Update `Sightings` to render list of sightings
   * [ ] Use `fetch` to `GET` a list of sightings from the Wingspan API when the component is first loaded
   * [ ] Write JSX to render the sightings array
   * [ ] Stub out click event handlers ("Add Sighting", "Edit Sighting", "Delete Sighting") as necessary
-
 ##### Part 2
 * [ ] Create a form to add a sighting
   * [ ] Add form JSX
@@ -473,16 +468,13 @@ View a list of all avatars available to use by a MEMBER.
   * [ ] Create sighting object
   * [ ] Use `fetch` to `POST` the new sighting's information to the wingspan API
   * [ ] On success, update the sightings array (don't modify the original array!), or on failure, display any validation errors from the API in the UI
-
 * [ ] Support deleting sightings
   * [ ] Confirm the deletion with the user/admin
   * [ ] Use `fetch` to `DELETE` the sighting from the sighting API
   * [ ] On success, update the sighting array (don't modify the original array!)
-
 * [ ] Conditionally render sections of the component
   * [ ] Add state variable to track the current view
   * [ ] Add conditional logic to the JSX to display the appropriate view
-
 ##### Part 3
 * [ ] Support editing sightings
   * [ ] Store the "edit sighting ID" in a new state variable
@@ -494,34 +486,30 @@ View a list of all avatars available to use by a MEMBER.
   * [ ] Create sighting object
   * [ ] Use `fetch` to `PUT` the updated sighting's information to the wingspan API
   * [ ] On success, update the sightings array (don't modify the original array!), or on failure, display any validation errors from the API in the UI
-
 * [ ] Apply Bootstrap styling (as needed)
   * [ ] Update the sightings list
   * [ ] Update the add sighting form
   * [ ] Update the edit sighting form
   * [ ] Update the delete sighting confirmation
-
 ##### Part 4
 * [ ] Implement the required client-side routes (#.# hours)
   * [ ] Install `react-router-dom`
   * [ ] Define the necessary client-side routes
   * [ ] Stub out any components that are needed to support the client-side routes
   * [ ] Display a "Not Found" message if a route doesn't match one of the defined routes
-
 ##### Part 5
 * [ ] Update the "Sightings" list component (#.# hours)
   * [ ] Link the "Add sighting" button to to the "Add sighting" route
   * [ ] Link the "Edit Sighting" button to redirect the user to the appropriate route
-
 * [ ] Update the "Add Sighting" form component (#.# hours)
   * [ ] After a successful `POST` to the wingspan API, redirect the user to the "sightings" route
-
 * [ ] Update the "Edit Sighting" form component (#.# hours)
   * [ ] Use the `useParams` hook to get the sighting's ID from the route
   * [ ] Use `fetch` to `GET` the sighting from the Field Agent API when the component is first loaded
   * [ ] After a successful `PUT` to the Field Agent API, redirect the user to the "sightings" route
 
 ### Security Layer Tasks
+#### Security - Back End
 * [ ] Create Schema to add Users and Roles to database
   * [ ] Add app_user, app_role, app_user_role and appropriate data to the schema.
 * [ ] Configure Spring Security
@@ -545,6 +533,61 @@ View a list of all avatars available to use by a MEMBER.
   * [ ] Update the security configuration to allow these endpoints to be accessed without credentials.
 * [ ] Configure AuthController, SecurityConfig, and AppUser Repo & Service to allow for creating an account
 * [ ] Configure AuthController, SecurityConfig, and AppUser Repo & Service to allow for editing an account
+#### Security - Front End
+* [ ] Login Component
+  * [ ] Add a Login component and an accompanying /login route to your React project
+  * [ ] Prompt the user for their username and password
+  * [ ] Redirect the user to the "Home" page (i.e. /) after they submit the form
+* [ ] NavBar Component
+  * [ ] Add a NavBar component to your React project (if it's not already defined)
+  * [ ] Include links to the "Home", "Sightings List", "About", and "Contact" pages
+  * [ ] Within the component, define a user variable and initialize it to null
+  * [ ] If user is null, then display links to the "Login" and "Register" pages
+  * [ ] If user is not null, then display their username and a "Logout" button
+ * [ ] Global State and Props
+  * [ ] Add a global user state property to the App component
+  * [ ] Define login() and logout() functions that update the user state property
+  * [ ] Pass an auth object literal containing user, login, and logout to the Login and NavBar components
+  * [ ] Update the Login and NavBar components to call the login and logout methods (respectively)
+* [ ] Protecting Routes
+  * [ ] Use conditional rendering to protect all of the sighting related routes (/sightings, /soightings/add, /sightings/update/:id, and /sightings/delete/:id if defined):
+ * [ ] Context API
+  * [ ] Leverage the Context API to manage global state
+  * [ ] Create a context object in its own module (so it can be imported into any module that needs access to the global state)
+  * [ ] update the App component so that the context can provide its value to any component that needs access to the global state
+    * Import AuthContext
+    * Wrap Router in AuthContext.Provider
+    * Set the AuthContext.Provider component's value property to the auth object
+    * Remove auth props from all other components
+    * Use the useContext Hook to listening for changes to the global state.
+ * [ ] Getting a Token
+  * [ ] Update the Login component to use the secured Solar Farm API to authenticate the user
+  * [ ] POST the username and password values to the API's /authenticate endpoint
+    * On a successful response (200 OK), get the JWT token from the response body and pass it to the auth.login() method
+    * Redirect the user to the default route (/)
+    * On an unsuccessful response (403 Forbidden) display a "Login failed" message
+ * [ ] Parsing the Token (jwt-decode)
+  * [ ] Install the jwt-decode npm package:
+    * npm install jwt-decode
+  * [ ] Use it to decode the token within the App component's login() function
+    * You could decode and destructure like this: const { sub: username, roles } = jwt_decode(token);
+ * [ ] Passing the Token when Making HTTP Requests
+  * [ ] set the Authorization header on your Fetch calls
+    * If you don't add the JWT token to the request, the server will return a response with a 403 Forbidden HTTP status code
+    * Use `await` or `then` and handle the errors based on the response's `status`, `error` and `error.message`.
+fetch("http://localhost:8080/api/solarpanels", init);
+ * [ ] Persisting the Login State
+  * [ ] Update the App component's login() function to persist the token to localStorage
+  * [ ] Update the App component's logout() function to remove the token from localStorage
+* [ ] Register Component
+  * [ ] Add a Register component and an accompanying /register route to your React project
+    * The Register component is similar in form and function to the Login component
+    * Need to make two Fetch calls when the user submits the form
+      * Use Fetch to create the account
+      * If you get a 201 (i.e. "Success") then use Fetch to authenticate and get the token
+      * After receiving the token from the server, pass the token to the auth.login() function to login the newly created user
+ * [ ] Refresh the Token
+  * [ ] Automatically refresh the user's authentication token before it can expire
 
 ### AWS Hosting Tasks
 
