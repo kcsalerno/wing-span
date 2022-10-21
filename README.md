@@ -447,6 +447,80 @@ View a list of all avatars available to use by a MEMBER.
 
 ### UI (Front End) Layer Tasks
 
+#### Sightings
+##### Part 1
+* [ ] Create a new React project with CRA (create-react-app)
+  * [ ] Remove the cruft
+
+* [ ] Add Bootstrap (or other CSS framework) to the `public/index.html` file
+  * [ ] Add a link to the Bootstrap CSS using the [CDN from the official docs](https://getbootstrap.com/docs/4.6/getting-started/introduction/#css)
+  * [ ] Add the [`container` CSS class](https://getbootstrap.com/docs/4.6/layout/overview/#containers) to the `<div id="root"></div>` element
+
+* [ ] Create `Sightings` component
+  * [ ] Update `App` component to render `sightings`
+
+* [ ] Update `Sightings` to render list of sightings
+  * [ ] Use `fetch` to `GET` a list of sightings from the Wingspan API when the component is first loaded
+  * [ ] Write JSX to render the sightings array
+  * [ ] Stub out click event handlers ("Add Sighting", "Edit Sighting", "Delete Sighting") as necessary
+
+##### Part 2
+* [ ] Create a form to add a sighting
+  * [ ] Add form JSX
+  * [ ] Decide between using individual state variables for input elements or a single object
+  * [ ] Add onChange event handlers to input elements
+  * [ ] Add onSubmit event handler to form element (be sure to prevent the form from submitting!)
+  * [ ] Create sighting object
+  * [ ] Use `fetch` to `POST` the new sighting's information to the wingspan API
+  * [ ] On success, update the sightings array (don't modify the original array!), or on failure, display any validation errors from the API in the UI
+
+* [ ] Support deleting sightings
+  * [ ] Confirm the deletion with the user/admin
+  * [ ] Use `fetch` to `DELETE` the sighting from the sighting API
+  * [ ] On success, update the sighting array (don't modify the original array!)
+
+* [ ] Conditionally render sections of the component
+  * [ ] Add state variable to track the current view
+  * [ ] Add conditional logic to the JSX to display the appropriate view
+
+##### Part 3
+* [ ] Support editing sightings
+  * [ ] Store the "edit sighting ID" in a new state variable
+  * [ ] Retrieve the sighting to edit
+  * [ ] Update form state variable(s)
+  * [ ] Add form JSX
+  * [ ] Add onChange event handlers to input elements
+  * [ ] Add onSubmit event handler to form element (be sure to prevent the form from submitting!)
+  * [ ] Create sighting object
+  * [ ] Use `fetch` to `PUT` the updated sighting's information to the wingspan API
+  * [ ] On success, update the sightings array (don't modify the original array!), or on failure, display any validation errors from the API in the UI
+
+* [ ] Apply Bootstrap styling (as needed)
+  * [ ] Update the sightings list
+  * [ ] Update the add sighting form
+  * [ ] Update the edit sighting form
+  * [ ] Update the delete sighting confirmation
+
+##### Part 4
+* [ ] Implement the required client-side routes (#.# hours)
+  * [ ] Install `react-router-dom`
+  * [ ] Define the necessary client-side routes
+  * [ ] Stub out any components that are needed to support the client-side routes
+  * [ ] Display a "Not Found" message if a route doesn't match one of the defined routes
+
+##### Part 5
+* [ ] Update the "Sightings" list component (#.# hours)
+  * [ ] Link the "Add sighting" button to to the "Add sighting" route
+  * [ ] Link the "Edit Sighting" button to redirect the user to the appropriate route
+
+* [ ] Update the "Add Sighting" form component (#.# hours)
+  * [ ] After a successful `POST` to the wingspan API, redirect the user to the "sightings" route
+
+* [ ] Update the "Edit Sighting" form component (#.# hours)
+  * [ ] Use the `useParams` hook to get the sighting's ID from the route
+  * [ ] Use `fetch` to `GET` the sighting from the Field Agent API when the component is first loaded
+  * [ ] After a successful `PUT` to the Field Agent API, redirect the user to the "sightings" route
+
 ### Security Layer Tasks
 * [ ] Create Schema to add Users and Roles to database
   * [ ] Add app_user, app_role, app_user_role and appropriate data to the schema.
@@ -481,7 +555,7 @@ View a list of all avatars available to use by a MEMBER.
 * [ ] Create stats page
   * [ ] Create necessary componenets, services, and configure routes
   * [ ] Create HTTP requests to support different queries
-* [ ] Implement CRUD methods from back to front for an ADMIN UI that works for Badges, Birds, and Avatars
+* [ ] Implement CRUD methods from back to front for an ADMIN UI that works for Badges, Birds, Traits and Avatars
 ## Schedule
 
 ## Class Diagram
