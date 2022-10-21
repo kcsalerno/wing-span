@@ -28,10 +28,16 @@ Briefly describe a technical solution to your problem with a couple concrete sce
 
 > ### Bird
 > An actual bird with traits.
+> ### Trait
+> A bird trait.
 > ### Sighting
 > A sighting of a particular bird on a date at a location.
-> ### Bird-Watcher
+> ### Bird-Watcher (User)
 > Anyone who watches birds and records their sightings.
+> ### Badge
+> An award based on meeting certain sighting goals.
+> ### Avatar
+> A profile image for the user.
 > ### Admin
 > Someone who maintains the bird sightings log.
 
