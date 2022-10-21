@@ -97,8 +97,6 @@ John has been an avid bird watcher all of his life. He has a journal that he kee
 
 Briefly describe what each user role/authority can do. (These are user stories.)
 
-#### Example
-
 * Create a sightings (MEMBER, ADMIN).
 * Edit a sighting (MEMBER, ADMIN).
 * Delete a sighting attached to their profile (MEMBER).
@@ -120,8 +118,6 @@ Briefly describe what each user role/authority can do. (These are user stories.)
 ### 5. User Stories/Scenarios
 
 Elaborate user stories.
-
-#### Example
 
 #### Create a Sighting
  
