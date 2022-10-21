@@ -509,7 +509,7 @@ View a list of all avatars available to use by a MEMBER.
   * [ ] Use `fetch` to `GET` the sighting from the Field Agent API when the component is first loaded
   * [ ] After a successful `PUT` to the Field Agent API, redirect the user to the "sightings" route
 
-### Security Layer Tasks (22 Hours)
+### Security Layer Tasks (24 Hours)
 #### Security - Back End
 * [ ] Create Schema to add Users and Roles to database (1 hours)
   * [ ] Add app_user, app_role, app_user_role and appropriate data to the schema.
@@ -532,8 +532,8 @@ View a list of all avatars available to use by a MEMBER.
 * [ ] Create AuthController (1 hours)
   * [ ] Create the AuthController in the controllers package to implement the /api/authenticate and /api/create_account endpoints.
   * [ ] Update the security configuration to allow these endpoints to be accessed without credentials.
-* [ ] Configure AuthController, SecurityConfig, and AppUser Repo & Service to allow for creating an account (#.# hours)
-* [ ] Configure AuthController, SecurityConfig, and AppUser Repo & Service to allow for editing an account (#.# hours)
+* [ ] Configure AuthController, SecurityConfig, and AppUser Repo & Service to allow for creating an account (1 hours)
+* [ ] Configure AuthController, SecurityConfig, and AppUser Repo & Service to allow for editing an account (1 hours)
 #### Security - Front End
 * [ ] Login Component (1 hours)
   * [ ] Add a Login component and an accompanying /login route to your React project
