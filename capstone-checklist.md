@@ -36,7 +36,7 @@
     - Depends on: "As an unauthenticated user, I want to log in, so I can use features that require authentication." (could be standard user or admin)
     - Which depends on: "As a new user, I want to create an account, so I can make purchases." (new users can't automatically become admins)
 
-7. [ ] Once you're happy with user stories, think about the technical details behind them. To "realize" the user story, what has to happen in?:
+7. [X] Once you're happy with user stories, think about the technical details behind them. To "realize" the user story, what has to happen in?:
 
     - the database (tables and relationships)
     - the REST API (models, repositories, services, controllers)
