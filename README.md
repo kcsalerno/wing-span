@@ -273,8 +273,45 @@ View a list of all avatars available to use by a MEMBER.
 * Learning Goal: AWS Hosting
 
 ## High Level Tasks
+* [ ] Database Layer Tasks
+* [ ] API Data Layer Tasks
+* [ ] API Domain Layer Tasks
+
 
 ### Database Layer Tasks
+* [ ] Design initial database schema (#.# hours)
+  * [ ] Identify the tables that are needed
+  * [ ] For each table...
+    * Define a primary key
+    * Define its columns (name, data type, and nullability)
+  * [ ] Identify the relationships between tables
+    * Define any foreign keys
+  * [ ] Identify any default or unique constraints
+
+* [ ] Draw a diagram of the database schema (#.# hours)
+  * [ ] Share with one or more classmates for feedback
+  * [ ] Update database schema as needed
+  * [ ] Share updated diagram with one or more classmates
+  * [ ] Update database schema as needed
+  * [ ] Share with assigned code reviewer for feedback
+
+* [ ] Write the DDL in a file named `auth-schema-data.sql` to create the security database (#.# hours)
+  * [ ] Drop and create the database
+  * [ ] Create all of the tables
+
+* [ ] Write the DML in the file named `auth-schema-data.sql` to populate the database tables (#.# hours)
+
+* [ ] Write the DDL in a file named `schema.sql` to create the main database (#.# hours)
+  * [ ] Drop and create the database
+  * [ ] Create all of the tables
+
+* [ ] Create data (#.# hours)
+  * [ ] Enter initial data for each table
+  * [ ] Enter data for the bird, badge, and avatar tables
+  * [] Run the provided SQL script
+
+* [ ] Write the DML in a file named `data.sql` to populate the database tables (#.# hours)
+  * [ ] Write insert-from-select statements to move the data from the denormalized table to the normalized tables
 
 ### Data Layer Tasks
 
