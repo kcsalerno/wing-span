@@ -612,11 +612,11 @@ fetch("http://localhost:8080/api/solarpanels", init);
 ### Monday (10/24)
 * [ ] Database Layer Tasks (9 hours)
   * 3 Hours per team member
-* [ ] API Data Layer Tasks (20 Hours)
-  * 5 Hours per team member
+* [ ] API Data Layer Tasks (18 Hours)
+  * 6 Hours per team member
 ### Tuesday (10/25)
-* [ ] API Data Layer Tasks (20 Hours)
-  * 5 Hours per team member
+* [ ] API Data Layer Tasks (22 Hours)
+  * 7 Hours per team member
 * [ ] API Domain Layer Tasks (9 hours)
   * 3 Hours per team member 
 ### Wednesday (10/26)
