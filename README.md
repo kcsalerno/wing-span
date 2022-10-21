@@ -652,6 +652,8 @@ fetch("http://localhost:8080/api/solarpanels", init);
 ### Thursday (11/3)
 * [ ] Work on Presentation (3 hours)
   * 1 Hour per team member
+* [ ] Practice Presentation (3 hours)
+  * 1 Hour per team member 
 ### Friday (11/4)
 * [ ] Present Project (.5 hours)
 
