@@ -87,7 +87,107 @@
 ## Schedule
 
 ## Class Diagram
+```
 
+
+wing-span
+|
+├───wing-span-db
+|       schema.sql
+|       initial-data.sql
+|       auth-schema-data.sql
+|
+├───wing-span-ui
+|    ├───public
+|    |       favicon.ico
+|    |       index.html
+|    | 
+│    └───src
+|         |   App.js
+|         |   index.js
+|         |
+|         ├───components
+|         |        Error.js
+|         |        About.js
+|         |        Contact.js
+|         |        Login.js
+|         |        Not Found.js
+|         |        Register.js
+|         |        Delete.js
+|         |        Navigation.js
+|         |        Form.js (Can we conditionally render the form based on type?)
+|         |        List.js (Can we conditionally render the list based on type?)
+|         |        
+|         ├───contexts
+|         |        AuthContext.js
+|         |   
+|         └───services
+|                  auth.js
+|                  birds.js 
+|                  sightings.js 
+|                  traits.js 
+|         
+└───wing-span-api
+    |       pom.xml
+    |
+    ├───http
+    |       request.http 
+    |   
+    └───src
+          ├───main
+          │   ├───java
+          │   │    └───wing-span
+          │   │           │     App.java
+          │   │           │     AppConfig.java
+          │   │           │
+          │   │           ├───data
+          │   │           │   |   AppUserJdbcTemplateRepository.java
+          │   │           │   |   AppUserRepository.java
+          │   │           │   |   BirdJdbcTemplateRepository.java
+          │   │           │   |   BirdRepository.java
+          |   |           |   |
+          │   │           │   └───mappers    
+          |   |           |           AppUserMapper.java
+          |   |           |           BirdMapper.java
+          │   │           │
+          │   │           ├───domain
+          │   │           │       Result.java
+          │   │           │       ResultType.java
+          │   │           │       Validations.java
+          │   │           │       BirdService.java
+          │   │           │
+          │   │           ├───models
+          │   │           │       Bird.java
+          │   │           │
+          │   │           ├───controllers
+          │   │           │       ErrorResponse.java
+          │   │           │       GlobalExceptionHandler.java
+          │   │           │       AuthController.java
+          │   │           │       BirdController.java
+          │   │           │
+          |   |           └───security
+          │   │                   AppUserService,java
+          │   │                   JwtConverter.java
+          │   │                   JwtRequestFilter.java
+          │   │                   SecurityConfig.java
+          │   │
+          │   └───resources
+          |               application.properties
+          └───test
+              ├───java
+              |   └───wing-span
+              |           ├───controllers
+              |           |       BirdControllerTest.java
+              |           |
+              |           ├───data
+              |           │       KnownGoodState
+              |           |       BirdJdbcTemplateRepository.java
+              |           |
+              |           └───domain
+              |                   BirdServiceTest.java
+              └───resources
+                          application.propertie
+```
 ## Approach
 * Planning is absolutely essential for a project this large.
     * Create a complete list of concrete tasks required to finish
