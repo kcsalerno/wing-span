@@ -593,9 +593,10 @@ fetch("http://localhost:8080/api/solarpanels", init);
 * [ ] Research necessary AWS technology (#.# hours)
   * [ ] Read/view tutorials
   * [ ] Create deployment plan
-* [ ] (#.# hours)
-* [ ] (#.# hours)
-* [ ] (#.# hours)
+* [ ] Connect DB to AWS RDS (#.# hours)
+* [ ] Connect API to AWS Elastic Beanstalk (#.# hours)
+* [ ] Connect React UI to AWS S3 (#.# hours)
+* [ ] Configure Deployment (#.# hours)
 
 ### Further Development
 * [ ] Create leaderboard page (#.# hours)
