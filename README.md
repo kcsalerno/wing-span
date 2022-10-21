@@ -398,7 +398,6 @@ View a list of all avatars available to use by a MEMBER.
     * `findBadgeById`
   * [ ] Generate Tests for domain.BadgeService
     * Happy / Unhappy path
-   
 * [ ] domain.AvatarService
   * [ ] implement CRUD methods
     * `findAllAvatars`
@@ -408,17 +407,14 @@ View a list of all avatars available to use by a MEMBER.
     * `deleteAvatar`
   * [ ] Generate tests for domain.AvatarService
     * Happy / Unhappy path
-
 * [ ] domain.Validations
   * [ ] Validate sightings
     * Sighting cannot be a duplicate
     * Date cannot be null
   * [ ] Validate birds
   * [ ] Validate traits
-  
 * [ ] domain.ResultType
   * `Enum`
-
 * [ ] domain.Result
   * `Payload`
   *  `ArrayList<String> messages`
@@ -448,14 +444,44 @@ View a list of all avatars available to use by a MEMBER.
 * [ ] Create application properties
 * [ ] Configure enviroment variables
 * [ ] Double check all annotations
+
 ### UI (Front End) Layer Tasks
 
 ### Security Layer Tasks
+* [ ] Create Schema to add Users and Roles to database
+  * [ ] Add app_user, app_role, app_user_role and appropriate data to the schema.
+* [ ] Configure Spring Security
+  * [ ] Configure the project to utilize the spring-boot-starter-security dependency.
+* [ ] Create AppConfig
+  * [ ] Create the AppConfig class and define the PasswordEncoder bean. Define the WebMvcConfigurer bean to configure CORS globally.
+* [ ] Create AppUser
+  * [ ] Add the AppUser to the models package, implementing UserDetails and mapping to the created fields.
+* [ ] Create AppUserRepository
+  * [ ] Create the interface and repository to add AppUserRepository interface and AppUserJdbcTemplateRepository class.
+* [ ] Create AppUserService
+  * [ ] Create the AppUserService which implements org.springframework.security.core.userdetails.UserDetailsService
+    * The UserDetailsService interface loads user-specific data.
+    * The interface requires only one read-only method, which simplifies support for new data-access strategies.
+* [ ] Add JWT to project, creating JWT Converter and JWT Filter
+  * [ ] Continue the security implementation to include the JWT dependencies, and then create in the security package the JwtConverter and JwtRequestFilter classes
+* [ ] Create Security Config
+  * [ ] Create the SecurityConfig class connecting the above steps.
+* [ ] Create AuthController
+  * [ ] Create the AuthController in the controllers package to implement the /api/authenticate and /api/create_account endpoints.
+  * [ ] Update the security configuration to allow these endpoints to be accessed without credentials.
+* [ ] Configure AuthController, SecurityConfig, and AppUser Repo & Service to allow for creating an account
+* [ ] Configure AuthController, SecurityConfig, and AppUser Repo & Service to allow for editing an account
 
 ### AWS Hosting Tasks
 
 ### Further Development
-
+* [ ] Create leaderboard page
+  * [ ] Create necessary componenets, services, and configure routes
+  * [ ] Create HTTP requests to support different queries
+* [ ] Create stats page
+  * [ ] Create necessary componenets, services, and configure routes
+  * [ ] Create HTTP requests to support different queries
+* [ ] Implement CRUD methods from back to front for an ADMIN UI that works for Badges, Birds, and Avatars
 ## Schedule
 
 ## Class Diagram
