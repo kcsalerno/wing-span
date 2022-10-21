@@ -396,7 +396,32 @@ View a list of all avatars available to use by a MEMBER.
 * [ ] domain.BadgeService
     * `findAllBadges`
     * `findBadgeById`
-  * [ ] Generate Tests for domain.BadgeService 
+  * [ ] Generate Tests for domain.BadgeService
+    * Happy / Unhappy path
+   
+* [ ] domain.AvatarService
+  * [ ] implement CRUD methods
+    * `findAllAvatars`
+    * `findAvatarById`
+    * `addAvatar`
+    * `editAvatar`
+    * `deleteAvatar`
+  * [ ] Generate tests for domain.AvatarService
+    * Happy / Unhappy path
+
+* [ ] domain.Validations
+  * [ ] Validate sightings
+    * Sighting cannot be a duplicate
+    * Date cannot be null
+  * [ ] Validate birds
+  * [ ] Validate traits
+  
+* [ ] domain.ResultType
+  * `Enum`
+
+* [ ] domain.Result
+  * `Payload`
+  *  `ArrayList<String> messages`
 
 ### Model and Controller Layer Tasks
 #### In the `controller` package
