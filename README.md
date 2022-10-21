@@ -607,6 +607,37 @@ fetch("http://localhost:8080/api/solarpanels", init);
   * [ ] Create HTTP requests to support different queries
 * [ ] Implement CRUD methods from back to front for an ADMIN UI that works for Badges, Birds, Traits and Avatars (#.# hours)
 
+## Schedule
+### Monday (10/24)
+* [ ] Database Layer Tasks (#.# hours)
+* [ ] API Data Layer Tasks (#.# hours)
+### Tuesday (10/25)
+* [ ] API Data Layer Tasks (#.# hours)
+* [ ] API Domain Layer Tasks (#.# hours)
+### Wednesday (10/26)
+* [ ] API Domain Layer Tasks (#.# hours)
+* [ ] API Model and Controller Layer Tasks (#.# hours)
+### Thursday (10/27)
+* [ ] API Model and Controller Layer Tasks (#.# hours)
+* [ ] UI Front End Layer Tasks (#.# hours)
+### Friday (10/28)
+* [ ] UI Front End Layer Tasks (#.# hours)
+### Saturday (10/29)
+* [ ] Security Layer Tasks (#.# hours)
+### Sunday (10/30)
+* [ ] Further Development Tasks (#.# hours)
+### Monday (10/31)
+* [ ] AWS Hosting Tasks (#.# hours)
+### Tuesday (11/1)
+* [ ] AWS Hosting Tasks (#.# hours)
+* [ ] Further Development Tasks (#.# hours)
+### Wednesday (11/2)
+* [ ] Further Development Tasks (#.# hours)
+### Thursday (11/3)
+* [ ] Work on Presentation (#.# hours)
+### Friday (11/4)
+* [ ] Present Project (#.# hours)
+
 ## Class Diagram
 ```
 wing-span
