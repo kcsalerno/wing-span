@@ -72,8 +72,6 @@ John has been an avid bird watcher all of his life. He has a journal that he kee
 
 ### 3. Glossary
 
-#### Terms
-
 #### Bird
 * An actual bird with traits.
 
