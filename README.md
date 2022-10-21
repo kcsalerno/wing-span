@@ -623,7 +623,7 @@ fetch("http://localhost:8080/api/solarpanels", init);
 * [ ] API Domain Layer Tasks (14 hours)
   * 4.5 Hours per team member
 * [ ] API Model and Controller Layer Tasks (9 hours)
-* 3 Hours per team member
+  * 3 Hours per team member
 ### Thursday (10/27)
 * [ ] API Model and Controller Layer Tasks (12 hours)
   * 4 Hours per team member 
