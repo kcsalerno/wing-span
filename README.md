@@ -276,7 +276,11 @@ View a list of all avatars available to use by a MEMBER.
 * [ ] Database Layer Tasks
 * [ ] API Data Layer Tasks
 * [ ] API Domain Layer Tasks
-
+* [ ] API Model and Controller Layer Tasks
+* [ ] UI Front End Layer Tasks
+* [ ] Security Layer Tasks
+* [ ] AWS Hosting Tasks
+* [ ] Further Development Tasks
 
 ### Database Layer Tasks
 * [ ] Design initial database schema (#.# hours)
@@ -287,29 +291,23 @@ View a list of all avatars available to use by a MEMBER.
   * [ ] Identify the relationships between tables
     * Define any foreign keys
   * [ ] Identify any default or unique constraints
-
 * [ ] Draw a diagram of the database schema (#.# hours)
   * [ ] Share with one or more classmates for feedback
   * [ ] Update database schema as needed
   * [ ] Share updated diagram with one or more classmates
   * [ ] Update database schema as needed
   * [ ] Share with assigned code reviewer for feedback
-
 * [ ] Write the DDL in a file named `auth-schema-data.sql` to create the security database (#.# hours)
   * [ ] Drop and create the database
   * [ ] Create all of the tables
-
 * [ ] Write the DML in the file named `auth-schema-data.sql` to populate the database tables (#.# hours)
-
 * [ ] Write the DDL in a file named `schema.sql` to create the main database (#.# hours)
   * [ ] Drop and create the database
   * [ ] Create all of the tables
-
 * [ ] Create data (#.# hours)
   * [ ] Enter initial data for each table
   * [ ] Enter data for the bird, badge, and avatar tables
   * [ ] Run the provided SQL script
-
 * [ ] Write the DML in a file named `data.sql` to populate the database tables (#.# hours)
   * [ ] Write insert-from-select statements to move the data from the denormalized table to the normalized tables
 
@@ -321,11 +319,8 @@ View a list of all avatars available to use by a MEMBER.
     * Create/register user
     * Update user profile (info)
     * Delete/Disable user account
-
 * [ ] Create KnownGoodState in \test\java\wing-span\data
-
 * [ ] Create tests for AppUserJdbcTemplateRepository
-
 * [ ] Create BirdJdbcTemplateRepository and BirdRepository Interface
   * [ ] Create appropriate CRUD methods
     * Find a bird by id
@@ -333,9 +328,7 @@ View a list of all avatars available to use by a MEMBER.
     * Add a bird
     * Update bird info
     * Delete/Disable a bird
-
 * [ ] Create tests for BirdJdbcTemplateRepository
-
 * [ ] Create SightingJdbcTemplateRepository and SightingRepository Interface
   * [ ] Create appropriate CRUD methods
     * Find a sighting by id
@@ -343,9 +336,7 @@ View a list of all avatars available to use by a MEMBER.
     * Add a sighting
     * Update sighting info
     * Delete/Disable a sighting
-
 * [ ] Create tests for SightingJdbcTemplateRepository
-
 * [ ] Create TraitJdbcTemplateRepository and TraitRepository Interface
   * [ ] Create appropriate CRUD methods
     * Find a trait by id
@@ -353,9 +344,7 @@ View a list of all avatars available to use by a MEMBER.
     * Add a trait
     * Update trait info
     * Delete/Disable a trait
-
 * [ ] Create tests for TraitJdbcTemplateRepository
-
 * [ ] Create BadgeJdbcTemplateRepository and BadgeRepository Interface
   * [ ] Create appropriate CRUD methods
     * Find a badge by id
@@ -363,9 +352,7 @@ View a list of all avatars available to use by a MEMBER.
     * Add a badge
     * Update badge info
     * Delete/Disable a badge
-
 * [ ] Create tests for BadgeJdbcTemplateRepository
-
 * [ ] Create AvatarJdbcTemplateRepository and AvatarRepository Interface
   * [ ] Create appropriate CRUD methods
     * Find an avatar by id
@@ -373,9 +360,7 @@ View a list of all avatars available to use by a MEMBER.
     * Add an avatar
     * Update avatar info
     * Delete/Disable an avatar
-
-* [ ] Create tests for AvatarJdbcTemplateRepository
- 
+* [ ] Create tests for AvatarJdbcTemplateRepository 
 * [ ] Create AppUserMapper
 * [ ] Create BirdMapper
 * [ ] Create SightingMapper
@@ -393,7 +378,6 @@ View a list of all avatars available to use by a MEMBER.
     * `deleteSighting`
   * [ ] Generate tests for domain.SightingService
     * Happy/ Unhappy Path 
- 
 * [ ] domain.TraitService
   * [ ] implement CRUD methods
     * `findTraitByBird`
@@ -402,7 +386,6 @@ View a list of all avatars available to use by a MEMBER.
     * `deleteTrait`
   * [ ] Generate tests for domain.SightingService
     * Happy/ Unhappy Path
-
 * [ ] domain.BirdService
   * [ ] implement CRUD methods
     * `addBird`
@@ -410,14 +393,36 @@ View a list of all avatars available to use by a MEMBER.
     * `deleteBird`
   * [ ] Generate tests for domain.SightingService
     * Happy/ Unhappy Path
-
 * [ ] domain.BadgeService
     * `findAllBadges`
     * `findBadgeById`
-  * [ ] Generate Tests for domain.BadgeService
-  
-### MVC Layer Tasks
+  * [ ] Generate Tests for domain.BadgeService 
 
+### Model and Controller Layer Tasks
+#### In the `controller` package
+* [ ] ErrorResponse Class
+* [ ] Create GlobalExceptionHandler
+* [ ] Create AuthController
+* [ ] Create BirdController
+* [ ] Create SightingController
+* [ ] Create TraitController
+* [ ] Create BadgeController
+* [ ] Create AvatarController
+#### In the `model` package
+* [ ] Create AppUser model
+* [ ] Create Bird model
+* [ ] Create Sighting model
+* [ ] Create Trait model
+* [ ] Create Badge model
+* [ ] Create Avatar model
+#### In the `wing-span` package
+* [ ] Create App Class
+* [ ] Create AppConfig Class
+#### In the `java` package
+* [ ] Create the resources package
+* [ ] Create application properties
+* [ ] Configure enviroment variables
+* [ ] Double check all annotations
 ### UI (Front End) Layer Tasks
 
 ### Security Layer Tasks
@@ -430,8 +435,6 @@ View a list of all avatars available to use by a MEMBER.
 
 ## Class Diagram
 ```
-
-
 wing-span
 |
 ├───wing-span-db
@@ -563,6 +566,7 @@ wing-span
               └───resources
                           application.properties
 ```
+
 ## Approach
 * Planning is absolutely essential for a project this large.
     * Create a complete list of concrete tasks required to finish
