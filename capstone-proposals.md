@@ -28,10 +28,16 @@ Briefly describe a technical solution to your problem with a couple concrete sce
 
 > ### Bird
 > An actual bird with traits.
+> ### Trait
+> A bird trait.
 > ### Sighting
 > A sighting of a particular bird on a date at a location.
-> ### Bird-Watcher
+> ### Bird-Watcher (User)
 > Anyone who watches birds and records their sightings.
+> ### Badge
+> An award based on meeting certain sighting goals.
+> ### Avatar
+> A profile image for the user.
 > ### Admin
 > Someone who maintains the bird sightings log.
 
@@ -41,14 +47,23 @@ Briefly describe what each user role/authority can do. (These are user stories.)
 
 ### Example
 
-> - Create a run (MEMBER, ADMIN).
-> - Edit a future run (MEMBER, ADMIN).
-> - Cancel a future run (ADMIN).
-> - Approve a run (ADMIN).
-> - Browse runs (anyone).
-> - Sign up for a run (authenticated).
-> - Apply for membership (authenticated).
-> - Approve a membership (ADMIN).
+> - Create a sightings (MEMBER, ADMIN).
+> - Edit a sighting (MEMBER, ADMIN).
+> - Delete a sighting attached to their profile (MEMBER).
+> - Delete any sighting (ADMIN).
+> - Browse sightings (anyone).
+> - Create a bird (ADMIN).
+> - Edit a bird (ADMIN).
+> - Delete a bird (ADMIN).
+> - Browse birds (anyone).
+> - Earn badges (MEMBER).
+> - Edit badges (ADMIN).
+> - Delete badges (ADMIN).
+> - Browse badges (anyone).
+> - Create an avatar (ADMIN).
+> - Edit an avatar (ADMIN).
+> - Delete an avatar (ADMIN).
+> - Browse and use an avatar (MEMBER, ADMIN).
 
 ## 5. User Stories/Scenarios
 
@@ -56,78 +71,135 @@ Elaborate use stories.
 
 ### Example
 
-> ### Create a Run
+> ### Create a Sighting
 > 
-> Create a run that runners can join.
+> Log a sighting to a user's profile.
 > 
 > Suggested data:
-> - brief description (e.g. "Saturday run along the river road.")
-> - date and time (must be in the future)
-> - a location (choose a level of difficulty from a single address field to a separately-tracked data entity)
-> - running club identifier (runs are always attached to a club. If a runner belongs to more than one club, they may need to choose)
-> - max participants (`null` for unlimited?)
-> - a route (data from a map integration, if appropriate)
+> - bird id (to connect the sighting to the bird) from a list of available birds
+> - user id (to connect the sighting to the MEMBER)
+> - date (which would need to be in the past or at the current moment)
 > 
 > **Precondition**: User must be logged in with the MEMBER or ADMIN role.
 > 
-> **Post-condition**: If the user is a MEMBER, the run is not automatically posted. It must be approved by an ADMIN. If the user is an ADMIN, they can choose to post it immediately or keep it in a pending status.
+> **Post-condition**: None
 > 
-> ### Edit a Run
+> ### Edit a Sighting
 > 
-> Can only edit a run in the future.
+> Can only edit a sighting in the past.
 > 
-> **Precondition**: User must be logged in with the MEMBER or ADMIN role. Run datetime must be in the future.
-> 
-> **Post-condition**: If the user is a MEMBER, the run is set to a pending status even if it was initially posted. If the user is an ADMIN, they can choose to post it immediately or keep it in a pending status.
-> 
-> ### Cancel a Run
-> 
-> Can only cancel a run in the future.
-> 
-> **Precondition**: User must be logged in with the ADMIN role. Run datetime must be in the future.
-> 
-> **Post-condition**: Data is not deleted. The run is set to a canceled status and is no longer visible in the public UI. It *is* visible to the admin.
-> 
-> ### Approve a Run
-> 
-> Through an administrative UI, the ADMIN user finds pending runs for their club. They can choose to: post directly, edit and post, or cancel.
-> 
-> **Precondition**: User must be logged in with the ADMIN role.
+> **Precondition**: User must be logged in with the MEMBER or ADMIN role. A MEMBER can only edit sightings attached to their profile. An ADMIN can edit any and all sightings. Sighting datetime must be in the past.
 > 
 > **Post-condition**: None
 > 
-> ### Browse Runs
+> ### Delete a Sighting
 > 
-> Decide how to display runs to anyone who uses the application.
+> Can only delete sightings in the past.
 > 
-> - Text-based: Users filter by date and location. Display results as HTML with action UI to sign up.
-> - Calendar-based: Users page through a calendar UI. Limit by location or manage the UI so there's not 200 runs on a single day.
-> - Map-based: Users navigate to different locations to see future runs as pins on the map.
+> **Precondition**: User must be logged in with the MEMBER of ADMIN role. A MEMBER can only delete sightings attached to their profile. An ADMIN can delete any and all sightings. Sighting datetime must be in the past. 
 > 
-> **Precondition**: None
+> **Post-condition**: Data is deleted.
+> 
+> ### Browse Sightings
+> 
+> - Text-based: Users see a list of sightings ordered by date. If a user wants to learn more about a bird, they can click on the bird and be taken to the birds specific page with traits. Display results as HTML with action UI to sign up.
+> 
+> **Precondition**: Anyone can view the list of sightings. They must be a MEMBER or ADMIN to contribute to the list of sightings in any way.
 > 
 > **Post-condition**: None
 > 
-> ### Sign Up for a Run
+> ### Create a Bird
 > 
-> Once a runner finds a run they're interested in, they can sign up.
-> 
-> **Precondition**: User must be logged in. The run must not be over-capacity. The runner cannot already be registered for the run.
-> 
-> **Post-condition**: Runner is registered for the run.
-> 
-> ### Apply for Membership (Optional)
-> 
-> If a runner enjoys a club's runs, they may wish to join the club. Give them an easy way to apply for membership.
-> 
-> **Precondition**: User must be logged in. The user cannot already be a member of the club.
-> 
-> **Post-condition**: Membership is in a pending status waiting for ADMIN approval.
-> 
-> ### Approve a Membership (Optional)
-> 
-> Through an administrative UI, the ADMIN user finds pending memberships for their club. They can choose to accept or reject the membership application.
+> Add a bird to our list of available birds to sight.
 > 
 > **Precondition**: User must be logged in with the ADMIN role.
 > 
-> **Post-condition**: Data is not deleted. The membership is set to a rejected status. This prevents the runner from applying again and again.
+> **Post-condition**: Data is added to our database. The bird becomes available to view by anyone. The bird can be used in a MEMBER sighting.
+> 
+> ### Edit a Bird
+> 
+> Edit any bird in our list of birds.
+> 
+> **Precondition**: User must be logged in with the ADMIN role.
+> 
+> **Post-condition**: Data is updated to our database.
+> 
+> ### Delete a Bird
+> 
+> Delete any bird in our list of birds.
+> 
+> **Precondition**: User must be logged in with the ADMIN role.
+> 
+> **Post-condition**: Data is deleted from our database.
+> 
+> ### Browse Birds
+> 
+> View a list of all birds and their traits.
+> 
+> **Precondition**: Anyone can view our list of birds.
+> 
+> **Post-condition**: None.
+> 
+> ### Create a Badge
+> 
+> Add a badge to our available badges for users to earn.
+> 
+> **Precondition**: User must be logged in with the ADMIN role.
+> 
+> **Post-condition**: Data is added to our database. The badge can be earned by a MEMBER if they meet the criteria of sightings.
+> 
+> ### Edit a Badge
+> 
+> Edit any badge in our list of badges.
+> 
+> **Precondition**: User must be logged in with the ADMIN role.
+> 
+> **Post-condition**: Data is updated to our database.
+> 
+> ### Delete a Badge
+> 
+> Delete any badge in our list of badges.
+> 
+> **Precondition**: User must be logged in with the ADMIN role.
+> 
+> **Post-condition**: Data is deleted from our database.
+> 
+> ### Browse Badges
+> 
+> View a list of all badges a MEMBER can earn.
+> 
+> **Precondition**: Anyone can view our list of birds.
+> 
+> **Post-condition**: None.
+> 
+> ### Create a Avatar
+> 
+> Add an avatar to our list of available avatars for a MEMBER to use for their profile.
+> 
+> **Precondition**: User must be logged in with the ADMIN role.
+> 
+> **Post-condition**: Data is added to our database. The avatar becomes available to use in by MEMBER.
+> 
+> ### Edit a Avatar
+> 
+> Edit any avatar in our list of avatars.
+> 
+> **Precondition**: User must be logged in with the ADMIN role.
+> 
+> **Post-condition**: Data is updated to our database.
+> 
+> ### Delete a Avatar
+> 
+> Delete any avatar in our list of avatar.
+> 
+> **Precondition**: User must be logged in with the ADMIN role.
+> 
+> **Post-condition**: Data is deleted from our database.
+> 
+> ### Browse and choose and Avatar
+> 
+> View a list of all avatars available to use by a MEMBER.
+> 
+> **Precondition**: User must be logged in with the MEMBER or ADMIN role.
+> 
+> **Post-condition**: None.
