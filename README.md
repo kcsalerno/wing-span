@@ -277,12 +277,12 @@ View a list of all avatars available to use by a MEMBER.
 * [ ] API Data Layer Tasks (40 hours)
 * [ ] API Domain Layer Tasks (23 hours)
 * [ ] API Model and Controller Layer Tasks (21 hours)
-* [ ] UI Front End Layer Tasks (#.# hours)
-* [ ] Security Layer Tasks (#.# hours)
-* [ ] AWS Hosting Tasks (#.# hours)
-* [ ] Further Development Tasks (#.# hours)
+* [ ] UI Front End Layer Tasks (22 hours)
+* [ ] Security Layer Tasks (24 hours)
+* [ ] AWS Hosting Tasks (24 hours)
+* [ ] Further Development Tasks (20 hours)
 
-### Database Layer Tasks
+### Database Layer Tasks (9 hours)
 * [ ] Design initial database schema (1 hours)
   * [ ] Identify the tables that are needed
   * [ ] For each table...
@@ -311,7 +311,7 @@ View a list of all avatars available to use by a MEMBER.
 * [ ] Write the DML in a file named `data.sql` to populate the database tables (3 hours)
   * [ ] Write insert-from-select statements to move the data from the denormalized table to the normalized tables
 
-### Data Layer Tasks
+### Data Layer Tasks (40 hours)
 * [ ] Create AppUserJdbcTemplateRepository and AppUserRepository Interface (1 hours)
   * [ ] Create appropriate CRUD methods (2 hours)
     * Find a user by id
@@ -420,7 +420,7 @@ View a list of all avatars available to use by a MEMBER.
   * `Payload`
   *  `ArrayList<String> messages`
 
-### Model and Controller Layer Tasks
+### Model and Controller Layer Tasks (21 hours)
 #### In the `controller` package
 * [ ] ErrorResponse Class (1 hours)
 * [ ] Create GlobalExceptionHandler (1 hours)
@@ -446,7 +446,7 @@ View a list of all avatars available to use by a MEMBER.
 * [ ] Configure enviroment variables (.5 hours)
 * [ ] Double check all annotations (.5 hours)
 
-### UI (Front End) Layer Tasks
+### UI (Front End) Layer Tasks (22 hours)
 #### Sightings
 ##### Part 1
 * [ ] Create a new React project with CRA (create-react-app) (1 hours)
@@ -454,14 +454,14 @@ View a list of all avatars available to use by a MEMBER.
 * [ ] Add Bootstrap (or other CSS framework) to the `public/index.html` file (1 hours)
   * [ ] Add a link to the Bootstrap CSS using the [CDN from the official docs](https://getbootstrap.com/docs/4.6/getting-started/introduction/#css) 
   * [ ] Add the [`container` CSS class](https://getbootstrap.com/docs/4.6/layout/overview/#containers) to the `<div id="root"></div>` element
-* [ ] Create `Sightings` component (#.# hours)
+* [ ] Create `Sightings` component (2 hours)
   * [ ] Update `App` component to render `sightings`
-* [ ] Update `Sightings` to render list of sightings (#.# hours)
+* [ ] Update `Sightings` to render list of sightings (2 hours)
   * [ ] Use `fetch` to `GET` a list of sightings from the Wingspan API when the component is first loaded
   * [ ] Write JSX to render the sightings array
   * [ ] Stub out click event handlers ("Add Sighting", "Edit Sighting", "Delete Sighting") as necessary
 ##### Part 2
-* [ ] Create a form to add a sighting (#.# hours)
+* [ ] Create a form to add a sighting (2 hours)
   * [ ] Add form JSX
   * [ ] Decide between using individual state variables for input elements or a single object
   * [ ] Add onChange event handlers to input elements
@@ -469,15 +469,15 @@ View a list of all avatars available to use by a MEMBER.
   * [ ] Create sighting object
   * [ ] Use `fetch` to `POST` the new sighting's information to the wingspan API
   * [ ] On success, update the sightings array (don't modify the original array!), or on failure, display any validation errors from the API in the UI
-* [ ] Support deleting sightings (#.# hours)
+* [ ] Support deleting sightings (2 hours)
   * [ ] Confirm the deletion with the user/admin
   * [ ] Use `fetch` to `DELETE` the sighting from the sighting API
   * [ ] On success, update the sighting array (don't modify the original array!)
-* [ ] Conditionally render sections of the component (#.# hours)
+* [ ] Conditionally render sections of the component (2 hours)
   * [ ] Add state variable to track the current view
   * [ ] Add conditional logic to the JSX to display the appropriate view
 ##### Part 3
-* [ ] Support editing sightings (#.# hours)
+* [ ] Support editing sightings (2 hours)
   * [ ] Store the "edit sighting ID" in a new state variable
   * [ ] Retrieve the sighting to edit
   * [ ] Update form state variable(s)
@@ -487,73 +487,73 @@ View a list of all avatars available to use by a MEMBER.
   * [ ] Create sighting object
   * [ ] Use `fetch` to `PUT` the updated sighting's information to the wingspan API
   * [ ] On success, update the sightings array (don't modify the original array!), or on failure, display any validation errors from the API in the UI
-* [ ] Apply Bootstrap styling (as needed) (#.# hours)
+* [ ] Apply Bootstrap styling (as needed) (3 hours)
   * [ ] Update the sightings list
   * [ ] Update the add sighting form
   * [ ] Update the edit sighting form
   * [ ] Update the delete sighting confirmation
 ##### Part 4
-* [ ] Implement the required client-side routes (#.# hours)
+* [ ] Implement the required client-side routes (2 hours)
   * [ ] Install `react-router-dom`
   * [ ] Define the necessary client-side routes
   * [ ] Stub out any components that are needed to support the client-side routes
   * [ ] Display a "Not Found" message if a route doesn't match one of the defined routes
 ##### Part 5
-* [ ] Update the "Sightings" list component (#.# hours)
+* [ ] Update the "Sightings" list component (2 hours)
   * [ ] Link the "Add sighting" button to to the "Add sighting" route
   * [ ] Link the "Edit Sighting" button to redirect the user to the appropriate route
-* [ ] Update the "Add Sighting" form component (#.# hours)
+* [ ] Update the "Add Sighting" form component (1 hours)
   * [ ] After a successful `POST` to the wingspan API, redirect the user to the "sightings" route
-* [ ] Update the "Edit Sighting" form component (#.# hours)
+* [ ] Update the "Edit Sighting" form component (1 hours)
   * [ ] Use the `useParams` hook to get the sighting's ID from the route
   * [ ] Use `fetch` to `GET` the sighting from the Field Agent API when the component is first loaded
   * [ ] After a successful `PUT` to the Field Agent API, redirect the user to the "sightings" route
 
-### Security Layer Tasks
+### Security Layer Tasks (22 Hours)
 #### Security - Back End
-* [ ] Create Schema to add Users and Roles to database (#.# hours)
+* [ ] Create Schema to add Users and Roles to database (1 hours)
   * [ ] Add app_user, app_role, app_user_role and appropriate data to the schema.
-* [ ] Configure Spring Security (#.# hours)
+* [ ] Configure Spring Security (1 hours)
   * [ ] Configure the project to utilize the spring-boot-starter-security dependency.
-* [ ] Create AppConfig (#.# hours)
+* [ ] Create AppConfig (1 hours)
   * [ ] Create the AppConfig class and define the PasswordEncoder bean. Define the WebMvcConfigurer bean to configure CORS globally.
-* [ ] Create AppUser (#.# hours)
+* [ ] Create AppUser (1 hours)
   * [ ] Add the AppUser to the models package, implementing UserDetails and mapping to the created fields.
-* [ ] Create AppUserRepository (#.# hours)
+* [ ] Create AppUserRepository (1 hours)
   * [ ] Create the interface and repository to add AppUserRepository interface and AppUserJdbcTemplateRepository class.
-* [ ] Create AppUserService (#.# hours)
+* [ ] Create AppUserService (1 hours)
   * [ ] Create the AppUserService which implements org.springframework.security.core.userdetails.UserDetailsService
     * The UserDetailsService interface loads user-specific data.
     * The interface requires only one read-only method, which simplifies support for new data-access strategies.
-* [ ] Add JWT to project, creating JWT Converter and JWT Filter (#.# hours)
+* [ ] Add JWT to project, creating JWT Converter and JWT Filter (1 hours)
   * [ ] Continue the security implementation to include the JWT dependencies, and then create in the security package the JwtConverter and JwtRequestFilter classes
-* [ ] Create Security Config (#.# hours)
+* [ ] Create Security Config (1 hours)
   * [ ] Create the SecurityConfig class connecting the above steps.
-* [ ] Create AuthController (#.# hours)
+* [ ] Create AuthController (1 hours)
   * [ ] Create the AuthController in the controllers package to implement the /api/authenticate and /api/create_account endpoints.
   * [ ] Update the security configuration to allow these endpoints to be accessed without credentials.
 * [ ] Configure AuthController, SecurityConfig, and AppUser Repo & Service to allow for creating an account (#.# hours)
 * [ ] Configure AuthController, SecurityConfig, and AppUser Repo & Service to allow for editing an account (#.# hours)
 #### Security - Front End
-* [ ] Login Component (#.# hours)
+* [ ] Login Component (1 hours)
   * [ ] Add a Login component and an accompanying /login route to your React project
   * [ ] Prompt the user for their username and password
   * [ ] Redirect the user to the "Home" page (i.e. /) after they submit the form
-* [ ] NavBar Component (#.# hours)
+* [ ] NavBar Component (1 hours)
   * [ ] Add a NavBar component to your React project (if it's not already defined)
   * [ ] Include links to the "Home", "Sightings List", "About", and "Contact" pages
   * [ ] Within the component, define a user variable and initialize it to null
   * [ ] If user is null, then display links to the "Login" and "Register" pages
   * [ ] If user is not null, then display their username and a "Logout" button
- * [ ] Global State and Props (#.# hours)
+ * [ ] Global State and Props (1.5 hours)
   * [ ] Add a global user state property to the App component
   * [ ] Define login() and logout() functions that update the user state property
   * [ ] Pass an auth object literal containing user, login, and logout to the Login and NavBar components
   * [ ] Update the Login and NavBar components to call the login and logout methods (respectively)
-* [ ] Protecting Routes (#.# hours)
+* [ ] Protecting Routes (1 hours)
   * [ ] Use conditional rendering to protect all of the sighting related routes (/sightings, /soightings/add, /sightings/update/:id, and /sightings/delete/:id if defined):
- * [ ] Context API (#.# hours)
-  * [ ] Leverage the Context API to manage global state (#.# hours)
+ * [ ] Context API (1.5 hours)
+  * [ ] Leverage the Context API to manage global state
   * [ ] Create a context object in its own module (so it can be imported into any module that needs access to the global state)
   * [ ] update the App component so that the context can provide its value to any component that needs access to the global state
     * Import AuthContext
@@ -561,52 +561,52 @@ View a list of all avatars available to use by a MEMBER.
     * Set the AuthContext.Provider component's value property to the auth object
     * Remove auth props from all other components
     * Use the useContext Hook to listening for changes to the global state.
- * [ ] Getting a Token (#.# hours)
+ * [ ] Getting a Token (1 hours)
   * [ ] Update the Login component to use the secured Solar Farm API to authenticate the user
   * [ ] POST the username and password values to the API's /authenticate endpoint
     * On a successful response (200 OK), get the JWT token from the response body and pass it to the auth.login() method
     * Redirect the user to the default route (/)
     * On an unsuccessful response (403 Forbidden) display a "Login failed" message
- * [ ] Parsing the Token (jwt-decode) (#.# hours)
+ * [ ] Parsing the Token (jwt-decode) (1 hours)
   * [ ] Install the jwt-decode npm package:
     * npm install jwt-decode
-  * [ ] Use it to decode the token within the App component's login() function (#.# hours)
+  * [ ] Use it to decode the token within the App component's login() function (1 hours)
     * You could decode and destructure like this: const { sub: username, roles } = jwt_decode(token);
- * [ ] Passing the Token when Making HTTP Requests (#.# hours)
+ * [ ] Passing the Token when Making HTTP Requests (1 hours)
   * [ ] set the Authorization header on your Fetch calls
     * If you don't add the JWT token to the request, the server will return a response with a 403 Forbidden HTTP status code
     * Use `await` or `then` and handle the errors based on the response's `status`, `error` and `error.message`.
 fetch("http://localhost:8080/api/solarpanels", init);
- * [ ] Persisting the Login State (#.# hours)
+ * [ ] Persisting the Login State (1 hours)
   * [ ] Update the App component's login() function to persist the token to localStorage
   * [ ] Update the App component's logout() function to remove the token from localStorage
-* [ ] Register Component (#.# hours)
+* [ ] Register Component (2 hours)
   * [ ] Add a Register component and an accompanying /register route to your React project
     * The Register component is similar in form and function to the Login component
     * Need to make two Fetch calls when the user submits the form
       * Use Fetch to create the account
       * If you get a 201 (i.e. "Success") then use Fetch to authenticate and get the token
       * After receiving the token from the server, pass the token to the auth.login() function to login the newly created user
- * [ ] Refresh the Token (#.# hours)
+ * [ ] Refresh the Token (1 hours)
   * [ ] Automatically refresh the user's authentication token before it can expire
 
-### AWS Hosting Tasks
-* [ ] Research necessary AWS technology (#.# hours)
+### AWS Hosting Tasks (24 Hours)
+* [ ] Research necessary AWS technology (12 hours)
   * [ ] Read/view tutorials
   * [ ] Create deployment plan
-* [ ] Connect DB to AWS RDS (#.# hours)
-* [ ] Connect API to AWS Elastic Beanstalk (#.# hours)
-* [ ] Connect React UI to AWS S3 (#.# hours)
-* [ ] Configure Deployment (#.# hours)
+* [ ] Connect DB to AWS RDS (3 hours)
+* [ ] Connect API to AWS Elastic Beanstalk (3 hours)
+* [ ] Connect React UI to AWS S3 (3 hours)
+* [ ] Configure Deployment (3 hours)
 
-### Further Development
-* [ ] Create leaderboard page (#.# hours)
+### Further Development (30 Hours)
+* [ ] Create leaderboard page (8 hours)
   * [ ] Create necessary componenets, services, and configure routes
   * [ ] Create HTTP requests to support different queries
-* [ ] Create stats page (#.# hours)
+* [ ] Create stats page (8 hours)
   * [ ] Create necessary componenets, services, and configure routes
   * [ ] Create HTTP requests to support different queries
-* [ ] Implement CRUD methods from back to front for an ADMIN UI that works for Badges, Birds, Traits and Avatars (#.# hours)
+* [ ] Implement CRUD methods from back to front for an ADMIN UI that works for Badges, Birds, Traits and Avatars (24 hours)
 
 ## Schedule
 ### Monday (10/24)
@@ -627,24 +627,33 @@ fetch("http://localhost:8080/api/solarpanels", init);
 ### Thursday (10/27)
 * [ ] API Model and Controller Layer Tasks (12 hours)
   * 4 Hours per team member 
-* [ ] UI Front End Layer Tasks (#.# hours)
+* [ ] UI Front End Layer Tasks (12 hours)
+  * 4 Hours per team member 
 ### Friday (10/28)
-* [ ] UI Front End Layer Tasks (#.# hours)
+* [ ] UI Front End Layer Tasks (9 hours)
+  * 3 Hours per team member
+* [ ] Further Development/Flex Time Tasks (15 hours)
+  * 5 Hours per team member
 ### Saturday (10/29)
-* [ ] Security Layer Tasks (#.# hours)
+* [ ] Security Layer Tasks (24 hours)
+  * 8 Hours per team member 
 ### Sunday (10/30)
-* [ ] Further Development Tasks (#.# hours)
+* [ ] Further Development/Flex Time Tasks (24 hours)
+  * 8 Hours per team member
 ### Monday (10/31)
-* [ ] AWS Hosting Tasks (#.# hours)
+* [ ] AWS Hosting Tasks (24 hours)
+ * 8 Hours per team member
 ### Tuesday (11/1)
-* [ ] AWS Hosting Tasks (#.# hours)
-* [ ] Further Development Tasks (#.# hours)
+* [ ] Further Development Tasks (24 hours)
+  * 8 Hours per team member
 ### Wednesday (11/2)
-* [ ] Further Development Tasks (#.# hours)
+* [ ] Further Development Tasks (24 hours)
+  * 8 Hours per team member
 ### Thursday (11/3)
-* [ ] Work on Presentation (#.# hours)
+* [ ] Work on Presentation (3 hours)
+  * 1 Hour per team member
 ### Friday (11/4)
-* [ ] Present Project (#.# hours)
+* [ ] Present Project (.5 hours)
 
 ## Class Diagram
 ```
