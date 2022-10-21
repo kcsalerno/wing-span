@@ -1,6 +1,6 @@
 # Capstone Project: Wing\<Span/>
 
-## User Story
+## User Stories
 * As new user:
    * There is a welcome page where I can read all birds, their traits, and sightings without logging in.
    * There will be a navigation bar with:
@@ -68,7 +68,6 @@
 
 ## High Level Tasks
 
-
 ### Database Layer Tasks
 
 ### Data Layer Tasks
@@ -88,11 +87,140 @@
 ## Schedule
 
 ## Class Diagram
+```
 
-## (?) UI Diagram (?)
 
-## (?) Hosting Diagram (?)
-
+wing-span
+|
+├───wing-span-db
+|       schema.sql
+|       initial-data.sql
+|       auth-schema-data.sql
+|
+├───wing-span-ui
+|    ├───public
+|    |       favicon.ico (optional)
+|    |       index.html
+|    | 
+│    └───src
+|         |   App.js
+|         |   index.js
+|         |
+|         ├───components
+|         |        Error.js
+|         |        About.js
+|         |        Contact.js
+|         |        Login.js
+|         |        Not Found.js
+|         |        Register.js
+|         |        Delete.js
+|         |        Navigation.js
+|         |        Form.js (Can we conditionally render the form based on type?)
+|         |        List.js (Can we conditionally render the list based on type?)
+|         |        
+|         ├───contexts
+|         |        AuthContext.js
+|         |   
+|         └───services
+|                  auth.js
+|                  birds.js 
+|                  sightings.js 
+|                  traits.js 
+|         
+└───wing-span-api
+    |       pom.xml
+    |
+    ├───http
+    |       request.http 
+    |   
+    └───src
+          ├───main
+          │   ├───java
+          │   │    └───wing-span
+          │   │           │     App.java
+          │   │           │     AppConfig.java
+          │   │           │
+          │   │           ├───data
+          │   │           │   |   AppUserJdbcTemplateRepository.java
+          │   │           │   |   AppUserRepository.java
+          │   │           │   |   BirdJdbcTemplateRepository.java
+          │   │           │   |   BirdRepository.java
+          │   │           │   |   SightingJdbcTemplateRepository.java
+          │   │           │   |   SightingRepository.java
+          │   │           │   |   TraitJdbcTemplateRepository.java
+          │   │           │   |   TraitRepository.java
+          │   │           │   |   BadgeJdbcTemplateRepository.java
+          │   │           │   |   BadgeRepository.java
+          │   │           │   |   AvatarJdbcTemplateRepository.java
+          │   │           │   |   AvatarRepository.java
+          |   |           |   |
+          │   │           │   └───mappers    
+          |   |           |           AppUserMapper.java
+          |   |           |           BirdMapper.java
+          │   │           │
+          │   │           ├───domain
+          │   │           │       Result.java
+          │   │           │       ResultType.java
+          │   │           │       Validations.java
+          │   │           │       BirdService.java
+          │   │           │       SightingService.java
+          │   │           │       TraitService.java
+          │   │           │       BadgeService.java
+          │   │           │       AvatarService.java
+          │   │           │
+          │   │           ├───models
+          │   │           │       AppUser.java
+          │   │           │       Bird.java
+          │   │           │       Sighting.java
+          │   │           │       Trait.java
+          │   │           │       Badge.java
+          │   │           │       Avatar.java
+          │   │           │
+          │   │           ├───controllers
+          │   │           │       ErrorResponse.java
+          │   │           │       GlobalExceptionHandler.java
+          │   │           │       AuthController.java
+          │   │           │       BirdController.java
+          │   │           │       SightingController.java
+          │   │           │       TraitController.java
+          │   │           │       BadgeController.java
+          │   │           │       AvatarController.java
+          │   │           │
+          |   |           └───security
+          │   │                   AppUserService,java
+          │   │                   JwtConverter.java
+          │   │                   JwtRequestFilter.java
+          │   │                   SecurityConfig.java
+          │   │
+          │   └───resources
+          |               application.properties
+          └───test
+              ├───java
+              |   └───wing-span
+              |           ├───controllers
+              |           |       BirdControllerTest.java
+              │           │       SightingControllerTest.java
+              │           │       TraitControllerTest.java
+              │           │       BadgeControllerTest.java
+              │           │       AvatarControllerTest.java
+              |           |
+              |           ├───data
+              |           │       KnownGoodState
+              |           |       BirdJdbcTemplateRepositoryTest.java
+              |           |       SightingJdbcTemplateRepositoryTest.java
+              |           |       TraitJdbcTemplateRepositoryTest.java
+              |           |       BadgeJdbcTemplateRepositoryTest.java
+              |           |       AvatarJdbcTemplateRepositoryTest.java
+              |           |
+              |           └───domain
+              |                   BirdServiceTest.java
+              │                   SightingServiceTest.java
+              │                   TraitServiceTest.java
+              │                   BadgeServiceTest.java
+              │                   AvatarServiceTest.java
+              └───resources
+                          application.properties
+```
 ## Approach
 * Planning is absolutely essential for a project this large.
     * Create a complete list of concrete tasks required to finish
@@ -102,4 +230,6 @@
         * If behind, what do you have to adjust to complete the project? Don't just hope that things will improve. Take concrete steps to simplify or remove features.
 * Ask questions. Even though you control the specification, your classmates and instructors are invaluable resources.
     * Ask clarifying questions. Don't make assumptions when things aren't clear.
+* Work back to front - either by method or by layer.
 * Test as you go.
+* Get the main CRUD features working back to front, then add in Security and extra features/pages.

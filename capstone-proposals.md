@@ -1,51 +1,39 @@
-# Capstone Proposals
-
-Should include the following.
+# Capstone Proposal
 
 ## 1. Problem Statement
 
-Define a problem someone is having that can be solved with software. 
+### Problem
 
-Note: the problem does not have to be original. It's absolutely okay to recreate an existing application: Instagram, Slack, etc.
-
-### Example
-
-> Running clubs across the world host group runs that are open to the public. **Group runs** range from an impromptu weekend run around the lake to a formal event (generate interest in the club, say thank you to friends, family, and sponsors, celebrate an occasion, etc). The important thing is that anyone can join a group run. You don't have to be a running club member.
+> Currently, there is no wold-wide competitive birding organization. Stepping in to fill the void is Wing\<Span/>. Wing\<Span/> is the first competitive birding app that connects users across the world. Not only does Wing\<Span/> track your sightings, it also allows you to view other user's sightings, and collect badges for your sightings too!
 > 
-> Group run discovery is difficult. Some running clubs post a message on their home page. Others post on social media. Still others don't post anything at all and hope that word-of-mouth will spread the message. When clubs do post a message, it's usually not on a formal calendar or easy to find on a map. It's not clear if the run has already occurred.
-> 
-> Worse, there's no easy way to sign up for a group run. Clubs never know who will show up. If a group run is limited, it's embarrassing when too many people show up. It's also a little embarrassing when no one shows up.
+> Having a "Life List" is great, but it's also nice to see how you stack up to other birders across the globe! Plus, this provides valuable insights into which birds are likely to be seen in certain locations on various dates.
 
 ## 2. Technical Solution
 
 Briefly describe a technical solution to your problem with a couple concrete scenarios.
 
-### Example
+### Solution
 
-> Create an application for posting group runs on a formal calendar. Make it easy to sign up for runs.
+> Create an application for posting bird sightings. Making it easy to track your progress and compare yourself to other users.
 > 
 > ### Scenario 1
-> Emma is vacationing in Austin for two weeks. She wants to relax and enjoy her vacation, but she also wants to keep up on her running. Running helps her relax. She uses the Group Run application to quickly search for runs during her two-week window, located in Austin. She signs up for one or two. Running clubs in Austin know the best routes and she gets a chance to meet new people.
+> Jane has been a passive bird watcher for a while now, but she's been looking for a way to track the birds she's seen. She also wonders how her sightings compare to other bird watchers - not just in her area, but the world over. She finds Wing\<Span/>, signs up for an account, and starts posting sightings. She gets her badge for posting 5 sightings and now she's hooked. Within a month, Jane has earned her 20 sightings badge. It's helping her get outdoors more and she's learned a lot about birds in the process.
 > 
 > ### Scenario 2
-> Kelsey isn't a member of a running club, he's not ready for that commitment, but he does like to run with a group once in a while. Each weekend, he uses the Group Run application to browse runs near his Chicago neighborhood. If it feels right, he signs up and runs. There are a few running clubs near him. He doesn't have to join a club. He can pick and choose only the runs that interest him.
+> John has been an avid bird watcher all of his life. He has a journal that he keeps with all of his sightings. John has been looking for a more convenient and permanent way to log his sightings. Something that might also offer easier insight into his bird watching stats. John discovers Wing\<Span/> from a friend. He uploads all his sightings from his journal and realizes he's earned a lot of badges. He's excited to find out that he has more badges than the friend that told him about the app in the first place. This motivates John to plan specific trips so he can log more sightings and get more badges.
 
 ## 3. Glossary
 
-Define key domain terms. This won't map one-to-one with model classes, but it may be close.
+### Terms
 
-### Example
-
-> ### Running Club
-> An organization based on a shared love of running. Clubs have members. They host runs. Some are informal with infrequent runs. Others are large, have budgets, and charge membership fees.
-> ### Runner
-> Anyone who signs up for a run. Runners can be members of a club, but don't have to be. All members are runners but not all runners are members.
-> ### Member
-> A runner who is formally affiliated with a running club. A runner can be a member of more than one club.
-> ### Club Admin
-> A running club member with an administrator role. They have more privileges in the Group Run application. All admins are members, but not all members are admins.
-> ### Run
-> A running event with a specific time, date, and location. A run may also include a route (stretch goal).
+> ### Bird
+> An actual bird with traits.
+> ### Sighting
+> A sighting of a particular bird on a date at a location.
+> ### Bird-Watcher
+> Anyone who watches birds and records their sightings.
+> ### Admin
+> Someone who maintains the bird sightings log.
 
 ## 4. High Level Requirement
 
