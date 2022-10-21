@@ -60,6 +60,10 @@ Briefly describe what each user role/authority can do. (These are user stories.)
 > - Edit badges (ADMIN).
 > - Delete badges (ADMIN).
 > - Browse badges (anyone).
+> - Create an avatar (ADMIN).
+> - Edit an avatar (ADMIN).
+> - Delete an avatar (ADMIN).
+> - Browse and use an avatar (MEMBER, ADMIN).
 
 ## 5. User Stories/Scenarios
 
