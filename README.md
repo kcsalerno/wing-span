@@ -590,6 +590,12 @@ fetch("http://localhost:8080/api/solarpanels", init);
   * [ ] Automatically refresh the user's authentication token before it can expire
 
 ### AWS Hosting Tasks
+* [ ] Research necessary AWS technology (#.# hours)
+  * [ ] Read/view tutorials
+  * [ ] Create deployment plan
+* [ ] (#.# hours)
+* [ ] (#.# hours)
+* [ ] (#.# hours)
 
 ### Further Development
 * [ ] Create leaderboard page (#.# hours)
