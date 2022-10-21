@@ -642,7 +642,7 @@ fetch("http://localhost:8080/api/solarpanels", init);
   * 8 Hours per team member
 ### Monday (10/31)
 * [ ] AWS Hosting Tasks (24 hours)
- * 8 Hours per team member
+  * 8 Hours per team member
 ### Tuesday (11/1)
 * [ ] Further Development Tasks (24 hours)
   * 8 Hours per team member
