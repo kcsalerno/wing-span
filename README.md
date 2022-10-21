@@ -75,19 +75,25 @@ John has been an avid bird watcher all of his life. He has a journal that he kee
 #### Terms
 
 #### Bird
-An actual bird with traits.
+* An actual bird with traits.
+
 #### Trait
-A bird trait.
+* A bird trait.
+
 #### Sighting
-A sighting of a particular bird on a date at a location.
+* A sighting of a particular bird on a date at a location.
+
 #### Bird-Watcher (User)
-Anyone who watches birds and records their sightings.
+* Anyone who watches birds and records their sightings.
+
 #### Badge
-An award based on meeting certain sighting goals.
+* An award based on meeting certain sighting goals.
+
 #### Avatar
-A profile image for the user.
+* A profile image for the user.
+
 #### Admin
-Someone who maintains the bird sightings log.
+* Someone who maintains the bird sightings log.
 
 ### 4. High Level Requirement
 
@@ -95,27 +101,27 @@ Briefly describe what each user role/authority can do. (These are user stories.)
 
 #### Example
 
-- Create a sightings (MEMBER, ADMIN).
-- Edit a sighting (MEMBER, ADMIN).
-- Delete a sighting attached to their profile (MEMBER).
-- Delete any sighting (ADMIN).
-- Browse sightings (anyone).
-- Create a bird (ADMIN).
-- Edit a bird (ADMIN).
-- Delete a bird (ADMIN).
-- Browse birds (anyone).
-- - Earn badges (MEMBER).
-- Edit badges (ADMIN).
-- Delete badges (ADMIN).
-- Browse badges (anyone).
-- Create an avatar (ADMIN).
-- Edit an avatar (ADMIN).
-- Delete an avatar (ADMIN).
-- Browse and use an avatar (MEMBER, ADMIN).
+* Create a sightings (MEMBER, ADMIN).
+* Edit a sighting (MEMBER, ADMIN).
+* Delete a sighting attached to their profile (MEMBER).
+* Delete any sighting (ADMIN).
+* Browse sightings (anyone).
+* Create a bird (ADMIN).
+* Edit a bird (ADMIN).
+* Delete a bird (ADMIN).
+* Browse birds (anyone).
+* Earn badges (MEMBER).
+* Edit badges (ADMIN).
+* Delete badges (ADMIN).
+* Browse badges (anyone).
+* Create an avatar (ADMIN).
+* Edit an avatar (ADMIN).
+* Delete an avatar (ADMIN).
+* Browse and use an avatar (MEMBER, ADMIN).
 
 ### 5. User Stories/Scenarios
 
-Elaborate use stories.
+Elaborate user stories.
 
 #### Example
 
@@ -124,9 +130,9 @@ Elaborate use stories.
 Log a sighting to a user's profile.
 
 Suggested data:
-- bird id (to connect the sighting to the bird) from a list of available birds
-- user id (to connect the sighting to the MEMBER)
-- date (which would need to be in the past or at the current moment)
+* bird id (to connect the sighting to the bird) from a list of available birds
+* user id (to connect the sighting to the MEMBER)
+* date (which would need to be in the past or at the current moment)
  
 **Precondition**: User must be logged in with the MEMBER or ADMIN role.
  
