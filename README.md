@@ -273,14 +273,14 @@ View a list of all avatars available to use by a MEMBER.
 * Learning Goal: AWS Hosting
 
 ## High Level Tasks
-* [ ] Database Layer Tasks
-* [ ] API Data Layer Tasks
-* [ ] API Domain Layer Tasks
-* [ ] API Model and Controller Layer Tasks
-* [ ] UI Front End Layer Tasks
-* [ ] Security Layer Tasks
-* [ ] AWS Hosting Tasks
-* [ ] Further Development Tasks
+* [ ] Database Layer Tasks (#.# hours)
+* [ ] API Data Layer Tasks (#.# hours)
+* [ ] API Domain Layer Tasks (#.# hours)
+* [ ] API Model and Controller Layer Tasks (#.# hours)
+* [ ] UI Front End Layer Tasks (#.# hours)
+* [ ] Security Layer Tasks (#.# hours)
+* [ ] AWS Hosting Tasks (#.# hours)
+* [ ] Further Development Tasks (#.# hours)
 
 ### Database Layer Tasks
 * [ ] Design initial database schema (#.# hours)
@@ -312,155 +312,155 @@ View a list of all avatars available to use by a MEMBER.
   * [ ] Write insert-from-select statements to move the data from the denormalized table to the normalized tables
 
 ### Data Layer Tasks
-* [ ] Create AppUserJdbcTemplateRepository and AppUserRepository Interface
-  * [ ] Create appropriate CRUD methods
+* [ ] Create AppUserJdbcTemplateRepository and AppUserRepository Interface (#.# hours)
+  * [ ] Create appropriate CRUD methods (#.# hours)
     * Find a user by id
     * Find all users
     * Create/register user
     * Update user profile (info)
     * Delete/Disable user account
-* [ ] Create KnownGoodState in \test\java\wing-span\data
-* [ ] Create tests for AppUserJdbcTemplateRepository
-* [ ] Create BirdJdbcTemplateRepository and BirdRepository Interface
-  * [ ] Create appropriate CRUD methods
+* [ ] Create KnownGoodState in \test\java\wing-span\data (#.# hours)
+* [ ] Create tests for AppUserJdbcTemplateRepository (#.# hours)
+* [ ] Create BirdJdbcTemplateRepository and BirdRepository Interface (#.# hours)
+  * [ ] Create appropriate CRUD methods (#.# hours)
     * Find a bird by id
     * Find all birds
     * Add a bird
     * Update bird info
     * Delete/Disable a bird
-* [ ] Create tests for BirdJdbcTemplateRepository
-* [ ] Create SightingJdbcTemplateRepository and SightingRepository Interface
-  * [ ] Create appropriate CRUD methods
+* [ ] Create tests for BirdJdbcTemplateRepository (#.# hours)
+* [ ] Create SightingJdbcTemplateRepository and SightingRepository Interface (#.# hours)
+  * [ ] Create appropriate CRUD methods (#.# hours)
     * Find a sighting by id
     * Find all sightings
     * Add a sighting
     * Update sighting info
     * Delete/Disable a sighting
-* [ ] Create tests for SightingJdbcTemplateRepository
-* [ ] Create TraitJdbcTemplateRepository and TraitRepository Interface
-  * [ ] Create appropriate CRUD methods
+* [ ] Create tests for SightingJdbcTemplateRepository (#.# hours)
+* [ ] Create TraitJdbcTemplateRepository and TraitRepository Interface (#.# hours)
+  * [ ] Create appropriate CRUD methods (#.# hours)
     * Find a trait by id
     * Find all traits
     * Add a trait
     * Update trait info
     * Delete/Disable a trait
-* [ ] Create tests for TraitJdbcTemplateRepository
-* [ ] Create BadgeJdbcTemplateRepository and BadgeRepository Interface
-  * [ ] Create appropriate CRUD methods
+* [ ] Create tests for TraitJdbcTemplateRepository (#.# hours)
+* [ ] Create BadgeJdbcTemplateRepository and BadgeRepository Interface (#.# hours)
+  * [ ] Create appropriate CRUD methods (#.# hours)
     * Find a badge by id
     * Find all badges
     * Add a badge
     * Update badge info
     * Delete/Disable a badge
-* [ ] Create tests for BadgeJdbcTemplateRepository
-* [ ] Create AvatarJdbcTemplateRepository and AvatarRepository Interface
-  * [ ] Create appropriate CRUD methods
+* [ ] Create tests for BadgeJdbcTemplateRepository (#.# hours)
+* [ ] Create AvatarJdbcTemplateRepository and AvatarRepository Interface (#.# hours)
+  * [ ] Create appropriate CRUD methods (#.# hours)
     * Find an avatar by id
     * Find all avatars
     * Add an avatar
     * Update avatar info
     * Delete/Disable an avatar
-* [ ] Create tests for AvatarJdbcTemplateRepository 
-* [ ] Create AppUserMapper
-* [ ] Create BirdMapper
-* [ ] Create SightingMapper
-* [ ] Create TraitMapper
-* [ ] Create BadgeMapper
-* [ ] Create AvatarMapper
+* [ ] Create tests for AvatarJdbcTemplateRepository (#.# hours)
+* [ ] Create AppUserMapper (#.# hours)
+* [ ] Create BirdMapper (#.# hours)
+* [ ] Create SightingMapper (#.# hours)
+* [ ] Create TraitMapper (#.# hours)
+* [ ] Create BadgeMapper (#.# hours)
+* [ ] Create AvatarMapper (#.# hours)
 
-### Domain Layer Tasks
-* [ ] domain.SightingService
-  * [ ] implement CRUD methods
+### Domain Layer Tasks (#.# hours)
+* [ ] domain.SightingService (#.# hours)
+  * [ ] implement CRUD methods (#.# hours)
     * `findAll`
     * `findSightingsById`
     * `addSighting`
     * `editSighting`
     * `deleteSighting`
-  * [ ] Generate tests for domain.SightingService
+  * [ ] Generate tests for domain.SightingService (#.# hours)
     * Happy/ Unhappy Path 
-* [ ] domain.TraitService
-  * [ ] implement CRUD methods
+* [ ] domain.TraitService (#.# hours)
+  * [ ] implement CRUD methods (#.# hours)
     * `findTraitByBird`
     * `addTrait`
     * `editTrait`
     * `deleteTrait`
-  * [ ] Generate tests for domain.SightingService
+  * [ ] Generate tests for domain.SightingService (#.# hours)
     * Happy/ Unhappy Path
-* [ ] domain.BirdService
-  * [ ] implement CRUD methods
+* [ ] domain.BirdService (#.# hours)
+  * [ ] implement CRUD methods (#.# hours)
     * `addBird`
     * `editBird` (how can the admin edit a bird?)
     * `deleteBird`
-  * [ ] Generate tests for domain.SightingService
+  * [ ] Generate tests for domain.SightingService (#.# hours)
     * Happy/ Unhappy Path
-* [ ] domain.BadgeService
+* [ ] domain.BadgeService (#.# hours)
     * `findAllBadges`
     * `findBadgeById`
-  * [ ] Generate Tests for domain.BadgeService
+  * [ ] Generate Tests for domain.BadgeService (#.# hours)
     * Happy / Unhappy path
-* [ ] domain.AvatarService
-  * [ ] implement CRUD methods
+* [ ] domain.AvatarService (#.# hours)
+  * [ ] implement CRUD methods (#.# hours)
     * `findAllAvatars`
     * `findAvatarById`
     * `addAvatar`
     * `editAvatar`
     * `deleteAvatar`
-  * [ ] Generate tests for domain.AvatarService
+  * [ ] Generate tests for domain.AvatarService (#.# hours)
     * Happy / Unhappy path
-* [ ] domain.Validations
-  * [ ] Validate sightings
+* [ ] domain.Validations (#.# hours)
+  * [ ] Validate sightings (#.# hours)
     * Sighting cannot be a duplicate
     * Date cannot be null
-  * [ ] Validate birds
-  * [ ] Validate traits
-* [ ] domain.ResultType
+  * [ ] Validate birds (#.# hours)
+  * [ ] Validate traits (#.# hours)
+* [ ] domain.ResultType (#.# hours)
   * `Enum`
-* [ ] domain.Result
+* [ ] domain.Result (#.# hours)
   * `Payload`
   *  `ArrayList<String> messages`
 
 ### Model and Controller Layer Tasks
 #### In the `controller` package
-* [ ] ErrorResponse Class
-* [ ] Create GlobalExceptionHandler
-* [ ] Create AuthController
-* [ ] Create BirdController
-* [ ] Create SightingController
-* [ ] Create TraitController
-* [ ] Create BadgeController
-* [ ] Create AvatarController
+* [ ] ErrorResponse Class (#.# hours)
+* [ ] Create GlobalExceptionHandler (#.# hours)
+* [ ] Create AuthController (#.# hours)
+* [ ] Create BirdController (#.# hours)
+* [ ] Create SightingController (#.# hours)
+* [ ] Create TraitController (#.# hours)
+* [ ] Create BadgeController (#.# hours)
+* [ ] Create AvatarController (#.# hours)
 #### In the `model` package
-* [ ] Create AppUser model
-* [ ] Create Bird model
-* [ ] Create Sighting model
-* [ ] Create Trait model
-* [ ] Create Badge model
-* [ ] Create Avatar model
+* [ ] Create AppUser model (#.# hours)
+* [ ] Create Bird model (#.# hours)
+* [ ] Create Sighting model (#.# hours)
+* [ ] Create Trait model (#.# hours)
+* [ ] Create Badge model (#.# hours)
+* [ ] Create Avatar model (#.# hours)
 #### In the `wing-span` package
-* [ ] Create App Class
-* [ ] Create AppConfig Class
+* [ ] Create App Class (#.# hours)
+* [ ] Create AppConfig Class (#.# hours)
 #### In the `java` package
-* [ ] Create the resources package
-* [ ] Create application properties
-* [ ] Configure enviroment variables
-* [ ] Double check all annotations
+* [ ] Create the resources package (#.# hours)
+* [ ] Create application properties (#.# hours)
+* [ ] Configure enviroment variables (#.# hours)
+* [ ] Double check all annotations (#.# hours)
 
 ### UI (Front End) Layer Tasks
 #### Sightings
 ##### Part 1
-* [ ] Create a new React project with CRA (create-react-app)
+* [ ] Create a new React project with CRA (create-react-app) (#.# hours)
   * [ ] Remove the cruft
-* [ ] Add Bootstrap (or other CSS framework) to the `public/index.html` file
-  * [ ] Add a link to the Bootstrap CSS using the [CDN from the official docs](https://getbootstrap.com/docs/4.6/getting-started/introduction/#css)
+* [ ] Add Bootstrap (or other CSS framework) to the `public/index.html` file (#.# hours)
+  * [ ] Add a link to the Bootstrap CSS using the [CDN from the official docs](https://getbootstrap.com/docs/4.6/getting-started/introduction/#css) 
   * [ ] Add the [`container` CSS class](https://getbootstrap.com/docs/4.6/layout/overview/#containers) to the `<div id="root"></div>` element
-* [ ] Create `Sightings` component
+* [ ] Create `Sightings` component (#.# hours)
   * [ ] Update `App` component to render `sightings`
-* [ ] Update `Sightings` to render list of sightings
+* [ ] Update `Sightings` to render list of sightings (#.# hours)
   * [ ] Use `fetch` to `GET` a list of sightings from the Wingspan API when the component is first loaded
   * [ ] Write JSX to render the sightings array
   * [ ] Stub out click event handlers ("Add Sighting", "Edit Sighting", "Delete Sighting") as necessary
 ##### Part 2
-* [ ] Create a form to add a sighting
+* [ ] Create a form to add a sighting (#.# hours)
   * [ ] Add form JSX
   * [ ] Decide between using individual state variables for input elements or a single object
   * [ ] Add onChange event handlers to input elements
@@ -468,15 +468,15 @@ View a list of all avatars available to use by a MEMBER.
   * [ ] Create sighting object
   * [ ] Use `fetch` to `POST` the new sighting's information to the wingspan API
   * [ ] On success, update the sightings array (don't modify the original array!), or on failure, display any validation errors from the API in the UI
-* [ ] Support deleting sightings
+* [ ] Support deleting sightings (#.# hours)
   * [ ] Confirm the deletion with the user/admin
   * [ ] Use `fetch` to `DELETE` the sighting from the sighting API
   * [ ] On success, update the sighting array (don't modify the original array!)
-* [ ] Conditionally render sections of the component
+* [ ] Conditionally render sections of the component (#.# hours)
   * [ ] Add state variable to track the current view
   * [ ] Add conditional logic to the JSX to display the appropriate view
 ##### Part 3
-* [ ] Support editing sightings
+* [ ] Support editing sightings (#.# hours)
   * [ ] Store the "edit sighting ID" in a new state variable
   * [ ] Retrieve the sighting to edit
   * [ ] Update form state variable(s)
@@ -486,7 +486,7 @@ View a list of all avatars available to use by a MEMBER.
   * [ ] Create sighting object
   * [ ] Use `fetch` to `PUT` the updated sighting's information to the wingspan API
   * [ ] On success, update the sightings array (don't modify the original array!), or on failure, display any validation errors from the API in the UI
-* [ ] Apply Bootstrap styling (as needed)
+* [ ] Apply Bootstrap styling (as needed) (#.# hours)
   * [ ] Update the sightings list
   * [ ] Update the add sighting form
   * [ ] Update the edit sighting form
@@ -510,49 +510,49 @@ View a list of all avatars available to use by a MEMBER.
 
 ### Security Layer Tasks
 #### Security - Back End
-* [ ] Create Schema to add Users and Roles to database
+* [ ] Create Schema to add Users and Roles to database (#.# hours)
   * [ ] Add app_user, app_role, app_user_role and appropriate data to the schema.
-* [ ] Configure Spring Security
+* [ ] Configure Spring Security (#.# hours)
   * [ ] Configure the project to utilize the spring-boot-starter-security dependency.
-* [ ] Create AppConfig
+* [ ] Create AppConfig (#.# hours)
   * [ ] Create the AppConfig class and define the PasswordEncoder bean. Define the WebMvcConfigurer bean to configure CORS globally.
-* [ ] Create AppUser
+* [ ] Create AppUser (#.# hours)
   * [ ] Add the AppUser to the models package, implementing UserDetails and mapping to the created fields.
-* [ ] Create AppUserRepository
+* [ ] Create AppUserRepository (#.# hours)
   * [ ] Create the interface and repository to add AppUserRepository interface and AppUserJdbcTemplateRepository class.
-* [ ] Create AppUserService
+* [ ] Create AppUserService (#.# hours)
   * [ ] Create the AppUserService which implements org.springframework.security.core.userdetails.UserDetailsService
     * The UserDetailsService interface loads user-specific data.
     * The interface requires only one read-only method, which simplifies support for new data-access strategies.
-* [ ] Add JWT to project, creating JWT Converter and JWT Filter
+* [ ] Add JWT to project, creating JWT Converter and JWT Filter (#.# hours)
   * [ ] Continue the security implementation to include the JWT dependencies, and then create in the security package the JwtConverter and JwtRequestFilter classes
-* [ ] Create Security Config
+* [ ] Create Security Config (#.# hours)
   * [ ] Create the SecurityConfig class connecting the above steps.
-* [ ] Create AuthController
+* [ ] Create AuthController (#.# hours)
   * [ ] Create the AuthController in the controllers package to implement the /api/authenticate and /api/create_account endpoints.
   * [ ] Update the security configuration to allow these endpoints to be accessed without credentials.
-* [ ] Configure AuthController, SecurityConfig, and AppUser Repo & Service to allow for creating an account
-* [ ] Configure AuthController, SecurityConfig, and AppUser Repo & Service to allow for editing an account
+* [ ] Configure AuthController, SecurityConfig, and AppUser Repo & Service to allow for creating an account (#.# hours)
+* [ ] Configure AuthController, SecurityConfig, and AppUser Repo & Service to allow for editing an account (#.# hours)
 #### Security - Front End
-* [ ] Login Component
+* [ ] Login Component (#.# hours)
   * [ ] Add a Login component and an accompanying /login route to your React project
   * [ ] Prompt the user for their username and password
   * [ ] Redirect the user to the "Home" page (i.e. /) after they submit the form
-* [ ] NavBar Component
+* [ ] NavBar Component (#.# hours)
   * [ ] Add a NavBar component to your React project (if it's not already defined)
   * [ ] Include links to the "Home", "Sightings List", "About", and "Contact" pages
   * [ ] Within the component, define a user variable and initialize it to null
   * [ ] If user is null, then display links to the "Login" and "Register" pages
   * [ ] If user is not null, then display their username and a "Logout" button
- * [ ] Global State and Props
+ * [ ] Global State and Props (#.# hours)
   * [ ] Add a global user state property to the App component
   * [ ] Define login() and logout() functions that update the user state property
   * [ ] Pass an auth object literal containing user, login, and logout to the Login and NavBar components
   * [ ] Update the Login and NavBar components to call the login and logout methods (respectively)
-* [ ] Protecting Routes
+* [ ] Protecting Routes (#.# hours)
   * [ ] Use conditional rendering to protect all of the sighting related routes (/sightings, /soightings/add, /sightings/update/:id, and /sightings/delete/:id if defined):
- * [ ] Context API
-  * [ ] Leverage the Context API to manage global state
+ * [ ] Context API (#.# hours)
+  * [ ] Leverage the Context API to manage global state (#.# hours)
   * [ ] Create a context object in its own module (so it can be imported into any module that needs access to the global state)
   * [ ] update the App component so that the context can provide its value to any component that needs access to the global state
     * Import AuthContext
@@ -560,46 +560,45 @@ View a list of all avatars available to use by a MEMBER.
     * Set the AuthContext.Provider component's value property to the auth object
     * Remove auth props from all other components
     * Use the useContext Hook to listening for changes to the global state.
- * [ ] Getting a Token
+ * [ ] Getting a Token (#.# hours)
   * [ ] Update the Login component to use the secured Solar Farm API to authenticate the user
   * [ ] POST the username and password values to the API's /authenticate endpoint
     * On a successful response (200 OK), get the JWT token from the response body and pass it to the auth.login() method
     * Redirect the user to the default route (/)
     * On an unsuccessful response (403 Forbidden) display a "Login failed" message
- * [ ] Parsing the Token (jwt-decode)
+ * [ ] Parsing the Token (jwt-decode) (#.# hours)
   * [ ] Install the jwt-decode npm package:
     * npm install jwt-decode
-  * [ ] Use it to decode the token within the App component's login() function
+  * [ ] Use it to decode the token within the App component's login() function (#.# hours)
     * You could decode and destructure like this: const { sub: username, roles } = jwt_decode(token);
- * [ ] Passing the Token when Making HTTP Requests
+ * [ ] Passing the Token when Making HTTP Requests (#.# hours)
   * [ ] set the Authorization header on your Fetch calls
     * If you don't add the JWT token to the request, the server will return a response with a 403 Forbidden HTTP status code
     * Use `await` or `then` and handle the errors based on the response's `status`, `error` and `error.message`.
 fetch("http://localhost:8080/api/solarpanels", init);
- * [ ] Persisting the Login State
+ * [ ] Persisting the Login State (#.# hours)
   * [ ] Update the App component's login() function to persist the token to localStorage
   * [ ] Update the App component's logout() function to remove the token from localStorage
-* [ ] Register Component
+* [ ] Register Component (#.# hours)
   * [ ] Add a Register component and an accompanying /register route to your React project
     * The Register component is similar in form and function to the Login component
     * Need to make two Fetch calls when the user submits the form
       * Use Fetch to create the account
       * If you get a 201 (i.e. "Success") then use Fetch to authenticate and get the token
       * After receiving the token from the server, pass the token to the auth.login() function to login the newly created user
- * [ ] Refresh the Token
+ * [ ] Refresh the Token (#.# hours)
   * [ ] Automatically refresh the user's authentication token before it can expire
 
 ### AWS Hosting Tasks
 
 ### Further Development
-* [ ] Create leaderboard page
+* [ ] Create leaderboard page (#.# hours)
   * [ ] Create necessary componenets, services, and configure routes
   * [ ] Create HTTP requests to support different queries
-* [ ] Create stats page
+* [ ] Create stats page (#.# hours)
   * [ ] Create necessary componenets, services, and configure routes
   * [ ] Create HTTP requests to support different queries
-* [ ] Implement CRUD methods from back to front for an ADMIN UI that works for Badges, Birds, Traits and Avatars
-## Schedule
+* [ ] Implement CRUD methods from back to front for an ADMIN UI that works for Badges, Birds, Traits and Avatars (#.# hours)
 
 ## Class Diagram
 ```
