@@ -3,8 +3,8 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import Home from './components/Home';
 import Navigation from './components/Navigation';
-import Sightings from './components/Sightings';
-import Birds from './components/Birds';
+import Sighting from './components/Sighting';
+import Bird from './components/Bird';
 import NotFound from './components/NotFound';
 
 function App() {
@@ -17,10 +17,10 @@ function App() {
           <Home />
         </Route>
         <Route path="/sightings" exact>
-          <Sightings />
+          <Sighting />
         </Route>
-        <Route path="/birds">
-          <Birds />
+        <Route path="/bird">
+          <Bird />
         </Route>
         <Route path="*">
           <NotFound />
