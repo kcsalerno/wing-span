@@ -1,6 +1,3 @@
-drop database if exists wing_span;
-create database wing_span;
-
 use wing_span;
 
 drop table if exists app_user_role;
@@ -63,7 +60,7 @@ create table sighting (
 		primary key(app_user_id, bird_id),
     constraint fk_sighting_user_id
 		foreign key (app_user_id)
-		references app_user(user_id),
+		references app_user(app_user_id),
 	 constraint fk_sighting_bird_id
 		foreign key (bird_id)
 		references bird(bird_id)
@@ -88,7 +85,7 @@ create table user_badge (
 		primary key (app_user_id, badge_id),
 	constraint fk_user_badge_user_id
 		foreign key (app_user_id)
-		references app_user(user_id),
+		references app_user(app_user_id),
 	 constraint fk_user_badge_badge_id
 		foreign key (badge_id)
 		references badge(badge_id)
@@ -113,7 +110,7 @@ create table user_avatar (
 		primary key (app_user_id, avatar_id),
 	constraint fk_user_avatar_user_id
 		foreign key (app_user_id)
-		references app_user(user_id),
+		references app_user(app_user_id),
 	constraint fk_user_avatar_avatar_id
 		foreign key (avatar_id)
 		references avatar(avatar_id)   
