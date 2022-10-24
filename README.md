@@ -509,7 +509,7 @@ View a list of all avatars available to use by a MEMBER.
   * [ ] Use `fetch` to `GET` the sighting from the Field Agent API when the component is first loaded
   * [ ] After a successful `PUT` to the Field Agent API, redirect the user to the "sightings" route
 
-### Security Layer Tasks (22 Hours)
+### Security Layer Tasks (24 Hours)
 #### Security - Back End
 * [ ] Create Schema to add Users and Roles to database (1 hours)
   * [ ] Add app_user, app_role, app_user_role and appropriate data to the schema.
@@ -532,8 +532,8 @@ View a list of all avatars available to use by a MEMBER.
 * [ ] Create AuthController (1 hours)
   * [ ] Create the AuthController in the controllers package to implement the /api/authenticate and /api/create_account endpoints.
   * [ ] Update the security configuration to allow these endpoints to be accessed without credentials.
-* [ ] Configure AuthController, SecurityConfig, and AppUser Repo & Service to allow for creating an account (#.# hours)
-* [ ] Configure AuthController, SecurityConfig, and AppUser Repo & Service to allow for editing an account (#.# hours)
+* [ ] Configure AuthController, SecurityConfig, and AppUser Repo & Service to allow for creating an account (1 hours)
+* [ ] Configure AuthController, SecurityConfig, and AppUser Repo & Service to allow for editing an account (1 hours)
 #### Security - Front End
 * [ ] Login Component (1 hours)
   * [ ] Add a Login component and an accompanying /login route to your React project
@@ -612,18 +612,18 @@ fetch("http://localhost:8080/api/solarpanels", init);
 ### Monday (10/24)
 * [ ] Database Layer Tasks (9 hours)
   * 3 Hours per team member
-* [ ] API Data Layer Tasks (20 Hours)
-  * 5 Hours per team member
+* [ ] API Data Layer Tasks (18 Hours)
+  * 6 Hours per team member
 ### Tuesday (10/25)
-* [ ] API Data Layer Tasks (20 Hours)
-  * 5 Hours per team member
+* [ ] API Data Layer Tasks (22 Hours)
+  * 7 Hours per team member
 * [ ] API Domain Layer Tasks (9 hours)
   * 3 Hours per team member 
 ### Wednesday (10/26)
 * [ ] API Domain Layer Tasks (14 hours)
   * 4.5 Hours per team member
 * [ ] API Model and Controller Layer Tasks (9 hours)
-* 3 Hours per team member
+  * 3 Hours per team member
 ### Thursday (10/27)
 * [ ] API Model and Controller Layer Tasks (12 hours)
   * 4 Hours per team member 
@@ -642,7 +642,7 @@ fetch("http://localhost:8080/api/solarpanels", init);
   * 8 Hours per team member
 ### Monday (10/31)
 * [ ] AWS Hosting Tasks (24 hours)
- * 8 Hours per team member
+  * 8 Hours per team member
 ### Tuesday (11/1)
 * [ ] Further Development Tasks (24 hours)
   * 8 Hours per team member
@@ -652,6 +652,8 @@ fetch("http://localhost:8080/api/solarpanels", init);
 ### Thursday (11/3)
 * [ ] Work on Presentation (3 hours)
   * 1 Hour per team member
+* [ ] Practice Presentation (3 hours)
+  * 1 Hour per team member 
 ### Friday (11/4)
 * [ ] Present Project (.5 hours)
 
