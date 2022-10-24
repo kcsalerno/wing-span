@@ -1,5 +1,3 @@
-import Sighting from "../components/Sighting";
-
 const SIGHTING_API_URL = "http://localhost:8080/api/sighting"
 
 export async function findAll() {
