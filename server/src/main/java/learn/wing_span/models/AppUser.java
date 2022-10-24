@@ -15,6 +15,8 @@ public class AppUser implements UserDetails {
     private String firstName;
     private String lastName;
 
+    private List<Sighting> sightings = new ArrayList<>();
+
     private List<GrantedAuthority> authorities = new ArrayList<>();
 
     public int getAppUserId() {

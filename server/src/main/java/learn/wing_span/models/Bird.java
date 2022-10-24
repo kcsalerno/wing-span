@@ -1,10 +1,15 @@
 package learn.wing_span.models;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Bird {
     private int birdId;
     private String commonName;
     private String scientificName;
     private String imageUrl;
+
+    private List<Sighting> sightings = new ArrayList<>();
 
     private Bird(){
 
@@ -47,5 +52,9 @@ public class Bird {
 
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
+    }
+
+    public List<Sighting> getSightings(){
+        return new ArrayList<>(sightings);
     }
 }
