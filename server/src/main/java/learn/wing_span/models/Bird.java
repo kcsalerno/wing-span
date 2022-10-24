@@ -11,7 +11,7 @@ public class Bird {
 
     private List<Sighting> sightings = new ArrayList<>();
 
-    private Bird(){
+    public Bird(){
 
     }
 
