@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Home from './components/Home';
 import Navigation from './components/Navigation';
 import Sighting from './components/Sighting';
-import Bird from './components/Bird';
+import BirdGrid from './components/BirdGrid';
 import NotFound from './components/NotFound';
 
 function App() {
@@ -20,7 +20,7 @@ function App() {
           <Sighting />
         </Route>
         <Route path="/birds">
-          <Bird />
+          <BirdGrid />
         </Route>
         <Route path="*">
           <NotFound />
