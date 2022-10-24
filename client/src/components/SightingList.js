@@ -8,11 +8,11 @@ function SightingList() {
 
     const history = useHistory();
 
-    // useEffect(() => {
-    //     findAll()
-    //     .then(setSightings)
-    //     .catch(() => history.push("/error"))
-    // }, [history]);
+    useEffect(() => {
+        findAll()
+        .then(setSightings)
+        .catch(() => history.push("/error"))
+    }, [history]);
 
     return (
         <>
