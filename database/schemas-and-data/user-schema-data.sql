@@ -52,7 +52,7 @@ create table app_user_role (
 -- -----------------------------------------------------
 create table sighting (
 	sighting_id int primary key auto_increment,
-	user_id int not null,
+	app_user_id int not null,
     bird_id int not null,
     sighting_date date not null,
     city varchar(50) not null,
