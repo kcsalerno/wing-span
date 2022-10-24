@@ -19,7 +19,7 @@ function App() {
         <Route path="/sightings" exact>
           <Sighting />
         </Route>
-        <Route path="/bird">
+        <Route path="/birds">
           <Bird />
         </Route>
         <Route path="*">
