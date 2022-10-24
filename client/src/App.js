@@ -26,7 +26,7 @@ function App() {
           <NotFound />
         </Route>
       </Switch>
-      </Router>
+    </Router>
   )
 }
 
