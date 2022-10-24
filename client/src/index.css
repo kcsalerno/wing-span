@@ -27,7 +27,7 @@ li {
   display: inline-block;
   margin: 0 5%;
 }
-.home{
+.home {
   text-align: center;
   margin: 3% 0;
 }
@@ -35,3 +35,51 @@ li {
   text-align: center;
   margin: 3% 0;
 }
+table {
+  width: 100%;
+  border: 1px solid gray;
+  text-align: center;
+  margin: 2% 0;
+}
+tr {
+  border: 1px solid gray;
+}
+td {
+  margin: 4% 0;
+}
+/* .home .sliderContainer {
+  overflow: hidden;
+  height: 800px;
+  width: 1200px;
+  margin-top: 5%;
+}
+@keyframes slide_animation {
+  0% {left: 0px;}
+  10% {left: 0px;}
+  20% {left: 1200px;}
+  30% {left: 1200px;}
+  40% {left: 2400px;}
+  50% {left: 2400px;}
+  60% {left: 1200px;}
+  70% {left: 1200px;}
+  80% {left: 0px;}
+  90% {left: 0px;}
+  100% {left: 0px;}
+}
+.home .slideImages {
+  width: 3600px;
+  height: 800px;
+  margin: 0 0 0 -2400px;
+  position: relative;
+  animation-name: slide_animation;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-play-state: running;
+}
+.home .imageContainer {
+  height: 800px;
+  width: 1200px;
+  position: relative;
+  float: left;
+} */

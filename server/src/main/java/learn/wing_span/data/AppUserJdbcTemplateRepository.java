@@ -8,19 +8,24 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+// import org.springframework.jdbc.core.RowMapper;
+// import org.springframework.security.core.GrantedAuthority;
+// import org.springframework.security.core.authority.SimpleGrantedAuthority;
+
+// import java.sql.ResultSet;
+
 import java.sql.PreparedStatement;
 import java.sql.Statement;
 import java.util.List;
 
 @Repository
-public class AppUserJdbcTemplateRepository implements AppUserRepository {
-
+public class AppUserJdbcTemplateRepository implements AppUserRepository {  
     private final JdbcTemplate jdbcTemplate;
 
     public AppUserJdbcTemplateRepository(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
-
+  
     @Override
     @Transactional
     public AppUser findByUsername(String username) {
@@ -104,4 +109,35 @@ public class AppUserJdbcTemplateRepository implements AppUserRepository {
                 + "where au.username = ?";
         return jdbcTemplate.query(sql, (rs, rowId) -> rs.getString("name"), username);
     }
+
+    public AppUser findByEmail(String email) {
+        String sql = "select app_user_id, username, password_hash, enabled, email, user_first_name, user_last_name "
+                + "from app_user "
+                + "where email = ?;";
+
+        AppUser user = jdbcTemplate.query(sql, new AppUserMapper(), email).stream()
+                .findFirst().orElse(null);
+
+        if (user != null) {
+            attachAuthorities(user);
+        }
+        return user;
+    }
+  
+//    private RowMapper<GrantedAuthority> authorityMapper = (ResultSet rs, int index) -> {
+//         SimpleGrantedAuthority authority = new SimpleGrantedAuthority(rs.getString("name"));
+//         return authority;
+//     };
+
+//     private void attachAuthorities(AppUser user) {
+
+//         String sql = "select ar.`name` "
+//                 + "from app_user_role aur "
+//                 + "inner join app_role ar on aur.app_role_id = ar.app_role_id "
+//                 + "where aur.app_user_id = ?;";
+
+//         List<GrantedAuthority> authorities = jdbcTemplate.query(sql, authorityMapper, user.getAppUserId());
+
+//         user.setAuthorities(authorities);
+//     }
 }
