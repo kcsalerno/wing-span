@@ -40,41 +40,6 @@ create table app_user_role (
 );
 
 -- -----------------------------------------------------
--- Table: sighting (user related table)
--- -----------------------------------------------------
-create table sighting (
-	sighting_id int primary key auto_increment,
-	app_user_id int not null,
-    bird_id int not null,
-    sighting_date date not null,
-    city varchar(50) not null,
-    state varchar(50) null,
-    daytime boolean null,
-    constraint fk_sighting_user_id
-		foreign key (app_user_id)
-		references app_user(app_user_id),
-	 constraint fk_sighting_bird_id
-		foreign key (bird_id)
-		references bird(bird_id)
-);
-
--- -----------------------------------------------------
--- Table: sighting_trait
--- -----------------------------------------------------
-create table sighting_trait (
-	sighting_id int not null,
-    trait_id int not null,
-    constraint pk_sighting_trait
-		primary key(sighting_id, trait_id),
-	constraint fk_sighting_trait_sighting_id
-		foreign key(sighting_id)
-        references sighting(sighting_id),
-	constraint fk_sighting_trait_trait_id
-		foreign key (trait_id)
-        references trait(trait_id)
-);
-
--- -----------------------------------------------------
 -- Table: badge (user related table)
 -- -----------------------------------------------------
 create table badge (
@@ -142,6 +107,40 @@ create table bird  (
     img_url varchar(512) not null
 );
 
+-- -----------------------------------------------------
+-- Table: sighting (user related table)
+-- -----------------------------------------------------
+create table sighting (
+	sighting_id int primary key auto_increment,
+	app_user_id int not null,
+    bird_id int not null,
+    sighting_date date not null,
+    city varchar(50) not null,
+    state varchar(50) null,
+    daytime boolean null,
+    constraint fk_sighting_user_id
+		foreign key (app_user_id)
+		references app_user(app_user_id),
+	 constraint fk_sighting_bird_id
+		foreign key (bird_id)
+		references bird(bird_id)
+);
+
+-- -----------------------------------------------------
+-- Table: sighting_trait
+-- -----------------------------------------------------
+create table sighting_trait (
+	sighting_id int not null,
+    trait_id int not null,
+    constraint pk_sighting_trait
+		primary key(sighting_id, trait_id),
+	constraint fk_sighting_trait_sighting_id
+		foreign key(sighting_id)
+        references sighting(sighting_id),
+	constraint fk_sighting_trait_trait_id
+		foreign key (trait_id)
+        references trait(trait_id)
+);
 
 -- -----------------------------------------------------
 -- Known Good State
@@ -219,11 +218,11 @@ begin
 		('Singing');
     
     insert into sighting (app_user_id, bird_id, sighting_date, city, state, daytime) values
-		(1, 1, 2020-10-01, 'Test City', 'Test State', true),
-        (1, 2, 2021-11-01, 'Test City', 'Test State', true),
-        (1, 3, 2021-12-01, 'Test City', 'Test State', false),
-        (1, 4, 2022-04-01, 'Test City', 'Test State', false),
-        (1, 5, 2022-06-01, 'Test City', 'Test State', true);
+		(1, 1, '2020-10-01', 'Test City', 'Test State', true),
+        (1, 2, '2021-11-01', 'Test City', 'Test State', true),
+        (1, 3, '2021-12-01', 'Test City', 'Test State', false),
+        (1, 4, '2022-04-01', 'Test City', 'Test State', false),
+        (1, 5, '2022-06-01', 'Test City', 'Test State', true);
         
 	insert into sighting_trait (sighting_id, trait_id) values
 		(1, 1),

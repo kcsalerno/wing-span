@@ -3,8 +3,8 @@ use wing_span;
 drop table if exists app_user_role;
 drop table if exists app_role;
 drop table if exists app_user;
-drop table if exists sighting;
 drop table if exists sighting_trait;
+drop table if exists sighting;
 drop table if exists user_badge;
 drop table if exists badge;
 drop table if exists user_avatar;
@@ -179,3 +179,39 @@ insert into avatar (avatar_img_url, avatar_description) values
 insert into user_avatar (app_user_id, avatar_id) values
 	(1, 1),
     (2, 2);
+
+-- -----------------------------------------------------
+-- Data: sighting
+-- -----------------------------------------------------
+insert into sighting (app_user_id, bird_id, sighting_date, city, state, daytime) values
+		(1, 1, '2020-10-01', 'Test City', 'Test State', true),
+        (1, 2, '2021-11-01', 'Test City', 'Test State', true),
+        (1, 3, '2021-12-01', 'Test City', 'Test State', false),
+        (1, 4, '2022-04-01', 'Test City', 'Test State', false),
+        (1, 5, '2022-06-01', 'Test City', 'Test State', true);
+        
+-- -----------------------------------------------------
+-- Data: sighting_trait
+-- -----------------------------------------------------
+insert into sighting_trait (sighting_id, trait_id) values
+		(1, 1),
+        (1, 2),
+        (1, 3),
+        (3, 4),
+        (2, 5),
+        (2, 6),
+        (2, 7),
+        (3, 8),
+        (3, 9),
+        (4, 1),
+        (4, 2),
+        (4, 3),
+        (5, 5),
+        (5, 7),
+        (5, 9);
+        
+-- -----------------------------------------------------
+-- Data: user_badge
+-- -----------------------------------------------------
+insert into user_badge (app_user_id, badge_id) values
+	(1, 1);
