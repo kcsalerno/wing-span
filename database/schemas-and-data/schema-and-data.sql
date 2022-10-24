@@ -39,3 +39,47 @@ create table bird_trait (
 		foreign key (trait_id)
         references trait(trait_id)
 );
+
+-- -----------------------------------------------------
+-- Data: trait
+-- -----------------------------------------------------
+insert into trait (`name`) values
+	('Horizontal Posture'),
+    ('Vertical Posture'),
+    ('Alert'),
+    ('Skittish'),
+    ('Hopping'),
+    ('Walking'),
+    ('Flying'),
+    ('Nest Buidling'),
+    ('Nesting'),
+    ('Dabbling'),
+    ('Diving'),
+    ('Floating'),
+    ('Wings Open'),
+    ('Wings Down'),
+    ('Slow Wing Flaps'),
+    ('Fast Wing Flaps'),
+    ('Swooping Flight'),
+    ('Straight Flight Path'),
+    ('Circular Flight Path'),
+    ('Gliding'),
+    ('Hovering'),
+    ('Feather Grooming'),
+    ('Molting'),
+    ('Ground Feeding'),
+    ('Canopy Feeding'),
+    ('Bark Feeding'),
+    ('Aerial Feeding'),
+    ('Perch Hunting'),
+    ('Aerial Hunting'),
+    ('Aquatic Hunting'),
+    ('Singing'),
+    ('Screaming/Mobbing'),
+    ('Fighting'),
+    ('Courting'),
+    ('Mating'),
+    ('Fledgling'),
+    ('Spotted Plumage'),
+    ('Flocking'),
+    ('Migrating');

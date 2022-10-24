@@ -5,7 +5,7 @@ drop table if exists app_role;
 drop table if exists app_user;
 drop table if exists sighting;
 drop table if exists user_badge;
-drop table if exists bade;
+drop table if exists badge;
 drop table if exists user_avatar;
 drop table if exists avatar;
 
@@ -96,7 +96,7 @@ create table user_badge (
 -- -----------------------------------------------------
 create table avatar (
 	avatar_id int primary key auto_increment,
-	avatar_imd_url varchar(512) not null default 'https://media.istockphoto.com/photos/friends-using-binoculars-in-a-forest-picture-id1356557792?b=1&k=20&m=1356557792&s=170667a&w=0&h=5qzcB3V-uAA9hqIzfZqV4z2pUJ-bopoCUFqzwpE6v6o=',
+	avatar_img_url varchar(512) not null default 'https://media.istockphoto.com/photos/friends-using-binoculars-in-a-forest-picture-id1356557792?b=1&k=20&m=1356557792&s=170667a&w=0&h=5qzcB3V-uAA9hqIzfZqV4z2pUJ-bopoCUFqzwpE6v6o=',
 	avatar_description varchar (100) null
 );
   
@@ -115,3 +115,59 @@ create table user_avatar (
 		foreign key (avatar_id)
 		references avatar(avatar_id)   
 );
+
+-- -----------------------------------------------------
+-- Data: app_role
+-- -----------------------------------------------------
+-- Simple setup: user and admin
+insert into app_role (`name`) values
+	('USER'),
+    ('ADMIN');
+
+-- -----------------------------------------------------
+-- Data: app_user
+-- -----------------------------------------------------
+-- Initial data to get started, passwords are set to "P@ssw0rd!" for now
+insert into app_user (username, password_hash) values
+    ('admin@admin.com', '$2a$10$ntB7CsRKQzuLoKY3rfoAQen5nNyiC/U60wBsWnnYrtQQi8Z3IZzQa'),
+    ('user@user.com', '$2a$10$ntB7CsRKQzuLoKY3rfoAQen5nNyiC/U60wBsWnnYrtQQi8Z3IZzQa');
+
+-- -----------------------------------------------------
+-- Data: app_user_role
+-- -----------------------------------------------------
+-- Initial app users with roles; account 1 is an Admin, account 2 is a User.
+insert into app_user_role (app_user_id, app_role_id) values 
+	(1, 2),
+    (2, 1);
+    
+-- -----------------------------------------------------
+-- Data: sightings
+-- -----------------------------------------------------
+    
+-- -----------------------------------------------------
+-- Data: badge
+-- -----------------------------------------------------
+insert into badge (badge_id, badge_name, badge_description) values
+	(1, '5 Sightings', "You've made 5 sightings!"),
+    (2, '10 Sightings', "You've made 10 sightings!"),
+    (3, '20 Sightings', "You've made 20 sightings!"),
+    (4, '50 Sightings', "You've made 50 sightings!");
+
+-- -----------------------------------------------------
+-- Data: user_badge
+-- -----------------------------------------------------
+
+-- -----------------------------------------------------
+-- Data: avatar
+-- -----------------------------------------------------
+insert into avatar (avatar_id, avatar_img_url, avatar_description) values
+	(1,'https://cdn.pixabay.com/photo/2017/05/25/21/26/bird-feeder-2344414__480.jpg', "Birdhouse"),
+    (2, 'https://cdn.pixabay.com/photo/2022/09/29/08/39/european-robin-7486889__480.jpg', "Birdbath"),
+    (3, 'https://cdn.pixabay.com/photo/2015/10/19/10/32/binoculars-995779__480.jpg', "Binoculars");
+    
+-- -----------------------------------------------------
+-- Data: user_avatar
+-- -----------------------------------------------------
+insert into user_avatar (app_user_id, avatar_id) values
+	(1, 1),
+    (2, 2);
