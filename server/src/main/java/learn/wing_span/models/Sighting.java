@@ -10,12 +10,12 @@ public class Sighting {
     private LocalDate date;
     private String city;
     private String state;
-    private LocalDateTime daytime;
+    private boolean daytime;
 
     public  Sighting(){
 
     }
-    public Sighting(int sightingId, LocalDate date, String city, String state, LocalDateTime daytime, int sightingUserId, int sightingBirdId) {
+    public Sighting(int sightingId, LocalDate date, String city, String state, boolean daytime, int sightingUserId, int sightingBirdId) {
         this.sightingId = sightingId;
         this.date = date;
         this.city = city;
@@ -57,11 +57,11 @@ public class Sighting {
         this.state = state;
     }
 
-    public LocalDateTime getDaytime() {
+    public boolean getDaytime() {
         return daytime;
     }
 
-    public void setDaytime(LocalDateTime daytime) {
+    public void setDaytime(boolean daytime) {
         this.daytime = daytime;
     }
 
