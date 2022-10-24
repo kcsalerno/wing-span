@@ -51,7 +51,7 @@ async function update(sighting) {
         body: JSON.stringify(sighting)
     };
 
-    const response = await fetch(`${SIGHTING_API_URL}/${Sighting.sightingId}`, init);
+    const response = await fetch(`${SIGHTING_API_URL}/${sighting.sightingId}`, init);
     if (response.ok) {
         return Promise.resolve();
     } else if (response.status === 400) {
