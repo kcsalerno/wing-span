@@ -3,9 +3,10 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import Home from './components/Home';
 import Navigation from './components/Navigation';
-import Sighting from './components/Sighting';
-import Bird from './components/Bird';
+import SightingList from './components/SightingList';
+import BirdGrid from './components/BirdGrid';
 import NotFound from './components/NotFound';
+import Error from './components/Error';
 
 function App() {
   return (
@@ -17,10 +18,13 @@ function App() {
           <Home />
         </Route>
         <Route path="/sightings" exact>
-          <Sighting />
+          <SightingList />
         </Route>
         <Route path="/birds">
-          <Bird />
+          <BirdGrid />
+        </Route>
+        <Route path="/error">
+          <Error />
         </Route>
         <Route path="*">
           <NotFound />
