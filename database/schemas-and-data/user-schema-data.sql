@@ -185,31 +185,31 @@ insert into user_avatar (app_user_id, avatar_id) values
 -- Data: sighting
 -- -----------------------------------------------------
 insert into sighting (app_user_id, bird_id, sighting_date, city, state, daytime) values
-		(1, 1, '2020-10-01', 'Test City', 'Test State', true),
-        (1, 2, '2021-11-01', 'Test City', 'Test State', true),
-        (1, 3, '2021-12-01', 'Test City', 'Test State', false),
-        (1, 4, '2022-04-01', 'Test City', 'Test State', false),
-        (1, 5, '2022-06-01', 'Test City', 'Test State', true);
+	(1, 1, '2020-10-01', 'Test City', 'Test State', true),
+	(1, 2, '2021-11-01', 'Test City', 'Test State', true),
+	(1, 3, '2021-12-01', 'Test City', 'Test State', false),
+	(1, 4, '2022-04-01', 'Test City', 'Test State', false),
+	(1, 5, '2022-06-01', 'Test City', 'Test State', true);
         
 -- -----------------------------------------------------
 -- Data: sighting_trait
 -- -----------------------------------------------------
 insert into sighting_trait (sighting_id, trait_id) values
-		(1, 1),
-        (1, 2),
-        (1, 3),
-        (3, 4),
-        (2, 5),
-        (2, 10),
-        (2, 7),
-        (3, 8),
-        (3, 9),
-        (4, 1),
-        (4, 2),
-        (4, 3),
-        (5, 5),
-        (5, 7),
-        (5, 9);
+	(1, 1),
+	(1, 2),
+	(1, 3),
+	(3, 4),
+	(2, 5),
+	(2, 10),
+	(2, 7),
+	(3, 8),
+	(3, 9),
+	(4, 1),
+	(4, 2),
+	(4, 3),
+	(5, 5),
+	(5, 7),
+	(5, 9);
         
 -- -----------------------------------------------------
 -- Data: user_badge
