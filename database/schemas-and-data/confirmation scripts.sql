@@ -8,9 +8,9 @@ select au.app_user_id, ar.app_role_id, `name`, username, password_hash, enabled,
     inner join avatar a on a.avatar_id = ua.avatar_id
     inner join badge b on b.badge_id = ub.badge_id;
     
-select s.sighting_id, b.common_name, b.scientific_name, b.img_url, t.name, s.sighting_date, s.city, s.state, s.daytime from sighting s
+select au.username, s.sighting_id, b.common_name, b.scientific_name, b.img_url, t.name, s.sighting_date, s.city, s.state, s.daytime from sighting s
+	inner join app_user au on s.app_user_id = au.app_user_id
 	inner join sighting_trait st on st.sighting_id = s.sighting_id
     inner join trait t on st.trait_id = t.trait_id
     inner join bird b on s.bird_id = b.bird_id
-where app_user_id = 1;
-    
+where au.app_user_id = 1;

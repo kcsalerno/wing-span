@@ -1,4 +1,8 @@
 package learn.wing_span.domain;
 
-public class ResultType {
+public enum ResultType {
+    SUCCESS,
+    INVALID,
+    DUPLICATE,
+    NOT_FOUND
 }

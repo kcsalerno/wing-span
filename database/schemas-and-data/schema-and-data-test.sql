@@ -188,8 +188,8 @@ begin
 		(2, 1);
 
 	insert into badge (badge_name, badge_description) values
-	('5 Sightings', "You've made 5 sightings!", 'https://static.thenounproject.com/png/1120113-200.png'),
-    ('10 Sightings', "You've made 10 sightings!", 'https://static.thenounproject.com/png/1188264-200.png');
+		('5 Sightings', "You've made 5 sightings!", 'https://static.thenounproject.com/png/1120113-200.png'),
+		('10 Sightings', "You've made 10 sightings!", 'https://static.thenounproject.com/png/1188264-200.png');
         
 	insert into avatar (avatar_img_url, avatar_description) values
 		('https://cdn.pixabay.com/photo/2017/05/25/21/26/bird-feeder-2344414__480.jpg', "Birdhouse"),
