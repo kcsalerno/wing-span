@@ -63,9 +63,6 @@ insert into trait (`name`) values
 -- -----------------------------------------------------
 -- Data: bird
 -- -----------------------------------------------------
--- common_name varchar(50) not null,
---     scientific_name varchar(50) not null,
---     img_url varchar(512) not null
 insert into bird (common_name, scientific_name, img_url) values
 	('Woodpecker', 'Picidae', 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Woodpecker_20040529_151837_1c_cropped.JPG/330px-Woodpecker_20040529_151837_1c_cropped.JPG'),
     ('Pigeon', 'Columbidae', 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/Treron_vernans_male_-_Kent_Ridge_Park.jpg/330px-Treron_vernans_male_-_Kent_Ridge_Park.jpg'),
