@@ -1,5 +1,6 @@
 package learn.wing_span.data;
 
+import learn.wing_span.data.mappers.SightingMapper;
 import learn.wing_span.models.Sighting;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -20,7 +21,7 @@ public class SightingJdbcTemplateRepository implements SightingRepository {
     public List<Sighting> findAll() throws DataAccessException {
 
         final String sql = "select sighting_id, app_user_id, bird_id, sighting_date, city, state, daytime from sighting;";
-        List<Sighting> sightings = jdbcTemplate.query(sql, )
+        return jdbcTemplate.query(sql, new SightingMapper());
     }
 
     @Override
