@@ -12,8 +12,11 @@ public class AppUser implements UserDetails {
     private String username;
     private String password;
     private boolean enabled;
+    private String email;
     private String firstName;
     private String lastName;
+
+    private List<Sighting> sightings = new ArrayList<>();
 
     private List<GrantedAuthority> authorities = new ArrayList<>();
 
@@ -31,6 +34,14 @@ public class AppUser implements UserDetails {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public void setFirstName(String firstName) {
