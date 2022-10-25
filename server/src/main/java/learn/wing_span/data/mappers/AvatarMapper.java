@@ -13,8 +13,7 @@ public class AvatarMapper implements RowMapper<Avatar> {
         Avatar avatar = new Avatar();
         avatar.setAvatarId(rs.getInt("avatar_id"));
         avatar.setImageUrl(rs.getString("avatar_img_url"));
-        avatar.setAvatarDescription(rs.getString("scientific_name"));
-        avatar.setImageUrl(rs.getString("avatar_description"));
+        avatar.setAvatarDescription(rs.getString("avatar_description"));
         return avatar;
     }
 }
