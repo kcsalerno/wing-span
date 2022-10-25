@@ -8,8 +8,14 @@ public interface AppUserRepository {
     AppUser findByUsername(String username);
 
     @Transactional
-    AppUser create(AppUser user);
+    AppUser findByEmail(String email);
 
     @Transactional
-    boolean update(AppUser user);
+    AppUser create(AppUser user);
+
+//    @Transactional
+//    boolean update(AppUser user);
+
+    @Transactional
+    void update(AppUser user);
 }

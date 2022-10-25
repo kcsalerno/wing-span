@@ -40,8 +40,8 @@ public class SecurityConfig {
                 .antMatchers("/create_account").permitAll()
                 .antMatchers("/refresh_token").authenticated()
                 // Need to change all of these.
-//                .antMatchers(HttpMethod.GET,
-//                        "/api/solarpanel").permitAll()
+                .antMatchers(HttpMethod.GET,
+                        "/").permitAll()
 //                .antMatchers(HttpMethod.GET,
 //                        "/api/solarpanel/section/*", "/api/solarpanel/*").hasAnyAuthority("USER", "ADMIN")
 //                .antMatchers(HttpMethod.POST,

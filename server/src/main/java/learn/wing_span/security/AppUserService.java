@@ -18,10 +18,6 @@ public class AppUserService implements UserDetailsService {
     private final AppUserJdbcTemplateRepository repository;
     private final PasswordEncoder encoder;
 
-    // We will store our users in memory for now so that we can focus
-    // on authentication. Later we will get our users from the database.
-    private List<UserDetails> users;
-
     public AppUserService(AppUserJdbcTemplateRepository repository, PasswordEncoder encoder) {
         this.repository = repository;
         this.encoder = encoder;
@@ -57,6 +53,7 @@ public class AppUserService implements UserDetailsService {
 
         return result;
     }
+
 
     private Result<AppUser> validate(String username, String password) {
         Result<AppUser> result = new Result<>();

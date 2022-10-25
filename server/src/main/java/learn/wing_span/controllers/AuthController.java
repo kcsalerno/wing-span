@@ -1,6 +1,5 @@
 package learn.wing_span.controllers;
 
-
 import learn.wing_span.domain.Result;
 import learn.wing_span.models.AppUser;
 import learn.wing_span.security.AppUserService;
@@ -21,7 +20,6 @@ import java.util.Map;
 
 @RestController
 public class AuthController {
-
     private final AuthenticationManager authenticationManager;
     private final JwtConverter converter;
     private final AppUserService appUserService;
