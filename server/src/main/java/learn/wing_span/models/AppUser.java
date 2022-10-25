@@ -36,12 +36,19 @@ public class AppUser implements UserDetails {
                 .collect(Collectors.toList());
     }
 
-    public int getAppUserId() {
-        return appUserId;
+    @Override
+    public List<GrantedAuthority> getAuthorities() {
+        return authorities;
     }
 
-    public void setAppUserId(int appUserId) {
-        this.appUserId = appUserId;
+    @Override
+    public String getPassword() {
+        return password;
+    }
+
+    @Override
+    public String getUsername() {
+        return username;
     }
 
     // Do we need these?
@@ -83,25 +90,6 @@ public class AppUser implements UserDetails {
         return lastName;
     }
 
-//    public void setAuthorities(List<GrantedAuthority> authorities) {
-//        this.authorities = authorities;
-//    }
-
-    @Override
-    public List<GrantedAuthority> getAuthorities() {
-        return authorities;
-    }
-
-    @Override
-    public String getPassword() {
-        return password;
-    }
-
-    @Override
-    public String getUsername() {
-        return username;
-    }
-
     @Override
     public boolean isAccountNonExpired() {
         return true;
@@ -125,5 +113,13 @@ public class AppUser implements UserDetails {
     @Override
     public boolean isEnabled() {
         return enabled;
+    }
+
+    public int getAppUserId() {
+        return appUserId;
+    }
+
+    public void setAppUserId(int appUserId) {
+        this.appUserId = appUserId;
     }
 }

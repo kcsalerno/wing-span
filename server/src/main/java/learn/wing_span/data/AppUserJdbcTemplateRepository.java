@@ -8,12 +8,6 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-// import org.springframework.jdbc.core.RowMapper;
-// import org.springframework.security.core.GrantedAuthority;
-// import org.springframework.security.core.authority.SimpleGrantedAuthority;
-//
-// import java.sql.ResultSet;
-
 import java.sql.PreparedStatement;
 import java.sql.Statement;
 import java.util.List;
@@ -52,14 +46,6 @@ public class AppUserJdbcTemplateRepository implements AppUserRepository {
         return jdbcTemplate.query(sql, new AppUserMapper(roles), email)
                 .stream()
                 .findFirst().orElse(null);
-
-//        AppUser user = jdbcTemplate.query(sql, new AppUserMapper(), email).stream()
-//                .findFirst().orElse(null);
-//
-//        if (user != null) {
-//            attachAuthorities(user);
-//        }
-//        return user;
     }
 
     @Override
@@ -93,7 +79,8 @@ public class AppUserJdbcTemplateRepository implements AppUserRepository {
 
     @Override
     @Transactional
-    public boolean update(AppUser user) {
+    //public boolean update(AppUser user) {
+    public void update(AppUser user) {
 
         final String sql = "update app_user set "
                 + "username = ?, "
@@ -103,15 +90,19 @@ public class AppUserJdbcTemplateRepository implements AppUserRepository {
                 + "user_last_name = ? "
                 + "where app_user_id = ?";
 
-        boolean updated = jdbcTemplate.update(sql,
-                user.getUsername(), user.isEnabled(), user.getEmail(), user.getFirstName(),
-                user.getLastName(), user.getAppUserId()) > 0;
+//        boolean updated = jdbcTemplate.update(sql,
+//                user.getUsername(), user.isEnabled(), user.getEmail(), user.getFirstName(),
+//                user.getLastName(), user.getAppUserId()) > 0;
+//
+//        if (updated) {
+//            updateRoles(user);
+//        }
+//
+//        return updated;
+        jdbcTemplate.update(sql,
+                user.getUsername(), user.isEnabled(), user.getAppUserId());
 
-        if (updated) {
-            updateRoles(user);
-        }
-
-        return updated;
+        updateRoles(user);
     }
 
     private void updateRoles(AppUser user) {
@@ -149,21 +140,4 @@ public class AppUserJdbcTemplateRepository implements AppUserRepository {
 
         return jdbcTemplate.query(sql, (rs, rowId) -> rs.getString("name"), email);
     }
-
-//    private RowMapper<GrantedAuthority> authorityMapper = (ResultSet rs, int index) -> {
-//         SimpleGrantedAuthority authority = new SimpleGrantedAuthority(rs.getString("name"));
-//         return authority;
-//     };
-//
-//     private void attachAuthorities(AppUser user) {
-//
-//         String sql = "select ar.`name` "
-//                 + "from app_user_role aur "
-//                 + "inner join app_role ar on aur.app_role_id = ar.app_role_id "
-//                 + "where aur.app_user_id = ?;";
-//
-//         List<GrantedAuthority> authorities = jdbcTemplate.query(sql, authorityMapper, user.getAppUserId());
-//
-//         user.setAuthorities(authorities);
-//     }
 }

@@ -18,10 +18,6 @@ public class AppUserService implements UserDetailsService {
     private final AppUserJdbcTemplateRepository repository;
     private final PasswordEncoder encoder;
 
-    // We will store our users in memory for now so that we can focus
-    // on authentication. Later we will get our users from the database.
-    private List<UserDetails> users;
-
     public AppUserService(AppUserJdbcTemplateRepository repository, PasswordEncoder encoder) {
         this.repository = repository;
         this.encoder = encoder;

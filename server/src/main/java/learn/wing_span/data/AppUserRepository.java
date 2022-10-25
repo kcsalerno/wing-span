@@ -13,6 +13,9 @@ public interface AppUserRepository {
     @Transactional
     AppUser create(AppUser user);
 
+//    @Transactional
+//    boolean update(AppUser user);
+
     @Transactional
-    boolean update(AppUser user);
+    void update(AppUser user);
 }

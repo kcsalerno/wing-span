@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
 public class JwtConverter {
 
     // "Configurable" constants
-    private final String ISSUER = "solarfarm-api";
+    private final String ISSUER = "wingspane-api";
     private final int EXPIRATION_MINUTES = 15;
     private final int EXPIRATION_MILLIS = EXPIRATION_MINUTES * 60 * 1000;
     // Signing key
