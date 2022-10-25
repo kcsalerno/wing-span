@@ -1,14 +1,14 @@
 package learn.wing_span.data;
 
 import learn.wing_span.models.Avatar;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class AvatarJdbcTemplateRepositoryTest {
     @Autowired
     AvatarJdbcTemplateRepository repository;
@@ -39,13 +39,15 @@ class AvatarJdbcTemplateRepositoryTest {
     }
 
     @Test
+    @Order(1)
     void shouldUpdate() {
         Avatar avatar = makeAvatar();
-        avatar.setAvatarId(5);
+        avatar.setAvatarId(2);
         assertTrue(repository.update(avatar));
     }
 
     @Test
+    @Order(2)
     void shouldDelete() {
         assertTrue(repository.deleteById(2));
     }
@@ -57,5 +59,4 @@ class AvatarJdbcTemplateRepositoryTest {
         avatar.setAvatarId(3);
         return avatar;
     }
-
 }

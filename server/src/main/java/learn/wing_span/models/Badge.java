@@ -4,6 +4,15 @@ public class Badge {
     private int badgeId;
     private String badgeName;
     private String badgeDescription;
+    private String badgeImgUrl;
+
+    public String getBadgeImgUrl() {
+        return badgeImgUrl;
+    }
+
+    public void setBadgeImgUrl(String badgeImgUrl) {
+        this.badgeImgUrl = badgeImgUrl;
+    }
 
     public int getBadgeId() {
         return badgeId;
