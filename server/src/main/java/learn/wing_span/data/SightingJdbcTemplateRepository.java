@@ -101,8 +101,16 @@ public class SightingJdbcTemplateRepository implements SightingRepository {
 
     @Transactional
     @Override
+
+    public boolean deleteByKey(int sightingId, int appUserId, int birdId) throws DataAccessException {
+        jdbcTemplate.update("delete from sighting where app_user_id = ? and bird_id = ?;", appUserId, birdId);
+
     public boolean deleteById(int sightingId) {
         jdbcTemplate.update("delete from sighting_trait where sighting_id = ?;", sightingId);
+
         return jdbcTemplate.update("delete from sighting where sighting_id = ?;", sightingId) > 0;
     }
+
+    // TODO add sightings
+    // TODO add birds
 }

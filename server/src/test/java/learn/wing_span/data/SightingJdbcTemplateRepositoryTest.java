@@ -48,6 +48,7 @@ class SightingJdbcTemplateRepositoryTest {
         assertNotNull(actual);
     }
 
+
     private Sighting makeSighting() {
         Sighting sighting = new Sighting();
         sighting.setSightingUserId(1);
@@ -70,5 +71,16 @@ class SightingJdbcTemplateRepositoryTest {
     @Test
     void shouldDelete() {
         assertTrue(repository.deleteById(1));
+    }
+
+    private Sighting makeSighting() {
+        Sighting sighting = new Sighting();
+        sighting.setSightingUserId(5);
+        sighting.setSightingBirdId(5);
+        sighting.setDate(LocalDate.of(2020, 6, 12));
+        sighting.setCity("Test City");
+        sighting.setState("Test State");
+        sighting.setDaytime(true);
+        return sighting;
     }
 }

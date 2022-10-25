@@ -2,6 +2,7 @@ package learn.wing_span.models;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 public class Sighting {
     private int sightingId;
@@ -79,5 +80,19 @@ public class Sighting {
 
     public void setSightingBirdId(int sightingBirdId) {
         this.sightingBirdId = sightingBirdId;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Sighting that = (Sighting) o;
+        return sightingId == that.sightingId &&
+                Objects.equals(sightingUserId, that.sightingUserId);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(sightingId, sightingUserId);
     }
 }
