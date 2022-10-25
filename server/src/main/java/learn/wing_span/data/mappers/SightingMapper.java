@@ -1,6 +1,5 @@
 package learn.wing_span.data.mappers;
 
-import learn.wing_span.models.Bird;
 import learn.wing_span.models.Sighting;
 import org.springframework.jdbc.core.RowMapper;
 
