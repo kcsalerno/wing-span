@@ -45,7 +45,8 @@ create table app_user_role (
 create table badge (
 	badge_id int primary key auto_increment,
     badge_name varchar(50) not null,
-    badge_description varchar(50) not null
+    badge_description varchar(50) not null,
+	badge_img_url varchar(512) not null
 );
 
 -- -----------------------------------------------------
@@ -150,24 +151,24 @@ delimiter //
 create procedure set_known_good_state()
 begin
 
-	delete from app_user_role;
-	delete from app_user;
-	alter table app_user auto_increment = 1;
-	delete from app_role;
-	alter table app_role auto_increment = 1;
-    delete from avatar;
-    alter table avatar auto_increment = 1;
-    delete from user_avatar;
-    delete from badge;
-    alter table badge auto_increment = 1;
-    delete from user_badge;
-	delete from sighting;
-	alter table sighting auto_increment = 1;
-    delete from bird;
-    alter table bird auto_increment = 1;
+	delete from sighting_trait;
     delete from trait;
     alter table trait auto_increment = 1;
-    delete from sighting_trait;
+	delete from sighting;
+	alter table sighting auto_increment = 1;
+    delete from app_user_role;
+    delete from user_avatar;
+    delete from user_badge;
+    delete from bird;
+    alter table bird auto_increment = 1;
+    delete from badge;
+    alter table badge auto_increment = 1;
+    delete from avatar;
+    alter table avatar auto_increment = 1;
+    delete from app_role;
+	alter table app_role auto_increment = 1;
+    delete from app_user;
+	alter table app_user auto_increment = 1;
 
     -- -----------------------------------------------------
 	-- Data
@@ -187,7 +188,7 @@ begin
 		(1, 2),
 		(2, 1);
 
-	insert into badge (badge_name, badge_description) values
+	insert into badge (badge_name, badge_description, badge_img_url) values
 		('5 Sightings', "You've made 5 sightings!", 'https://static.thenounproject.com/png/1120113-200.png'),
 		('10 Sightings', "You've made 10 sightings!", 'https://static.thenounproject.com/png/1188264-200.png');
         
@@ -230,7 +231,7 @@ begin
         (1, 3),
         (3, 4),
         (2, 5),
-        (2, 10),
+        (2, 6),
         (2, 7),
         (3, 8),
         (3, 9),

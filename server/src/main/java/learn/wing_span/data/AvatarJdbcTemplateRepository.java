@@ -5,10 +5,12 @@ import learn.wing_span.models.Avatar;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
+import org.springframework.stereotype.Repository;
 
 import java.sql.PreparedStatement;
 import java.sql.Statement;
 
+@Repository
 public class AvatarJdbcTemplateRepository implements AvatarRepository{
     private final JdbcTemplate jdbcTemplate;
 
@@ -53,14 +55,18 @@ public class AvatarJdbcTemplateRepository implements AvatarRepository{
                 + "avatar_img_url = ?, "
                 + "avatar_description = ? "
                 + "where avatar_id = ?;";
-        return jdbcTemplate.update(sql,
+
+        int rowsAffected = jdbcTemplate.update(sql,
                 avatar.getImageUrl(),
                 avatar.getAvatarDescription(),
-                avatar.getAvatarId()) > 0;
+                avatar.getAvatarId());
+
+        return rowsAffected > 0;
     }
 
     @Override
     public boolean deleteById(int avatarId) {
+        jdbcTemplate.update("delete from user_avatar where avatar_id = ?;", avatarId);
         return jdbcTemplate.update("delete from avatar where avatar_id = ?", avatarId) > 0;
     }
 }
