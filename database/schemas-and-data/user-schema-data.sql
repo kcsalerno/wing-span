@@ -2,13 +2,13 @@ use wing_span;
 
 drop table if exists app_user_role;
 drop table if exists app_role;
-drop table if exists app_user;
 drop table if exists sighting_trait;
 drop table if exists sighting;
 drop table if exists user_badge;
 drop table if exists badge;
 drop table if exists user_avatar;
 drop table if exists avatar;
+drop table if exists app_user;
 
 -- -----------------------------------------------------
 -- Table: app_user
@@ -88,7 +88,8 @@ create table sighting_trait (
 create table badge (
 	badge_id int primary key auto_increment,
     badge_name varchar(50) not null,
-    badge_description varchar(50) not null
+    badge_description varchar(50) not null,
+    badge_img_url varchar(512) not null
 );
 
 -- -----------------------------------------------------
@@ -159,11 +160,11 @@ insert into app_user_role (app_user_id, app_role_id) values
 -- -----------------------------------------------------
 -- Data: badge
 -- -----------------------------------------------------
-insert into badge (badge_name, badge_description) values
-	('5 Sightings', "You've made 5 sightings!"),
-    ('10 Sightings', "You've made 10 sightings!"),
-    ('20 Sightings', "You've made 20 sightings!"),
-    ('50 Sightings', "You've made 50 sightings!");
+insert into badge (badge_name, badge_description, badge_img_url) values
+	('5 Sightings', "You've made 5 sightings!", 'https://static.thenounproject.com/png/1120113-200.png'),
+    ('10 Sightings', "You've made 10 sightings!", 'https://static.thenounproject.com/png/1188264-200.png'),
+    ('20 Sightings', "You've made 20 sightings!", 'https://static.thenounproject.com/png/4451522-200.png'),
+    ('50 Sightings', "You've made 50 sightings!", 'https://static.thenounproject.com/png/1511937-200.png');
 
 -- -----------------------------------------------------
 -- Data: avatar
@@ -184,31 +185,31 @@ insert into user_avatar (app_user_id, avatar_id) values
 -- Data: sighting
 -- -----------------------------------------------------
 insert into sighting (app_user_id, bird_id, sighting_date, city, state, daytime) values
-		(1, 1, '2020-10-01', 'Test City', 'Test State', true),
-        (1, 2, '2021-11-01', 'Test City', 'Test State', true),
-        (1, 3, '2021-12-01', 'Test City', 'Test State', false),
-        (1, 4, '2022-04-01', 'Test City', 'Test State', false),
-        (1, 5, '2022-06-01', 'Test City', 'Test State', true);
+	(1, 1, '2020-10-01', 'Test City', 'Test State', true),
+	(1, 2, '2021-11-01', 'Test City', 'Test State', true),
+	(1, 3, '2021-12-01', 'Test City', 'Test State', false),
+	(1, 4, '2022-04-01', 'Test City', 'Test State', false),
+	(1, 5, '2022-06-01', 'Test City', 'Test State', true);
         
 -- -----------------------------------------------------
 -- Data: sighting_trait
 -- -----------------------------------------------------
 insert into sighting_trait (sighting_id, trait_id) values
-		(1, 1),
-        (1, 2),
-        (1, 3),
-        (3, 4),
-        (2, 5),
-        (2, 6),
-        (2, 7),
-        (3, 8),
-        (3, 9),
-        (4, 1),
-        (4, 2),
-        (4, 3),
-        (5, 5),
-        (5, 7),
-        (5, 9);
+	(1, 1),
+	(1, 2),
+	(1, 3),
+	(3, 4),
+	(2, 5),
+	(2, 10),
+	(2, 7),
+	(3, 8),
+	(3, 9),
+	(4, 1),
+	(4, 2),
+	(4, 3),
+	(5, 5),
+	(5, 7),
+	(5, 9);
         
 -- -----------------------------------------------------
 -- Data: user_badge

@@ -9,20 +9,25 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
 public class AppConfig {
+
     @Bean
-    public PasswordEncoder encoder() {
+    public PasswordEncoder getPasswordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
+    // WebMvcConfigurer bean to configured to run CORS globally.
     @Bean
     public WebMvcConfigurer corsConfigurer() {
+        // Can be combined with @CrossOrigin.
         return new WebMvcConfigurer() {
+
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/**")
-                        .allowedMethods("DELETE", "GET", "POST", "PUT", "OPTIONS")
-                        .allowedOrigins("*");
+                        .allowedOrigins("http://localhost:3000")
+                        .allowedMethods("*");
             }
         };
     }
 }
+
