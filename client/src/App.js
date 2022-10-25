@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import Home from './components/Home';
 import Navigation from './components/Navigation';
 import SightingList from './components/SightingList';
+import SightingForm from './components/SightingForm';
 import BirdGrid from './components/BirdGrid';
 import Login from './components/Login';
 import NotFound from './components/NotFound';
@@ -41,6 +42,9 @@ function App() {
         </Route>
         <Route path="/sightings" exact>
           <SightingList />
+        </Route>
+        <Route path={["/add", "/edit/:sightingId"]}>
+          <SightingForm />
         </Route>
         <Route path="/birds">
           <BirdGrid />

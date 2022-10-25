@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
-import { findAll } from "../services/birds"
+import { findAllBirds } from "../services/birds"
 import Bird from "./Bird";
 
 function BirdGrid({ handleEdit, handleDelete}) {
@@ -9,7 +9,7 @@ function BirdGrid({ handleEdit, handleDelete}) {
     const history = useHistory();
 
     useEffect(() => {
-        findAll()
+        findAllBirds()
         .then(setBirds)
         .catch(() => history.push("/error"))
     }, [history]);

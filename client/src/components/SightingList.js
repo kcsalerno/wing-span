@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
-import { findAll } from "../services/sightings";
+import { findAllSightings } from "../services/sightings";
 
 
 function SightingList() {
@@ -9,7 +9,7 @@ function SightingList() {
     const history = useHistory();
 
     useEffect(() => {
-        findAll()
+        findAllSightings()
         .then(setSightings)
         .catch(() => history.push("/error"))
     }, [history]);

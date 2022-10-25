@@ -1,6 +1,6 @@
 const SIGHTING_API_URL = "http://localhost:8080/api/sighting"
 
-export async function findAll() {
+export async function findAllSightings() {
     const response = await fetch(SIGHTING_API_URL);
     if (response.ok) {
         return response.json();
@@ -9,7 +9,7 @@ export async function findAll() {
     }
 }
 
-export async function findById(sightingId) {
+export async function findBySightingId(sightingId) {
     const response = await fetch(`${SIGHTING_API_URL}/${sightingId}`)
     if (response.ok) {
         return response.json();
