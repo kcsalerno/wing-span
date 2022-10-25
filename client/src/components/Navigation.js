@@ -13,6 +13,9 @@ function Navigation() {
                 <li>
                     <Link to="/birds">Birds</Link>
                 </li>
+                <li>
+                    <Link to="/login">Login</Link>
+                </li>
             </ul>
         </nav>
     );
