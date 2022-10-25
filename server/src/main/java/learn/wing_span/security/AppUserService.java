@@ -58,6 +58,7 @@ public class AppUserService implements UserDetailsService {
         return result;
     }
 
+
     private Result<AppUser> validate(String username, String password) {
         Result<AppUser> result = new Result<>();
         if (username == null || username.isBlank()) {

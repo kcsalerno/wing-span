@@ -8,6 +8,9 @@ public interface AppUserRepository {
     AppUser findByUsername(String username);
 
     @Transactional
+    AppUser findByEmail(String email);
+
+    @Transactional
     AppUser create(AppUser user);
 
     @Transactional

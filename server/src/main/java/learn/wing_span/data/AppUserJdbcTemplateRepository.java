@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 // import org.springframework.jdbc.core.RowMapper;
 // import org.springframework.security.core.GrantedAuthority;
 // import org.springframework.security.core.authority.SimpleGrantedAuthority;
-
+//
 // import java.sql.ResultSet;
 
 import java.sql.PreparedStatement;
@@ -31,7 +31,7 @@ public class AppUserJdbcTemplateRepository implements AppUserRepository {
     public AppUser findByUsername(String username) {
         List<String> roles = getRolesByUsername(username);
 
-        final String sql = "select app_user_id, username, password_hash, enabled "
+        final String sql = "select app_user_id, username, password_hash, enabled, email, user_first_name, user_last_name "
                 + "from app_user "
                 + "where username = ?;";
 
@@ -42,15 +42,41 @@ public class AppUserJdbcTemplateRepository implements AppUserRepository {
 
     @Override
     @Transactional
+    public AppUser findByEmail(String email) {
+        List<String> roles = getRolesByEmail(email);
+
+        final String sql = "select app_user_id, username, password_hash, enabled, email, user_first_name, user_last_name "
+                + "from app_user "
+                + "where email = ?;";
+
+        return jdbcTemplate.query(sql, new AppUserMapper(roles), email)
+                .stream()
+                .findFirst().orElse(null);
+
+//        AppUser user = jdbcTemplate.query(sql, new AppUserMapper(), email).stream()
+//                .findFirst().orElse(null);
+//
+//        if (user != null) {
+//            attachAuthorities(user);
+//        }
+//        return user;
+    }
+
+    @Override
+    @Transactional
     public AppUser create(AppUser user) {
 
-        final String sql = "insert into app_user (username, password_hash) values (?, ?);";
+        final String sql = "insert into app_user (username, password_hash, email, user_first_name, user_last_name) "
+                + "values (?, ?, ?, ?, ?);";
 
         GeneratedKeyHolder keyHolder = new GeneratedKeyHolder();
         int rowsAffected = jdbcTemplate.update(connection -> {
             PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, user.getUsername());
             ps.setString(2, user.getPassword());
+            ps.setString(3, user.getEmail());
+            ps.setString(4, user.getFirstName());
+            ps.setString(5, user.getLastName());
             return ps;
         }, keyHolder);
 
@@ -72,10 +98,14 @@ public class AppUserJdbcTemplateRepository implements AppUserRepository {
         final String sql = "update app_user set "
                 + "username = ?, "
                 + "enabled = ? "
+                + "email = ? "
+                + "user_first_name = ? "
+                + "user_last_name = ? "
                 + "where app_user_id = ?";
 
         boolean updated = jdbcTemplate.update(sql,
-                user.getUsername(), user.isEnabled(), user.getAppUserId()) > 0;
+                user.getUsername(), user.isEnabled(), user.getEmail(), user.getFirstName(),
+                user.getLastName(), user.getAppUserId()) > 0;
 
         if (updated) {
             updateRoles(user);
@@ -106,38 +136,34 @@ public class AppUserJdbcTemplateRepository implements AppUserRepository {
                 + "from app_user_role ur "
                 + "inner join app_role r on ur.app_role_id = r.app_role_id "
                 + "inner join app_user au on ur.app_user_id = au.app_user_id "
-                + "where au.username = ?";
+                + "where au.username = ?;";
         return jdbcTemplate.query(sql, (rs, rowId) -> rs.getString("name"), username);
     }
 
-    public AppUser findByEmail(String email) {
-        String sql = "select app_user_id, username, password_hash, enabled, email, user_first_name, user_last_name "
-                + "from app_user "
-                + "where email = ?;";
+    private List<String> getRolesByEmail(String email) {
+        final String sql = "select r.name "
+                + "from app_user_role ur "
+                + "inner join app_role r on ur.app_role_id = r.app_role_id "
+                + "inner join app_user au on ur.app_user_id = au.app_user_id "
+                + "where au.email = ?;";
 
-        AppUser user = jdbcTemplate.query(sql, new AppUserMapper(), email).stream()
-                .findFirst().orElse(null);
-
-        if (user != null) {
-            attachAuthorities(user);
-        }
-        return user;
+        return jdbcTemplate.query(sql, (rs, rowId) -> rs.getString("name"), email);
     }
-  
+
 //    private RowMapper<GrantedAuthority> authorityMapper = (ResultSet rs, int index) -> {
 //         SimpleGrantedAuthority authority = new SimpleGrantedAuthority(rs.getString("name"));
 //         return authority;
 //     };
-
+//
 //     private void attachAuthorities(AppUser user) {
-
+//
 //         String sql = "select ar.`name` "
 //                 + "from app_user_role aur "
 //                 + "inner join app_role ar on aur.app_role_id = ar.app_role_id "
 //                 + "where aur.app_user_id = ?;";
-
+//
 //         List<GrantedAuthority> authorities = jdbcTemplate.query(sql, authorityMapper, user.getAppUserId());
-
+//
 //         user.setAuthorities(authorities);
 //     }
 }
