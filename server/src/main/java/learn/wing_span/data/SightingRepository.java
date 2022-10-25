@@ -6,9 +6,9 @@ import org.springframework.dao.DataAccessException;
 import java.util.List;
 
 public interface SightingRepository {
-    List<Sighting> findAll() throws DataAccessException;
-    Sighting findById(int sightingId) throws DataAccessException;
-    Sighting create(Sighting sighting) throws DataAccessException;
-    boolean update(Sighting sighting) throws  DataAccessException;
-    boolean deleteById(int id) throws DataAccessException;
+    List<Sighting> findAll();
+    Sighting findById(int sightingId);
+    Sighting create(Sighting sighting);
+    boolean update(Sighting sighting);
+    boolean deleteByKey(int sightingId, int appUserId, int birdId) throws DataAccessException;
 }

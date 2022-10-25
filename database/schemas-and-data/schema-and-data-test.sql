@@ -159,7 +159,7 @@ begin
     alter table avatar auto_increment = 1;
     delete from user_avatar;
     delete from badge;
-    alter table bagde auto_increment = 1;
+    alter table badge auto_increment = 1;
     delete from user_badge;
 	delete from sighting;
 	alter table sighting auto_increment = 1;
