@@ -63,6 +63,7 @@ public class BadgeJdbcTemplateRepository implements BadgeRepository{
 
     @Override
     public boolean deleteById(int badgeId) {
-        return jdbcTemplate.update("delete from badge where badge_id = ?", badgeId) > 0;
+        jdbcTemplate.update("delete from user_badge where badge_id = ?;", badgeId);
+        return jdbcTemplate.update("delete from badge where badge_id = ?;", badgeId) > 0;
     }
 }

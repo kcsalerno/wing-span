@@ -27,7 +27,7 @@ public class TraitJdbcTemplateRepository implements TraitRepository{
     public Trait findById(int traitId) {
         final String sql = "select trait_id, name "
                 + "from trait "
-                + "where trait_id = ?";
+                + "where trait_id = ?;";
         return jdbcTemplate.query(sql, new TraitMapper(), traitId).stream()
                 .findFirst().orElse(null);
     }
@@ -63,7 +63,7 @@ public class TraitJdbcTemplateRepository implements TraitRepository{
 
     @Override
     public boolean deleteById(int traitId) {
-        final String sql = "delete from trait where trait_id = ?;";
-        return jdbcTemplate.update(sql, traitId) > 0;
+        jdbcTemplate.update("delete from bird_trait where trait_id = ?;", traitId);
+        return jdbcTemplate.update("delete from trait where trait_id = ?;", traitId) > 0;
     }
 }

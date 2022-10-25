@@ -41,7 +41,7 @@ class AvatarJdbcTemplateRepositoryTest {
     @Test
     void shouldUpdate() {
         Avatar avatar = makeAvatar();
-        avatar.setAvatarId(5);
+        avatar.setAvatarId(2);
         assertTrue(repository.update(avatar));
     }
 
