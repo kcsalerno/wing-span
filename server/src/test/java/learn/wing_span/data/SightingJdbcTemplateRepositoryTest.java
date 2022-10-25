@@ -49,17 +49,28 @@ class SightingJdbcTemplateRepositoryTest {
     }
 
 
+    private Sighting makeSighting() {
+        Sighting sighting = new Sighting();
+        sighting.setSightingUserId(1);
+        sighting.setSightingBirdId(1);
+        sighting.setDate(LocalDate.of(2020, 6, 12));
+        sighting.setCity("Test City");
+        sighting.setState("Test State");
+        sighting.setDaytime(true);
+        return sighting;
+    }
+
     @Test
     void shouldUpdate() {
         Sighting sighting = makeSighting();
         sighting.setSightingId(2);
         assertTrue(repository.update(sighting));
-        assertEquals(sighting, repository.findById(2));
+        assertEquals(sighting.getState(), repository.findById(2).getState());
     }
 
     @Test
     void shouldDelete() {
-        assertTrue(repository.deleteByKey(1, 1,2));
+        assertTrue(repository.deleteById(1));
     }
 
     private Sighting makeSighting() {

@@ -87,12 +87,28 @@ public class SightingJdbcTemplateRepository implements SightingRepository {
         return rowsUpdated > 0;
     }
 
+//    @Transactional
+//    @Override
+//    public boolean deleteByKey(int sightingId, int appUserId, int birdId) throws DataAccessException {
+////        final String sql = "delete from sighting "
+////                + "where app_user_id = ? and bird_id = ?;";
+////        return jdbcTemplate.update(sql, sightingId, appUserId, birdId) > 0;
+//
+//        jdbcTemplate.update("delete from sighting where app_user_id = ? and bird_id = ?;", appUserId, birdId);
+//        return jdbcTemplate.update("delete from sighting where sighting_id = ?;", sightingId) > 0;
+//
+//    }
+
     @Transactional
     @Override
+
     public boolean deleteByKey(int sightingId, int appUserId, int birdId) throws DataAccessException {
         jdbcTemplate.update("delete from sighting where app_user_id = ? and bird_id = ?;", appUserId, birdId);
-        return jdbcTemplate.update("delete from sighting where sighting_id = ?;", sightingId) > 0;
 
+    public boolean deleteById(int sightingId) {
+        jdbcTemplate.update("delete from sighting_trait where sighting_id = ?;", sightingId);
+
+        return jdbcTemplate.update("delete from sighting where sighting_id = ?;", sightingId) > 0;
     }
 
     // TODO add sightings

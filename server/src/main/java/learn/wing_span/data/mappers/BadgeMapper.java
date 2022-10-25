@@ -14,6 +14,7 @@ public class BadgeMapper implements RowMapper<Badge> {
         badge.setBadgeId(rs.getInt("badge_id"));
         badge.setBadgeName(rs.getString("badge_name"));
         badge.setBadgeDescription(rs.getString("badge_description"));
+        badge.setBadgeImgUrl(rs.getString("badge_img_url"));
         return badge;
     }
 }
