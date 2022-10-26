@@ -1,5 +1,6 @@
 package learn.wing_span.data;
 
+import learn.wing_span.models.Bird;
 import learn.wing_span.models.Sighting;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -13,10 +14,13 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 class SightingJdbcTemplateRepositoryTest {
+    private final int SIGHTING_COUNT = 5;
+
     @Autowired
     KnownGoodState knownGoodState;
+
     @Autowired
-    private SightingJdbcTemplateRepository repository;
+    SightingJdbcTemplateRepository repository;
 
     @BeforeEach
     void setup() {
@@ -24,28 +28,64 @@ class SightingJdbcTemplateRepositoryTest {
     }
 
     @Test
-    void shouldFindAll() {
+    void shouldFindAllSightings() {
         List<Sighting> sightings = repository.findAll();
         assertNotNull(sightings);
 
-        assertTrue(sightings.size() >= 4);
+        assertTrue(sightings.size() >= SIGHTING_COUNT || sightings.size() == SIGHTING_COUNT - 1);
     }
 
     @Test
-    void shouldFindById() {
+    void shouldFindSightingById() {
         Sighting actual = repository.findById(1);
+
         assertNotNull(actual);
         assertEquals(1, actual.getSightingId());
         assertEquals("Test City", actual.getCity());
+        assertEquals("Test State", actual.getState());
     }
 
     @Test
-    void shouldAdd() {
-        Sighting sighting = makeSighting();
-        Sighting actual = repository.create(sighting);
-        assertNotNull(actual);
+    void shouldNotFindSightingByBadId() {
+        Sighting actual = repository.findById(99999);
+        assertNull(actual);
+
+        actual = repository.findById(0);
+        assertNull(actual);
     }
 
+    @Test
+    void shouldAddSighting() {
+        Sighting sighting = makeSighting();
+        Sighting actual = repository.create(sighting);
+
+        assertNotNull(actual);
+        assertEquals("2020-06-12", actual.getDate().toString());
+        assertTrue(actual.isDaytime());
+        assertEquals(SIGHTING_COUNT + 1, actual.getSightingId());
+    }
+
+    @Test
+    void shouldUpdateSighting() {
+        Sighting actual = repository.findById(2);
+        actual.setCity("updated");
+
+        assertTrue(repository.update(actual));
+        assertEquals("2021-11-01", actual.getDate().toString());
+        assertEquals("updated", actual.getCity());
+    }
+
+    @Test
+    void shouldDeleteById() {
+        assertTrue(repository.deleteById(4));
+        assertNull(repository.findById(4));
+    }
+
+    @Test
+    void shouldNotDeleteByBadId() {
+        assertFalse(repository.deleteById(0));
+        assertFalse(repository.deleteById(9999999));
+    }
 
     private Sighting makeSighting() {
         Sighting sighting = new Sighting();
@@ -57,18 +97,4 @@ class SightingJdbcTemplateRepositoryTest {
         sighting.setDaytime(true);
         return sighting;
     }
-
-    @Test
-    void shouldUpdate() {
-        Sighting sighting = makeSighting();
-        sighting.setSightingId(2);
-        assertTrue(repository.update(sighting));
-        assertEquals(sighting.getState(), repository.findById(2).getState());
-    }
-
-    @Test
-    void shouldDelete() {
-        assertTrue(repository.deleteById(1));
-    }
-
 }

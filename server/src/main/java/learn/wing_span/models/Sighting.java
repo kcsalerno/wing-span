@@ -58,7 +58,7 @@ public class Sighting {
         this.state = state;
     }
 
-    public boolean getDaytime() {
+    public boolean isDaytime() {
         return daytime;
     }
 

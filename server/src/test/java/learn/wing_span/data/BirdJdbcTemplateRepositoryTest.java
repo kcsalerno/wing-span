@@ -10,12 +10,14 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
-@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class BirdJdbcTemplateRepositoryTest {
+    private final int BIRD_COUNT = 5;
+
     @Autowired
     KnownGoodState knownGoodState;
+
     @Autowired
-    private BirdJdbcTemplateRepository repository;
+    BirdJdbcTemplateRepository repository;
 
     @BeforeEach
     void setup() {
@@ -23,49 +25,68 @@ class BirdJdbcTemplateRepositoryTest {
     }
 
     @Test
-    void shouldFindAll() {
+    void shouldFindAllBirds() {
         List<Bird> birds = repository.findAll();
         assertNotNull(birds);
 
-        assertTrue(birds.size() >= 5);
+        assertTrue(birds.size() >= BIRD_COUNT || birds.size() == BIRD_COUNT - 1) ;
     }
 
     @Test
-    void shouldFindById() {
-        Bird actual = repository.findById(3);
+    void shouldFindBirdById() {
+        Bird actual = repository.findById(1);
 
         assertNotNull(actual);
-        assertEquals(3, actual.getBirdId());
-        assertEquals("Peacock", actual.getCommonName());
-        assertEquals("Pavo Cristatus", actual.getScientificName());
-        assertEquals("https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Peacock_Plumage.jpg/330px-Peacock_Plumage.jpg", actual.getBirdImageUrl());
+        assertEquals(1, actual.getBirdId());
+        assertEquals("Woodpecker", actual.getCommonName());
+        assertEquals("Picidae", actual.getScientificName());
+        assertEquals("https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Woodpecker_20040529_151837_1c_cropped.JPG/330px-Woodpecker_20040529_151837_1c_cropped.JPG",
+                actual.getBirdImageUrl());
     }
 
     @Test
-    void shouldAdd() {
+    void shouldNotFindBirdByBadId() {
+        Bird actual = repository.findById(99999);
+        assertNull(actual);
+
+        actual = repository.findById(0);
+        assertNull(actual);
+    }
+
+    @Test
+    void shouldAddBird() {
         Bird bird = makeBird();
         Bird actual = repository.add(bird);
 
         assertNotNull(actual);
+        assertEquals("Test Common Name", actual.getCommonName());
+        assertEquals(BIRD_COUNT + 1, actual.getBirdId());
     }
 
     @Test
-    @Order(1)
-    void shouldUpdate() {
-        Bird bird = makeBird();
-        bird.setBirdId(1);
-        assertTrue(repository.update(bird));
+    void shouldUpdateBird() {
+        Bird actual = repository.findById(2);
+        actual.setCommonName("updated");
+
+        assertTrue(repository.update(actual));
+        assertEquals("Columbidae", actual.getScientificName());
+        assertEquals("updated", actual.getCommonName());
     }
 
     @Test
-    @Order(2)
-    void shouldDelete() {
+    void shouldDeleteById() {
         assertTrue(repository.deleteById(5));
+        assertNull(repository.findById(5));
+    }
+
+    @Test
+    void shouldNotDeleteByBadId() {
+        assertFalse(repository.deleteById(0));
+        assertFalse(repository.deleteById(9999999));
     }
 
     private Bird makeBird() {
         Bird bird = new Bird();
-        bird.setBirdId(2);
         bird.setCommonName("Test Common Name");
         bird.setScientificName("Test Scientific Name");
         bird.setBirdImageUrl("Test/Url");
