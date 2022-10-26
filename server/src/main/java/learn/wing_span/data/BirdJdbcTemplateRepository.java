@@ -1,6 +1,7 @@
 package learn.wing_span.data;
 
 import learn.wing_span.data.mappers.BirdMapper;
+import learn.wing_span.data.mappers.SightingMapper;
 import learn.wing_span.models.Bird;
 import learn.wing_span.models.Sighting;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -21,6 +22,8 @@ public class BirdJdbcTemplateRepository implements BirdRepository{
     public BirdJdbcTemplateRepository(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
+
+
 
     @Override
     public List<Bird> findAll() {
@@ -49,7 +52,7 @@ public class BirdJdbcTemplateRepository implements BirdRepository{
             PreparedStatement statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             statement.setString(1, bird.getCommonName());
             statement.setString(2, bird.getScientificName());
-            statement.setString(3, bird.getImageUrl());
+            statement.setString(3, bird.getBirdImageUrl());
             return statement;
         }, keyHolder);
 
@@ -71,7 +74,7 @@ public class BirdJdbcTemplateRepository implements BirdRepository{
         int rowsUpdated = jdbcTemplate.update(sql,
                 bird.getCommonName(),
                 bird.getScientificName(),
-                bird.getImageUrl(),
+                bird.getBirdImageUrl(),
                 bird.getBirdId());
 
         return rowsUpdated > 0;
@@ -80,9 +83,19 @@ public class BirdJdbcTemplateRepository implements BirdRepository{
     @Transactional
     @Override
     public boolean deleteById(int birdId) {
-        jdbcTemplate.update("delete from sighting where bird_id = ?;", birdId);
-//        jdbcTemplate.update("delete from sighting_trait where sighting_id = ?;", birdId);
+        List<Integer> sightingIds = getSightingIds(birdId);
+
+        for (Integer id : sightingIds) {
+            jdbcTemplate.update("delete from sighting_trait where sighting_id = ?;", id);
+            jdbcTemplate.update("delete from sighting where sighting_id = ?;", id);
+        }
+
         return jdbcTemplate.update("delete from bird where bird_id = ?;", birdId) > 0;
     }
 
+    private List<Integer> getSightingIds(int birdId) {
+        String sql = "select * from sighting where bird_id = ?;";
+
+        return jdbcTemplate.query(sql, (rs, rowId) -> rs.getInt("sighting_id"), birdId);
+    }
 }

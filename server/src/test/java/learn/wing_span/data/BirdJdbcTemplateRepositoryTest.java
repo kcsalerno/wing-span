@@ -41,7 +41,7 @@ class BirdJdbcTemplateRepositoryTest {
         assertEquals(3, actual.getBirdId());
         assertEquals("Peacock", actual.getCommonName());
         assertEquals("Pavo Cristatus", actual.getScientificName());
-        assertEquals("https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Peacock_Plumage.jpg/330px-Peacock_Plumage.jpg", actual.getImageUrl());
+        assertEquals("https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Peacock_Plumage.jpg/330px-Peacock_Plumage.jpg", actual.getBirdImageUrl());
     }
 
     @Test
@@ -71,7 +71,7 @@ class BirdJdbcTemplateRepositoryTest {
         bird.setBirdId(2);
         bird.setCommonName("Test Common Name");
         bird.setScientificName("Test Scientific Name");
-        bird.setImageUrl("Test/Url");
+        bird.setBirdImageUrl("Test/Url");
         return bird;
     }
 }
