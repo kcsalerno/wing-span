@@ -10,6 +10,8 @@ import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class BadgeJdbcTemplateRepositoryTest {
+    private final int BADGE_COUNT = 2;
+
     @Autowired
     BadgeJdbcTemplateRepository repository;
 
@@ -22,7 +24,7 @@ class BadgeJdbcTemplateRepositoryTest {
     }
 
     @Test
-    void shouldFindById() {
+    void shouldFindBadgeById() {
         Badge actual = repository.findById(1);
 
         assertNotNull(actual);
@@ -33,26 +35,46 @@ class BadgeJdbcTemplateRepositoryTest {
     }
 
     @Test
-    void shouldAdd() {
+    void shouldNotFindBadgeByBadId() {
+        Badge actual = repository.findById(0);
+        assertNull(actual);
+
+        actual = repository.findById(999999);
+        assertNull(actual);
+    }
+
+    @Test
+    void shouldAddBadge() {
         Badge badge = makeBadge();
         Badge actual = repository.add(badge);
+
         assertNotNull(actual);
-        assertEquals(3, actual.getBadgeId());
+        assertEquals("Test Badge name", actual.getBadgeName());
+        assertEquals(BADGE_COUNT + 1, actual.getBadgeId());
     }
 
     @Test
     @Order(1)
-    void shouldUpdate() {
-        Badge badge = makeBadge();
-        badge.setBadgeId(2);
+    void shouldUpdateBadge() {
+        Badge actual = repository.findById(2);
+        actual.setBadgeDescription("updated");
 
-        assertTrue(repository.update(badge));
+        assertTrue(repository.update(actual));
+        assertEquals("10 Sightings", actual.getBadgeName());
+        assertEquals("updated", actual.getBadgeDescription());
     }
 
     @Test
     @Order(2)
-    void shouldDelete() {
+    void shouldDeleteById() {
         assertTrue(repository.deleteById(2));
+        assertNull(repository.findById(2));
+    }
+
+    @Test
+    void shouldNotDeleteByBadId () {
+        assertFalse(repository.deleteById(0));
+        assertFalse(repository.deleteById(9999999));
     }
 
     private Badge makeBadge() {
@@ -60,7 +82,6 @@ class BadgeJdbcTemplateRepositoryTest {
         badge.setBadgeName("Test Badge name");
         badge.setBadgeDescription("Test Badge description");
         badge.setBadgeImgUrl("https://static.thenounproject.com/png/1188264-200.png");
-        badge.setBadgeId(3);
         return badge;
     }
 }

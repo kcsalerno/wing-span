@@ -13,6 +13,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 class AppUserJdbcTemplateRepositoryTest {
+    private final int USER_COUNT = 2;
 
     @Autowired
     AppUserJdbcTemplateRepository repository;
@@ -72,6 +73,7 @@ class AppUserJdbcTemplateRepositoryTest {
         AppUser actual = repository.create(makeAppUser());
 
         assertNotNull(actual);
+        assertEquals(USER_COUNT + 1, actual.getAppUserId());
     }
 
 

@@ -52,7 +52,7 @@ public class SightingJdbcTemplateRepository implements SightingRepository {
             statement.setDate(3, sighting.getDate() == null ? null : Date.valueOf(sighting.getDate()));
             statement.setString(4, sighting.getCity());
             statement.setString(5, sighting.getState());
-            statement.setBoolean(6, sighting.getDaytime());
+            statement.setBoolean(6, sighting.isDaytime());
             return statement;
         }, keyHolder);
 
@@ -80,7 +80,7 @@ public class SightingJdbcTemplateRepository implements SightingRepository {
                 sighting.getDate(),
                 sighting.getCity(),
                 sighting.getState(),
-                sighting.getDaytime(),
+                sighting.isDaytime(),
                 sighting.getSightingId());
 
         return rowsUpdated > 0;
