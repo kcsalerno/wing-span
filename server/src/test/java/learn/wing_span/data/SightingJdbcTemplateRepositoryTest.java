@@ -28,7 +28,7 @@ class SightingJdbcTemplateRepositoryTest {
         List<Sighting> sightings = repository.findAll();
         assertNotNull(sightings);
 
-        assertTrue(sightings.size() >= 5);
+        assertTrue(sightings.size() >= 4);
     }
 
     @Test

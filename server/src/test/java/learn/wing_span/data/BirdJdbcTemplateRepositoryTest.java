@@ -60,7 +60,7 @@ class BirdJdbcTemplateRepositoryTest {
     @Test
     @Order(2)
     void shouldDelete() {
-        assertTrue(repository.deleteById(1));
+        assertTrue(repository.deleteById(5));
     }
 
     private Bird makeBird() {
