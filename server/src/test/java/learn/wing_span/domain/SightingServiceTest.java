@@ -1,5 +1,6 @@
 package learn.wing_span.domain;
 
+
 import learn.wing_span.data.SightingJdbcTemplateRepository;
 import learn.wing_span.models.Sighting;
 import learn.wing_span.models.Trait;
@@ -15,6 +16,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
 
 @SpringBootTest
+
 class SightingServiceTest {
 
     @MockBean

@@ -12,13 +12,13 @@ import java.util.stream.Collectors;
 public class AppUser implements UserDetails {
     private final String username;
     private final List<GrantedAuthority> authorities;
+    private final List<Sighting> sightings = new ArrayList<>();
     private int appUserId;
     private String password;
     private boolean enabled;
     private String email;
     private String firstName;
     private String lastName;
-    private final List<Sighting> sightings = new ArrayList<>();
 
     public AppUser(int appUserId, String username, String password, boolean enabled, List<String> roles) {
         this.appUserId = appUserId;

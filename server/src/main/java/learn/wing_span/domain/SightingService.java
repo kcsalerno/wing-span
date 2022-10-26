@@ -23,6 +23,7 @@ public class SightingService {
     public List<Sighting> findAll() {
         return repository.findAll();
     }
+
     public Sighting findById(int sightingId) {
         return repository.findById(sightingId);
     }
@@ -57,7 +58,7 @@ public class SightingService {
             return result;
         }
 
-        if (result.isSuccess()){
+        if (result.isSuccess()) {
             if (!repository.update(sighting)) {
                 result.setPayload(sighting);
             } else {
@@ -77,6 +78,7 @@ public class SightingService {
 
         return result;
     }
+
     private Result<Sighting> validate(Sighting sighting) {
         Result<Sighting> result = new Result<>();
 
