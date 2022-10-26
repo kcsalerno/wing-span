@@ -36,7 +36,6 @@ public class SightingService {
 
         if (sighting.getSightingId() != 0) {
             result.addMessage(ResultType.INVALID, "Sighting ID cannot be set for `add` operation");
-            return result;
         }
 
         if (result.isSuccess()) {
@@ -86,13 +85,13 @@ public class SightingService {
             return result;
         }
 
-        if (sighting.getSightingUserId() < 0) {
-            result.addMessage(ResultType.INVALID, "User must exist");
+        if (sighting.getSightingUserId() < 1) {
+            result.addMessage(ResultType.INVALID, "User must valid");
             return result;
         }
 
-        if (sighting.getSightingBirdId() < 0) {
-            result.addMessage(ResultType.INVALID, "Bird must exist");
+        if (sighting.getSightingBirdId() < 1) {
+            result.addMessage(ResultType.INVALID, "Bird must valid");
             return result;
         }
 
@@ -101,7 +100,7 @@ public class SightingService {
             return result;
         }
 
-        if (sighting.getDate() != null && sighting.getDate().isBefore(LocalDate.now())) {
+        if (!sighting.getDate().isBefore(LocalDate.now())) {
             result.addMessage(ResultType.INVALID, "Sighting entry must be before today");
             return result;
         }
@@ -111,10 +110,9 @@ public class SightingService {
             return result;
         }
 
-        Set<ConstraintViolation<Sighting>> violations = validator.validate(sighting);
-        for (var violation : violations) {
-            result.addMessage(ResultType.INVALID, violation.getMessage());
-            return result;
+        if (repository.findAll().stream().anyMatch(i ->
+                i.getSightingUserId() == (sighting.getSightingUserId()))) {
+            result.addMessage(ResultType.DUPLICATE, "User cannot be duplicated");
         }
 
         return result;

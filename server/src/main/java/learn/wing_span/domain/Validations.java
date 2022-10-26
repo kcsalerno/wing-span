@@ -6,10 +6,4 @@ public class Validations {
         return value == null || value.isBlank();
     }
 
-
-    public static boolean isNullOrBlank(String value) {
-        return value == null || value.isBlank();
-    }
-
-
 }

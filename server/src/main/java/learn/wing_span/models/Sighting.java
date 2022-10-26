@@ -16,7 +16,7 @@ public class Sighting {
 
     }
 
-    public Sighting(int sightingId, LocalDate date, String city, String state, boolean daytime, int sightingUserId, int sightingBirdId) {
+    public Sighting(int sightingId, int sightingUserId, int sightingBirdId, LocalDate date, String city, String state, boolean daytime) {
         this.sightingId = sightingId;
         this.date = date;
         this.city = city;
