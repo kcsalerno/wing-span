@@ -6,6 +6,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class AppUser implements UserDetails {
@@ -51,7 +52,7 @@ public class AppUser implements UserDetails {
         return username;
     }
 
-    // Do we need these?
+    // Do we need this?
 //    public void setUsername(String username) {
 //        this.username = username;
 //    }
@@ -65,7 +66,6 @@ public class AppUser implements UserDetails {
         return sightings;
     }
 
-    // Do we need these?
     public String getEmail() {
         return email;
     }
@@ -105,7 +105,6 @@ public class AppUser implements UserDetails {
         return false;
     }
 
-    // Do we need this?
     public void setEnabled(boolean enabled) {
         this.enabled = enabled;
     }
@@ -121,5 +120,28 @@ public class AppUser implements UserDetails {
 
     public void setAppUserId(int appUserId) {
         this.appUserId = appUserId;
+    }
+
+    @Override
+    public boolean equals(Object obj)
+    {
+        // If this is the object, return true.
+        if (this == obj)
+            return true;
+        // Check that object is not null, nor is the object's class different from the current runtime class,
+        // if either is true, return false.
+        if (obj == null || getClass() != obj.getClass())
+            return false;
+        // Cast the object's type.
+        AppUser appUser = (AppUser) obj;
+        // Compare the fields between object and the forage.
+        return (Objects.equals(username, appUser.username)
+                && Objects.equals(password, appUser.password));
+    }
+
+    @Override
+    public int hashCode()
+    {
+        return Objects.hash(username, password);
     }
 }
