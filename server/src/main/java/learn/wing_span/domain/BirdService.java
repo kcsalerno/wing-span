@@ -50,7 +50,7 @@ public class BirdService {
         }
         if (result.isSuccess()) {
             if (repository.update(bird)) {
-                result.setPayload((bird));
+                result.setPayload(bird);
             } else {
                 result.addMessage(ResultType.NOT_FOUND, "Bird ID not found.");
             }
@@ -84,10 +84,8 @@ public class BirdService {
         }
 
         List<Bird> birds = repository.findAll();
-        for (Bird b : birds)
-        {
-            if (b.equals(bird))
-            {
+        for (Bird b : birds) {
+            if (b.equals(bird)) {
                 result.addMessage(ResultType.DUPLICATE, "A bird cannot be duplicated.");
                 return result;
             }

@@ -1,9 +1,7 @@
 package learn.wing_span.domain;
-import static org.mockito.Mockito.*;
 
 import learn.wing_span.data.BirdJdbcTemplateRepository;
 import learn.wing_span.models.Bird;
-import learn.wing_span.models.Trait;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -12,6 +10,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.when;
 
 @SpringBootTest
 class BirdServiceTest {
@@ -25,10 +24,10 @@ class BirdServiceTest {
     @Test
     void shouldFindTwoBirds() {
         when(repository.findAll()).thenReturn(List.of(
-              new Bird(1, "Test Bird", "Testimus Maximus",
-                      "https://www.testing.com"),
-              new Bird(2, "Another Bird", "Otherum Birdium",
-                      "https://www.another.com")
+                new Bird(1, "Test Bird", "Testimus Maximus",
+                        "https://www.testing.com"),
+                new Bird(2, "Another Bird", "Otherum Birdium",
+                        "https://www.another.com")
         ));
 
         List<Bird> birds = service.findAll();
@@ -59,7 +58,7 @@ class BirdServiceTest {
     }
 
     @Test
-    void shouldNotAddNullBird () {
+    void shouldNotAddNullBird() {
         Result<Bird> result = service.add(null);
 
         assertFalse(result.isSuccess());
@@ -68,7 +67,7 @@ class BirdServiceTest {
     }
 
     @Test
-    void shouldNotAddWithNullOrBlankCommonName () {
+    void shouldNotAddWithNullOrBlankCommonName() {
         Bird bird = new Bird(1, null, "Testimus Maximus",
                 "https://www.testing.com");
 
@@ -88,7 +87,7 @@ class BirdServiceTest {
     }
 
     @Test
-    void shouldNotAddWithNullOrBlankScientificName () {
+    void shouldNotAddWithNullOrBlankScientificName() {
         Bird bird = new Bird(1, "Test Bird", null,
                 "https://www.testing.com");
 
@@ -149,7 +148,7 @@ class BirdServiceTest {
     }
 
     @Test
-    void shouldNotUpdateNullBird () {
+    void shouldNotUpdateNullBird() {
         Result<Bird> result = service.update(null);
 
         assertFalse(result.isSuccess());
@@ -158,7 +157,7 @@ class BirdServiceTest {
     }
 
     @Test
-    void shouldNotUpdateWithNullOrBlankCommonName () {
+    void shouldNotUpdateWithNullOrBlankCommonName() {
         Bird bird = new Bird(1, null, "Testimus Maximus",
                 "https://www.testing.com");
 
@@ -178,7 +177,7 @@ class BirdServiceTest {
     }
 
     @Test
-    void shouldNotUpdateWithNullOrBlankScientificName () {
+    void shouldNotUpdateWithNullOrBlankScientificName() {
         Bird bird = new Bird(1, "Test Bird", null,
                 "https://www.testing.com");
 
@@ -234,7 +233,7 @@ class BirdServiceTest {
 
         assertTrue(result.isSuccess());
     }
-    
+
     @Test
     void shouldNotDeleteNonExistingBird() {
         Result<Bird> result = service.deleteById(9999);

@@ -1,8 +1,8 @@
 package learn.wing_span.data;
 
-import learn.wing_span.models.Bird;
 import learn.wing_span.models.Trait;
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 

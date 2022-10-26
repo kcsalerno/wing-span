@@ -1,6 +1,5 @@
 package learn.wing_span.data;
 
-import learn.wing_span.models.Bird;
 import learn.wing_span.models.Sighting;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
