@@ -1,6 +1,7 @@
 package learn.wing_span.data;
 
 import learn.wing_span.data.mappers.BirdMapper;
+import learn.wing_span.data.mappers.SightingMapper;
 import learn.wing_span.models.Bird;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
@@ -20,6 +21,8 @@ public class BirdJdbcTemplateRepository implements BirdRepository {
     public BirdJdbcTemplateRepository(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
+
+
 
     @Override
     public List<Bird> findAll() {
