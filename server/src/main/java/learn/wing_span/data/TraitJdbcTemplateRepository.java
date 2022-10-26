@@ -4,11 +4,14 @@ import learn.wing_span.data.mappers.TraitMapper;
 import learn.wing_span.models.Trait;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.PreparedStatement;
 import java.sql.Statement;
 import java.util.List;
 
+@Repository
 public class TraitJdbcTemplateRepository implements TraitRepository{
 
     private final JdbcTemplate jdbcTemplate;
@@ -19,7 +22,8 @@ public class TraitJdbcTemplateRepository implements TraitRepository{
 
     @Override
     public List<Trait> findAll() {
-        final String sql = "select trait_id, name from trait;";
+        final String sql = "select trait_id, name "
+                + "from trait;";
         return jdbcTemplate.query(sql, new TraitMapper());
     }
 
@@ -35,16 +39,16 @@ public class TraitJdbcTemplateRepository implements TraitRepository{
     @Override
     public Trait add(Trait trait) {
 
-        String sql = "insert into trait (name) values (?);";
+        final String sql = "insert into trait (name) values (?);";
 
         GeneratedKeyHolder keyHolder = new GeneratedKeyHolder();
-        int rowsAffected = jdbcTemplate.update((connection) -> {
+        int rowsAffected = jdbcTemplate.update(connection -> {
             PreparedStatement statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             statement.setString(1, trait.getName());
             return statement;
         }, keyHolder);
 
-        if (rowsAffected == 0) {
+        if (rowsAffected <= 0) {
             return null;
         }
         trait.setTraitId(keyHolder.getKey().intValue());
@@ -61,9 +65,10 @@ public class TraitJdbcTemplateRepository implements TraitRepository{
                 trait.getTraitId()) > 0;
     }
 
+    @Transactional
     @Override
     public boolean deleteById(int traitId) {
-        jdbcTemplate.update("delete from bird_trait where trait_id = ?;", traitId);
+        jdbcTemplate.update("delete from sighting_trait where trait_id = ?;", traitId);
         return jdbcTemplate.update("delete from trait where trait_id = ?;", traitId) > 0;
     }
 }

@@ -52,7 +52,7 @@ class AvatarJdbcTemplateRepositoryTest {
         assertTrue(repository.deleteById(2));
     }
 
-    Avatar makeAvatar() {
+    private Avatar makeAvatar() {
         Avatar avatar = new Avatar();
         avatar.setImageUrl("https://cdn.pixabay.com/photo/2017/05/25/21/26/bird-feeder.jpg");
         avatar.setAvatarDescription("Bird Feeder");

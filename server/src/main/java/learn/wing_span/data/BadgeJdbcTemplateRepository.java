@@ -6,10 +6,13 @@ import learn.wing_span.models.Badge;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.PreparedStatement;
 import java.sql.Statement;
 
+@Repository
 public class BadgeJdbcTemplateRepository implements BadgeRepository{
 
     private final JdbcTemplate jdbcTemplate;
@@ -57,14 +60,17 @@ public class BadgeJdbcTemplateRepository implements BadgeRepository{
                 + "badge_description = ?, "
                 + "badge_img_url = ? "
                 + "where badge_id = ?;";
+
         int rowsAffected = jdbcTemplate.update(sql,
                 badge.getBadgeName(),
                 badge.getBadgeDescription(),
+                badge.getBadgeImgUrl(),
                 badge.getBadgeId());
 
         return rowsAffected > 0;
     }
 
+    @Transactional
     @Override
     public boolean deleteById(int badgeId) {
         jdbcTemplate.update("delete from user_badge where badge_id = ?;", badgeId);

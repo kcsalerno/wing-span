@@ -24,7 +24,7 @@ public class SightingJdbcTemplateRepository implements SightingRepository {
     }
 
     @Override
-    public List<Sighting> findAll() throws DataAccessException {
+    public List<Sighting> findAll() {
 
         final String sql = "select sighting_id, app_user_id, bird_id, sighting_date, city, state, daytime "
                 + "from sighting;";
@@ -32,7 +32,7 @@ public class SightingJdbcTemplateRepository implements SightingRepository {
     }
 
     @Override
-    public Sighting findById(int sightingId) throws DataAccessException {
+    public Sighting findById(int sightingId) {
         final String sql = "select sighting_id, app_user_id, bird_id, sighting_date, city, state, daytime "
                 + "from sighting "
                 + "where sighting_id = ?;";
@@ -41,7 +41,7 @@ public class SightingJdbcTemplateRepository implements SightingRepository {
     }
 
     @Override
-    public Sighting create(Sighting sighting) throws DataAccessException {
+    public Sighting create(Sighting sighting) {
         final String sql = "insert into sighting (app_user_id, bird_id, sighting_date, city, state, daytime) "
                 + "values (?, ?, ?, ?, ?, ?);";
 
@@ -57,7 +57,7 @@ public class SightingJdbcTemplateRepository implements SightingRepository {
             return statement;
         }, keyHolder);
 
-        if (rowsAffected == 0) {
+        if (rowsAffected <= 0) {
             return null;
         }
 
@@ -66,7 +66,7 @@ public class SightingJdbcTemplateRepository implements SightingRepository {
     }
 
     @Override
-    public boolean update(Sighting sighting) throws DataAccessException {
+    public boolean update(Sighting sighting) {
         final String sql = "update sighting set " +
                 "app_user_id = ?, " +
                 "bird_id = ?, " +
