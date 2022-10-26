@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface BirdRepository {
     List<Bird> findAll();
-    Bird findById(int BirdId);
+    Bird findById(int birdId);
     Bird add(Bird bird);
     boolean update(Bird bird);
     boolean deleteById(int birdId);
