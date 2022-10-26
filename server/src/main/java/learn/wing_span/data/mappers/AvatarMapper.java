@@ -12,7 +12,7 @@ public class AvatarMapper implements RowMapper<Avatar> {
     public Avatar mapRow(ResultSet rs, int rowNum) throws SQLException {
         Avatar avatar = new Avatar();
         avatar.setAvatarId(rs.getInt("avatar_id"));
-        avatar.setImageUrl(rs.getString("avatar_img_url"));
+        avatar.setAvatarImageUrl(rs.getString("avatar_img_url"));
         avatar.setAvatarDescription(rs.getString("avatar_description"));
         return avatar;
     }

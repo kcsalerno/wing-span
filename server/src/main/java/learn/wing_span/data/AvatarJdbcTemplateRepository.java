@@ -36,7 +36,7 @@ public class AvatarJdbcTemplateRepository implements AvatarRepository{
         KeyHolder keyHolder = new GeneratedKeyHolder();
         int rowsAffected = jdbcTemplate.update(connection -> {
             PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            ps.setString(1, avatar.getImageUrl());
+            ps.setString(1, avatar.getAvatarImageUrl());
             ps.setString(2, avatar.getAvatarDescription());
             return ps;
         }, keyHolder);
@@ -57,7 +57,7 @@ public class AvatarJdbcTemplateRepository implements AvatarRepository{
                 + "where avatar_id = ?;";
 
         int rowsAffected = jdbcTemplate.update(sql,
-                avatar.getImageUrl(),
+                avatar.getAvatarImageUrl(),
                 avatar.getAvatarDescription(),
                 avatar.getAvatarId());
 

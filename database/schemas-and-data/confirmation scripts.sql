@@ -24,6 +24,19 @@ select * from app_user_role aur
 	inner join app_user au on aur.app_user_id = au.app_user_id
     inner join app_role ur on aur.app_role_id = ur.app_role_id;
 
-delete from sighting_trait where sighting_id = 1;
-select * from sighting_trait;
-delete from sighting where sighting_id = 1;
+-- delete from sighting_trait where sighting_id = 1;
+-- select * from sighting_trait;
+-- delete from sighting where sighting_id = 1;
+
+select b.bird_id, b.common_name, b.scientific_name, b.img_url from sighting s
+	inner join bird b on s.bird_id = b.bird_id
+where s.sighting_id = 1;
+
+select * from sighting;
+
+select * from bird
+	where bird_id = 1;
+
+select * from app_user;
+
+select * from app_user_role;

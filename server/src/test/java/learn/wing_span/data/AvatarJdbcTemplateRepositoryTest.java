@@ -27,7 +27,7 @@ class AvatarJdbcTemplateRepositoryTest {
 
         assertNotNull(actual);
         assertEquals(1, actual.getAvatarId());
-        assertEquals("https://cdn.pixabay.com/photo/2017/05/25/21/26/bird-feeder-2344414__480.jpg", actual.getImageUrl());
+        assertEquals("https://cdn.pixabay.com/photo/2017/05/25/21/26/bird-feeder-2344414__480.jpg", actual.getAvatarImageUrl());
     }
 
     @Test
@@ -54,7 +54,7 @@ class AvatarJdbcTemplateRepositoryTest {
 
     private Avatar makeAvatar() {
         Avatar avatar = new Avatar();
-        avatar.setImageUrl("https://cdn.pixabay.com/photo/2017/05/25/21/26/bird-feeder.jpg");
+        avatar.setAvatarImageUrl("https://cdn.pixabay.com/photo/2017/05/25/21/26/bird-feeder.jpg");
         avatar.setAvatarDescription("Bird Feeder");
         avatar.setAvatarId(3);
         return avatar;

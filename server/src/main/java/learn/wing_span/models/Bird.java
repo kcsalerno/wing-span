@@ -2,12 +2,13 @@ package learn.wing_span.models;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Bird {
     private int birdId;
     private String commonName;
     private String scientificName;
-    private String imageUrl;
+    private String birdImageUrl;
 
     private List<Sighting> sightings = new ArrayList<>();
 
@@ -19,7 +20,7 @@ public class Bird {
         this.birdId = birdId;
         this.commonName = commonName;
         this.scientificName = scientificName;
-        this.imageUrl = imageUrl;
+        this.birdImageUrl = imageUrl;
     }
 
     public int getBirdId() {
@@ -46,15 +47,39 @@ public class Bird {
         this.scientificName = scientificName;
     }
 
-    public String getImageUrl() {
-        return imageUrl;
+    public String getBirdImageUrl() {
+        return birdImageUrl;
     }
 
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
+    public void setBirdImageUrl(String imageUrl) {
+        this.birdImageUrl = imageUrl;
     }
 
     public List<Sighting> getSightings(){
         return new ArrayList<>(sightings);
+    }
+
+    @Override
+    public boolean equals(Object obj)
+    {
+        // If this is the object, return true.
+        if (this == obj)
+            return true;
+        // Check that object is not null, nor is the object's class different from the current runtime class,
+        // if either is true, return false.
+        if (obj == null || getClass() != obj.getClass())
+            return false;
+        // Cast the object's type.
+        Bird bird = (Bird) obj;
+        // Compare the fields between object and the forage.
+        return (Objects.equals(commonName, bird.commonName)
+                && Objects.equals(scientificName, bird.scientificName)
+                && Objects.equals(birdImageUrl, bird.birdImageUrl));
+    }
+
+    @Override
+    public int hashCode()
+    {
+        return Objects.hash(commonName, scientificName, birdImageUrl);
     }
 }

@@ -13,7 +13,7 @@ public class BirdMapper implements RowMapper<Bird> {
         bird.setBirdId(rs.getInt("bird_id"));
         bird.setCommonName(rs.getString("common_name"));
         bird.setScientificName(rs.getString("scientific_name"));
-        bird.setImageUrl(rs.getString("img_url"));
+        bird.setBirdImageUrl(rs.getString("img_url"));
         return bird;
     }
 }

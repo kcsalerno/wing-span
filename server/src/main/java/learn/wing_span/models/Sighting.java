@@ -83,16 +83,29 @@ public class Sighting {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Sighting that = (Sighting) o;
-        return sightingId == that.sightingId &&
-                Objects.equals(sightingUserId, that.sightingUserId);
+    public boolean equals(Object obj)
+    {
+        // If this is the object, return true.
+        if (this == obj)
+            return true;
+        // Check that object is not null, nor is the object's class different from the current runtime class,
+        // if either is true, return false.
+        if (obj == null || getClass() != obj.getClass())
+            return false;
+        // Cast the object's type.
+        Sighting sighting = (Sighting) obj;
+        // Compare the fields between object and the forage.
+        return (sightingUserId == sighting.sightingUserId
+                && sightingBirdId == sighting.sightingBirdId
+                && Objects.equals(date, sighting.date)
+                && Objects.equals(city, sighting.city)
+                && Objects.equals(state, sighting.state)
+                && Objects.equals(daytime, sighting.daytime));
     }
 
     @Override
-    public int hashCode() {
-        return Objects.hash(sightingId, sightingUserId);
+    public int hashCode()
+    {
+        return Objects.hash(sightingUserId, sightingBirdId, date, city, state, daytime);
     }
 }
