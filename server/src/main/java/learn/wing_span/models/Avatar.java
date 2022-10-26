@@ -41,8 +41,7 @@ public class Avatar {
     }
 
     @Override
-    public boolean equals(Object obj)
-    {
+    public boolean equals(Object obj) {
         // If this is the object, return true.
         if (this == obj)
             return true;
@@ -58,8 +57,7 @@ public class Avatar {
     }
 
     @Override
-    public int hashCode()
-    {
+    public int hashCode() {
         return Objects.hash(avatarImageUrl, avatarDescription);
     }
 }

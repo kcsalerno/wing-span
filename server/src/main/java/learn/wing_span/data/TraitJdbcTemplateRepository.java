@@ -12,7 +12,7 @@ import java.sql.Statement;
 import java.util.List;
 
 @Repository
-public class TraitJdbcTemplateRepository implements TraitRepository{
+public class TraitJdbcTemplateRepository implements TraitRepository {
 
     private final JdbcTemplate jdbcTemplate;
 

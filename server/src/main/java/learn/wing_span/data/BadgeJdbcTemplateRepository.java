@@ -1,6 +1,5 @@
 package learn.wing_span.data;
 
-import learn.wing_span.data.mappers.AvatarMapper;
 import learn.wing_span.data.mappers.BadgeMapper;
 import learn.wing_span.models.Badge;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -13,7 +12,7 @@ import java.sql.PreparedStatement;
 import java.sql.Statement;
 
 @Repository
-public class BadgeJdbcTemplateRepository implements BadgeRepository{
+public class BadgeJdbcTemplateRepository implements BadgeRepository {
 
     private final JdbcTemplate jdbcTemplate;
 

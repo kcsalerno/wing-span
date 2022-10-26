@@ -1,6 +1,5 @@
 package learn.wing_span.data;
 
-import learn.wing_span.models.Avatar;
 import learn.wing_span.models.Badge;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +23,7 @@ class BadgeJdbcTemplateRepositoryTest {
 
     @Test
     void shouldFindById() {
-        Badge actual= repository.findById(1);
+        Badge actual = repository.findById(1);
 
         assertNotNull(actual);
         assertEquals(1, actual.getBadgeId());

@@ -1,6 +1,5 @@
 package learn.wing_span.data.mappers;
 
-import learn.wing_span.models.Badge;
 import learn.wing_span.models.Trait;
 import org.springframework.jdbc.core.RowMapper;
 

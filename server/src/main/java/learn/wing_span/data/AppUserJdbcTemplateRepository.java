@@ -13,13 +13,13 @@ import java.sql.Statement;
 import java.util.List;
 
 @Repository
-public class AppUserJdbcTemplateRepository implements AppUserRepository {  
+public class AppUserJdbcTemplateRepository implements AppUserRepository {
     private final JdbcTemplate jdbcTemplate;
 
     public AppUserJdbcTemplateRepository(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
-  
+
     @Override
     @Transactional
     public AppUser findByUsername(String username) {
@@ -80,15 +80,13 @@ public class AppUserJdbcTemplateRepository implements AppUserRepository {
     @Override
     @Transactional
     public boolean update(AppUser user) {
-    // public void update(AppUser user) {
-
         final String sql = "update app_user set "
                 + "username = ?, "
-                + "enabled = ? "
-                + "email = ? "
-                + "user_first_name = ? "
+                + "enabled = ?, "
+                + "email = ?, "
+                + "user_first_name = ?, "
                 + "user_last_name = ? "
-                + "where app_user_id = ?";
+                + "where app_user_id = ?;";
 
         boolean updated = jdbcTemplate.update(sql,
                 user.getUsername(), user.isEnabled(), user.getEmail(), user.getFirstName(),
@@ -99,10 +97,6 @@ public class AppUserJdbcTemplateRepository implements AppUserRepository {
         }
 
         return updated;
-//        jdbcTemplate.update(sql,
-//                user.getUsername(), user.isEnabled(), user.getAppUserId());
-//
-//        updateRoles(user);
     }
 
     private void updateRoles(AppUser user) {

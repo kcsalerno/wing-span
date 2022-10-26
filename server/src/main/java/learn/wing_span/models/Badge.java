@@ -51,8 +51,7 @@ public class Badge {
     }
 
     @Override
-    public boolean equals(Object obj)
-    {
+    public boolean equals(Object obj) {
         // If this is the object, return true.
         if (this == obj)
             return true;
@@ -69,8 +68,7 @@ public class Badge {
     }
 
     @Override
-    public int hashCode()
-    {
+    public int hashCode() {
         return Objects.hash(badgeName, badgeDescription, badgeImgUrl);
     }
 }
