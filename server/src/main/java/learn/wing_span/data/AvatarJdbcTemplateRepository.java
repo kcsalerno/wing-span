@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import java.sql.PreparedStatement;
 import java.sql.Statement;
+import java.util.List;
 
 @Repository
 public class AvatarJdbcTemplateRepository implements AvatarRepository {
@@ -16,6 +17,14 @@ public class AvatarJdbcTemplateRepository implements AvatarRepository {
 
     public AvatarJdbcTemplateRepository(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
+    }
+
+    @Override
+    public List<Avatar> findAll() {
+        final String sql = "select avatar_id, avatar_img_url, avatar_description "
+                + "from avatar;";
+
+        return jdbcTemplate.query(sql, new AvatarMapper());
     }
 
     @Override

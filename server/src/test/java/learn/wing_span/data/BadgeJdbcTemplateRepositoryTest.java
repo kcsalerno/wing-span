@@ -72,7 +72,7 @@ class BadgeJdbcTemplateRepositoryTest {
     }
 
     @Test
-    void shouldNotDeleteByBadId () {
+    void shouldNotDeleteByBadId() {
         assertFalse(repository.deleteById(0));
         assertFalse(repository.deleteById(9999999));
     }

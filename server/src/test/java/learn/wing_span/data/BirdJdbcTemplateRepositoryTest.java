@@ -1,7 +1,8 @@
 package learn.wing_span.data;
 
 import learn.wing_span.models.Bird;
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -29,7 +30,7 @@ class BirdJdbcTemplateRepositoryTest {
         List<Bird> birds = repository.findAll();
         assertNotNull(birds);
 
-        assertTrue(birds.size() >= BIRD_COUNT || birds.size() == BIRD_COUNT - 1) ;
+        assertTrue(birds.size() >= BIRD_COUNT || birds.size() == BIRD_COUNT - 1);
     }
 
     @Test

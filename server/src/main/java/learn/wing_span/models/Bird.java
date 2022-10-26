@@ -5,12 +5,11 @@ import java.util.List;
 import java.util.Objects;
 
 public class Bird {
+    private final List<Sighting> sightings = new ArrayList<>();
     private int birdId;
     private String commonName;
     private String scientificName;
     private String birdImageUrl;
-
-    private final List<Sighting> sightings = new ArrayList<>();
 
     public Bird() {
 
