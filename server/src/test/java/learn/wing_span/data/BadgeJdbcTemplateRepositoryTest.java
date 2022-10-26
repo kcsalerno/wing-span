@@ -5,6 +5,8 @@ import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
@@ -21,6 +23,14 @@ class BadgeJdbcTemplateRepositoryTest {
     @BeforeEach
     void setup() {
         knownGoodState.set();
+    }
+
+    @Test
+    void shouldFindAllBadges() {
+        List<Badge> badges = repository.findAll();
+
+        assertNotNull(badges);
+        assertTrue(badges.size() >= 1 && badges.size() <= 3);
     }
 
     @Test

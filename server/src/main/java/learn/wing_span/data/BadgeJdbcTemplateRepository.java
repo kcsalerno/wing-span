@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.PreparedStatement;
 import java.sql.Statement;
+import java.util.List;
 
 @Repository
 public class BadgeJdbcTemplateRepository implements BadgeRepository {
@@ -19,6 +20,14 @@ public class BadgeJdbcTemplateRepository implements BadgeRepository {
     public BadgeJdbcTemplateRepository(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
+
+    @Override
+    public List<Badge> findAll() {
+        final String sql = "select * from badge;";
+
+        return jdbcTemplate.query(sql, new BadgeMapper());
+    }
+
 
     @Override
     public Badge findById(int badgeId) {

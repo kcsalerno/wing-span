@@ -82,7 +82,7 @@ public class TraitService {
         if (repository.findAll().stream()
                 .anyMatch(i -> i.getName().equalsIgnoreCase(trait.getName()) &&
                         i.getTraitId() != trait.getTraitId())) {
-            result.addMessage(ResultType.INVALID, "Trait name cannot be duplicated.");
+            result.addMessage(ResultType.DUPLICATE, "Trait name cannot be duplicated.");
         }
 
         return result;
