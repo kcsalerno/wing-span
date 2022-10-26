@@ -5,7 +5,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.jdbc.core.JdbcTemplate;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -15,10 +14,9 @@ import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest
 class SightingJdbcTemplateRepositoryTest {
     @Autowired
-    private SightingJdbcTemplateRepository repository;
-
-    @Autowired
     KnownGoodState knownGoodState;
+    @Autowired
+    private SightingJdbcTemplateRepository repository;
 
     @BeforeEach
     void setup() {
@@ -30,7 +28,7 @@ class SightingJdbcTemplateRepositoryTest {
         List<Sighting> sightings = repository.findAll();
         assertNotNull(sightings);
 
-        assertTrue(sightings.size() >= 5);
+        assertTrue(sightings.size() >= 4);
     }
 
     @Test

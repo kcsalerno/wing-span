@@ -1,12 +1,10 @@
 package learn.wing_span.data;
 
 import learn.wing_span.models.Bird;
-import learn.wing_span.models.Sighting;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import java.time.LocalDate;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -15,10 +13,9 @@ import static org.junit.jupiter.api.Assertions.*;
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class BirdJdbcTemplateRepositoryTest {
     @Autowired
-    private BirdJdbcTemplateRepository repository;
-
-    @Autowired
     KnownGoodState knownGoodState;
+    @Autowired
+    private BirdJdbcTemplateRepository repository;
 
     @BeforeEach
     void setup() {
@@ -63,7 +60,7 @@ class BirdJdbcTemplateRepositoryTest {
     @Test
     @Order(2)
     void shouldDelete() {
-        assertTrue(repository.deleteById(1));
+        assertTrue(repository.deleteById(5));
     }
 
     private Bird makeBird() {

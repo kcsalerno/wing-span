@@ -11,7 +11,7 @@ import java.sql.PreparedStatement;
 import java.sql.Statement;
 
 @Repository
-public class AvatarJdbcTemplateRepository implements AvatarRepository{
+public class AvatarJdbcTemplateRepository implements AvatarRepository {
     private final JdbcTemplate jdbcTemplate;
 
     public AvatarJdbcTemplateRepository(JdbcTemplate jdbcTemplate) {

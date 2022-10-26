@@ -23,7 +23,7 @@ class AvatarJdbcTemplateRepositoryTest {
 
     @Test
     void shouldFindById() {
-        Avatar actual= repository.findById(1);
+        Avatar actual = repository.findById(1);
 
         assertNotNull(actual);
         assertEquals(1, actual.getAvatarId());

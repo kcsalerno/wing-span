@@ -1,6 +1,5 @@
 package learn.wing_span.data;
 
-import learn.wing_span.App;
 import learn.wing_span.models.AppUser;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -27,19 +26,19 @@ class AppUserJdbcTemplateRepositoryTest {
     }
 
     @Test
-    void shouldFindByAdminByUsername () {
+    void shouldFindByAdminByUsername() {
         AppUser actual = repository.findByUsername("admin1");
         assertNotNull(actual);
     }
 
     @Test
-    void shouldFindByUserByUsername () {
+    void shouldFindByUserByUsername() {
         AppUser actual = repository.findByUsername("user1");
         assertNotNull(actual);
     }
 
     @Test
-    void shouldNotFindUserWithBlankOrNullUsername () {
+    void shouldNotFindUserWithBlankOrNullUsername() {
         AppUser actual = repository.findByUsername("");
         assertNull(actual);
 
@@ -79,17 +78,20 @@ class AppUserJdbcTemplateRepositoryTest {
     @Test
     void shouldUpdateCurrentUser() {
         AppUser actual = repository.findByUsername("user1");
+        assertNotNull(actual);
 
         actual.setEnabled(false);
-
         assertTrue(repository.update(actual));
+
+        assertEquals("user@user.com", actual.getEmail());
+        assertFalse(actual.isEnabled());
     }
 
-    private AppUser makeAppUser () {
+    private AppUser makeAppUser() {
         List<String> roles = new ArrayList<>();
         roles.add("USER");
 
-        AppUser testUser = new AppUser(0,"test", "test", true, roles);
+        AppUser testUser = new AppUser(0, "test", "test", true, roles);
         testUser.setEmail("test@test.com");
         testUser.setFirstName("Testing");
         testUser.setLastName("Tests");

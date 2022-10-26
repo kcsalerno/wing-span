@@ -13,13 +13,13 @@ import java.sql.Statement;
 import java.util.List;
 
 @Repository
-public class AppUserJdbcTemplateRepository implements AppUserRepository {  
+public class AppUserJdbcTemplateRepository implements AppUserRepository {
     private final JdbcTemplate jdbcTemplate;
 
     public AppUserJdbcTemplateRepository(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
-  
+
     @Override
     @Transactional
     public AppUser findByUsername(String username) {

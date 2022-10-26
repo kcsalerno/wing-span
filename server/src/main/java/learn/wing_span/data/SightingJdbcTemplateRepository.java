@@ -2,7 +2,6 @@ package learn.wing_span.data;
 
 import learn.wing_span.data.mappers.SightingMapper;
 import learn.wing_span.models.Sighting;
-import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
