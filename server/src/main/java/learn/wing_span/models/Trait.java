@@ -6,7 +6,7 @@ public class Trait {
     private int traitId;
     private String name;
 
-    public Trait(){
+    public Trait() {
 
     }
 
@@ -32,8 +32,7 @@ public class Trait {
     }
 
     @Override
-    public boolean equals(Object obj)
-    {
+    public boolean equals(Object obj) {
         // If this is the object, return true.
         if (this == obj)
             return true;
@@ -48,8 +47,7 @@ public class Trait {
     }
 
     @Override
-    public int hashCode()
-    {
+    public int hashCode() {
         return Objects.hash(name);
     }
 }

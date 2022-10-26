@@ -10,15 +10,15 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class AppUser implements UserDetails {
-    private int appUserId;
     private final String username;
+    private final List<GrantedAuthority> authorities;
+    private int appUserId;
     private String password;
     private boolean enabled;
     private String email;
     private String firstName;
     private String lastName;
-    private List<Sighting> sightings = new ArrayList<>();
-    private final List<GrantedAuthority> authorities;
+    private final List<Sighting> sightings = new ArrayList<>();
 
     public AppUser(int appUserId, String username, String password, boolean enabled, List<String> roles) {
         this.appUserId = appUserId;
@@ -47,9 +47,8 @@ public class AppUser implements UserDetails {
         return password;
     }
 
-    @Override
-    public String getUsername() {
-        return username;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     // Do we need this?
@@ -57,10 +56,10 @@ public class AppUser implements UserDetails {
 //        this.username = username;
 //    }
 
-    public void setPassword(String password) {
-        this.password = password;
+    @Override
+    public String getUsername() {
+        return username;
     }
-
 
     public List<Sighting> getSightings() {
         return sightings;
@@ -74,20 +73,20 @@ public class AppUser implements UserDetails {
         this.email = email;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
     public String getFirstName() {
         return firstName;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
     public String getLastName() {
         return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     @Override
@@ -105,13 +104,13 @@ public class AppUser implements UserDetails {
         return false;
     }
 
-    public void setEnabled(boolean enabled) {
-        this.enabled = enabled;
-    }
-
     @Override
     public boolean isEnabled() {
         return enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
     }
 
     public int getAppUserId() {
@@ -123,8 +122,7 @@ public class AppUser implements UserDetails {
     }
 
     @Override
-    public boolean equals(Object obj)
-    {
+    public boolean equals(Object obj) {
         // If this is the object, return true.
         if (this == obj)
             return true;
@@ -140,8 +138,7 @@ public class AppUser implements UserDetails {
     }
 
     @Override
-    public int hashCode()
-    {
+    public int hashCode() {
         return Objects.hash(username, password);
     }
 }

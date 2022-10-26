@@ -1,12 +1,10 @@
 package learn.wing_span.data;
 
 import learn.wing_span.models.Bird;
-import learn.wing_span.models.Sighting;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import java.time.LocalDate;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -15,10 +13,9 @@ import static org.junit.jupiter.api.Assertions.*;
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class BirdJdbcTemplateRepositoryTest {
     @Autowired
-    private BirdJdbcTemplateRepository repository;
-
-    @Autowired
     KnownGoodState knownGoodState;
+    @Autowired
+    private BirdJdbcTemplateRepository repository;
 
     @BeforeEach
     void setup() {
@@ -41,7 +38,7 @@ class BirdJdbcTemplateRepositoryTest {
         assertEquals(3, actual.getBirdId());
         assertEquals("Peacock", actual.getCommonName());
         assertEquals("Pavo Cristatus", actual.getScientificName());
-        assertEquals("https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Peacock_Plumage.jpg/330px-Peacock_Plumage.jpg", actual.getImageUrl());
+        assertEquals("https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Peacock_Plumage.jpg/330px-Peacock_Plumage.jpg", actual.getBirdImageUrl());
     }
 
     @Test
@@ -71,7 +68,7 @@ class BirdJdbcTemplateRepositoryTest {
         bird.setBirdId(2);
         bird.setCommonName("Test Common Name");
         bird.setScientificName("Test Scientific Name");
-        bird.setImageUrl("Test/Url");
+        bird.setBirdImageUrl("Test/Url");
         return bird;
     }
 }

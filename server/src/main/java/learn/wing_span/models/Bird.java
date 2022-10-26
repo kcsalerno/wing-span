@@ -10,9 +10,9 @@ public class Bird {
     private String scientificName;
     private String birdImageUrl;
 
-    private List<Sighting> sightings = new ArrayList<>();
+    private final List<Sighting> sightings = new ArrayList<>();
 
-    public Bird(){
+    public Bird() {
 
     }
 
@@ -55,13 +55,12 @@ public class Bird {
         this.birdImageUrl = imageUrl;
     }
 
-    public List<Sighting> getSightings(){
+    public List<Sighting> getSightings() {
         return new ArrayList<>(sightings);
     }
 
     @Override
-    public boolean equals(Object obj)
-    {
+    public boolean equals(Object obj) {
         // If this is the object, return true.
         if (this == obj)
             return true;
@@ -78,8 +77,7 @@ public class Bird {
     }
 
     @Override
-    public int hashCode()
-    {
+    public int hashCode() {
         return Objects.hash(commonName, scientificName, birdImageUrl);
     }
 }
