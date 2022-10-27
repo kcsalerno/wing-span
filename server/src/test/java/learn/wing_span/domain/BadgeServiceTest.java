@@ -1,5 +1,4 @@
 package learn.wing_span.domain;
-import static org.mockito.Mockito.*;
 
 import learn.wing_span.data.BadgeJdbcTemplateRepository;
 import learn.wing_span.models.Badge;
@@ -11,6 +10,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.when;
 
 @SpringBootTest
 class BadgeServiceTest {

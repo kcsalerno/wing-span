@@ -3,7 +3,6 @@ package learn.wing_span.domain;
 
 import learn.wing_span.data.SightingJdbcTemplateRepository;
 import learn.wing_span.models.Sighting;
-import learn.wing_span.models.Trait;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -16,7 +15,6 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
 
 @SpringBootTest
-
 class SightingServiceTest {
 
     @MockBean
@@ -29,11 +27,11 @@ class SightingServiceTest {
     void shouldFindAllSightings() {
         when(repository.findAll())
                 .thenReturn(List.of(
-                        new Sighting(1,1, 1, LocalDate.of(2020,10,01), "Test City", "Test State", true),
-                        new Sighting(2,1, 2, LocalDate.of(2021,11,01), "Test City", "Test State", true),
-                        new Sighting(3, 1, 3, LocalDate.of(2021,12,01), "Test City", "Test State", false),
-                        new Sighting(4, 1, 4, LocalDate.of(2022,04,01), "Test City", "Test State", false),
-                        new Sighting(5, 1, 5, LocalDate.of(2022,06,01), "Test City", "Test State", true)
+                        new Sighting(1, 1, 1, LocalDate.of(2020, 10, 01), "Test City", "Test State", true),
+                        new Sighting(2, 1, 2, LocalDate.of(2021, 11, 01), "Test City", "Test State", true),
+                        new Sighting(3, 1, 3, LocalDate.of(2021, 12, 01), "Test City", "Test State", false),
+                        new Sighting(4, 1, 4, LocalDate.of(2022, 04, 01), "Test City", "Test State", false),
+                        new Sighting(5, 1, 5, LocalDate.of(2022, 06, 01), "Test City", "Test State", true)
                 ));
 
         List<Sighting> sightings = service.findAll();
@@ -103,7 +101,7 @@ class SightingServiceTest {
     @Test
     void shouldNotCreateWithInvalidDate() {
         Sighting sighting = makeSighting();
-        sighting.setDate(LocalDate.of(2022,12,15));
+        sighting.setDate(LocalDate.of(2022, 12, 15));
         Result<Sighting> result = service.create(sighting);
 
         assertFalse(result.isSuccess());
@@ -122,11 +120,11 @@ class SightingServiceTest {
 
     @Test
     void shouldNotCreateWithDuplicateUser() {
-        Sighting sighting= makeSighting();
+        Sighting sighting = makeSighting();
         sighting.setSightingUserId(1);
 
         when(repository.findAll()).thenReturn(List.of(
-                new Sighting(2, 1, 2, LocalDate.of(2021,11,01), "Test City", "Test State", true)
+                new Sighting(2, 1, 2, LocalDate.of(2021, 11, 01), "Test City", "Test State", true)
         ));
         Result<Sighting> result = service.create(sighting);
 
@@ -171,7 +169,7 @@ class SightingServiceTest {
     @Test
     void shouldNotUpdateWithNullDate() {
         Sighting sighting = makeSighting();
-        sighting.setDate(LocalDate.of(2022,12,15));
+        sighting.setDate(LocalDate.of(2022, 12, 15));
         Result<Sighting> result = service.update(sighting);
 
         assertFalse(result.isSuccess());
@@ -181,7 +179,7 @@ class SightingServiceTest {
     @Test
     void shouldNotUpdateWithInvalidDate() {
         Sighting sighting = makeSighting();
-        sighting.setDate(LocalDate.of(2022,12,15));
+        sighting.setDate(LocalDate.of(2022, 12, 15));
         Result<Sighting> result = service.update(sighting);
 
         assertFalse(result.isSuccess());
@@ -200,11 +198,11 @@ class SightingServiceTest {
 
     @Test
     void shouldNotUpdateWithDuplicateUser() {
-        Sighting sighting= makeSighting();
+        Sighting sighting = makeSighting();
         sighting.setSightingUserId(1);
 
         when(repository.findAll()).thenReturn(List.of(
-                new Sighting(2, 1, 2, LocalDate.of(2021,11,01), "Test City", "Test State", true)
+                new Sighting(2, 1, 2, LocalDate.of(2021, 11, 01), "Test City", "Test State", true)
         ));
         Result<Sighting> result = service.update(sighting);
 
@@ -236,7 +234,7 @@ class SightingServiceTest {
 
         sighting.setSightingUserId(1);
         sighting.setSightingBirdId(2);
-        sighting.setDate(LocalDate.of(2020,03,10));
+        sighting.setDate(LocalDate.of(2020, 03, 10));
         sighting.setCity("Test City");
         sighting.setState("Test State");
         sighting.setDaytime(false);

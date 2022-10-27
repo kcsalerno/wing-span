@@ -45,7 +45,7 @@ public class AvatarService {
         if (!result.isSuccess()) {
             return result;
         }
-        if (avatar.getAvatarId() != 0) {
+        if (avatar.getAvatarId() <= 0) {
             result.addMessage(ResultType.INVALID, "Avatar ID must be set for `update` operation.");
         }
         if (result.isSuccess()) {
@@ -63,7 +63,7 @@ public class AvatarService {
         Result<Avatar> result = new Result<>();
 
         if (!repository.deleteById(avatarId)) {
-            result.addMessage(ResultType.NOT_FOUND, "Avatar ID no found.");
+            result.addMessage(ResultType.NOT_FOUND, "Avatar ID not found.");
         }
 
         return result;
