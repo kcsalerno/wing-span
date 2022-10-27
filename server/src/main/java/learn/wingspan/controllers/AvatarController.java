@@ -1,5 +1,7 @@
 package learn.wingspan.controllers;
 
+public class AvatarController {
+=======
 import learn.wingspan.domain.AvatarService;
 import learn.wingspan.models.Avatar;
 import org.springframework.http.HttpStatus;
