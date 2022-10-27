@@ -15,7 +15,7 @@ public class AppConfig {
         return new BCryptPasswordEncoder();
     }
 
-    // WebMvcConfigurer bean to configured to run CORS globally.
+    // WebMvcConfigurer bean configured to run CORS globally.
     @Bean
     public WebMvcConfigurer corsConfigurer() {
         // Can be combined with @CrossOrigin.
