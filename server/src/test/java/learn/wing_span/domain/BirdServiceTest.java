@@ -48,6 +48,18 @@ class BirdServiceTest {
     }
 
     @Test
+    void shouldNotFindBirdWithBadId() {
+        when(repository.findById(1)).thenReturn(new Bird(1, "Test Bird",
+                "Testimus Maximus", "https://www.testing.com"));
+
+        Bird result = service.findById(99999);
+        assertNull(result);
+
+        result = service.findById(0);
+        assertNull(result);
+    }
+
+    @Test
     void shouldAddBird() {
         Bird bird = new Bird(0, "Test Bird", "Testimus Maximus",
                 "https://www.testing.com");
