@@ -273,9 +273,9 @@ View a list of all avatars available to use by a MEMBER.
 * Learning Goal: AWS Hosting
 
 ## High Level Tasks
-* [ ] Database Layer Tasks (9 hours)
-* [ ] API Data Layer Tasks (40 hours)
-* [ ] API Domain Layer Tasks (23 hours)
+* [X] Database Layer Tasks (9 hours)
+* [X] API Data Layer Tasks (40 hours)
+* [X] API Domain Layer Tasks (23 hours)
 * [ ] API Model and Controller Layer Tasks (21 hours)
 * [ ] UI Front End Layer Tasks (22 hours)
 * [ ] Security Layer Tasks (24 hours)
@@ -283,148 +283,148 @@ View a list of all avatars available to use by a MEMBER.
 * [ ] Further Development Tasks (20 hours)
 
 ### Database Layer Tasks (9 hours)
-* [ ] Design initial database schema (1 hours)
-  * [ ] Identify the tables that are needed
-  * [ ] For each table...
+* [X] Design initial database schema (1 hours)
+  * [X] Identify the tables that are needed
+  * [X] For each table...
     * Define a primary key
     * Define its columns (name, data type, and nullability)
-  * [ ] Identify the relationships between tables
+  * [X] Identify the relationships between tables
     * Define any foreign keys
-  * [ ] Identify any default or unique constraints
-* [ ] Draw a diagram of the database schema (1 hours)
-  * [ ] Share with one or more classmates for feedback
-  * [ ] Update database schema as needed
-  * [ ] Share updated diagram with one or more classmates
-  * [ ] Update database schema as needed
-  * [ ] Share with assigned code reviewer for feedback
-* [ ] Write the DDL in a file named `auth-schema-data.sql` to create the security database (1 hours)
-  * [ ] Drop and create the database
-  * [ ] Create all of the tables
-* [ ] Write the DML in the file named `auth-schema-data.sql` to populate the database tables (1 hours)
-* [ ] Write the DDL in a file named `schema.sql` to create the main database (1 hours)
-  * [ ] Drop and create the database
-  * [ ] Create all of the tables
-* [ ] Create data (1 hours)
-  * [ ] Enter initial data for each table
-  * [ ] Enter data for the bird, badge, and avatar tables
-  * [ ] Run the provided SQL script
-* [ ] Write the DML in a file named `data.sql` to populate the database tables (3 hours)
-  * [ ] Write insert-from-select statements to move the data from the denormalized table to the normalized tables
+  * [X] Identify any default or unique constraints
+* [X] Draw a diagram of the database schema (1 hours)
+  * [X] Share with one or more classmates for feedback
+  * [X] Update database schema as needed
+  * [X] Share updated diagram with one or more classmates
+  * [X] Update database schema as needed
+  * [X] Share with assigned code reviewer for feedback
+* [X] Write the DDL in a file named `auth-schema-data.sql` to create the security database (1 hours)
+  * [X] Drop and create the database
+  * [X] Create all of the tables
+* [X] Write the DML in the file named `auth-schema-data.sql` to populate the database tables (1 hours)
+* [X] Write the DDL in a file named `schema.sql` to create the main database (1 hours)
+  * [X] Drop and create the database
+  * [X] Create all of the tables
+* [X] Create data (1 hours)
+  * [X] Enter initial data for each table
+  * [X] Enter data for the bird, badge, and avatar tables
+  * [X] Run the provided SQL script
+* [X] Write the DML in a file named `data.sql` to populate the database tables (3 hours)
+  * [X] Write insert-from-select statements to move the data from the denormalized table to the normalized tables
 
 ### Data Layer Tasks (40 hours)
-* [ ] Create AppUserJdbcTemplateRepository and AppUserRepository Interface (1 hours)
-  * [ ] Create appropriate CRUD methods (2 hours)
+* [X] Create AppUserJdbcTemplateRepository and AppUserRepository Interface (1 hours)
+  * [X] Create appropriate CRUD methods (2 hours)
     * Find a user by id
     * Find all users
     * Create/register user
     * Update user profile (info)
     * Delete/Disable user account
-* [ ] Create KnownGoodState in \test\java\wing-span\data (1 hours)
-* [ ] Create tests for AppUserJdbcTemplateRepository (2 hours)
-* [ ] Create BirdJdbcTemplateRepository and BirdRepository Interface (1 hours)
-  * [ ] Create appropriate CRUD methods (2 hours)
+* [X] Create KnownGoodState in \test\java\wing-span\data (1 hours)
+* [X] Create tests for AppUserJdbcTemplateRepository (2 hours)
+* [X] Create BirdJdbcTemplateRepository and BirdRepository Interface (1 hours)
+  * [X] Create appropriate CRUD methods (2 hours)
     * Find a bird by id
     * Find all birds
     * Add a bird
     * Update bird info
     * Delete/Disable a bird
-* [ ] Create tests for BirdJdbcTemplateRepository (2 hours)
-* [ ] Create SightingJdbcTemplateRepository and SightingRepository Interface (1 hours)
-  * [ ] Create appropriate CRUD methods (2 hours)
+* [X] Create tests for BirdJdbcTemplateRepository (2 hours)
+* [x] Create SightingJdbcTemplateRepository and SightingRepository Interface (1 hours)
+  * X ] Create appropriate CRUD methods (2 hours)
     * Find a sighting by id
     * Find all sightings
     * Add a sighting
     * Update sighting info
     * Delete/Disable a sighting
-* [ ] Create tests for SightingJdbcTemplateRepository (2 hours)
-* [ ] Create TraitJdbcTemplateRepository and TraitRepository Interface (1 hours)
-  * [ ] Create appropriate CRUD methods (2 hours)
+* [X] Create tests for SightingJdbcTemplateRepository (2 hours)
+* [X] Create TraitJdbcTemplateRepository and TraitRepository Interface (1 hours)
+  * [X] Create appropriate CRUD methods (2 hours)
     * Find a trait by id
     * Find all traits
     * Add a trait
     * Update trait info
     * Delete/Disable a trait
-* [ ] Create tests for TraitJdbcTemplateRepository (2 hours)
-* [ ] Create BadgeJdbcTemplateRepository and BadgeRepository Interface (1 hours)
-  * [ ] Create appropriate CRUD methods (2 hours)
+* [X] Create tests for TraitJdbcTemplateRepository (2 hours)
+* [X] Create BadgeJdbcTemplateRepository and BadgeRepository Interface (1 hours)
+  * [X] Create appropriate CRUD methods (2 hours)
     * Find a badge by id
     * Find all badges
     * Add a badge
     * Update badge info
     * Delete/Disable a badge
-* [ ] Create tests for BadgeJdbcTemplateRepository (2 hours)
-* [ ] Create AvatarJdbcTemplateRepository and AvatarRepository Interface (1 hours)
-  * [ ] Create appropriate CRUD methods (2 hours)
+* [X] Create tests for BadgeJdbcTemplateRepository (2 hours)
+* [X] Create AvatarJdbcTemplateRepository and AvatarRepository Interface (1 hours)
+  * [X] Create appropriate CRUD methods (2 hours)
     * Find an avatar by id
     * Find all avatars
     * Add an avatar
     * Update avatar info
     * Delete/Disable an avatar
-* [ ] Create tests for AvatarJdbcTemplateRepository (2 hours)
-* [ ] Create AppUserMapper (1 hours)
-* [ ] Create BirdMapper (1 hours)
-* [ ] Create SightingMapper (1 hours)
-* [ ] Create TraitMapper (1 hours)
-* [ ] Create BadgeMapper (1  hours)
-* [ ] Create AvatarMapper (1 hours)
+* [X] Create tests for AvatarJdbcTemplateRepository (2 hours)
+* [X] Create AppUserMapper (1 hours)
+* [X] Create BirdMapper (1 hours)
+* [X] Create SightingMapper (1 hours)
+* [X] Create TraitMapper (1 hours)
+* [X] Create BadgeMapper (1  hours)
+* [X] Create AvatarMapper (1 hours)
 
 ### Domain Layer Tasks (23 hours)
-* [ ] domain.SightingService (3 hours)
-  * [ ] implement CRUD methods (1 hours)
+* [X] domain.SightingService (3 hours)
+  * [X] implement CRUD methods (1 hours)
     * `findAll`
     * `findSightingsById`
     * `addSighting`
     * `editSighting`
     * `deleteSighting`
-  * [ ] Generate tests for domain.SightingService (2 hours)
+  * [X] Generate tests for domain.SightingService (2 hours)
     * Happy/ Unhappy Path 
-* [ ] domain.TraitService (3 hours)
-  * [ ] implement CRUD methods (1 hours)
+* [X] domain.TraitService (3 hours)
+  * [X] implement CRUD methods (1 hours)
     * `findTraitByBird`
     * `addTrait`
     * `editTrait`
     * `deleteTrait`
-  * [ ] Generate tests for domain.SightingService (2 hours)
+  * [X] Generate tests for domain.SightingService (2 hours)
     * Happy/ Unhappy Path
-* [ ] domain.BirdService (3 hours)
-  * [ ] implement CRUD methods (1 hours)
+* [X] domain.BirdService (3 hours)
+  * [X] implement CRUD methods (1 hours)
     * `addBird`
     * `editBird` (how can the admin edit a bird?)
     * `deleteBird`
-  * [ ] Generate tests for domain.SightingService (2 hours)
+  * [X] Generate tests for domain.SightingService (2 hours)
     * Happy/ Unhappy Path
-* [ ] domain.BadgeService (3 hours)
-  * [ ] implement CRUD methods (1 hours)
+* [X] domain.BadgeService (3 hours)
+  * [X] implement CRUD methods (1 hours)
     * `findAllBadges`
     * `findBadgeById`
-  * [ ] Generate Tests for domain.BadgeService (2 hours)
+  * [X] Generate Tests for domain.BadgeService (2 hours)
     * Happy / Unhappy path
-* [ ] domain.AvatarService (3 hours)
-  * [ ] implement CRUD methods (1 hours)
+* [X] domain.AvatarService (3 hours)
+  * [X] implement CRUD methods (1 hours)
     * `findAllAvatars`
     * `findAvatarById`
     * `addAvatar`
     * `editAvatar`
     * `deleteAvatar`
-  * [ ] Generate tests for domain.AvatarService (2 hours)
+  * [X] Generate tests for domain.AvatarService (2 hours)
     * Happy / Unhappy path
-* [ ] domain.Validations (6 hours)
-  * [ ] Validate sightings (2 hours)
+* [X] domain.Validations (6 hours)
+  * [X] Validate sightings (2 hours)
     * Sighting cannot be a duplicate
     * Date cannot be null
-  * [ ] Validate birds (2 hours)
-  * [ ] Validate traits (2 hours)
-* [ ] domain.ResultType (1 hours)
+  * [X] Validate birds (2 hours)
+  * [X] Validate traits (2 hours)
+* [X] domain.ResultType (1 hours)
   * `Enum`
-* [ ] domain.Result (1 hours)
+* [X] domain.Result (1 hours)
   * `Payload`
   *  `ArrayList<String> messages`
 
 ### Model and Controller Layer Tasks (21 hours)
 #### In the `controller` package
-* [ ] ErrorResponse Class (1 hours)
-* [ ] Create GlobalExceptionHandler (1 hours)
-* [ ] Create AuthController (1.5 hours)
+* [X] ErrorResponse Class (1 hours)
+* [X] Create GlobalExceptionHandler (1 hours)
+* [X] Create AuthController (1.5 hours)
 * [ ] Create BirdController (1.5 hours)
 * [ ] Create SightingController (1.5 hours)
 * [ ] Create TraitController (1.5 hours)
@@ -438,12 +438,12 @@ View a list of all avatars available to use by a MEMBER.
 * [ ] Create Badge model (1 hours)
 * [ ] Create Avatar model (1 hours)
 #### In the `wing-span` package
-* [ ] Create App Class (1 hours)
-* [ ] Create AppConfig Class (1 hours)
+* [X] Create App Class (1 hours)
+* [X] Create AppConfig Class (1 hours)
 #### In the `java` package
-* [ ] Create the resources package (.5 hours)
-* [ ] Create application properties (.5 hours)
-* [ ] Configure enviroment variables (.5 hours)
+* [x] Create the resources package (.5 hours)
+* [X] Create application properties (.5 hours)
+* [X] Configure enviroment variables (.5 hours)
 * [ ] Double check all annotations (.5 hours)
 
 ### UI (Front End) Layer Tasks (22 hours)
@@ -511,29 +511,29 @@ View a list of all avatars available to use by a MEMBER.
 
 ### Security Layer Tasks (24 Hours)
 #### Security - Back End
-* [ ] Create Schema to add Users and Roles to database (1 hours)
-  * [ ] Add app_user, app_role, app_user_role and appropriate data to the schema.
-* [ ] Configure Spring Security (1 hours)
-  * [ ] Configure the project to utilize the spring-boot-starter-security dependency.
-* [ ] Create AppConfig (1 hours)
-  * [ ] Create the AppConfig class and define the PasswordEncoder bean. Define the WebMvcConfigurer bean to configure CORS globally.
-* [ ] Create AppUser (1 hours)
-  * [ ] Add the AppUser to the models package, implementing UserDetails and mapping to the created fields.
-* [ ] Create AppUserRepository (1 hours)
-  * [ ] Create the interface and repository to add AppUserRepository interface and AppUserJdbcTemplateRepository class.
-* [ ] Create AppUserService (1 hours)
-  * [ ] Create the AppUserService which implements org.springframework.security.core.userdetails.UserDetailsService
+* [X] Create Schema to add Users and Roles to database (1 hours)
+  * [X] Add app_user, app_role, app_user_role and appropriate data to the schema.
+* [X] Configure Spring Security (1 hours)
+  * [X] Configure the project to utilize the spring-boot-starter-security dependency.
+* [X] Create AppConfig (1 hours)
+  * [X] Create the AppConfig class and define the PasswordEncoder bean. Define the WebMvcConfigurer bean to configure CORS globally.
+* [X] Create AppUser (1 hours)
+  * [X] Add the AppUser to the models package, implementing UserDetails and mapping to the created fields.
+* [X] Create AppUserRepository (1 hours)
+  * [X] Create the interface and repository to add AppUserRepository interface and AppUserJdbcTemplateRepository class.
+* [X] Create AppUserService (1 hours)
+  * [X] Create the AppUserService which implements org.springframework.security.core.userdetails.UserDetailsService
     * The UserDetailsService interface loads user-specific data.
     * The interface requires only one read-only method, which simplifies support for new data-access strategies.
-* [ ] Add JWT to project, creating JWT Converter and JWT Filter (1 hours)
-  * [ ] Continue the security implementation to include the JWT dependencies, and then create in the security package the JwtConverter and JwtRequestFilter classes
-* [ ] Create Security Config (1 hours)
-  * [ ] Create the SecurityConfig class connecting the above steps.
-* [ ] Create AuthController (1 hours)
-  * [ ] Create the AuthController in the controllers package to implement the /api/authenticate and /api/create_account endpoints.
+* [X] Add JWT to project, creating JWT Converter and JWT Filter (1 hours)
+  * [X] Continue the security implementation to include the JWT dependencies, and then create in the security package the JwtConverter and JwtRequestFilter classes
+* [X] Create Security Config (1 hours)
+  * [X] Create the SecurityConfig class connecting the above steps.
+* [X] Create AuthController (1 hours)
+  * [X] Create the AuthController in the controllers package to implement the /api/authenticate and /api/create_account endpoints.
   * [ ] Update the security configuration to allow these endpoints to be accessed without credentials.
-* [ ] Configure AuthController, SecurityConfig, and AppUser Repo & Service to allow for creating an account (1 hours)
-* [ ] Configure AuthController, SecurityConfig, and AppUser Repo & Service to allow for editing an account (1 hours)
+* [X] Configure AuthController, SecurityConfig, and AppUser Repo & Service to allow for creating an account (1 hours)
+* [X] Configure AuthController, SecurityConfig, and AppUser Repo & Service to allow for editing an account (1 hours)
 #### Security - Front End
 * [ ] Login Component (1 hours)
   * [ ] Add a Login component and an accompanying /login route to your React project
@@ -610,24 +610,24 @@ fetch("http://localhost:8080/api/solarpanels", init);
 
 ## Schedule
 ### Monday (10/24)
-* [ ] Database Layer Tasks (9 hours)
+* [X] Database Layer Tasks (9 hours)
   * 3 Hours per team member
-* [ ] API Data Layer Tasks (18 Hours)
+* [X] API Data Layer Tasks (18 Hours)
   * 6 Hours per team member
 ### Tuesday (10/25)
-* [ ] API Data Layer Tasks (22 Hours)
+* [X] API Data Layer Tasks (22 Hours)
   * 7 Hours per team member
-* [ ] API Domain Layer Tasks (9 hours)
+* [X] API Domain Layer Tasks (9 hours)
   * 3 Hours per team member 
 ### Wednesday (10/26)
-* [ ] API Domain Layer Tasks (14 hours)
+* [X] API Domain Layer Tasks (14 hours)
   * 4.5 Hours per team member
-* [ ] API Model and Controller Layer Tasks (9 hours)
+* [X] API Model and Controller Layer Tasks (9 hours)
   * 3 Hours per team member
 ### Thursday (10/27)
 * [ ] API Model and Controller Layer Tasks (12 hours)
   * 4 Hours per team member 
-* [ ] UI Front End Layer Tasks (12 hours)
+* [X] UI Front End Layer Tasks (12 hours)
   * 4 Hours per team member 
 ### Friday (10/28)
 * [ ] UI Front End Layer Tasks (9 hours)
@@ -635,7 +635,7 @@ fetch("http://localhost:8080/api/solarpanels", init);
 * [ ] Further Development/Flex Time Tasks (15 hours)
   * 5 Hours per team member
 ### Saturday (10/29)
-* [ ] Security Layer Tasks (24 hours)
+* [X] Security Layer Tasks (24 hours)
   * 8 Hours per team member 
 ### Sunday (10/30)
 * [ ] Further Development/Flex Time Tasks (24 hours)
