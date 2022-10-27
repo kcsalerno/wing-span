@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { findAllSightings } from "../services/sightings";
+import { findAllBirds } from "../services/birds";
 
 
 function SightingList() {
     const [sightings, setSightings] = useState([]);
+    const [birds, setBirds] = useState([]);
 
     const history = useHistory();
 
@@ -14,17 +16,27 @@ function SightingList() {
         .catch(() => history.push("/error"))
     }, [history]);
 
+    useEffect(() => {
+        findAllBirds()
+        .then(setBirds)
+        .catch(() => history.push("/error"))
+    }, [history]);
+
+
+    console.log(birds);
+
     return (
         <>
-            <table>
-                <thead>
+            <table className="table table-bordered table-hover table-striped">
+                <caption>List of Sightings</caption>
+                <thead className="thead-dark">
                     <tr>
-                        <th>Date</th>
-                        <th>User</th>
-                        <th>Bird</th>
-                        <th>City</th>
-                        <th>State</th>
-                        <th>Daytime?</th>
+                        <th scope="col">Date</th>
+                        <th scope="col">User</th>
+                        <th scope="col">Bird</th>
+                        <th scope="col">City</th>
+                        <th scope="col">State</th>
+                        <th scope="col">Daytime?</th>
                     </tr>
                 </thead>
                 <tbody>

@@ -37,12 +37,8 @@ li {
 }
 table {
   width: 100%;
-  border: 1px solid gray;
   text-align: center;
-  margin: 2% 0;
-}
-tr {
-  border: 1px solid gray;
+  margin: 3% 0;
 }
 td {
   margin: 4% 0;
