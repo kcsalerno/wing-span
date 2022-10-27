@@ -17,6 +17,7 @@ function SightingForm() {
 
     const [bird, setBird] = useState([]);
     const [errors, setErrors] = useState([]);
+    
     const history = useHistory();
     const { sightingId, sightingBirdId } = useParams();
 

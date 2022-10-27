@@ -1,4 +1,4 @@
-const SIGHTING_API_URL = "http://localhost:8080/api/sighting"
+const SIGHTING_API_URL = "http://localhost:8080/api/sighting";
 
 export async function findAllSightings() {
     const response = await fetch(SIGHTING_API_URL);
