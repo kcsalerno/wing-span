@@ -8,25 +8,25 @@ function makeUser(body) {
     return user;
 }
 
-export async function authenticate(user) {
+// export async function authenticate(user) {
 
-    const init = {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-            "Accept": "application/json"
-        },
-        body: JSON.stringify(user)
-    }
+//     const init = {
+//         method: "POST",
+//         headers: {
+//             "Content-Type": "application/json",
+//             "Accept": "application/json"
+//         },
+//         body: JSON.stringify(user)
+//     }
 
-    const response = await fetch(`${API_URL}/authenticate`, init);
-    if (response.ok) {
-        const body = await response.json();
-        return makeUser(body);
-    } else {
-        return Promise.reject();
-    }
-}
+//     const response = await fetch(`${API_URL}/authenticate`, init);
+//     if (response.ok) {
+//         const body = await response.json();
+//         return makeUser(body);
+//     } else {
+//         return Promise.reject();
+//     }
+// }
 
 export async function refresh() {
 
@@ -37,7 +37,7 @@ export async function refresh() {
         }
     }
 
-    const response = await fetch(`${API_URL}/refresh`, init);
+    const response = await fetch(`${API_URL}/refresh_token`, init);
     if (response.ok) {
         const body = await response.json();
         return makeUser(body);
