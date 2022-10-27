@@ -1,0 +1,101 @@
+@base_url = http://localhost:8080/api/sighting
+
+
+GET {{base_url}} HTTP/1.1
+
+###
+
+GET {{base_url}}/1 HTTP/1.1
+
+###
+
+GET {{base_url}}/50 HTTP/1.1
+
+### Create Happy Path
+
+POST {{base_url}} HTTP/1.1
+Content-Type: application/json
+
+{
+    "sightingUserId": 1,
+    "sightingBirdId": 4,
+    "date": "2020-11-11",
+    "city": "test city",
+    "state": "test state",
+    "daytime": false
+}
+
+### Create Unhappy Path
+
+POST {{base_url}} HTTP/1.1
+Content-Type: application/json
+
+{}
+
+### Update Happy Path
+
+PUT {{base_url}}/1 HTTP/1.1
+Content-Type: application/json
+
+{
+    "sightingId": 1,
+    "sightingUserId": 2,
+    "sightingBirdId": 1,
+    "date": "2020-01-01",
+    "city": "this city",
+    "state": "this state",
+    "daytime": false
+}
+
+### Update Unhappy path
+
+PUT {{base_url}}/1 HTTP/1.1
+Content-Type: application/json
+
+{
+    "sightingId": 1,
+    "sightingUserId": 2,
+    "sightingBirdId": 1,
+    "date": "2020-01-01",
+    "city": "",
+    "state": "this state",
+    "daytime": false
+}
+
+### Update not found
+
+PUT {{base_url}}/50 HTTP/1.1
+Content-Type: application/json
+
+{
+    "sightingId": 50,
+    "sightingUserId": 2,
+    "sightingBirdId": 1,
+    "date": "2020-01-01",
+    "city": "this city",
+    "state": "this state",
+    "daytime": false
+}
+
+### Update conflict
+
+PUT {{base_url}}/100 HTTP/1.1
+Content-Type: application/json
+
+{
+    "sightingId": 1,
+    "sightingUserId": 2,
+    "sightingBirdId": 1,
+    "date": "2020-01-01",
+    "city": "this city",
+    "state": "this state",
+    "daytime": false
+}
+
+### Delete Happy Path
+
+DELETE {{base_url}}/3 HTTP/1.1
+
+### Delete Unhappy Path
+
+DELETE {{base_url}}/10 HTTP/1.1
