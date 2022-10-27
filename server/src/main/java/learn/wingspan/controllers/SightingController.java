@@ -61,10 +61,13 @@ public class SightingController {
 
     @DeleteMapping("/{sightingId}")
     public ResponseEntity<Void> deleteById(@PathVariable int sightingId) {
-        Result result = service.deleteById(sightingId);
+        Result<Sighting> result = service.deleteById(sightingId);
         if (result.getType() == ResultType.NOT_FOUND) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-        return new ResponseEntity<>(HttpStatus.CONFLICT);
+        if (!result.isSuccess()) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }

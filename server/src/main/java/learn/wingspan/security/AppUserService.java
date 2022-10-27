@@ -61,7 +61,7 @@ public class AppUserService implements UserDetailsService {
             return result;
         }
 
-        if (password == null) {
+        if (password == null || password.isBlank()) {
             result.addMessage(ResultType.INVALID, "password is required");
             return result;
         }

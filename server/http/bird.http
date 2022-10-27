@@ -78,7 +78,7 @@ Content-Type: application/json
 
 ### Delete Happy Path
 
-DELETE {{base_url}}/20 HTTP/1.1
+DELETE {{base_url}}/21 HTTP/1.1
 
 ### Delete Unhappy Path
 

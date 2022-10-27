@@ -1,6 +1,5 @@
 package learn.wingspan.controllers;
 
-
 import learn.wingspan.domain.BirdService;
 import learn.wingspan.domain.Result;
 import learn.wingspan.domain.ResultType;
@@ -61,10 +60,13 @@ public class BirdController {
 
     @DeleteMapping("/{birdId}")
     public ResponseEntity<Void> deleteById(@PathVariable int birdId) {
-        Result result = service.deleteById(birdId);
+        Result<Bird> result = service.deleteById(birdId);
         if (result.getType() == ResultType.NOT_FOUND) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-        return new ResponseEntity<>(HttpStatus.CONFLICT);
+        if (!result.isSuccess()) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }
