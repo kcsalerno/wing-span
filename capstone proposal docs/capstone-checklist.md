@@ -43,7 +43,7 @@
     - the UI (components and their relationships)
     - other details (complex rules, calculations, challenging technologies)
 
-8. [ ] Create concrete technical tasks, estimated to take no longer than 4 hours, that target design and/or code in specific physical or conceptual layers. Hour estimates are required. From the user story perspective, some technical tasks may be repeated. For example, "Create the `product` table in the database." may be a technical requirement for several user stories. 
+8. [X] Create concrete technical tasks, estimated to take no longer than 4 hours, that target design and/or code in specific physical or conceptual layers. Hour estimates are required. From the user story perspective, some technical tasks may be repeated. For example, "Create the `product` table in the database." may be a technical requirement for several user stories. 
 
     Try your best to keep tasks granular. If a task will take longer than 4 hours, consider ways to break it down further: 
 
@@ -56,11 +56,11 @@
 
     Determine tasks dependencies. For example, a data model task must happen _before_ a repository task. A REST API task may need to be complete before a React component task. (Though not always. Sometimes we agree on the "shape" of a model/class/object and then mock those interactions in different layers.)
 
-9. [ ] When everything is estimated to the most granular level possible, total up your hours. Is it even possible to complete the project in 2 weeks? Is there too much work? Too little? If too much, preemptively start removing features. If too little, add features.
+9. [X] When everything is estimated to the most granular level possible, total up your hours. Is it even possible to complete the project in 2 weeks? Is there too much work? Too little? If too much, preemptively start removing features. If too little, add features.
 
-10. [ ] Take a step back from user stories. Consider your data model, class model, layers, and project structure more cohesively. Work through design from a zoomed-out context. Does this change technical tasks?
+10. [X] Take a step back from user stories. Consider your data model, class model, layers, and project structure more cohesively. Work through design from a zoomed-out context. Does this change technical tasks?
 
-11. [ ] Finally, with dependencies in mind, start scheduling tasks for your team members.
+11. [X] Finally, with dependencies in mind, start scheduling tasks for your team members.
 
 ## Tips
 
