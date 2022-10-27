@@ -12,6 +12,7 @@ import java.util.stream.Collectors;
 public class AppUser implements UserDetails {
     private final String username;
     private final List<GrantedAuthority> authorities;
+    private final List<Sighting> sightings = new ArrayList<>();
     private int appUserId;
     private String password;
     private boolean enabled;
@@ -51,6 +52,11 @@ public class AppUser implements UserDetails {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    // Do we need this?
+//    public void setUsername(String username) {
+//        this.username = username;
+//    }
 
     @Override
     public String getUsername() {
@@ -146,6 +152,7 @@ public class AppUser implements UserDetails {
 //                && Objects.equals(email, appUser.email)
 //                && Objects.equals(firstName, appUser.firstName)
 //                && Objects.equals(lastName, appUser.lastName));
+
     }
 
     @Override
