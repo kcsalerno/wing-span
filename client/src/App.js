@@ -14,7 +14,7 @@ import Error from './components/Error';
 import AuthContext from "./contexts/AuthContext";
 import { refresh } from "./services/auth"
 
-const LOCAL_STORAGE_TOKEN_KEY = "solarFarmToken";
+const LOCAL_STORAGE_TOKEN_KEY = "wingspanToken";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -94,13 +94,17 @@ function App() {
             <SightingList />
           </Route>
           <Route path={["/add", "/edit/:sightingId"]}>
-            <SightingForm />
+          {auth.user ? (
+              <SightingForm />
+            ) : (
+              <Redirect to='/login' />
+            )}
           </Route>
           <Route path="/birds">
             <BirdGrid />
           </Route>
           <Route path="/login">
-            <Login />
+            {!auth.user ? <Login /> : <Redirect to="/" />}
           </Route>
           <Route path="/error">
             <Error />
