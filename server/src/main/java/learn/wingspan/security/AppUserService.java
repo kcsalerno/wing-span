@@ -72,7 +72,7 @@ public class AppUserService implements UserDetailsService {
 
         if (!isValidPassword(password)) {
             result.addMessage(ResultType.INVALID,
-                    "password must be at least 8 character and contain a digit," +
+                    "password must be at least 8 characters and contain a digit," +
                             " a letter, and a non-digit/non-letter");
         }
 
