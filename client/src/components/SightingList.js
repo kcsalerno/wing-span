@@ -24,7 +24,7 @@ function SightingList() {
                         <th>Bird</th>
                         <th>City</th>
                         <th>State</th>
-                        <th>DayTime</th>
+                        <th>Daytime?</th>
                     </tr>
                 </thead>
                 <tbody>
