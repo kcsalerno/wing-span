@@ -43,7 +43,7 @@ function App() {
         <Route path="/sightings" exact>
           <SightingList />
         </Route>
-        <Route path={["/add", "/edit/:sightingId"]}>
+        <Route path={["/sightings/add", "/sightings/edit/:sightingId"]}>
           <SightingForm />
         </Route>
         <Route path="/birds">
