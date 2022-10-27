@@ -1,0 +1,85 @@
+@base_url = http://localhost:8080/api/bird
+
+GET {{base_url}} HTTP/1.1
+
+### Get existing id
+
+GET {{base_url}}/8 HTTP/1.1
+
+### Get Invalid id
+
+GET {{base_url}}/100 HTTP/1.1
+
+### Create Happy Path
+
+POST {{base_url}} HTTP/1.1
+Content-Type: application/json
+
+{
+    "commonName": "test common name",
+    "scientificName": "test scientific name",
+    "birdImageUrl": "http://thisurldoesnotexist"
+}
+
+### Create Unhappy Path
+
+POST {{base_url}} HTTP/1.1
+Content-Type: application/json
+
+{}
+
+### Update Happy Path
+
+PUT {{base_url}}/19 HTTP/1.1
+Content-Type: application/json
+
+{
+    "birdId": 19,
+    "commonName": "this new common name",
+    "scientificName": "this new scientific name",
+    "birdImageUrl": "http://newurl"
+}
+
+### Update Unhappy Path
+
+PUT {{base_url}}/1 HTTP/1.1
+Content-Type: application/json
+
+{
+    "birdId": 1,
+    "commonName": "this new common name",
+    "scientificName": "this new scientific name",
+    "birdImageUrl": "http://newurl"
+}
+
+### Update conflict
+
+PUT {{base_url}}/999 HTTP/1.1
+Content-Type: application/json
+
+{
+    "birdId": 1,
+    "commonName": "this new common name",
+    "scientificName": "this new scientific name",
+    "birdImageUrl": "http://newurl"
+}
+
+### Update not found
+
+PUT {{base_url}}/999 HTTP/1.1
+Content-Type: application/json
+
+{
+    "birdId": 999,
+    "commonName": "common name",
+    "scientificName": "scientific name",
+    "birdImageUrl": "http://newurl"
+}
+
+### Delete Happy Path
+
+DELETE {{base_url}}/21 HTTP/1.1
+
+### Delete Unhappy Path
+
+DELETE {{base_url}}/999 HTTP/1.1

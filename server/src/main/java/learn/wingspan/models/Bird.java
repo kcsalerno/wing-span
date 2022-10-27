@@ -54,10 +54,6 @@ public class Bird {
         this.birdImageUrl = imageUrl;
     }
 
-    public List<Sighting> getSightings() {
-        return new ArrayList<>(sightings);
-    }
-
     @Override
     public boolean equals(Object obj) {
         // If this is the object, return true.

@@ -50,6 +50,11 @@ public class SecurityConfig {
 //                        "/api/solarpanel/*").hasAnyAuthority("USER", "ADMIN")
 //                .antMatchers(HttpMethod.DELETE,
 //                        "/api/solarpanel/*").hasAnyAuthority("ADMIN")
+
+
+//                .antMatchers("/**").denyAll()
+
+
                 .antMatchers("/**").permitAll()
                 .and()
                 .addFilter(new JwtRequestFilter(authenticationManager(authConfig), converter))

@@ -43,7 +43,7 @@ public class SightingController {
         if (result.isSuccess()) {
             return new ResponseEntity<>(result.getPayload(), HttpStatus.CREATED);
         }
-        return makeResponseEntity(result, HttpStatus.BAD_REQUEST);
+        return ErrorResponse.build(result);
     }
 
     @PutMapping("/{sightingId}")
@@ -53,31 +53,21 @@ public class SightingController {
         }
 
         Result<Sighting> result = service.update(sighting);
-        if (!result.isSuccess()) {
-            if (result.getType() == ResultType.NOT_FOUND) {
-                return makeResponseEntity(result, HttpStatus.NOT_FOUND);
-            } else {
-                return makeResponseEntity(result, HttpStatus.BAD_REQUEST);
-            }
+        if (result.isSuccess()) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        return ErrorResponse.build(result);
     }
 
     @DeleteMapping("/{sightingId}")
     public ResponseEntity<Void> deleteById(@PathVariable int sightingId) {
-        Result result = service.deleteById(sightingId);
+        Result<Sighting> result = service.deleteById(sightingId);
         if (result.getType() == ResultType.NOT_FOUND) {
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        }
-        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-    }
-
-    private <T> ResponseEntity<Object> makeResponseEntity(Result<T> result, HttpStatus status) {
-        if (result.getType() == ResultType.INVALID) {
-            return new ResponseEntity<>(result.getMessages(), HttpStatus.BAD_REQUEST);
-        } else if (result.getType() ==ResultType.NOT_FOUND) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-        return new ResponseEntity<>(result.getPayload(), status);
+        if (!result.isSuccess()) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }

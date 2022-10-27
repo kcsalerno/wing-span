@@ -1,0 +1,80 @@
+@base_url = http://localhost:8080/api/avatar
+
+GET {{base_url}} HTTP/1.1
+
+### Get existing id
+
+GET {{base_url}}/1 HTTP/1.1
+
+### Get Invalid id
+
+GET {{base_url}}/100 HTTP/1.1
+
+### Create Happy Path
+
+POST {{base_url}} HTTP/1.1
+Content-Type: application/json
+
+{
+    "avatarImageUrl": "http://testurl",
+    "avatarDescription": "describes avatar"
+}
+
+### Create Unhappy Path
+
+POST {{base_url}} HTTP/1.1
+Content-Type: application/json
+
+{}
+
+### Update Happy Path
+
+PUT {{base_url}}/1 HTTP/1.1
+Content-Type: application/json
+
+{
+    "avatarId": 1,
+    "avatarImageUrl": "http://thisurl",
+    "avatarDescription": "description of avatar"
+}
+
+### Update Unhappy Path / avatar duplicate
+
+PUT {{base_url}}/1 HTTP/1.1
+Content-Type: application/json
+
+{
+    "avatarId": 1,
+    "avatarImageUrl": "http://thisurl",
+    "avatarDescription": "description of avatar"
+}
+
+### Update conflict
+
+PUT {{base_url}}/20 HTTP/1.1
+Content-Type: application/json
+
+{
+    "avatarId": 2,
+    "avatarImageUrl": "http://invalidurl",
+    "avatarDescription": "avatar"
+}
+
+### Update not found
+
+PUT {{base_url}}/99 HTTP/1.1
+Content-Type: application/json
+
+{
+    "avatarId": 99,
+    "avatarImageUrl": "http://invalidurl",
+    "avatarDescription": "avatar"
+}
+
+### Delete Happy Path
+
+DELETE {{base_url}}/1 HTTP/1.1
+
+### Delete Unhappy Path
+
+DELETE {{base_url}}/999 HTTP/1.1
