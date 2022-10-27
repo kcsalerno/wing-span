@@ -5,7 +5,6 @@ import { findAllSightings } from "../services/sightings";
 
 function SightingList() {
     const [sightings, setSightings] = useState([]);
-
     const history = useHistory();
 
     useEffect(() => {

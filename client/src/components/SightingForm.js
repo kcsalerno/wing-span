@@ -37,14 +37,19 @@ function SightingForm() {
 
     function handleChange(event) {
         const nextSighting = { ...sighting };
-
+        if (event.target.name === "bird") {
+            nextSighting.bird = event.target.checked;
+        } else {
+            nextSighting[event.target.name] = event.target.value;
+        }
+        setSighting[nextSighting];
     }
 
     function handleSubmit(event) {
         event.preventDefault();
 
         save(sighting)
-        .then(() => history.push("/"))
+        .then(() => history.push("/sightings"))
         .catch(errors => {
             if (errors) {
                 setErrors(errors);
@@ -98,7 +103,7 @@ function SightingForm() {
             </div>}
             <div className="mt-4">
                 <button className="btn btn-primary me-2" type="submit">Save</button>
-                <Link to="/" className="btn btn-warning">Cancel</Link>
+                <Link to="/sightings" className="btn btn-warning">Cancel</Link>
             </div>
         </form>
     );
