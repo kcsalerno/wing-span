@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import { findAllSightings } from "../services/sightings";
 import { findAllBirds } from "../services/birds";
 
@@ -27,8 +27,10 @@ function SightingList() {
 
     return (
         <>
+            <h2>Sightings</h2>
+            <Link className="btn btn-dark" to="/sightings/add" id="add">Add Sigthing</Link>
             <table className="table table-bordered table-hover table-striped">
-                <caption>List of Sightings</caption>
+                <caption>List of user sightings</caption>
                 <thead className="thead-dark">
                     <tr>
                         <th scope="col">Date</th>

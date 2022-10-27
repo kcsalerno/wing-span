@@ -38,10 +38,13 @@ li {
 table {
   width: 100%;
   text-align: center;
-  margin: 3% 0;
+  margin: 2% 0;
 }
 td {
   margin: 4% 0;
+}
+#add {
+  font-size: 2rem !important;
 }
 /* .home .sliderContainer {
   overflow: hidden;
