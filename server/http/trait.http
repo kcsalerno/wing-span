@@ -1,0 +1,13 @@
+@url = http://localhost:8080/api/trait
+
+### GET all traits
+
+GET {{url}} HTTP/1.1
+
+### GET a trait by an ID
+
+GET {{url}}/1 HTTP/1.1
+
+### GET a 404 if trait is not found
+
+GET {{url}}/9999 HTTP/1.1

@@ -56,7 +56,7 @@ public class BadgeController {
         return new ResponseEntity<>(result.getPayload(), HttpStatus.NO_CONTENT);
     }
 
-    @DeleteMapping("{/badgeId}")
+    @DeleteMapping("/{badgeId}")
     public ResponseEntity<Void> deleteById(@PathVariable int badgeId) {
         Result<Badge> result = service.deleteById(badgeId);
         if (result.getType() == ResultType.NOT_FOUND) {
