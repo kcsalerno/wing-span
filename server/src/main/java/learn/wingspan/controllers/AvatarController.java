@@ -1,16 +1,12 @@
 package learn.wingspan.controllers;
 
-public class AvatarController {
-=======
 import learn.wingspan.domain.AvatarService;
 import learn.wingspan.domain.Result;
 import learn.wingspan.domain.ResultType;
 import learn.wingspan.models.Avatar;
-import learn.wingspan.models.Bird;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @RestController
