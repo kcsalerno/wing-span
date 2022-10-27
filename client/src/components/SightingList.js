@@ -6,24 +6,37 @@ import { findAllBirds } from "../services/birds";
 
 function SightingList() {
     const [sightings, setSightings] = useState([]);
-    const [birds, setBirds] = useState([]);
+    // const [birds, setBirds] = useState([]);
+    // const [loaded, setLoaded] = useState(false);
 
     const history = useHistory();
 
     useEffect(() => {
         findAllSightings()
-        .then(setSightings)
-        .catch(() => history.push("/error"))
-    }, [history]);
+        .then(data => {
+            console.log(data)
+            return findAllBirds() 
+            .then(response => {
+                console.log(data, response);
+                // temporary copy of sightings
+                const temp = [...data];
+                // loop through temporary copy
+                temp.forEach((sighting, index) => {
+                    // get the birdId for sighting
+                    const birdId = sighting.sightingBirdId;
+                    console.log(birdId)
+                    // assign to a bird
+                    const bird = response.find(bird => bird.birdId === birdId);
+                    temp[index].birdCommonName = bird.commonName;
+                })
+                setSightings(temp);
+            })})
+        // .catch(() => history.push("/error"))
+    }, []);
 
-    useEffect(() => {
-        findAllBirds()
-        .then(setBirds)
-        .catch(() => history.push("/error"))
-    }, [history]);
-
-
-    console.log(birds);
+    // add a join to include users in sightings
+    // or look into a promise all
+    // or do a third .then
 
     return (
         <>
@@ -46,7 +59,7 @@ function SightingList() {
                         <tr key={s.sightingId}>
                             <td>{s.date}</td>
                             <td>{s.sightingUserId}</td>
-                            <td>{s.sightingBirdId}</td>
+                            <td>{s.birdCommonName}</td>
                             <td>{s.city}</td>
                             <td>{s.state}</td>
                             <td>{s.daytime ? "Yes" : "No"}</td>
@@ -57,5 +70,6 @@ function SightingList() {
         </>
     )
 }
+
 
 export default SightingList;
