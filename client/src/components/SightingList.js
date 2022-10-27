@@ -35,7 +35,7 @@ function SightingList() {
                             <td>{s.sightingBirdId}</td>
                             <td>{s.city}</td>
                             <td>{s.state}</td>
-                            <td>{s.daytime}</td>
+                            <td>{s.daytime ? "Yes" : "No"}</td>
                         </tr>
                     ))}
                 </tbody>
