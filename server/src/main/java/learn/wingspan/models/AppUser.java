@@ -19,6 +19,8 @@ public class AppUser implements UserDetails {
     private String email;
     private String firstName;
     private String lastName;
+    private Badge userBadges;
+    private Avatar userAvatar;
 
     public AppUser(int appUserId, String username, String password, boolean enabled, List<String> roles) {
         this.appUserId = appUserId;
@@ -59,10 +61,6 @@ public class AppUser implements UserDetails {
     @Override
     public String getUsername() {
         return username;
-    }
-
-    public List<Sighting> getSightings() {
-        return sightings;
     }
 
     public String getEmail() {
@@ -121,6 +119,22 @@ public class AppUser implements UserDetails {
         this.appUserId = appUserId;
     }
 
+    public Badge getUserBadges() {
+        return userBadges;
+    }
+
+    public void setUserBadges(Badge userBadges) {
+        this.userBadges = userBadges;
+    }
+
+    public Avatar getUserAvatar() {
+        return userAvatar;
+    }
+
+    public void setUserAvatar(Avatar userAvatar) {
+        this.userAvatar = userAvatar;
+    }
+
     @Override
     public boolean equals(Object obj) {
         // If this is the object, return true.
@@ -135,6 +149,10 @@ public class AppUser implements UserDetails {
         // Compare the fields between object and the forage.
         return (Objects.equals(username, appUser.username)
                 && Objects.equals(password, appUser.password));
+//                && Objects.equals(email, appUser.email)
+//                && Objects.equals(firstName, appUser.firstName)
+//                && Objects.equals(lastName, appUser.lastName));
+
     }
 
     @Override
