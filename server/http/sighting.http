@@ -3,11 +3,11 @@
 
 GET {{base_url}} HTTP/1.1
 
-###
+### Get existing id
 
 GET {{base_url}}/1 HTTP/1.1
 
-###
+### Get Invalid id
 
 GET {{base_url}}/50 HTTP/1.1
 
