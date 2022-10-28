@@ -16,6 +16,7 @@ function BirdGrid({ handleEdit, handleDelete}) {
 
     return (
         <>
+            <h2>Birds</h2>
             <div className="row row-cols-3 g-2">
                 {birds.map(b => <Bird key={b.birdId} bird={b} handleEdit={handleEdit} handleDelete={handleDelete} />)}
             </div>

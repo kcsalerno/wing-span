@@ -25,15 +25,17 @@ public class SightingJdbcTemplateRepository implements SightingRepository {
     @Override
     public List<Sighting> findAll() {
 
-        final String sql = "select sighting_id, app_user_id, bird_id, sighting_date, city, state, daytime "
-                + "from sighting;";
+        final String sql = "select s.sighting_id, s.app_user_id, s.bird_id, s.sighting_date, s.city, s.state, s.daytime, au.username "
+                + "from sighting s "
+                + "inner join app_user au on s.app_user_id = au.app_user_id;";
         return jdbcTemplate.query(sql, new SightingMapper());
     }
 
     @Override
     public Sighting findById(int sightingId) {
-        final String sql = "select sighting_id, app_user_id, bird_id, sighting_date, city, state, daytime "
-                + "from sighting "
+        final String sql = "select s.sighting_id, s.app_user_id, s.bird_id, s.sighting_date, s.city, s.state, s.daytime, au.username "
+                + "from sighting s "
+                + "inner join app_user au on s.app_user_id = au.app_user_id "
                 + "where sighting_id = ?;";
 
         return jdbcTemplate.query(sql, new SightingMapper(), sightingId).stream().findFirst().orElse(null);
