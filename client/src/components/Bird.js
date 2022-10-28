@@ -4,8 +4,8 @@ function Bird({ bird }) {
             <div className="card">
                 <img src={bird.birdImageUrl} className="card-img-top" alt={bird.commonName} />
                 <div className="card-body">
-                    <h5 className="card-title">{bird.commonName}</h5>
-                    <h5>{bird.scientificName}</h5>
+                    <h5 className="card-title">Common Name: {bird.commonName}</h5>
+                    <h5>Scientific Name: {bird.scientificName}</h5>
                 </div>
             </div>
         </div>
