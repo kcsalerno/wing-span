@@ -27,15 +27,10 @@ function Navigation() {
                     <Link to="/birds">Birds</Link>
                 </li>
 
-                {/* {!auth.user && (
+                {/* {!auth.user && ( */}
                 <>
                     <li className="list-inline-item"><Link to="/login">Login/Register</Link></li>
                 </>
-            )} */}
-            {/* {auth.user && (
-                <li className="list-inline-item"></li>
-            )} */}
-
             </ul>
         </nav>
     );
