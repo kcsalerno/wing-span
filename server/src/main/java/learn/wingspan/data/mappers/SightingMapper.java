@@ -19,6 +19,7 @@ public class SightingMapper implements RowMapper<Sighting> {
         sighting.setCity(rs.getString("city"));
         sighting.setState(rs.getString("state"));
         sighting.setDaytime(rs.getBoolean("daytime"));
+        sighting.setUsername(rs.getString("username"));
         return sighting;
     }
 }

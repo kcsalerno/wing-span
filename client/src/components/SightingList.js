@@ -13,30 +13,27 @@ function SightingList() {
 
     useEffect(() => {
         findAllSightings()
-        .then(data => {
-            console.log(data)
-            return findAllBirds() 
-            .then(response => {
-                console.log(data, response);
-                // temporary copy of sightings
-                const temp = [...data];
-                // loop through temporary copy
-                temp.forEach((sighting, index) => {
-                    // get the birdId for sighting
-                    const birdId = sighting.sightingBirdId;
-                    console.log(birdId)
-                    // assign to a bird
-                    const bird = response.find(bird => bird.birdId === birdId);
-                    temp[index].birdCommonName = bird.commonName;
-                })
-                setSightings(temp);
-            })})
-        // .catch(() => history.push("/error"))
-    }, []);
+        .then(async data => {
+            const response = await findAllBirds();
+            // temporary copy of sightings
+            const temp = [...data];
+            // loop through temporary copy
+            temp.forEach((sighting, index) => {
+                // get the birdId for sighting
+                const birdId = sighting.sightingBirdId;
+                // assign to a bird
+                const bird = response.find(bird => bird.birdId === birdId);
+                temp[index].birdCommonName = bird.commonName;
+            });
+            setSightings(temp);})
+        .catch(() => history.push("/error"))
+    }, [history]);
 
     // add a join to include users in sightings
     // or look into a promise all
     // or do a third .then
+
+    console.log(sightings);
 
     return (
         <>
@@ -58,7 +55,7 @@ function SightingList() {
                     {sightings.map((s) => (
                         <tr key={s.sightingId}>
                             <td>{s.date}</td>
-                            <td>{s.sightingUserId}</td>
+                            <td>{s.username}</td>
                             <td>{s.birdCommonName}</td>
                             <td>{s.city}</td>
                             <td>{s.state}</td>
