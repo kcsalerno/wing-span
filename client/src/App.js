@@ -84,6 +84,7 @@ function App() {
   }
 
   return (
+    <AuthContext.Provider value={auth}>
     <Router>
       <h1>WingSpan 🦉</h1>
       <Navigation />
@@ -114,6 +115,7 @@ function App() {
         </Route>
       </Switch>
     </Router>
+    </AuthContext.Provider>
   )
 }
 

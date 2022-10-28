@@ -17,10 +17,10 @@ create table app_user (
 	app_user_id int primary key auto_increment,
     username varchar(50) not null unique,
     password_hash varchar(2048) not null,
-    enabled boolean not null default(true),
-    email varchar(255) not null,
-    user_first_name varchar(50) null,
-    user_last_name varchar(50) null
+    enabled boolean not null default(true)-- ,
+--     email varchar(255) not null,
+--     user_first_name varchar(50) null,
+--     user_last_name varchar(50) null
 );
 
 -- -----------------------------------------------------
@@ -145,9 +145,12 @@ insert into app_role (`name`) values
 -- Data: app_user
 -- -----------------------------------------------------
 -- Initial data to get started, passwords are set to "P@ssw0rd!" for now
-insert into app_user (username, password_hash, email, user_first_name, user_last_name) values
-    ('admin1', '$2a$10$ntB7CsRKQzuLoKY3rfoAQen5nNyiC/U60wBsWnnYrtQQi8Z3IZzQa', 'admin@admin.com', 'Test', 'McTesterson'),
-    ('user1', '$2a$10$ntB7CsRKQzuLoKY3rfoAQen5nNyiC/U60wBsWnnYrtQQi8Z3IZzQa', 'user@user.com', 'User', 'McUser');
+-- insert into app_user (username, password_hash, email, user_first_name, user_last_name) values
+--     ('admin1', '$2a$10$ntB7CsRKQzuLoKY3rfoAQen5nNyiC/U60wBsWnnYrtQQi8Z3IZzQa', 'admin@admin.com', 'Test', 'McTesterson'),
+--     ('user1', '$2a$10$ntB7CsRKQzuLoKY3rfoAQen5nNyiC/U60wBsWnnYrtQQi8Z3IZzQa', 'user@user.com', 'User', 'McUser');
+insert into app_user (username, password_hash) values
+	('john@smith.com', '$2a$10$ntB7CsRKQzuLoKY3rfoAQen5nNyiC/U60wBsWnnYrtQQi8Z3IZzQa'),
+    ('sally@jones.com', '$2a$10$ntB7CsRKQzuLoKY3rfoAQen5nNyiC/U60wBsWnnYrtQQi8Z3IZzQa');
 
 -- -----------------------------------------------------
 -- Data: app_user_role
