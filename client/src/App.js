@@ -8,6 +8,7 @@ import Navigation from './components/Navigation';
 import SightingList from './components/SightingList';
 import SightingForm from './components/SightingForm';
 import BirdGrid from './components/BirdGrid';
+import BirdForm from './components/BirdForm';
 import Login from './components/Login';
 import NotFound from './components/NotFound';
 import Error from './components/Error';
@@ -96,8 +97,11 @@ function App() {
         <Route path={["/sightings/add", "/sightings/edit/:sightingId"]}>
           <SightingForm />
         </Route>
-        <Route path="/birds">
+        <Route path="/birds" exact>
           <BirdGrid />
+        </Route>
+        <Route path={["/birds/add", "/birds/edit/:birdId"]}>
+          <BirdForm />
         </Route>
         <Route path="/login">
           <Login />
