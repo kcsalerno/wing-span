@@ -39,7 +39,7 @@ function SightingForm() {
         const nextSighting = { ...sighting };
         
         nextSighting[event.target.name] = event.target.value;
-        setSighting(nextSighting);
+        setSighting(nextSighting)
     }
 
     function handleSubmit(event) {
@@ -54,10 +54,6 @@ function SightingForm() {
                 history.push("/error")
             }
         });
-    }
-
-    const updateSighting = () => {
-        
     }
 
     return(
