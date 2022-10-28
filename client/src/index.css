@@ -37,15 +37,14 @@ li {
 }
 table {
   width: 100%;
-  border: 1px solid gray;
   text-align: center;
   margin: 2% 0;
 }
-tr {
-  border: 1px solid gray;
-}
 td {
   margin: 4% 0;
+}
+#add {
+  font-size: 2rem !important;
 }
 /* .home .sliderContainer {
   overflow: hidden;

@@ -28,24 +28,6 @@ function makeUser(body) {
 //     }
 // }
 
-// export async function refresh() {
-
-//     const init = {
-//         method: "POST",
-//         headers: {
-//             "Authorization": `Bearer ${localStorage.getItem("jwt")}`
-//         }
-//     }
-
-//     const response = await fetch(`${API_URL}/refresh`, init);
-//     if (response.ok) {
-//         const body = await response.json();
-//         return makeUser(body);
-//     }
-
-//     return Promise.reject();
-// }
-
 export async function refresh() {
 
     const init = {

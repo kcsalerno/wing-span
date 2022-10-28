@@ -1,29 +1,57 @@
 import { useState, useEffect } from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import { findAllSightings } from "../services/sightings";
+import { findAllBirds } from "../services/birds";
 
 
 function SightingList() {
     const [sightings, setSightings] = useState([]);
+    // const [birds, setBirds] = useState([]);
+    // const [loaded, setLoaded] = useState(false);
+
     const history = useHistory();
 
     useEffect(() => {
         findAllSightings()
-        .then(setSightings)
-        .catch(() => history.push("/error"))
-    }, [history]);
+        .then(data => {
+            console.log(data)
+            return findAllBirds() 
+            .then(response => {
+                console.log(data, response);
+                // temporary copy of sightings
+                const temp = [...data];
+                // loop through temporary copy
+                temp.forEach((sighting, index) => {
+                    // get the birdId for sighting
+                    const birdId = sighting.sightingBirdId;
+                    console.log(birdId)
+                    // assign to a bird
+                    const bird = response.find(bird => bird.birdId === birdId);
+                    temp[index].birdCommonName = bird.commonName;
+                })
+                setSightings(temp);
+            })})
+        // .catch(() => history.push("/error"))
+    }, []);
+
+    // add a join to include users in sightings
+    // or look into a promise all
+    // or do a third .then
 
     return (
         <>
-            <table>
-                <thead>
+            <h2>Sightings</h2>
+            <Link className="btn btn-dark" to="/sightings/add" id="add">Add Sigthing</Link>
+            <table className="table table-bordered table-hover table-striped">
+                <caption>List of user sightings</caption>
+                <thead className="thead-dark">
                     <tr>
-                        <th>Date</th>
-                        <th>User</th>
-                        <th>Bird</th>
-                        <th>City</th>
-                        <th>State</th>
-                        <th>Daytime?</th>
+                        <th scope="col">Date</th>
+                        <th scope="col">User</th>
+                        <th scope="col">Bird</th>
+                        <th scope="col">City</th>
+                        <th scope="col">State</th>
+                        <th scope="col">Daytime?</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -31,7 +59,7 @@ function SightingList() {
                         <tr key={s.sightingId}>
                             <td>{s.date}</td>
                             <td>{s.sightingUserId}</td>
-                            <td>{s.sightingBirdId}</td>
+                            <td>{s.birdCommonName}</td>
                             <td>{s.city}</td>
                             <td>{s.state}</td>
                             <td>{s.daytime ? "Yes" : "No"}</td>
@@ -42,5 +70,6 @@ function SightingList() {
         </>
     )
 }
+
 
 export default SightingList;
