@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { Link, useHistory, useParams } from "react-router-dom";
 import { findBySightingId, save } from "../services/sightings";
-import { findByBirdId } from "../services/birds";
+import {findAllBirds} from "../services/birds";
+import Bird from "./Bird";
 
 function SightingForm() {
 
@@ -15,7 +16,7 @@ function SightingForm() {
         daytime: true
     })
 
-    const [bird, setBird] = useState([]);
+    const [birds, setBirds] = useState([]);
     const [errors, setErrors] = useState([]);
     
     const history = useHistory();
@@ -30,16 +31,19 @@ function SightingForm() {
     }, [history, sightingId]);
 
     useEffect(() => {
-        findByBirdId(sightingBirdId)
-        .then(setBird)
+        findAllBirds()
+        .then(setBirds)
         .catch(() => history.push("/error"));
-    }, [history, sightingBirdId]);
+    }, [history]);
 
     function handleChange(event) {
         const nextSighting = { ...sighting };
-        
-        nextSighting[event.target.name] = event.target.value;
-        setSighting(nextSighting)
+        if (event.target.name === "daytime") {
+            nextSighting.daytime = event.target.checked;
+        } else {
+            nextSighting[event.target.name] = event.target.value;
+        }
+        setSighting(nextSighting);
     }
 
     function handleSubmit(event) {
@@ -63,7 +67,11 @@ function SightingForm() {
                 <label htmlFor="bird">Bird:</label>
                 <select name="bird" id="bird" className="form-control"
                     value={sighting.bird} onChange={handleChange}>
-                        <option></option>
+                        <option>
+                            <div>
+                                {birds.map(b => <Bird key={b.birdId} bird={b} />)}
+                            </div>
+                        </option>
                         <option></option>
                         <option></option>
                         <option></option>
@@ -88,9 +96,9 @@ function SightingForm() {
                 <input type="text" name="state" id="state" className="form-control"
                     value={sighting.state} onChange={handleChange}></input>
             </div>
-            <div className="form-group">
-                <label htmlFor="daytime" className="form-label">Daytime?</label>
-                <input type="checkbox" name="daytime" id="daytime" className="form-control"
+            <div>
+                <label htmlFor="daytime">Daytime?</label>
+                <input type="checkbox" name="daytime" id="daytime"
                     checked={sighting.daytime} onChange={handleChange}></input>
             </div>
             {errors.length !== 0 && <div className="alert alert-danger">
