@@ -15,18 +15,28 @@ public class AppUserMapper implements RowMapper<AppUser> {
     }
 
     @Override
-    public AppUser mapRow(ResultSet rs, int rowNum) throws SQLException {
-        AppUser user = new AppUser(
+    public AppUser mapRow(ResultSet rs, int i) throws SQLException {
+        return new AppUser(
                 rs.getInt("app_user_id"),
                 rs.getString("username"),
                 rs.getString("password_hash"),
                 rs.getBoolean("enabled"),
                 roles);
-
-        user.setEmail(rs.getString("email"));
-        user.setFirstName(rs.getString("user_first_name"));
-        user.setLastName(rs.getString("user_last_name"));
-
-        return user;
     }
+
+//    @Override
+//    public AppUser mapRow(ResultSet rs, int rowNum) throws SQLException {
+//        AppUser user = new AppUser(
+//                rs.getInt("app_user_id"),
+//                rs.getString("username"),
+//                rs.getString("password_hash"),
+//                rs.getBoolean("enabled"),
+//                roles);
+//
+//        user.setEmail(rs.getString("email"));
+//        user.setFirstName(rs.getString("user_first_name"));
+//        user.setLastName(rs.getString("user_last_name"));
+//
+//        return user;
+//    }
 }

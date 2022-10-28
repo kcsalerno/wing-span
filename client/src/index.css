@@ -50,6 +50,10 @@ td {
   font-size: 2rem;
   margin-bottom: 2%;
 }
+.buttonContainer {
+  display: flex;
+  justify-content: space-evenly;
+}
 /* .home .sliderContainer {
   overflow: hidden;
   height: 800px;

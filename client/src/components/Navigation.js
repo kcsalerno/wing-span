@@ -31,11 +31,6 @@ function Navigation() {
                 <>
                     <li className="list-inline-item"><Link to="/login">Login/Register</Link></li>
                 </>
-            )} */}
-            {/* {auth.user && (
-                <li className="list-inline-item"></li>
-            )} */}
-
             </ul>
         </nav>
     );

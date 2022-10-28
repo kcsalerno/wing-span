@@ -11,6 +11,8 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -20,26 +22,37 @@ import java.util.Map;
 
 @RestController
 public class AuthController {
+    // The `AuthenticationManager` interface defines a single method `authenticate()`
+    // that processes an Authentication request.
     private final AuthenticationManager authenticationManager;
+    // New
     private final JwtConverter converter;
+    // New
     private final AppUserService appUserService;
 
-    public AuthController(AuthenticationManager authenticationManager, JwtConverter converter, AppUserService appUserService) {
+    // Updated for JWT
+    public AuthController(AuthenticationManager authenticationManager, JwtConverter converter,
+                          AppUserService appUserService) {
         this.authenticationManager = authenticationManager;
         this.converter = converter;
         this.appUserService = appUserService;
     }
 
     @PostMapping("/authenticate")
-    public ResponseEntity<Map<String, String>> authenticate(@RequestBody Map<String, String> credentials) {
-
+    public ResponseEntity<?> authenticate(@RequestBody Map<String, String> credentials) {
+        // The `UsernamePasswordAuthenticationToken` class is an `Authentication` implementation
+        // that is designed for simple presentation of a username and password.
         UsernamePasswordAuthenticationToken authToken =
                 new UsernamePasswordAuthenticationToken(credentials.get("username"), credentials.get("password"));
 
         try {
+            // The `Authentication` interface Represents the token for an authentication request
+            // or for an authenticated principal once the request has been processed by the //
+            // `AuthenticationManager.authenticate(Authentication)` method.
             Authentication authentication = authenticationManager.authenticate(authToken);
 
             if (authentication.isAuthenticated()) {
+                // Added JWT, updated cast to AppUser instead of UserDetails
                 String jwtToken = converter.getTokenFromUser((AppUser) authentication.getPrincipal());
 
                 HashMap<String, String> map = new HashMap<>();
@@ -59,6 +72,8 @@ public class AuthController {
     // new... inject our `AppUser`, set by the `JwtRequestFilter`
     public ResponseEntity<Map<String, String>> refreshToken(@AuthenticationPrincipal AppUser appUser) {
         String jwtToken = converter.getTokenFromUser(appUser);
+//        User user = new User(principal.getName(), principal.getName(), principal.getAuthorities());
+//        String jwtToken = converter.getTokenFromUser(user);
 
         HashMap<String, String> map = new HashMap<>();
         map.put("jwt_token", jwtToken);

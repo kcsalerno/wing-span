@@ -112,7 +112,7 @@ public class SightingService {
 
         if (repository.findAll().stream().anyMatch(i ->
                 i.getSightingUserId() == (sighting.getSightingUserId()))) {
-            result.addMessage(ResultType.DUPLICATE, "User cannot be duplicated");
+            result.addMessage(ResultType.DUPLICATE, "Sighting cannot be duplicated");
         }
 
         return result;
