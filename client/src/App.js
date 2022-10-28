@@ -29,7 +29,7 @@ function App() {
     if (token) {
       login(token);
     }
-    refresh().then(setUser).catch(logout)
+    refresh().then(setUser).catch(logout);
     setRestoreLoginAttemptCompleted(true);
   }, []);
 
@@ -38,7 +38,7 @@ function App() {
     localStorage.setItem(LOCAL_STORAGE_TOKEN_KEY, token);
 
     // Decode the token
-    const { sub: username, authorities: authoritiesString } = jwtDecode(token);
+    const { sub: username, app_user_id: id, authorities: authoritiesString } = jwtDecode(token);
 
     // Split the authorities string into an array of roles
     const roles = authoritiesString.split(',');
@@ -46,6 +46,7 @@ function App() {
     // Create the "user" object
     const user = {
       username,
+      id,
       roles,
       token,
       hasRole(role) {
@@ -94,17 +95,13 @@ function App() {
             <SightingList />
           </Route>
           <Route path={["/add", "/edit/:sightingId"]}>
-          {auth.user ? (
               <SightingForm />
-            ) : (
-              <Redirect to='/login' />
-            )}
           </Route>
           <Route path="/birds">
             <BirdGrid />
           </Route>
           <Route path="/login">
-            {!auth.user ? <Login /> : <Redirect to="/" />}
+            <Login />
           </Route>
           <Route path="/error">
             <Error />

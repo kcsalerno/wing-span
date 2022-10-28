@@ -8,26 +8,6 @@ function makeUser(body) {
     return user;
 }
 
-// export async function authenticate(user) {
-
-//     const init = {
-//         method: "POST",
-//         headers: {
-//             "Content-Type": "application/json",
-//             "Accept": "application/json"
-//         },
-//         body: JSON.stringify(user)
-//     }
-
-//     const response = await fetch(`${API_URL}/authenticate`, init);
-//     if (response.ok) {
-//         const body = await response.json();
-//         return makeUser(body);
-//     } else {
-//         return Promise.reject();
-//     }
-// }
-
 export async function refresh() {
 
     const init = {

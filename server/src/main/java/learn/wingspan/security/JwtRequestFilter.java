@@ -4,6 +4,7 @@ import learn.wingspan.models.AppUser;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
 
 import javax.servlet.FilterChain;
@@ -17,32 +18,40 @@ public class JwtRequestFilter extends BasicAuthenticationFilter {
     private final JwtConverter converter;
 
     public JwtRequestFilter(AuthenticationManager authenticationManager, JwtConverter converter) {
-        super(authenticationManager); // Must satisfy the super class.
+        super(authenticationManager); // 1. Must satisfy the super class.
         this.converter = converter;
     }
 
+    // update the JwtRequestFilter to set the principal to the AppUser returned by our converter.
     @Override
     protected void doFilterInternal(HttpServletRequest request,
                                     HttpServletResponse response,
                                     FilterChain chain) throws IOException, ServletException {
 
+        // 2. Read the Authorization value from the request.
         String authorization = request.getHeader("Authorization");
         if (authorization != null && authorization.startsWith("Bearer ")) {
 
-            // get our `AppUser` from the converter
+            // 3. The value looks okay, confirm it with JwtConverter.
+            // new... get our `AppUser` from the converter
             AppUser user = converter.getUserFromToken(authorization);
             if (user == null) {
                 response.setStatus(403); // Forbidden
             } else {
+                // 4. Confirmed. Set auth for this single request.
+//                UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(
+//                        user.getUsername(), null, user.getAuthorities());
 
                 // Update the "principal" from the username to `user`
                 UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(
                         user, null, user.getAuthorities());
 
+
                 SecurityContextHolder.getContext().setAuthentication(token);
             }
         }
 
+        // 5. Keep the chain going.
         chain.doFilter(request, response);
     }
 }
