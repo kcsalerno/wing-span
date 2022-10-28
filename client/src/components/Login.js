@@ -15,29 +15,29 @@ function Login() {
     const handleSubmit = async (event) => {
         event.preventDefault();
 
-        // const response = await fetch("http://localhost:8080/api/authenticate", {
-        //     method: "POST",
-        //     headers: {
-        //         "Content-Type": "application/json",
-        //     },
-        //     body: JSON.stringify({
-        //         username,
-        //         password,
-        //     }),
-        // });
+        const response = await fetch("http://localhost:8080/authenticate", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                username,
+                password,
+            }),
+        });
 
         // This code executes if the request is successful
-        // if (response.status === 200) {
-        //     const { jwt_token } = await response.json();
-        //     console.log(jwt_token);
-        //     // NEW: login!
-        //     auth.login(jwt_token);
-        //     history.push("/");
-        // } else if (response.status === 403) {
-        //     setErrors(["Login failed."]);
-        // } else {
-        //     setErrors(["Unknown error."]);
-        // }
+        if (response.status === 200) {
+            const { jwt_token } = await response.json();
+            console.log(jwt_token);
+            // NEW: login!
+            auth.login(jwt_token);
+            history.push("/");
+        } else if (response.status === 403) {
+            setErrors(["Login failed."]);
+        } else {
+            setErrors(["Unknown error."]);
+        }
     };
 
     const handleUsernameChange = (event) => {

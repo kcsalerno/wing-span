@@ -1,0 +1,99 @@
+### Authenticate a User
+POST http://localhost:8080/authenticate HTTP/1.1
+Content-Type: application/json
+
+{
+    "username": "user",
+    "password": "user-password"
+}
+
+### Authenticate an Admin
+
+POST http://localhost:8080/authenticate HTTP/1.1
+Content-Type: application/json
+
+{
+    "username": "admin",
+    "password": "admin-password"
+}
+
+### Test Sighting POST
+@base_url = http://localhost:8080/api/sighting
+
+POST {{base_url}} HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJidWctc2FmYXJpIiwic3ViIjoidXNlciIsImF1dGhvcml0aWVzIjoiVVNFUiIsImV4cCI6MTY2Njk3MTE0MH0.IzFnIKXACweGhP84UnRcUDp60jpeGQwWG3bIYnxdCUw"
+
+{
+    "sightingUserId": 2,
+    "sightingBirdId": 4,
+    "date": "2020-11-11",
+    "city": "test city",
+    "state": "test state",
+    "daytime": false
+}
+
+### Refresh Token Test
+
+POST http://localhost:8080/refresh_token HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJidWctc2FmYXJpIiwic3ViIjoidXNlciIsImF1dGhvcml0aWVzIjoiVVNFUiIsImV4cCI6MTY2Njk3MTE0MH0.IzFnIKXACweGhP84UnRcUDp60jpeGQwWG3bIYnxdCUw"
+
+### Authenticate username Test (ADMIN)
+
+POST http://localhost:8080/authenticate HTTP/1.1
+Content-Type: application/json
+
+{
+    "username": "john@smith.com",
+    "password": "P@ssw0rd!"
+}
+
+### Authenticate username Test (USER)
+
+POST http://localhost:8080/authenticate HTTP/1.1
+Content-Type: application/json
+
+{
+    "username": "sally@jones.com",
+    "password": "P@ssw0rd!"
+}
+
+### Create New User Test
+
+POST http://localhost:8080/create_account HTTP/1.1
+Content-Type: application/json
+
+{
+    "username": "bob@jones.com",
+    "password": "P@ssw0rd!"
+}
+
+### Authenticate New User Test
+
+POST http://localhost:8080/authenticate HTTP/1.1
+Content-Type: application/json
+
+{
+    "username": "bob@jones.com",
+    "password": "P@ssw0rd!"
+}
+
+### New User Refresh Token Test
+
+POST http://localhost:8080/refresh_token HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ3aW5nc3BhbiIsInN1YiI6ImpvaG5Ac21pdGguY29tIiwiYXBwX3VzZXJfaWQiOjEsImF1dGhvcml0aWVzIjoiQURNSU4iLCJleHAiOjE2NjcwNjYyNzV9.BRphma_s0EkRZa4JQ2yWU_reaw09K7QBNi9ev5f40nE
+
+### New User Refreshed Token POST Test
+
+POST {{base_url}} HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ3aW5nc3BhbiIsInN1YiI6ImpvaG5Ac21pdGguY29tIiwiYXBwX3VzZXJfaWQiOjEsImF1dGhvcml0aWVzIjoiQURNSU4iLCJleHAiOjE2NjcwNjYyOTh9.jFextATJFDYtzCMwTSb_Q2jl-fzLLjvIZ1S5WuLrh1s
+
+{
+    "sightingUserId": 3,
+    "sightingBirdId": 4,
+    "date": "2020-11-11",
+    "city": "test city",
+    "state": "test state",
+    "daytime": false
+}
