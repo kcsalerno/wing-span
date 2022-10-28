@@ -17,6 +17,7 @@ function SightingForm() {
 
     const [bird, setBird] = useState([]);
     const [errors, setErrors] = useState([]);
+    
     const history = useHistory();
     const { sightingId, sightingBirdId } = useParams();
 
@@ -36,14 +37,16 @@ function SightingForm() {
 
     function handleChange(event) {
         const nextSighting = { ...sighting };
-
+        
+        nextSighting[event.target.name] = event.target.value;
+        setSighting(nextSighting);
     }
 
     function handleSubmit(event) {
         event.preventDefault();
 
         save(sighting)
-        .then(() => history.push("/"))
+        .then(() => history.push("/sightings"))
         .catch(errors => {
             if (errors) {
                 setErrors(errors);
@@ -51,6 +54,10 @@ function SightingForm() {
                 history.push("/error")
             }
         });
+    }
+
+    const updateSighting = () => {
+        
     }
 
     return(
@@ -97,7 +104,7 @@ function SightingForm() {
             </div>}
             <div className="mt-4">
                 <button className="btn btn-primary me-2" type="submit">Save</button>
-                <Link to="/" className="btn btn-warning">Cancel</Link>
+                <Link to="/sightings" className="btn btn-warning">Cancel</Link>
             </div>
         </form>
     );
