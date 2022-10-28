@@ -37,12 +37,9 @@ function SightingForm() {
 
     function handleChange(event) {
         const nextSighting = { ...sighting };
-        if (event.target.name === "bird") {
-            nextSighting.bird = event.target.checked;
-        } else {
-            nextSighting[event.target.name] = event.target.value;
-        }
-        setSighting[nextSighting];
+        
+        nextSighting[event.target.name] = event.target.value;
+        setSighting(nextSighting);
     }
 
     function handleSubmit(event) {
@@ -57,6 +54,10 @@ function SightingForm() {
                 history.push("/error")
             }
         });
+    }
+
+    const updateSighting = () => {
+        
     }
 
     return(
