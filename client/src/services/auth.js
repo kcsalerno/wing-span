@@ -1,12 +1,12 @@
-const API_URL = "http://localhost:8080";
+// const API_URL = "http://localhost:8080";
 
-function makeUser(body) {
-    const sections = body.jwt.split(".");
-    const json = atob(sections[1]);
-    const user = JSON.parse(json);
-    localStorage.setItem("jwt", body.jwt);
-    return user;
-}
+// function makeUser(body) {
+//     const sections = body.jwt.split(".");
+//     const json = atob(sections[1]);
+//     const user = JSON.parse(json);
+//     localStorage.setItem("jwt", body.jwt);
+//     return user;
+// }
 
 // export async function authenticate(user) {
 
@@ -28,20 +28,20 @@ function makeUser(body) {
 //     }
 // }
 
-export async function refresh() {
+// export async function refresh() {
 
-    const init = {
-        method: "POST",
-        headers: {
-            "Authorization": `Bearer ${localStorage.getItem("jwt")}`
-        }
-    }
+//     const init = {
+//         method: "POST",
+//         headers: {
+//             "Authorization": `Bearer ${localStorage.getItem("jwt")}`
+//         }
+//     }
 
-    const response = await fetch(`${API_URL}/refresh_token`, init);
-    if (response.ok) {
-        const body = await response.json();
-        return makeUser(body);
-    }
+//     const response = await fetch(`${API_URL}/refresh_token`, init);
+//     if (response.ok) {
+//         const body = await response.json();
+//         return makeUser(body);
+//     }
 
-    return Promise.reject();
-}
+//     return Promise.reject();
+// }

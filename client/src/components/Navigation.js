@@ -4,16 +4,16 @@ import { useContext } from 'react';
 import AuthContext from "../contexts/AuthContext";
 
 function Navigation() {
-    const auth = useContext(AuthContext);
+    // const auth = useContext(AuthContext);
     
     return (
         <nav>
-            {auth.user && (
+            {/* {auth.user && (
             <div className="text-center lead">
                 Welcome, {auth.user.username}!
                 <button className="btn btn-sm btn-link" onClick={() => auth.logout()}>Logout</button>
             </div>
-        )}
+        )} */}
             <ul>
                 <li>
                     <Link to="/">Home</Link>
@@ -24,14 +24,14 @@ function Navigation() {
                 <li>
                     <Link to="/birds">Birds</Link>
                 </li>
-                {!auth.user && (
+                {/* {!auth.user && (
                 <>
                     <li className="list-inline-item"><Link to="/login">Login/Register</Link></li>
                 </>
-            )}
-            {auth.user && (
+            )} */}
+            {/* {auth.user && (
                 <li className="list-inline-item"></li>
-            )}
+            )} */}
             </ul>
         </nav>
     );
