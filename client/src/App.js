@@ -15,7 +15,7 @@ import Error from './components/Error';
 import AuthContext from "./contexts/AuthContext";
 import { refresh } from "./services/auth"
 
-// const LOCAL_STORAGE_TOKEN_KEY = "wingspanToken";
+const LOCAL_STORAGE_TOKEN_KEY = "wingspanToken";
 
 function App() {
   const [user, setUser] = useState(null);
