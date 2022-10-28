@@ -63,6 +63,7 @@ function SightingList() {
                             <td>{s.city}</td>
                             <td>{s.state}</td>
                             <td>{s.daytime ? "Yes" : "No"}</td>
+                        
                         </tr>
                     ))}
                 </tbody>
