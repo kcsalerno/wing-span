@@ -45,19 +45,19 @@ function BirdForm() {
     return (
         <form onSubmit={handleSubmit}>
             <h2>{birdId > 0 ? "Edit Bird" : "Add Bird"}</h2>
-            <div className="mb-3">
-                <label htmlFor="commonName" className="form-lable">Common Name:</label>
-                <input type="text" name="commonName" id="commonName" className="form-control"
+            <div className="form-group mb-3">
+                <label htmlFor="commonName" className="form-label">Common Name:</label>
+                <input type="text" name="commonName" id="commonName" className="form-control form-control-lg"
                     value={bird.commonName} onChange={handleChange}></input>
             </div>
-            <div className="mb-3">
-                <label htmlFor="scientificName" className="form-lable">Scientific Name:</label>
-                <input type="text" name="scientificName" id="scientificName" className="form-control"
+            <div className="form-group mb-3">
+                <label htmlFor="scientificName" className="form-label">Scientific Name:</label>
+                <input type="text" name="scientificName" id="scientificName" className="form-control form-control-lg"
                     value={bird.scientificName} onChange={handleChange}></input>
             </div>
-            <div className="mb-3">
-                <label htmlFor="birdImageUrl" className="form-lable">Bird Image URL:</label>
-                <input type="text" name="birdImageUrl" id="birdImageUrl" className="form-control"
+            <div className="form-group mb-3">
+                <label htmlFor="birdImageUrl" className="form-label">Bird Image URL:</label>
+                <input type="text" name="birdImageUrl" id="birdImageUrl" className="form-control form-control-lg"
                     value={bird.birdImageUrl} onChange={handleChange}></input>
             </div>
             {errors.length !== 0 && <div className="alert alert-danger">
@@ -66,8 +66,8 @@ function BirdForm() {
                 </ul>
             </div>}
             <div className="mb-3">
-                <button className="btn btn-primay me-2" type="submit">Save</button>
-                <Link to="/birds" className="btn btn-warning">Cancel</Link>
+                <button className="btn btn-primay btn-lg btn-success " type="submit">Save</button>
+                <Link to="/birds" className="btn btn-lg btn-warning">Cancel</Link>
             </div>
         </form>
     );
