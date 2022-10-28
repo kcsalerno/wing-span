@@ -13,7 +13,7 @@ function SightingForm() {
         date: "",
         city: "",
         state: "",
-        daytime: true
+        daytime: false
     })
 
     const [birds, setBirds] = useState([]);
@@ -34,7 +34,7 @@ function SightingForm() {
         findAllBirds()
         .then(setBirds)
         .catch(() => history.push("/error"));
-    }, [history]);
+    }, []);
 
     function handleChange(event) {
         const nextSighting = { ...sighting };
