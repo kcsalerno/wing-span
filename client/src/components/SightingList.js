@@ -3,37 +3,23 @@ import { useHistory, Link } from "react-router-dom";
 import { findAllSightings } from "../services/sightings";
 import { findAllBirds } from "../services/birds";
 
-
 function SightingList() {
     const [sightings, setSightings] = useState([]);
-    // const [birds, setBirds] = useState([]);
-    // const [loaded, setLoaded] = useState(false);
-
     const history = useHistory();
 
     useEffect(() => {
         findAllSightings()
         .then(async data => {
             const response = await findAllBirds();
-            // temporary copy of sightings
             const temp = [...data];
-            // loop through temporary copy
             temp.forEach((sighting, index) => {
-                // get the birdId for sighting
                 const birdId = sighting.sightingBirdId;
-                // assign to a bird
                 const bird = response.find(bird => bird.birdId === birdId);
                 temp[index].birdCommonName = bird.commonName;
             });
             setSightings(temp);})
         .catch(() => history.push("/error"))
     }, [history]);
-
-    // add a join to include users in sightings
-    // or look into a promise all
-    // or do a third .then
-
-    console.log(sightings);
 
     return (
         <>
@@ -67,6 +53,5 @@ function SightingList() {
         </>
     )
 }
-
 
 export default SightingList;
