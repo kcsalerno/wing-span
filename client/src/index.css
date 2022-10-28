@@ -44,7 +44,11 @@ td {
   margin: 4% 0;
 }
 #add {
-  font-size: 2rem !important;
+  font-size: 2rem;
+}
+#addBird {
+  font-size: 2rem;
+  margin-bottom: 2%;
 }
 .buttonContainer {
   display: flex;

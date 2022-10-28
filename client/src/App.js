@@ -8,6 +8,7 @@ import Navigation from './components/Navigation';
 import SightingList from './components/SightingList';
 import SightingForm from './components/SightingForm';
 import BirdGrid from './components/BirdGrid';
+import BirdForm from './components/BirdForm';
 import Login from './components/Login';
 import NotFound from './components/NotFound';
 import Error from './components/Error';
@@ -83,35 +84,36 @@ function App() {
   }
 
   return (
-    <AuthContext.Provider value={auth}>
-      <Router>
-        <h1>WingSpan 🦉</h1>
-        <Navigation />
-        <Switch>
-          <Route path="/" exact>
-            <Home />
-          </Route>
-          <Route path="/sightings" exact>
-            <SightingList />
-          </Route>
-          <Route path={["/add", "/edit/:sightingId"]}>
-              <SightingForm />
-          </Route>
-          <Route path="/birds">
-            <BirdGrid />
-          </Route>
-          <Route path="/login">
-            <Login />
-          </Route>
-          <Route path="/error">
-            <Error />
-          </Route>
-          <Route path="*">
-            <NotFound />
-          </Route>
-        </Switch>
-      </Router>
-    </AuthContext.Provider>
+    <Router>
+      <h1>WingSpan 🦉</h1>
+      <Navigation />
+      <Switch>
+        <Route path="/" exact>
+          <Home />
+        </Route>
+        <Route path="/sightings" exact>
+          <SightingList />
+        </Route>
+        <Route path={["/sightings/add", "/sightings/edit/:sightingId"]}>
+          <SightingForm />
+        </Route>
+        <Route path="/birds" exact>
+          <BirdGrid />
+        </Route>
+        <Route path={["/birds/add", "/birds/edit/:birdId"]}>
+          <BirdForm />
+        </Route>
+        <Route path="/login">
+          <Login />
+        </Route>
+        <Route path="/error">
+          <Error />
+        </Route>
+        <Route path="*">
+          <NotFound />
+        </Route>
+      </Switch>
+    </Router>
   )
 }
 
