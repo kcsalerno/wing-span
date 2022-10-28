@@ -46,6 +46,10 @@ td {
 #add {
   font-size: 2rem !important;
 }
+.buttonContainer {
+  display: flex;
+  justify-content: space-evenly;
+}
 /* .home .sliderContainer {
   overflow: hidden;
   height: 800px;
