@@ -11,6 +11,7 @@ public class Sighting {
     private String city;
     private String state;
     private boolean daytime;
+    private String username;
 
     public Sighting() {
 
@@ -80,6 +81,14 @@ public class Sighting {
 
     public void setSightingBirdId(int sightingBirdId) {
         this.sightingBirdId = sightingBirdId;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     @Override
