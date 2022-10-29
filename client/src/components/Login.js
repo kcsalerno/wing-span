@@ -31,6 +31,8 @@ function Login() {
             const { jwt_token } = await response.json();
             console.log(jwt_token);
             // NEW: login!
+            localStorage.setItem("jwt", jwt_token);
+            console.log(localStorage.getItem("jwt"));
             auth.login(jwt_token);
             history.push("/");
         } else if (response.status === 403) {

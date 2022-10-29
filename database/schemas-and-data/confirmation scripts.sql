@@ -1,4 +1,4 @@
-use wing_span_test;
+use wing_span;
 
 select au.app_user_id, ar.app_role_id, `name`, username, password_hash, enabled, email, user_first_name, user_last_name, a.avatar_id, avatar_description, avatar_img_url, b.badge_id, badge_name, badge_description, badge_img_url from app_user_role aur
 	inner join app_role ar on aur.app_role_id = ar.app_role_id
@@ -40,3 +40,5 @@ select * from bird
 select * from app_user;
 
 select * from app_user_role;
+
+select * from bird;

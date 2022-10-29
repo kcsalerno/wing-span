@@ -28,6 +28,8 @@ async function add(sighting) {
         body: JSON.stringify(sighting)
     };
 
+    console.log(sighting);
+
     const response = await fetch(SIGHTING_API_URL, init);
     if (response.ok) {
         return Promise.resolve();

@@ -85,36 +85,44 @@ function App() {
 
   return (
     <AuthContext.Provider value={auth}>
-    <Router>
-      <h1>WingSpan 🦉</h1>
-      <Navigation />
-      <Switch>
-        <Route path="/" exact>
-          <Home />
-        </Route>
-        <Route path="/sightings" exact>
-          <SightingList />
-        </Route>
-        <Route path={["/sightings/add", "/sightings/edit/:sightingId"]}>
-          <SightingForm />
-        </Route>
-        <Route path="/birds" exact>
-          <BirdGrid />
-        </Route>
-        <Route path={["/birds/add", "/birds/edit/:birdId"]}>
-          <BirdForm />
-        </Route>
-        <Route path="/login">
-          <Login />
-        </Route>
-        <Route path="/error">
-          <Error />
-        </Route>
-        <Route path="*">
-          <NotFound />
-        </Route>
-      </Switch>
-    </Router>
+      <Router>
+        <h1>WingSpan 🦉</h1>
+        <Navigation />
+        <Switch>
+          <Route path="/" exact>
+            <Home />
+          </Route>
+          <Route path="/sightings" exact>
+            <SightingList />
+          </Route>
+          <Route path={["/sightings/add", "/sightings/edit/:sightingId"]}>
+            {auth.user ? (
+              <SightingForm />
+            ) : (
+              <Redirect to='/login' />
+            )}
+          </Route>
+          <Route path="/birds" exact>
+            <BirdGrid />
+          </Route>
+          <Route path={["/birds/add", "/birds/edit/:birdId"]}>
+            {auth.user ? (
+              <BirdForm />
+            ) : (
+              <Redirect to='/login' />
+            )}
+          </Route>
+          <Route path="/login">
+            {!auth.user ? <Login /> : <Redirect to="/" />}
+          </Route>
+          <Route path="/error">
+            <Error />
+          </Route>
+          <Route path="*">
+            <NotFound />
+          </Route>
+        </Switch>
+      </Router>
     </AuthContext.Provider>
   )
 }

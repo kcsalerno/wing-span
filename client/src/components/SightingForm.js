@@ -4,11 +4,22 @@ import { findBySightingId, save } from "../services/sightings";
 import {findAllBirds} from "../services/birds";
 import Bird from "./Bird";
 
+import { useContext } from 'react';
+
+import AuthContext from "../contexts/AuthContext";
+
+
 function SightingForm() {
+    const auth = useContext(AuthContext);
+    // console.log('this is the auth', auth);
+    // const user= auth.user;
+    // console.log('this is the user', user);
+    // const userId = user.id;
+    // console.log('this is the id', userId)
 
     const [sighting, setSighting] = useState({
         sightingId: 0,
-        sightingUserId: 0,
+        sightingUserId: auth.user.id,
         sightingBirdId: 0,
         date: "",
         city: "",
@@ -67,10 +78,10 @@ function SightingForm() {
                 <label htmlFor="bird">Bird:</label>
                 <select name="bird" id="bird" className="form-control"
                     value={sighting.bird} onChange={handleChange}>
-                        <option>
-                            <div>
-                                {birds.map(b => <Bird key={b.birdId} bird={b} />)}
-                            </div>
+                        {/* <option>
+                            <div> */}
+                                {birds.map(b => <option><Bird key={b.birdId} bird={b} /></option>)}
+                            {/* </div>
                         </option>
                         <option></option>
                         <option></option>
@@ -78,7 +89,7 @@ function SightingForm() {
                         <option></option>
                         <option></option>
                         <option></option>
-                        <option></option>
+                        <option></option> */}
                     </select>
             </div>
             <div className="form-group">
@@ -107,7 +118,7 @@ function SightingForm() {
                 </ul>
             </div>}
             <div className="mt-4">
-                <button className="btn btn-primary me-2" type="submit">Save</button>
+                <button className="btn btn-primary me-2 mr-2" type="submit">Save</button>
                 <Link to="/sightings" className="btn btn-warning">Cancel</Link>
             </div>
         </form>
