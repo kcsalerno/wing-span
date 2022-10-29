@@ -3,7 +3,6 @@ import { Link, useHistory, useParams } from "react-router-dom";
 import { findByBirdId, save } from "../services/birds";
 
 function BirdForm() {
-
     const [bird, setBird] = useState({
         birdId: 0,
         commonName: "",

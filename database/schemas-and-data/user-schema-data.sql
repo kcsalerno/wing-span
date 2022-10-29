@@ -18,7 +18,7 @@ create table app_user (
     username varchar(50) not null unique,
     password_hash varchar(2048) not null,
     enabled boolean not null default(true)-- ,
---     email varchar(255) not null,
+-- 	email varchar(255) not null,
 --     user_first_name varchar(50) null,
 --     user_last_name varchar(50) null
 );

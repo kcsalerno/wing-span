@@ -19,7 +19,7 @@ public class ErrorResponse {
     public static <T> ResponseEntity<Object> build(Result<T> result) {
         HttpStatus status = HttpStatus.INTERNAL_SERVER_ERROR;
 
-        if (result.getType() == null || result.getType() == ResultType.INVALID) {
+        if (result.getType() == null || result.getType() == ResultType.INVALID || result.getType() == ResultType.DUPLICATE) {
             status = HttpStatus.BAD_REQUEST; // 400
         } else if (result.getType() == ResultType.NOT_FOUND) {
             status = HttpStatus.NOT_FOUND; // 404

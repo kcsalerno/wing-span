@@ -11,11 +11,11 @@ import java.util.List;
 @Service
 public class SightingService {
     private final SightingRepository repository;
-    private final Validator validator;
+//    private final Validator validator;
 
-    public SightingService(SightingRepository repository, Validator validator) {
+    public SightingService(SightingRepository repository) {
         this.repository = repository;
-        this.validator = validator;
+//        this.validator = validator;
     }
 
     public List<Sighting> findAll() {
@@ -57,7 +57,7 @@ public class SightingService {
         }
 
         if (result.isSuccess()) {
-            if (!repository.update(sighting)) {
+            if (repository.update(sighting)) {
                 result.setPayload(sighting);
             } else {
                 String msg = String.format("Sighting ID: %s, not found", sighting.getSightingId());
@@ -110,10 +110,18 @@ public class SightingService {
             return result;
         }
 
-        if (repository.findAll().stream().anyMatch(i ->
-                i.getSightingUserId() == (sighting.getSightingUserId()))) {
-            result.addMessage(ResultType.DUPLICATE, "Sighting cannot be duplicated");
+        List<Sighting> sightings = repository.findAll();
+        for (Sighting s : sightings) {
+            if (s.equals(sighting))
+            {
+                result.addMessage(ResultType.DUPLICATE, "Sighting cannot be duplicated");
+                return result;
+            }
         }
+//        if (repository.findAll().stream().anyMatch(i ->
+//                i.getSightingUserId() == (sighting.getSightingUserId()))) {
+//            result.addMessage(ResultType.DUPLICATE, "Sighting cannot be duplicated");
+//        }
 
         return result;
     }

@@ -1,3 +1,5 @@
+import jwtDecode from "jwt-decode";
+
 const API_URL = "http://localhost:8080";
 
 function makeUser(body) {
@@ -7,6 +9,26 @@ function makeUser(body) {
     localStorage.setItem("jwt", body.jwt);
     return user;
 }
+
+// export async function authenticate(user) {
+
+//     const init = {
+//         method: "POST",
+//         headers: {
+//             "Content-Type": "application/json",
+//             "Accept": "application/json"
+//         },
+//         body: JSON.stringify(user)
+//     }
+
+//     const response = await fetch(`${API_URL}/authenticate`, init);
+//     if (response.ok) {
+//         const body = await response.json();
+//         return makeUser(body);
+//     } else {
+//         return Promise.reject();
+//     }
+// }
 
 export async function refresh() {
 
