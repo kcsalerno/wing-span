@@ -10,9 +10,9 @@ create table app_user (
     username varchar(50) not null unique,
     password_hash varchar(2048) not null,
     enabled boolean not null default(true),
-    email varchar(255) not null,
-    user_first_name varchar(50) null,
-    user_last_name varchar(50) null
+    email varchar(255) not null-- ,
+--     user_first_name varchar(50) null,
+--     user_last_name varchar(50) null
 );
 
 -- -----------------------------------------------------
@@ -179,9 +179,12 @@ begin
 		('ADMIN');
 
 	-- Initial data to get started, passwords are set to "P@ssw0rd!" for now
-	insert into app_user (username, password_hash, email, user_first_name, user_last_name) values
-		('admin1', '$2a$10$ntB7CsRKQzuLoKY3rfoAQen5nNyiC/U60wBsWnnYrtQQi8Z3IZzQa', 'admin@admin.com', 'Test', 'McTesterson'),
-		('user1', '$2a$10$ntB7CsRKQzuLoKY3rfoAQen5nNyiC/U60wBsWnnYrtQQi8Z3IZzQa', 'user@user.com', 'User', 'McUser');
+-- 	insert into app_user (username, password_hash, email, user_first_name, user_last_name) values
+    insert into app_user (username, password_hash, email) values
+-- 		('admin1', '$2a$10$ntB7CsRKQzuLoKY3rfoAQen5nNyiC/U60wBsWnnYrtQQi8Z3IZzQa', 'admin@admin.com', 'Test', 'McTesterson'),
+-- 		('user1', '$2a$10$ntB7CsRKQzuLoKY3rfoAQen5nNyiC/U60wBsWnnYrtQQi8Z3IZzQa', 'user@user.com', 'User', 'McUser');
+		('admin1', '$2a$10$ntB7CsRKQzuLoKY3rfoAQen5nNyiC/U60wBsWnnYrtQQi8Z3IZzQa', 'admin@admin.com'),
+		('user1', '$2a$10$ntB7CsRKQzuLoKY3rfoAQen5nNyiC/U60wBsWnnYrtQQi8Z3IZzQa', 'user@user.com');
 
 	-- Initial app users with roles; account 1 is an Admin, account 2 is a User.
 	insert into app_user_role (app_user_id, app_role_id) values 
@@ -222,8 +225,8 @@ begin
 		(1, 1, '2020-10-01', 'Test City', 'Test State', true),
         (1, 2, '2021-11-01', 'Test City', 'Test State', true),
         (1, 3, '2021-12-01', 'Test City', 'Test State', false),
-        (1, 4, '2022-04-01', 'Test City', 'Test State', false),
-        (1, 5, '2022-06-01', 'Test City', 'Test State', true);
+        (2, 4, '2022-04-01', 'Test City', 'Test State', false),
+        (2, 5, '2022-06-01', 'Test City', 'Test State', true);
         
 	insert into sighting_trait (sighting_id, trait_id) values
 		(1, 1),

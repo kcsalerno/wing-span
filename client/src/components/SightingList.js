@@ -12,8 +12,8 @@ function SightingList() {
 
     const auth = useContext(AuthContext);
 
-    console.log(auth);
-    console.log(auth.user);
+    // console.log(auth);
+    // console.log(auth.user);
 
     useEffect(() => {
         findAllSightings()
@@ -44,7 +44,7 @@ function SightingList() {
                         <th scope="col">City</th>
                         <th scope="col">State</th>
                         <th scope="col">Daytime?</th>
-                        {auth.user && auth.user.roles[0] === "ADMIN" &&
+                        {auth.user && auth.user.hasRole('ADMIN') &&
                             <th>&nbsp;</th>
                         }
                     </tr>
@@ -60,7 +60,8 @@ function SightingList() {
                             <td>{s.city}</td>
                             <td>{s.state}</td>
                             <td>{s.daytime ? "Yes" : "No"}</td>
-                            {auth.user && auth.user.roles[0] === "ADMIN" &&
+                            {/* Just a quick test of conditional rendering for matching usernames, this is temporary - will implement in Profile */}
+                            {auth.user && auth.user.hasRole('ADMIN') && auth.user.username === s.username &&
                                 <td className="buttonContainer">
                                     <Link className="btn btn-primary" to={`/sightings/edit/${s.sightingId}`}>Edit</Link>
                                     <Link className="btn btn-danger" to={`/sightings/deletebyId/${s.sightingId}`}>Delete</Link>

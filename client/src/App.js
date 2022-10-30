@@ -18,6 +18,10 @@ import { refresh } from "./services/auth"
 const LOCAL_STORAGE_TOKEN_KEY = "wingspanToken";
 
 function App() {
+  // Refresh the token after 14 minutes. If no one is logged in the request is blocked, if they are, they will always have a valid token.
+  setTimeout(() => refresh().then(setUser).catch(logout), 840000);
+
+  // null means a no user is logged in.
   const [user, setUser] = useState(null);
   // NEW: Define a state variable to track if 
   // the restore login attempt has completed
@@ -30,7 +34,6 @@ function App() {
     if (token) {
       login(token);
     }
-    refresh().then(setUser).catch(logout);
     setRestoreLoginAttemptCompleted(true);
   }, []);
 
@@ -39,7 +42,7 @@ function App() {
     localStorage.setItem(LOCAL_STORAGE_TOKEN_KEY, token);
 
     // Decode the token
-    const { sub: username, app_user_id: id, authorities: authoritiesString } = jwtDecode(token);
+    const { sub: username, app_user_id: userId, email, authorities: authoritiesString } = jwtDecode(token);
 
     // Split the authorities string into an array of roles
     const roles = authoritiesString.split(',');
@@ -47,7 +50,8 @@ function App() {
     // Create the "user" object
     const user = {
       username,
-      id,
+      userId,
+      email,
       roles,
       token,
       hasRole(role) {

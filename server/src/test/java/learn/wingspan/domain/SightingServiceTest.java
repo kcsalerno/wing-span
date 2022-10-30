@@ -124,13 +124,15 @@ class SightingServiceTest {
         sighting.setSightingUserId(1);
 
         when(repository.findAll()).thenReturn(List.of(
-                new Sighting(2, 1, 2, LocalDate.of(2021, 11, 01), "Test City", "Test State", true)
+                new Sighting(2, 1, 2,
+                        LocalDate.of(2020, 3, 10),
+                        "Test City", "Test State", false)
         ));
         Result<Sighting> result = service.create(sighting);
 
         assertFalse(result.isSuccess());
         assertEquals(1, result.getMessages().size());
-        assertEquals("User cannot be duplicated", result.getMessages().get(0));
+        assertEquals("Sighting cannot be duplicated", result.getMessages().get(0));
     }
 
     @Test
@@ -202,13 +204,15 @@ class SightingServiceTest {
         sighting.setSightingUserId(1);
 
         when(repository.findAll()).thenReturn(List.of(
-                new Sighting(2, 1, 2, LocalDate.of(2021, 11, 01), "Test City", "Test State", true)
+                new Sighting(2, 1, 2,
+                        LocalDate.of(2020, 3, 10),
+                        "Test City", "Test State", false)
         ));
         Result<Sighting> result = service.update(sighting);
 
         assertFalse(result.isSuccess());
         assertEquals(1, result.getMessages().size());
-        assertEquals("User cannot be duplicated", result.getMessages().get(0));
+        assertEquals("Sighting cannot be duplicated", result.getMessages().get(0));
     }
 
     @Test
@@ -234,7 +238,7 @@ class SightingServiceTest {
 
         sighting.setSightingUserId(1);
         sighting.setSightingBirdId(2);
-        sighting.setDate(LocalDate.of(2020, 03, 10));
+        sighting.setDate(LocalDate.of(2020, 3, 10));
         sighting.setCity("Test City");
         sighting.setState("Test State");
         sighting.setDaytime(false);

@@ -3,29 +3,23 @@ package learn.wingspan.security;
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.security.Keys;
 import learn.wingspan.models.AppUser;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
 import java.security.Key;
 import java.util.Arrays;
 import java.util.Date;
-import java.util.List;
 import java.util.stream.Collectors;
 
 @Component
 public class JwtConverter {
 
-    // 1. Signing key
-    private Key key = Keys.secretKeyFor(SignatureAlgorithm.HS256);
     // 2. "Configurable" constants
     private final String ISSUER = "wingspan";
-
     // Temporarily making token refresh a ridiculously long time. Will come back to refresh later.
-    private final int EXPIRATION_MINUTES = 1440;
+    private final int EXPIRATION_MINUTES = 15;
     private final int EXPIRATION_MILLIS = EXPIRATION_MINUTES * 60 * 1000;
+    // 1. Signing key
+    private final Key key = Keys.secretKeyFor(SignatureAlgorithm.HS256);
 
     // Take an instance of `AppUser` as a parameter, instead of `UserDetails`
     public String getTokenFromUser(AppUser user) {
@@ -40,6 +34,7 @@ public class JwtConverter {
                 .setSubject(user.getUsername())
                 // new... embed the `appUserId` in the JWT as a claim
                 .claim("app_user_id", user.getAppUserId())
+                .claim("email", user.getEmail())
                 .claim("authorities", authorities)
                 .setExpiration(new Date(System.currentTimeMillis() + EXPIRATION_MILLIS))
                 .signWith(key)
@@ -63,7 +58,8 @@ public class JwtConverter {
 
             String username = jws.getBody().getSubject();
             // new... read the `appUserId` from the JWT body
-            int appUserId = (int)jws.getBody().get("app_user_id");
+            int appUserId = (int) jws.getBody().get("app_user_id");
+            String email = (String) jws.getBody().get("email");
             String authStr = (String) jws.getBody().get("authorities");
 
 //            List<SimpleGrantedAuthority> roles = Arrays.stream(authStr.split(","))
@@ -71,7 +67,7 @@ public class JwtConverter {
 //                    .collect(Collectors.toList());
 
             // Replace the Spring Security `User` with our `AppUser`
-            return new AppUser(appUserId, username, null, true,
+            return new AppUser(appUserId, username, null, true, email,
                     Arrays.asList(authStr.split(",")));
 
         } catch (JwtException ex) {

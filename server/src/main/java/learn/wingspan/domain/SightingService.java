@@ -4,7 +4,6 @@ import learn.wingspan.data.SightingRepository;
 import learn.wingspan.models.Sighting;
 import org.springframework.stereotype.Service;
 
-import javax.validation.Validator;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -112,8 +111,7 @@ public class SightingService {
 
         List<Sighting> sightings = repository.findAll();
         for (Sighting s : sightings) {
-            if (s.equals(sighting))
-            {
+            if (s.equals(sighting)) {
                 result.addMessage(ResultType.DUPLICATE, "Sighting cannot be duplicated");
                 return result;
             }
