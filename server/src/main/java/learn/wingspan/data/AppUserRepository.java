@@ -11,18 +11,9 @@ public interface AppUserRepository {
     @Transactional
     AppUser create(AppUser user);
 
+//    @Transactional
+//    void update(AppUser user);
+
     @Transactional
-    void update(AppUser user);
+    boolean update(AppUser user);
 }
-//    @Transactional
-//    AppUser findByUsername(String username);
-//
-//    @Transactional
-//    AppUser findByEmail(String email);
-//
-//    @Transactional
-//    AppUser create(AppUser user);
-//
-//    @Transactional
-//    boolean update(AppUser user);
-//}

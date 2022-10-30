@@ -2,35 +2,11 @@ import jwtDecode from "jwt-decode";
 
 const API_URL = "http://localhost:8080";
 
-function makeUser(body) {
-    const sections = body.jwt.split(".");
-    const json = atob(sections[1]);
-    const user = JSON.parse(json);
-    localStorage.setItem("jwt", body.jwt);
-    return user;
-}
-
-// export async function authenticate(user) {
-
-//     const init = {
-//         method: "POST",
-//         headers: {
-//             "Content-Type": "application/json",
-//             "Accept": "application/json"
-//         },
-//         body: JSON.stringify(user)
-//     }
-
-//     const response = await fetch(`${API_URL}/authenticate`, init);
-//     if (response.ok) {
-//         const body = await response.json();
-//         return makeUser(body);
-//     } else {
-//         return Promise.reject();
-//     }
-// }
+const LOCAL_STORAGE_TOKEN_KEY = "wingspanToken";
 
 export async function refresh() {
+    console.log('refresh was called!');
+    const token = localStorage.getItem(LOCAL_STORAGE_TOKEN_KEY);
 
     const init = {
         method: "POST",
@@ -41,8 +17,36 @@ export async function refresh() {
 
     const response = await fetch(`${API_URL}/refresh_token`, init);
     if (response.ok) {
-        const body = await response.json();
-        return makeUser(body);
+        // const body = await response.json();
+        // return makeUser(body);
+
+        const { jwt_token } = await response.json();
+
+        console.log(jwt_token);
+
+        localStorage.setItem("jwt", jwt_token);
+
+        localStorage.setItem(LOCAL_STORAGE_TOKEN_KEY, token);
+
+        // Decode the token
+        const { sub: username, app_user_id: userId, email, authorities: authoritiesString } = jwtDecode(token);
+
+        // Split the authorities string into an array of roles
+        const roles = authoritiesString.split(',');
+
+        // Create the "user" object
+        const user = {
+            username,
+            userId,
+            email,
+            roles,
+            token,
+            hasRole(role) {
+                return this.roles.includes(role);
+            }
+        };
+
+        return user;
     }
 
     return Promise.reject();

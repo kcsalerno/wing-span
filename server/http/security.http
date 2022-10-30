@@ -44,7 +44,7 @@ POST http://localhost:8080/authenticate HTTP/1.1
 Content-Type: application/json
 
 {
-    "username": "john@smith.com",
+    "username": "admin1",
     "password": "P@ssw0rd!"
 }
 
@@ -54,7 +54,7 @@ POST http://localhost:8080/authenticate HTTP/1.1
 Content-Type: application/json
 
 {
-    "username": "sally@jones.com",
+    "username": "user1",
     "password": "P@ssw0rd!"
 }
 
@@ -64,8 +64,9 @@ POST http://localhost:8080/create_account HTTP/1.1
 Content-Type: application/json
 
 {
-    "username": "bob@jones.com",
-    "password": "P@ssw0rd!"
+    "username": "testUser",
+    "password": "P@ssw0rd!",
+    "email": "bob@jones.com"
 }
 
 ### Authenticate New User Test
@@ -74,20 +75,20 @@ POST http://localhost:8080/authenticate HTTP/1.1
 Content-Type: application/json
 
 {
-    "username": "bob@jones.com",
+    "username": "testUser",
     "password": "P@ssw0rd!"
 }
 
 ### New User Refresh Token Test
 
 POST http://localhost:8080/refresh_token HTTP/1.1
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ3aW5nc3BhbiIsInN1YiI6ImpvaG5Ac21pdGguY29tIiwiYXBwX3VzZXJfaWQiOjEsImF1dGhvcml0aWVzIjoiQURNSU4iLCJleHAiOjE2NjcwNjYyNzV9.BRphma_s0EkRZa4JQ2yWU_reaw09K7QBNi9ev5f40nE
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ3aW5nc3BhbiIsInN1YiI6InRlc3RVc2VyIiwiYXBwX3VzZXJfaWQiOjMsImVtYWlsIjoiYm9iQGpvbmVzLmNvbSIsImF1dGhvcml0aWVzIjoiVVNFUiIsImV4cCI6MTY2NzE4NTc4MH0.ZFCEEqTUnsWYdl3WZO1er4ZuG0CU6j2ySkjN7v5Q4SI
 
 ### New User Refreshed Token POST Test
 
 POST {{base_url}} HTTP/1.1
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ3aW5nc3BhbiIsInN1YiI6ImpvaG5Ac21pdGguY29tIiwiYXBwX3VzZXJfaWQiOjEsImF1dGhvcml0aWVzIjoiQURNSU4iLCJleHAiOjE2NjcwNjYyOTh9.jFextATJFDYtzCMwTSb_Q2jl-fzLLjvIZ1S5WuLrh1s
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ3aW5nc3BhbiIsInN1YiI6InRlc3RVc2VyIiwiYXBwX3VzZXJfaWQiOjMsImVtYWlsIjoiYm9iQGpvbmVzLmNvbSIsImF1dGhvcml0aWVzIjoiVVNFUiIsImV4cCI6MTY2NzE4NTc4MH0.ZFCEEqTUnsWYdl3WZO1er4ZuG0CU6j2ySkjN7v5Q4SI
 
 {
     "sightingUserId": 3,

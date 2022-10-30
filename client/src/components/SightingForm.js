@@ -19,7 +19,7 @@ function SightingForm() {
 
     const [sighting, setSighting] = useState({
         sightingId: 0,
-        sightingUserId: auth.user.id,
+        sightingUserId: auth.user.userId,
         sightingBirdId: 0,
         date: "",
         city: "",
