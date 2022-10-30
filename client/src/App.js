@@ -13,11 +13,17 @@ import Login from './components/Login';
 import NotFound from './components/NotFound';
 import Error from './components/Error';
 import AuthContext from "./contexts/AuthContext";
+import Register from './components/Register';
+import Profile from './components/Profile';
+
 import { refresh } from "./services/auth"
 
 const LOCAL_STORAGE_TOKEN_KEY = "wingspanToken";
 
 function App() {
+  // I know this is not the best way to do this, but it was the easiest and fastest to get things going.
+  // I would rather move some of this into the auth service, but for now this will do.
+
   // Refresh the token after 14 minutes. If no one is logged in the request is blocked, if they are, they will always have a valid token.
   setTimeout(() => refresh().then(setUser).catch(logout), 840000);
 
@@ -118,6 +124,16 @@ function App() {
           </Route>
           <Route path="/login">
             {!auth.user ? <Login /> : <Redirect to="/" />}
+          </Route>
+          <Route path="/register">
+            {!auth.user ? <Register /> : <Redirect to="/" />}
+          </Route>
+          <Route>
+          {auth.user ? (
+              <Profile />
+            ) : (
+              <Redirect to='/login' />
+            )}
           </Route>
           <Route path="/error">
             <Error />

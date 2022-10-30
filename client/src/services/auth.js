@@ -1,3 +1,7 @@
+// I know this is not the best way to do this, but it was the easiest and fastest to get things going.
+// This definitely needs cleaned up because there is plenty of duplicated code going on in multiple places.
+// I would have liked to move more things in here, but again, for now this is going to have to do.
+
 import jwtDecode from "jwt-decode";
 
 const API_URL = "http://localhost:8080";
