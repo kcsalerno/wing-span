@@ -1,5 +1,7 @@
 package learn.wingspan.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonSetter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -16,6 +18,7 @@ public class AppUser implements UserDetails {
     private final Collection<GrantedAuthority> authorities;
     private int appUserId;
     private boolean enabled;
+    @JsonIgnore
     private String email;
 
     public AppUser(int appUserId, String username, String password, boolean enabled, String email, List<String> roles) {
@@ -33,11 +36,13 @@ public class AppUser implements UserDetails {
                 .collect(Collectors.toList());
     }
 
+    @JsonIgnore
     @Override
     public Collection<GrantedAuthority> getAuthorities() {
         return new ArrayList<>(authorities);
     }
 
+    @JsonIgnore
     @Override
     public String getPassword() {
         return password;
@@ -48,21 +53,25 @@ public class AppUser implements UserDetails {
         return username;
     }
 
+    @JsonIgnore
     @Override
     public boolean isAccountNonExpired() {
         return true;
     }
 
+    @JsonIgnore
     @Override
     public boolean isAccountNonLocked() {
         return true;
     }
 
+    @JsonIgnore
     @Override
     public boolean isCredentialsNonExpired() {
         return true;
     }
 
+    @JsonIgnore
     @Override
     public boolean isEnabled() {
         return enabled;
