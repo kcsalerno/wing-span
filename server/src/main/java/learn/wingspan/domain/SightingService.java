@@ -109,6 +109,11 @@ public class SightingService {
             return result;
         }
 
+        if (Validations.isNullOrBlank(sighting.getState())) {
+            result.addMessage(ResultType.INVALID, "State cannot be null");
+            return result;
+        }
+
         List<Sighting> sightings = repository.findAll();
         for (Sighting s : sightings) {
             if (s.equals(sighting)) {

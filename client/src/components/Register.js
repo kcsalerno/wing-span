@@ -28,7 +28,7 @@ function Register() {
                 setAvatar(data[0]);
             }
         });
-    }, []);
+    }, [avatarId]);
 
 
     const handleSubmit = (event) => {
@@ -183,7 +183,7 @@ function Register() {
                     />
                 </div>
                 <div className="mb-2">
-                    <label htmlFor="avatar" className="mr-1">Avatar: </label>
+                    <label htmlFor="avatar" className="mr-2">Avatar: </label>
                     <select name="avatar"
                         id="avatar"
                         value={avatarId}
@@ -193,7 +193,7 @@ function Register() {
                             <option key={`${avatar.avatarId}-${avatar.avatarDescription}`} value={avatar.avatarId}>{avatar.avatarDescription}</option>
                         ))}
                     </select>
-                    <img className="ml-5" src={avatar.avatarImageUrl} alt={avatar.avatarDescription} style={{width: '150px'}}/>
+                    <img className="ml-4" src={avatar.avatarImageUrl} alt={avatar.avatarDescription} style={{width: '150px'}}/>
                 </div>
                 <div className="mb-2">
                     <button className="btn btn-primary me-2 mr-2" type="submit">Register</button>
