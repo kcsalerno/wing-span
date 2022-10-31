@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
 
 import AuthContext from "../contexts/AuthContext.js";
@@ -11,11 +11,19 @@ function Register() {
     const [confirmPassword, setConfirmPassword] = useState("");
     const [email, setEmail] = useState("");
     const [errors, setErrors] = useState([]);
-    const [avatars, setAvatars] = useState([]);
+    const [avatars, setAvatars] = useState([findAllAvatars]);
     const [avatarId, setAvatarId] = useState("1");
 
     const auth = useContext(AuthContext);
     const history = useHistory();
+
+    useEffect(() => {
+        findAllAvatars().then(data => {
+            setAvatars(data)
+            console.log(data);
+        });
+    }, []);
+
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -122,10 +130,6 @@ function Register() {
     const handleAvatarChange = (event) => {
         setAvatarId(event.target.value);
     }
-
-    findAllAvatars().then(data => {
-        setAvatars(data)
-    });
 
     return (
         <>

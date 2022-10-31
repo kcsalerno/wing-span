@@ -24,9 +24,6 @@ function App() {
   // I know this is not the best way to do this, but it was the easiest and fastest to get things going.
   // I would rather move some of this into the auth service, but for now this will do.
 
-  // Refresh the token after 14 minutes. If no one is logged in the request is blocked, if they are, they will always have a valid token.
-  setTimeout(() => refresh().then(setUser).catch(logout), 840000);
-
   // null means a no user is logged in.
   const [user, setUser] = useState(null);
   // NEW: Define a state variable to track if 
@@ -42,6 +39,11 @@ function App() {
     }
     setRestoreLoginAttemptCompleted(true);
   }, []);
+
+   // Refresh the token after 14 minutes. If no one is logged in the request is blocked, if they are, they will always have a valid token.
+  
+     setTimeout(() => refresh().then(setUser).catch(logout), 840000);
+   
 
   const login = (token) => {
     // NEW: set the token in localStorage
