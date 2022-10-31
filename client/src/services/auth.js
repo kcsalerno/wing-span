@@ -33,7 +33,7 @@ export async function refresh() {
         localStorage.setItem(LOCAL_STORAGE_TOKEN_KEY, token);
 
         // Decode the token
-        const { sub: username, app_user_id: userId, email, authorities: authoritiesString } = jwtDecode(token);
+        const { sub: username, app_user_id: userId, email, avatar, authorities: authoritiesString } = jwtDecode(token);
 
         // Split the authorities string into an array of roles
         const roles = authoritiesString.split(',');
@@ -43,6 +43,7 @@ export async function refresh() {
             username,
             userId,
             email,
+            avatar,
             roles,
             token,
             hasRole(role) {

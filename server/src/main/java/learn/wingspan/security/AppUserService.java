@@ -1,6 +1,7 @@
 package learn.wingspan.security;
 
 import learn.wingspan.data.AppUserRepository;
+import learn.wingspan.data.UserAvatarRepository;
 import learn.wingspan.domain.Result;
 import learn.wingspan.domain.ResultType;
 import learn.wingspan.domain.Validations;
@@ -19,7 +20,8 @@ import java.util.regex.Pattern;
 @Service
 public class AppUserService implements UserDetailsService {
     // New
-    private final AppUserRepository repository;
+    private final AppUserRepository appUserRepository;
+    private final UserAvatarRepository userAvatarRepository;
     private final PasswordEncoder passwordEncoder;
     String regex = "^[\\w!#$%&'*+/=?`{|}~^-]+(?:\\.[\\w!#$%&'*+/=?`{|}~^-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$";
     Pattern pattern = Pattern.compile(regex);
@@ -28,14 +30,15 @@ public class AppUserService implements UserDetailsService {
     private List<UserDetails> users;
 
     // Updated
-    public AppUserService(AppUserRepository repository, PasswordEncoder passwordEncoder) {
-        this.repository = repository;
+    public AppUserService(AppUserRepository appUserRepository, UserAvatarRepository userAvatarRepository, PasswordEncoder passwordEncoder) {
+        this.appUserRepository = appUserRepository;
+        this.userAvatarRepository = userAvatarRepository;
         this.passwordEncoder = passwordEncoder;
     }
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        AppUser appUser = repository.findByUsername(username);
+        AppUser appUser = appUserRepository.findByUsername(username);
 
 //        // Find a matching user
 //        UserDetails userDetails = users.stream()
@@ -59,7 +62,7 @@ public class AppUserService implements UserDetailsService {
         return appUser;
     }
 
-    public Result<AppUser> create(String username, String password, String email) {
+    public Result<AppUser> create(String username, String password, String email, int avatarId) {
         Result<AppUser> result = validate(username, password, email);
         if (!result.isSuccess()) {
             return result;
@@ -70,7 +73,8 @@ public class AppUserService implements UserDetailsService {
         AppUser appUser = new AppUser(0, username, password, true, email, List.of("USER"));
 
         try {
-            appUser = repository.create(appUser);
+            appUser = appUserRepository.create(appUser);
+            userAvatarRepository.add(appUser.getAppUserId(), avatarId);
             result.setPayload(appUser);
         } catch (DuplicateKeyException ex) {
             result.addMessage(ResultType.INVALID, "The provided username already exists");
