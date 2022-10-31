@@ -31,7 +31,7 @@ function SightingConfirmDelete() {
     function handleDelete() {
 
         deleteById(sighting.sightingId)
-            .then(() => history.push("/"))
+            .then(() => history.push("/sightings"))
             .catch(() => history.push("/error"));
 
         // const remove = {
