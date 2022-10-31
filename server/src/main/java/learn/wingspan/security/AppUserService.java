@@ -3,9 +3,9 @@ package learn.wingspan.security;
 import learn.wingspan.data.AppUserRepository;
 import learn.wingspan.domain.Result;
 import learn.wingspan.domain.ResultType;
+import learn.wingspan.domain.Validations;
 import learn.wingspan.models.AppUser;
 import org.springframework.dao.DuplicateKeyException;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -13,14 +13,16 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 @Service
 public class AppUserService implements UserDetailsService {
-
     // New
     private final AppUserRepository repository;
     private final PasswordEncoder passwordEncoder;
-
+    String regex = "^[\\w!#$%&'*+/=?`{|}~^-]+(?:\\.[\\w!#$%&'*+/=?`{|}~^-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$";
+    Pattern pattern = Pattern.compile(regex);
     // We will store our users in memory for now so that we can focus
     // on authentication. Later we will get our users from the database.
     private List<UserDetails> users;
@@ -57,15 +59,15 @@ public class AppUserService implements UserDetailsService {
         return appUser;
     }
 
-    public Result<AppUser> create(String username, String password) {
-        Result<AppUser> result = validate(username, password);
+    public Result<AppUser> create(String username, String password, String email) {
+        Result<AppUser> result = validate(username, password, email);
         if (!result.isSuccess()) {
             return result;
         }
 
         password = passwordEncoder.encode(password);
 
-        AppUser appUser = new AppUser(0, username, password, true, List.of("USER"));
+        AppUser appUser = new AppUser(0, username, password, true, email, List.of("USER"));
 
         try {
             appUser = repository.create(appUser);
@@ -77,15 +79,20 @@ public class AppUserService implements UserDetailsService {
         return result;
     }
 
-    private Result<AppUser> validate(String username, String password) {
+    private Result<AppUser> validate(String username, String password, String email) {
         Result<AppUser> result = new Result<>();
-        if (username == null || username.isBlank()) {
+        if (Validations.isNullOrBlank(username)) {
             result.addMessage(ResultType.INVALID, "username is required");
             return result;
         }
 
-        if (password == null) {
+        if (Validations.isNullOrBlank(password)) {
             result.addMessage(ResultType.INVALID, "password is required");
+            return result;
+        }
+
+        if (Validations.isNullOrBlank(email)) {
+            result.addMessage(ResultType.INVALID, "email is required");
             return result;
         }
 
@@ -95,8 +102,12 @@ public class AppUserService implements UserDetailsService {
 
         if (!isValidPassword(password)) {
             result.addMessage(ResultType.INVALID,
-                    "password must be at least 8 character and contain a digit," +
+                    "password must be at least 8 characters and contain a digit," +
                             " a letter, and a non-digit/non-letter");
+        }
+
+        if (!isValidEmail(email)) {
+            result.addMessage(ResultType.INVALID, "email must be valid format");
         }
 
         return result;
@@ -122,107 +133,9 @@ public class AppUserService implements UserDetailsService {
 
         return digits > 0 && letters > 0 && others > 0;
     }
-}
 
- 
-//
-//import learn.wingspan.data.AppUserJdbcTemplateRepository;
-//import learn.wingspan.domain.Result;
-//import learn.wingspan.domain.ResultType;
-//import learn.wingspan.models.AppUser;
-//import org.springframework.dao.DuplicateKeyException;
-//import org.springframework.security.core.userdetails.UserDetails;
-//import org.springframework.security.core.userdetails.UserDetailsService;
-//import org.springframework.security.core.userdetails.UsernameNotFoundException;
-//import org.springframework.security.crypto.password.PasswordEncoder;
-//import org.springframework.stereotype.Service;
-//
-//import java.util.List;
-//
-//@Service
-//public class AppUserService implements UserDetailsService {
-//    private final AppUserJdbcTemplateRepository repository;
-//    private final PasswordEncoder encoder;
-//
-//    public AppUserService(AppUserJdbcTemplateRepository repository, PasswordEncoder encoder) {
-//        this.repository = repository;
-//        this.encoder = encoder;
-//    }
-//
-//    @Override
-//    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-//        AppUser appUser = repository.findByUsername(username);
-//
-//        if (appUser == null || !appUser.isEnabled()) {
-//            throw new UsernameNotFoundException(username + " not found");
-//        }
-//
-//        return appUser;
-//    }
-//
-//    public Result<AppUser> create(String username, String password) {
-//        Result<AppUser> result = validate(username, password);
-//        if (!result.isSuccess()) {
-//            return result;
-//        }
-//
-//        password = encoder.encode(password);
-//
-//        AppUser appUser = new AppUser(0, username, password, true, List.of("USER"));
-//
-//        try {
-//            appUser = repository.create(appUser);
-//            result.setPayload(appUser);
-//        } catch (DuplicateKeyException e) {
-//            result.addMessage(ResultType.INVALID, "The provided username already exists");
-//        }
-//
-//        return result;
-//    }
-//
-//    private Result<AppUser> validate(String username, String password) {
-//        Result<AppUser> result = new Result<>();
-//        if (username == null || username.isBlank()) {
-//            result.addMessage(ResultType.INVALID, "username is required");
-//            return result;
-//        }
-//
-//        if (password == null || password.isBlank()) {
-//            result.addMessage(ResultType.INVALID, "password is required");
-//            return result;
-//        }
-//
-//        if (username.length() > 50) {
-//            result.addMessage(ResultType.INVALID, "username must be less than 50 characters");
-//        }
-//
-//        if (!isValidPassword(password)) {
-//            result.addMessage(ResultType.INVALID,
-//                    "password must be at least 8 characters and contain a digit," +
-//                            " a letter, and a non-digit/non-letter");
-//        }
-//
-//        return result;
-//    }
-//
-//    private boolean isValidPassword(String password) {
-//        if (password.length() < 8) {
-//            return false;
-//        }
-//
-//        int digits = 0;
-//        int letters = 0;
-//        int others = 0;
-//        for (char c : password.toCharArray()) {
-//            if (Character.isDigit(c)) {
-//                digits++;
-//            } else if (Character.isLetter(c)) {
-//                letters++;
-//            } else {
-//                others++;
-//            }
-//        }
-//
-//        return digits > 0 && letters > 0 && others > 0;
-//    }
-//}
+    private boolean isValidEmail(String email) {
+        Matcher matcher = pattern.matcher(email);
+        return matcher.matches();
+    }
+}

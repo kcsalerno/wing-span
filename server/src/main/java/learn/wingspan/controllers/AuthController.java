@@ -11,8 +11,6 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -86,8 +84,9 @@ public class AuthController {
 
         String username = credentials.get("username");
         String password = credentials.get("password");
+        String email = credentials.get("email");
 
-        Result<AppUser> result = appUserService.create(username, password);
+        Result<AppUser> result = appUserService.create(username, password, email);
 
         // unhappy path...
         if (!result.isSuccess()) {

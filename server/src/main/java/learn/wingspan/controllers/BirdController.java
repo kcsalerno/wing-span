@@ -4,7 +4,6 @@ import learn.wingspan.domain.BirdService;
 import learn.wingspan.domain.Result;
 import learn.wingspan.domain.ResultType;
 import learn.wingspan.models.Bird;
-import learn.wingspan.models.Sighting;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
