@@ -3,7 +3,7 @@ import { Link, useHistory } from "react-router-dom";
 
 import AuthContext from "../contexts/AuthContext.js";
 import Error from "./Error.js";
-
+import { findAllAvatars } from "../services/avatars.js";
 
 function Register() {
     const [username, setUsername] = useState("");
@@ -11,6 +11,8 @@ function Register() {
     const [confirmPassword, setConfirmPassword] = useState("");
     const [email, setEmail] = useState("");
     const [errors, setErrors] = useState([]);
+    const [avatars, setAvatars] = useState([]);
+    const [avatarId, setAvatarId] = useState("1");
 
     const auth = useContext(AuthContext);
     const history = useHistory();
@@ -34,7 +36,8 @@ function Register() {
             body: JSON.stringify({
                 username,
                 password,
-                email
+                email,
+                avatarId
             })
         };
 
@@ -116,13 +119,21 @@ function Register() {
         setEmail(event.target.value);
     }
 
+    const handleAvatarChange = (event) => {
+        setAvatarId(event.target.value);
+    }
+
+    findAllAvatars().then(data => {
+        setAvatars(data)
+    });
+
     return (
         <>
             <h2 className="mb-3">Register</h2>
             <Error errors={errors} />
             <form onSubmit={handleSubmit}>
                 <div className="mb-2">
-                    <label htmlFor="username" className="mr-1">Username:</label>
+                    <label htmlFor="username" className="mr-1">Username: </label>
                     <input
                         type="text"
                         id="username"
@@ -149,7 +160,7 @@ function Register() {
                     />
                 </div>
                 <div className="mb-2">
-                    <label htmlFor="email" className="mr-1">Email:</label>
+                    <label htmlFor="email" className="mr-1">Email: </label>
                     <input
                         type="text"
                         id="email"
@@ -158,8 +169,22 @@ function Register() {
                     />
                 </div>
                 <div className="mb-2">
+                    <label htmlFor="avatar" className="mr-1">Avatar: </label>
+                    <select name="avatar"
+                        id="avatar"
+                        value={avatarId}
+                        onChange={handleAvatarChange}
+                    >
+                        {avatars.map(avatar => (
+                            <option key={avatar.avatarId}>{avatar.avatarId}</option>
+                        ))}
+                    </select>
+                    {/* Can't get an image to render next to the drop down. */}
+                    {/* <img src={avatar.avatarImageUrl} alt={avatar.avatarDescription} style={{width: '150px'}}/> */}
+                </div>
+                <div className="mb-2">
                     <button className="btn btn-primary me-2 mr-2" type="submit">Register</button>
-                    <Link className="btn btn-success me-2 mr-2" to="/login">Already Have An Account</Link>
+                    <Link className="btn btn-success me-2 mr-2" to="/login">I Already Have An Account</Link>
                     <Link className="btn btn-warning me-2" to="/">Cancel</Link>
                 </div>
             </form>

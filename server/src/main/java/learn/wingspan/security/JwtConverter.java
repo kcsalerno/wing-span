@@ -3,11 +3,11 @@ package learn.wingspan.security;
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.security.Keys;
 import learn.wingspan.models.AppUser;
+import learn.wingspan.models.Avatar;
 import org.springframework.stereotype.Component;
 
 import java.security.Key;
-import java.util.Arrays;
-import java.util.Date;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Component
@@ -35,6 +35,7 @@ public class JwtConverter {
                 // new... embed the `appUserId` in the JWT as a claim
                 .claim("app_user_id", user.getAppUserId())
                 .claim("email", user.getEmail())
+                .claim("avatar", user.getAvatar())
                 .claim("authorities", authorities)
                 .setExpiration(new Date(System.currentTimeMillis() + EXPIRATION_MILLIS))
                 .signWith(key)
@@ -60,6 +61,18 @@ public class JwtConverter {
             // new... read the `appUserId` from the JWT body
             int appUserId = (int) jws.getBody().get("app_user_id");
             String email = (String) jws.getBody().get("email");
+
+            // This is a mess. I might just change it so that AppUser has only the avatar ID
+            // and make do a GET request for findAvatarById within the client
+            Object nestedAvatar = jws.getBody().get("avatar");
+            LinkedHashMap avatarHashMap = (LinkedHashMap) nestedAvatar;
+
+            int avatarId = (Integer) avatarHashMap.get("avatarId");
+            String avatarImageUrl = (String) avatarHashMap.get("avatarImageUrl");
+            String avatarDescription = (String) avatarHashMap.get("avatarDescription");
+
+            Avatar avatar = new Avatar(avatarId, avatarImageUrl, avatarDescription);
+
             String authStr = (String) jws.getBody().get("authorities");
 
 //            List<SimpleGrantedAuthority> roles = Arrays.stream(authStr.split(","))
@@ -67,8 +80,12 @@ public class JwtConverter {
 //                    .collect(Collectors.toList());
 
             // Replace the Spring Security `User` with our `AppUser`
-            return new AppUser(appUserId, username, null, true, email,
+            AppUser appUser = new AppUser(appUserId, username, null, true, email,
                     Arrays.asList(authStr.split(",")));
+
+            appUser.setAvatar(avatar);
+
+            return appUser;
 
         } catch (JwtException ex) {
             // 5. JWT failures are modeled as exceptions.
