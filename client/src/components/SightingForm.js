@@ -2,10 +2,8 @@ import { useEffect, useState } from "react";
 import { Link, useHistory, useParams } from "react-router-dom";
 import { findBySightingId, save } from "../services/sightings";
 import {findAllBirds} from "../services/birds";
-import Bird from "./Bird";
-
+import { findAllTraits } from "../services/traits";
 import { useContext } from 'react';
-
 import AuthContext from "../contexts/AuthContext";
 
 
@@ -24,11 +22,14 @@ function SightingForm() {
         date: "",
         city: "",
         state: "",
-        daytime: false
+        daytime: false,
+        traits: []
     })
 
     const [birds, setBirds] = useState([]);
+    const [traits, setTraits] = useState([]);
     const [errors, setErrors] = useState([]);
+    const [isChecked, setIsChecked] = useState(false);
     
     const history = useHistory();
     const { sightingId, sightingBirdId } = useParams();
@@ -43,9 +44,22 @@ function SightingForm() {
 
     useEffect(() => {
         findAllBirds()
-        .then(setBirds)
+        .then((data) => {
+            setBirds(data)
+            if (!sightingId) {
+                const temp = {...sighting}
+                temp.sightingBirdId = data[0].birdId;
+                setSighting(temp);
+            }
+        })
         .catch(() => history.push("/error"));
     }, [history, sightingBirdId]);
+
+    useEffect(() => {
+        findAllTraits()
+            .then(setTraits)
+            .catch(() => history.push("/error"));
+    },[history, sightingId])
 
     function handleChange(event) {
         const nextSighting = { ...sighting };
@@ -53,6 +67,18 @@ function SightingForm() {
             nextSighting.daytime = event.target.checked;
         } else {
             nextSighting[event.target.name] = event.target.value;
+        }
+
+        if (event.target.name === "traits") {
+            nextSighting.traits = event.target.checked;
+        //     const traitId = parseInt(event.target.value);
+        //     if (event.target.checked) {
+        //         nextSighting.traits.push(traits.find(t => t.traitId === traitId));
+        //     } else {
+        //         nextSighting.traits = nextSighting.traits.filter(t => t.traitId !== traitId);
+        //     }
+        // } else {
+        //     nextSighting[event.target.name] = event.target.value;
         }
         setSighting(nextSighting);
     }
@@ -75,22 +101,11 @@ function SightingForm() {
         <form onSubmit={handleSubmit}>
             <h2>{sightingId > 0 ? "Edit Sighting" : "Add Sighting"}</h2>
             <div className="form-group">
-                <label htmlFor="bird">Bird:</label>
-                <select name="bird" id="bird" className="form-control"
-                    value={sighting.bird} onChange={handleChange}>
-                        {/* <option>
-                            <div> */}
-                                {birds.map(b => <option><Bird key={b.birdId} bird={b} /></option>)}
-                            {/* </div>
-                        </option>
-                        <option></option>
-                        <option></option>
-                        <option></option>
-                        <option></option>
-                        <option></option>
-                        <option></option>
-                        <option></option> */}
-                    </select>
+                <label htmlFor="sightingBirdId">Bird:</label>
+                <select name="sightingBirdId" id="sightingBirdId" className="form-control"
+                    onChange={handleChange} value={sighting.sightingBirdId}>
+                        {birds.map((b, i) => <option selected={i === 1 } key={b.birdId} value={b.birdId}>{b.commonName}</option>)}
+                </select>
             </div>
             <div className="form-group">
                 <label htmlFor="date" className="form-label">Date:</label>
@@ -111,6 +126,22 @@ function SightingForm() {
                 <label htmlFor="daytime">Daytime?</label>
                 <input type="checkbox" name="daytime" id="daytime"
                     checked={sighting.daytime} onChange={handleChange}></input>
+            </div>
+
+            <div className="mt-2">
+                {traits.map(trait => (
+                    <div>
+                        <label htmlFor={"trait" + trait.traitId}>{trait.name}</label>
+                        <input type="checkbox"
+                            name="traits"
+                            id="traits"
+                            value={trait.traitId}
+                            checked={sighting.traitId}
+                            // {traits.find(t => t.traitId === trait.traitId) !== undefined}
+                            onChange={handleChange}>
+                        </input>
+                    </div>
+                ))}
             </div>
             {errors.length !== 0 && <div className="alert alert-danger">
                 <ul>

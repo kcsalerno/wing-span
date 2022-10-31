@@ -70,7 +70,7 @@ export async function deleteById(sightingId) {
     const init = {
         method: "DELETE",
         headers: {
-            "Authorization": `Bearer ${SIGHTING_API_URL}/${sightingId}`
+            "Authorization": `Bearer ${localStorage.getItem("jwt")}`
         }
     };
 

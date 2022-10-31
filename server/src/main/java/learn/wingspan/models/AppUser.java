@@ -20,6 +20,7 @@ public class AppUser implements UserDetails {
     private boolean enabled;
     @JsonIgnore
     private String email;
+    private Avatar avatar;
 
     public AppUser(int appUserId, String username, String password, boolean enabled, String email, List<String> roles) {
         this.appUserId = appUserId;
@@ -96,5 +97,13 @@ public class AppUser implements UserDetails {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public Avatar getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(Avatar avatar) {
+        this.avatar = avatar;
     }
 }

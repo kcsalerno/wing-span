@@ -7,6 +7,7 @@ import Home from './components/Home';
 import Navigation from './components/Navigation';
 import SightingList from './components/SightingList';
 import SightingForm from './components/SightingForm';
+import SightingConfirmDelete from './components/SightingConfirmDelete';
 import BirdGrid from './components/BirdGrid';
 import BirdForm from './components/BirdForm';
 import Login from './components/Login';
@@ -24,9 +25,6 @@ function App() {
   // I know this is not the best way to do this, but it was the easiest and fastest to get things going.
   // I would rather move some of this into the auth service, but for now this will do.
 
-  // Refresh the token after 14 minutes. If no one is logged in the request is blocked, if they are, they will always have a valid token.
-  setTimeout(() => refresh().then(setUser).catch(logout), 840000);
-
   // null means a no user is logged in.
   const [user, setUser] = useState(null);
   // NEW: Define a state variable to track if 
@@ -43,12 +41,17 @@ function App() {
     setRestoreLoginAttemptCompleted(true);
   }, []);
 
+   // Refresh the token after 14 minutes. If no one is logged in the request is blocked, if they are, they will always have a valid token.
+  
+     setTimeout(() => refresh().then(setUser).catch(logout), 840000);
+   
+
   const login = (token) => {
     // NEW: set the token in localStorage
     localStorage.setItem(LOCAL_STORAGE_TOKEN_KEY, token);
 
     // Decode the token
-    const { sub: username, app_user_id: userId, email, authorities: authoritiesString } = jwtDecode(token);
+    const { sub: username, app_user_id: userId, email, avatar, authorities: authoritiesString } = jwtDecode(token);
 
     // Split the authorities string into an array of roles
     const roles = authoritiesString.split(',');
@@ -58,6 +61,7 @@ function App() {
       username,
       userId,
       email,
+      avatar,
       roles,
       token,
       hasRole(role) {
@@ -111,6 +115,10 @@ function App() {
             ) : (
               <Redirect to='/login' />
             )}
+          </Route>
+          <Route path="/sightings/delete/:sightingId">
+            {auth.user ? 
+            (<SightingConfirmDelete />) : (<Redirect to='/login' />)}
           </Route>
           <Route path="/birds" exact>
             <BirdGrid />
