@@ -78,18 +78,10 @@ function SightingForm() {
                 <label htmlFor="bird">Bird:</label>
                 <select name="bird" id="bird" className="form-control"
                     value={sighting.bird} onChange={handleChange}>
-<<<<<<< HEAD
-                        <option>
-                            <div>
-                                
-                                {birds.map(b => <Bird key={b.birdId} bird={b} />)}
-                            </div>
-=======
                         {/* <option>
                             <div> */}
                                 {birds.map(b => <option><Bird key={b.birdId} bird={b} /></option>)}
                             {/* </div>
->>>>>>> main
                         </option>
                         <option></option>
                         <option></option>
