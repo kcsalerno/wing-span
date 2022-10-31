@@ -41,10 +41,11 @@ function App() {
     setRestoreLoginAttemptCompleted(true);
   }, []);
 
-   // Refresh the token after 14 minutes. If no one is logged in the request is blocked, if they are, they will always have a valid token.
-  
-     setTimeout(() => refresh().then(setUser).catch(logout), 840000);
-   
+  // Refresh the token after 14 minutes. If no one is logged in the request is blocked, if they are, they will always have a valid token.
+  if (user)
+  {
+    setTimeout(() => refresh().then(setUser).catch(logout), 840000);
+  }
 
   const login = (token) => {
     // NEW: set the token in localStorage
