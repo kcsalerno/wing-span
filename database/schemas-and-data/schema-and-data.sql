@@ -30,35 +30,13 @@ create table bird  (
 insert into trait (`name`) values
 	('Perching'),
 	('Nesting'),
-    ('Wings Open'),
-    ('Wings Down'),
-	('Horizontal Posture'),
-    ('Vertical Posture'),
-    ('Hopping'),
-    ('Walking'),
-    ('Diving into Water'),
-    ('Floating On Water'),
-	('Dabbling'),
-    ('Flying'),
-    ('Slow Wing Flaps'),
-    ('Fast Wing Flaps'),
-    ('Swooping Flight'),
-    ('Straight Flight Path'),
-    ('Circular Flight Path'),
-    ('Gliding'),
-    ('Hovering'),
-	('Flocking'),
-    ('Migrating'),
-    ('Grooming'),
-    ('Molting'),
-    ('Feeding'),
-    ('Hunting'),
-    ('Singing'),
-    ('Fighting'),
-    ('Courting'),
-    ('Mating'),
-    ('Fledgling'),
-    ('Adult');
+	('Hopping'),
+	('Walking'),
+	('Flying'),
+	('Grooming'),
+	('Feeding'),
+	('Hunting'),
+	('Singing');
     
 -- -----------------------------------------------------
 -- Data: bird
@@ -82,66 +60,3 @@ insert into bird (common_name, scientific_name, img_url) values
     ("Allen's Hummingbird", 'Selasphorus Sasin', 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Allen%27s_Hummingbird_Guarding_Flower_Patch.jpg/330px-Allen%27s_Hummingbird_Guarding_Flower_Patch.jpg'),
     ('House Sparrow', 'Passer Domesticus', 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Passer_domesticus_male_%2815%29.jpg/330px-Passer_domesticus_male_%2815%29.jpg'),
     ('Great Cormorant', 'Phalacrocorax Carbo', 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Phalacrocorax_carbo_Vic.jpg/330px-Phalacrocorax_carbo_Vic.jpg');
-    
--- Ostrich
--- Crow
--- Raven
--- Dove
--- Hen
--- Nightingale
--- Eagle
--- Swan
--- Penguin
--- Flamingo
--- Goose
--- Cuckoo
--- Owl
--- Hawk
--- Partridge
--- Goldfinch
--- Robin
--- Finch
--- Frigatebird
--- Sandpiper
--- Stork
--- Ibis
--- Hornbill
--- Bulbul
--- Skylark
--- Canary
--- Wagtail
--- Starling
--- Macaw
--- Cockatoo
--- Heron
--- Toucan
--- Jay
--- Mynah
--- Cardinal
--- Chickadee
--- Junco
--- Bluebird
--- Swift
--- Gull
--- Lovebird
--- Spoonbill
--- Kiwi
--- Avocet
--- Wren
--- Mockingbird
--- Pheasant
--- Hoopoe
--- Kite
--- Peahen
--- Falcon
--- Mallard
--- Bald eagle
--- Tern
--- Night hawk
--- Crossbill
--- Lapwing
--- Puffin
--- Koyal
--- Bullfinch
--- Emu
--- Condor

@@ -1,14 +1,28 @@
 import AuthContext from "../contexts/AuthContext";
-import { useContext, useState } from 'react';
+import { useContext, useState, useEffect } from 'react';
+import { findAllSightings } from "../services/sightings";
 
 function Profile() {
     const auth = useContext(AuthContext);
     const avatar = auth.user.avatar;
 
-    // console.log(auth);
-    // console.log(avatar);
-    // console.log(auth.user.avatar.avatarImageUrl);
-    // console.log(auth.user.avatar.avatarDescription);
+    const [sightings, setSightings] = useState([]);
+
+    useEffect(() => {
+
+    findAllSightings()
+        .then(data => {
+            setSightings(data);
+        })
+    }, []);
+
+    console.log(sightings);
+
+    const userSightings = sightings.filter((sighting) => sighting.sightingUserId === auth.user.userId)
+
+    console.log(userSightings);
+
+    console.log(userSightings[0]);
 
     return (
         <>
@@ -26,10 +40,19 @@ function Profile() {
                 Email: {auth.user.email}
             </section>
             <section>
-                <h3>Sightings:</h3>
-                <div className="row row-cols-3 g-2">
-                    Sighting info here with picture of bird, plus edit and delete buttons
-                </div>
+                Badges: {userSightings.length >= 3 &&
+                    (
+                    <>
+                    <div>
+                    <img src="https://static.thenounproject.com/png/1120113-200.png" alt="3 Sightings Bird Badge. Picture of a bird in a circle"
+                        style={{width: "100px"}}/>
+                    3 Bird Sightings
+                    </div>
+                    </>)}
+            </section>
+            <section>
+                Sightings:
+                    {/* Sightings go here once that's done. */}
             </section>
         </>
     );
