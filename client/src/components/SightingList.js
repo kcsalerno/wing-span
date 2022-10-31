@@ -26,6 +26,7 @@ function SightingList() {
                     temp[index].birdCommonName = bird.commonName;
                 });
                 setSightings(temp);
+                console.log(temp);
             })
             .catch(() => history.push("/error"))
     }, [history]);
