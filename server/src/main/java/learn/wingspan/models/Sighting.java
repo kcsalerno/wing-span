@@ -1,6 +1,8 @@
 package learn.wingspan.models;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class Sighting {
@@ -12,6 +14,7 @@ public class Sighting {
     private String state;
     private boolean daytime;
     private String username;
+    private List<Trait> traits = new ArrayList<>();
 
     public Sighting() {
 
@@ -89,6 +92,14 @@ public class Sighting {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public List<Trait> getTraits() {
+        return traits;
+    }
+
+    public void setTraits(List<Trait> traits) {
+        this.traits = traits;
     }
 
     @Override

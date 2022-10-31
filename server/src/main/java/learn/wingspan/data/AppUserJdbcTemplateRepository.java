@@ -1,7 +1,9 @@
 package learn.wingspan.data;
 
 import learn.wingspan.data.mappers.AppUserMapper;
+import learn.wingspan.data.mappers.AvatarMapper;
 import learn.wingspan.models.AppUser;
+import learn.wingspan.models.Avatar;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.security.core.GrantedAuthority;
@@ -31,9 +33,15 @@ public class AppUserJdbcTemplateRepository implements AppUserRepository {
                 + "from app_user "
                 + "where username = ?;";
 
-        return jdbcTemplate.query(sql, new AppUserMapper(roles), username)
+        AppUser appUser = jdbcTemplate.query(sql, new AppUserMapper(roles), username)
                 .stream()
                 .findFirst().orElse(null);
+
+        if (appUser != null) {
+            addAvatar(appUser);
+        }
+
+        return appUser;
     }
 
     @Override
@@ -110,6 +118,17 @@ public class AppUserJdbcTemplateRepository implements AppUserRepository {
                 + "inner join app_user au on ur.app_user_id = au.app_user_id "
                 + "where au.username = ?";
         return jdbcTemplate.query(sql, (rs, rowId) -> rs.getString("name"), username);
+    }
+
+    private void addAvatar(AppUser appUser) {
+        final String sql = "select a.avatar_id, a.avatar_img_url, a.avatar_description from app_user au "
+                + "inner join user_avatar ua on au.app_user_id = ua.app_user_id "
+                + "inner join avatar a on ua.avatar_id = a.avatar_id "
+                + "where au.app_user_id = ?";
+
+        var avatar = jdbcTemplate.queryForObject(sql, new AvatarMapper(), appUser.getAppUserId());
+
+        appUser.setAvatar(avatar);
     }
 }
 

@@ -3,6 +3,7 @@ package learn.wingspan.security;
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.security.Keys;
 import learn.wingspan.models.AppUser;
+import learn.wingspan.models.Avatar;
 import org.springframework.stereotype.Component;
 
 import java.security.Key;
@@ -35,6 +36,7 @@ public class JwtConverter {
                 // new... embed the `appUserId` in the JWT as a claim
                 .claim("app_user_id", user.getAppUserId())
                 .claim("email", user.getEmail())
+                .claim("avatar", user.getAvatar())
                 .claim("authorities", authorities)
                 .setExpiration(new Date(System.currentTimeMillis() + EXPIRATION_MILLIS))
                 .signWith(key)
@@ -60,6 +62,7 @@ public class JwtConverter {
             // new... read the `appUserId` from the JWT body
             int appUserId = (int) jws.getBody().get("app_user_id");
             String email = (String) jws.getBody().get("email");
+            Avatar avatar = (Avatar) jws.getBody().get("avatar");
             String authStr = (String) jws.getBody().get("authorities");
 
 //            List<SimpleGrantedAuthority> roles = Arrays.stream(authStr.split(","))
@@ -67,8 +70,12 @@ public class JwtConverter {
 //                    .collect(Collectors.toList());
 
             // Replace the Spring Security `User` with our `AppUser`
-            return new AppUser(appUserId, username, null, true, email,
+            AppUser appUser = new AppUser(appUserId, username, null, true, email,
                     Arrays.asList(authStr.split(",")));
+
+            appUser.setAvatar(avatar);
+
+            return appUser;
 
         } catch (JwtException ex) {
             // 5. JWT failures are modeled as exceptions.

@@ -1,6 +1,7 @@
 package learn.wingspan.data;
 
 import learn.wingspan.data.mappers.SightingMapper;
+import learn.wingspan.data.mappers.TraitMapper;
 import learn.wingspan.models.Sighting;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
@@ -28,7 +29,17 @@ public class SightingJdbcTemplateRepository implements SightingRepository {
         final String sql = "select s.sighting_id, s.app_user_id, s.bird_id, s.sighting_date, s.city, s.state, s.daytime, au.username "
                 + "from sighting s "
                 + "inner join app_user au on s.app_user_id = au.app_user_id;";
-        return jdbcTemplate.query(sql, new SightingMapper());
+//        return jdbcTemplate.query(sql, new SightingMapper());
+
+        List<Sighting> sightings = jdbcTemplate.query(sql, new SightingMapper());
+
+        if (sightings.size() > 0) {
+            for (Sighting sighting : sightings) {
+                addTraits(sighting);
+            }
+        }
+
+        return sightings;
     }
 
     @Override
@@ -38,7 +49,15 @@ public class SightingJdbcTemplateRepository implements SightingRepository {
                 + "inner join app_user au on s.app_user_id = au.app_user_id "
                 + "where sighting_id = ?;";
 
-        return jdbcTemplate.query(sql, new SightingMapper(), sightingId).stream().findFirst().orElse(null);
+//        return jdbcTemplate.query(sql, new SightingMapper(), sightingId).stream().findFirst().orElse(null);
+        Sighting sighting = jdbcTemplate.query(sql, new SightingMapper(), sightingId).stream()
+                .findFirst().orElse(null);
+
+        if (sighting != null) {
+            addTraits(sighting);
+        }
+
+        return sighting;
     }
 
     @Override
@@ -97,6 +116,14 @@ public class SightingJdbcTemplateRepository implements SightingRepository {
         return jdbcTemplate.update("delete from sighting where sighting_id = ?;", sightingId) > 0;
     }
 
-    // TODO add sightings
+    private void addTraits(Sighting sighting) {
+        final String sql = "select * from trait t "
+                + "inner join sighting_trait st on t.trait_id = st.trait_id "
+                + "inner join sighting s on st.sighting_id = s.sighting_id "
+                + "where s.sighting_id = ?;";
+
+        var traits = jdbcTemplate.query(sql, new TraitMapper(), sighting.getSightingId());
+        sighting.setTraits(traits);
+    }
     // TODO add birds
 }
