@@ -34,7 +34,7 @@ function SightingForm() {
         findAllBirds()
         .then(setBirds)
         .catch(() => history.push("/error"));
-    }, []);
+    }, [history, sightingBirdId]);
 
     function handleChange(event) {
         const nextSighting = { ...sighting };
@@ -69,6 +69,7 @@ function SightingForm() {
                     value={sighting.bird} onChange={handleChange}>
                         <option>
                             <div>
+                                
                                 {birds.map(b => <Bird key={b.birdId} bird={b} />)}
                             </div>
                         </option>
