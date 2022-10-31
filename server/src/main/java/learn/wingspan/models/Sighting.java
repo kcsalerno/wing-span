@@ -14,6 +14,7 @@ public class Sighting {
     private String state;
     private boolean daytime;
     private String username;
+    private Bird bird;
     private List<Trait> traits = new ArrayList<>();
 
     public Sighting() {
@@ -100,6 +101,14 @@ public class Sighting {
 
     public void setTraits(List<Trait> traits) {
         this.traits = traits;
+    }
+
+    public Bird getBird() {
+        return bird;
+    }
+
+    public void setBird(Bird bird) {
+        this.bird = bird;
     }
 
     @Override
