@@ -1,5 +1,6 @@
 package learn.wingspan.data;
 
+import learn.wingspan.data.mappers.BirdMapper;
 import learn.wingspan.data.mappers.SightingMapper;
 import learn.wingspan.data.mappers.TraitMapper;
 import learn.wingspan.models.Sighting;
@@ -36,6 +37,7 @@ public class SightingJdbcTemplateRepository implements SightingRepository {
         if (sightings.size() > 0) {
             for (Sighting sighting : sightings) {
                 addTraits(sighting);
+                addBird(sighting);
             }
         }
 
@@ -55,6 +57,7 @@ public class SightingJdbcTemplateRepository implements SightingRepository {
 
         if (sighting != null) {
             addTraits(sighting);
+            addBird(sighting);
         }
 
         return sighting;
@@ -117,7 +120,7 @@ public class SightingJdbcTemplateRepository implements SightingRepository {
     }
 
     private void addTraits(Sighting sighting) {
-        final String sql = "select * from trait t "
+        final String sql = "select t.trait_id, t.name from trait t "
                 + "inner join sighting_trait st on t.trait_id = st.trait_id "
                 + "inner join sighting s on st.sighting_id = s.sighting_id "
                 + "where s.sighting_id = ?;";
@@ -125,5 +128,13 @@ public class SightingJdbcTemplateRepository implements SightingRepository {
         var traits = jdbcTemplate.query(sql, new TraitMapper(), sighting.getSightingId());
         sighting.setTraits(traits);
     }
-    // TODO add birds
+
+    private void addBird(Sighting sighting) {
+        final String sql = "select b.bird_id, b.common_name, b.scientific_name, b.img_url from bird b "
+                + "inner join sighting s on s.bird_id = b.bird_id "
+                + "where s.sighting_id = ?;";
+
+        var bird = jdbcTemplate.queryForObject(sql, new BirdMapper(), sighting.getSightingId());
+        sighting.setBird(bird);
+    }
 }
