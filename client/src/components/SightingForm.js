@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useHistory, useParams } from "react-router-dom";
 import { findBySightingId, save } from "../services/sightings";
-import {findAllBirds} from "../services/birds";
+import { findAllBirds } from "../services/birds";
 import Bird from "./Bird";
 
 import { useContext } from 'react';
@@ -29,29 +29,29 @@ function SightingForm() {
 
     const [birds, setBirds] = useState([]);
     const [errors, setErrors] = useState([]);
-    
+
     const history = useHistory();
     const { sightingId, sightingBirdId } = useParams();
 
     useEffect(() => {
         if (sightingId) {
             findBySightingId(sightingId)
-            .then(setSighting)
-            .catch(() => history.push("/"));
+                .then(setSighting)
+                .catch(() => history.push("/"));
         }
     }, [history, sightingId]);
 
     useEffect(() => {
         findAllBirds()
-        .then((data) => {
-            setBirds(data)
-            if (!sightingId) {
-                const temp = {...sighting}
-                temp.sightingBirdId = data[0].birdId;
-                setSighting(temp);
-            }
-        })
-        .catch(() => history.push("/error"));
+            .then((data) => {
+                setBirds(data)
+                if (!sightingId) {
+                    const temp = { ...sighting }
+                    temp.sightingBirdId = data[0].birdId;
+                    setSighting(temp);
+                }
+            })
+            .catch(() => history.push("/error"));
     }, [history, sightingBirdId]);
 
     function handleChange(event) {
@@ -68,36 +68,25 @@ function SightingForm() {
         event.preventDefault();
 
         save(sighting)
-        .then(() => history.push("/sightings"))
-        .catch(errors => {
-            if (errors) {
-                setErrors(errors);
-            } else {
-                history.push("/error")
-            }
-        });
+            .then(() => history.push("/sightings"))
+            .catch(errors => {
+                if (errors) {
+                    setErrors(errors);
+                } else {
+                    history.push("/error")
+                }
+            });
     }
 
-    return(
+    return (
         <form onSubmit={handleSubmit}>
             <h2>{sightingId > 0 ? "Edit Sighting" : "Add Sighting"}</h2>
             <div className="form-group">
                 <label htmlFor="sightingBirdId">Bird:</label>
                 <select name="sightingBirdId" id="sightingBirdId" className="form-control"
                     onChange={handleChange} value={sighting.sightingBirdId}>
-                        {/* <option>
-                            <div> */}
-                                {birds.map((b, i) => <option selected={i === 1 } key={b.birdId} value={b.birdId}>{b.commonName}</option>)}
-                            {/* </div>
-                        </option>
-                        <option></option>
-                        <option></option>
-                        <option></option>
-                        <option></option>
-                        <option></option>
-                        <option></option>
-                        <option></option> */}
-                    </select>
+                    {birds.map((b, i) => <option selected={i === 1} key={b.birdId} value={b.birdId}>{b.commonName}</option>)}
+                </select>
             </div>
             <div className="form-group">
                 <label htmlFor="date" className="form-label">Date:</label>

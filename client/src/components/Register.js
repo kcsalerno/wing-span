@@ -3,7 +3,7 @@ import { Link, useHistory } from "react-router-dom";
 
 import AuthContext from "../contexts/AuthContext.js";
 import Error from "./Error.js";
-import { findAllAvatars } from "../services/avatars.js";
+import { findAllAvatars, findById } from "../services/avatars.js";
 
 function Register() {
     const [username, setUsername] = useState("");
@@ -12,15 +12,21 @@ function Register() {
     const [email, setEmail] = useState("");
     const [errors, setErrors] = useState([]);
     const [avatars, setAvatars] = useState([findAllAvatars]);
-    const [avatarId, setAvatarId] = useState("1");
+    const [avatar, setAvatar] = useState([]);
+    const [avatarId, setAvatarId] = useState("");
 
     const auth = useContext(AuthContext);
     const history = useHistory();
 
     useEffect(() => {
-        findAllAvatars().then(data => {
+        findAllAvatars()
+        .then(data => {
             setAvatars(data)
-            console.log(data);
+            if (!avatarId) {
+                const temp = {...data[0]}
+                setAvatarId(temp.avatarId);
+                setAvatar(data[0]);
+            }
         });
     }, []);
 
@@ -129,6 +135,10 @@ function Register() {
 
     const handleAvatarChange = (event) => {
         setAvatarId(event.target.value);
+        findById(event.target.value)
+        .then(data => {
+            setAvatar(data);
+        })
     }
 
     return (
@@ -179,12 +189,11 @@ function Register() {
                         value={avatarId}
                         onChange={handleAvatarChange}
                     >
-                        {avatars.map(avatar => (
-                            <option key={avatar.avatarId}>{avatar.avatarId}</option>
+                        {avatars.map((avatar) => (
+                            <option key={`${avatar.avatarId}-${avatar.avatarDescription}`} value={avatar.avatarId}>{avatar.avatarDescription}</option>
                         ))}
                     </select>
-                    {/* Can't get an image to render next to the drop down. */}
-                    {/* <img src={avatar.avatarImageUrl} alt={avatar.avatarDescription} style={{width: '150px'}}/> */}
+                    <img className="ml-5" src={avatar.avatarImageUrl} alt={avatar.avatarDescription} style={{width: '150px'}}/>
                 </div>
                 <div className="mb-2">
                     <button className="btn btn-primary me-2 mr-2" type="submit">Register</button>
