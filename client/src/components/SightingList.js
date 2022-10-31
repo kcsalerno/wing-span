@@ -65,7 +65,7 @@ function SightingList() {
                             {auth.user && auth.user.hasRole('ADMIN') && auth.user.username === s.username &&
                                 <td className="buttonContainer">
                                     <Link className="btn btn-primary" to={`/sightings/edit/${s.sightingId}`}>Edit</Link>
-                                    <Link className="btn btn-danger" to={`/sightings/deletebyId/${s.sightingId}`}>Delete</Link>
+                                    <Link className="btn btn-danger" to={`/sightings/delete/${s.sightingId}`}>Delete</Link>
                                 </td>}
                         </tr>
                     ))}
