@@ -9,9 +9,9 @@ function Navigation() {
     return (
         <nav>
             {auth.user && (
-                <div className="text-center lead">
+                <div className="text-center">
                     Welcome, {auth.user.username}!
-                    <button className="btn btn-sm btn-link" onClick={() => auth.logout()}>Logout</button>
+                    <button className="btn btn-lg btn-link" onClick={() => auth.logout()}>Logout</button>
                 </div>
             )}
             <ul>

@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { Link, useHistory, useParams } from "react-router-dom";
 import { findBySightingId, save } from "../services/sightings";
 import { findAllBirds } from "../services/birds";
-import Bird from "./Bird";
 
 import { useContext } from 'react';
 
@@ -11,12 +10,7 @@ import AuthContext from "../contexts/AuthContext";
 
 function SightingForm() {
     const auth = useContext(AuthContext);
-    // console.log('this is the auth', auth);
-    // const user= auth.user;
-    // console.log('this is the user', user);
-    // const userId = user.id;
-    // console.log('this is the id', userId)
-
+    
     const [sighting, setSighting] = useState({
         sightingId: 0,
         sightingUserId: auth.user.userId,
@@ -52,7 +46,7 @@ function SightingForm() {
                 }
             })
             .catch(() => history.push("/error"));
-    }, [history, sightingBirdId]);
+    }, [history, sightingBirdId, sighting, sightingId]);
 
     function handleChange(event) {
         const nextSighting = { ...sighting };
@@ -104,7 +98,7 @@ function SightingForm() {
                     value={sighting.state} onChange={handleChange}></input>
             </div>
             <div>
-                <label htmlFor="daytime">Daytime?</label>
+                <label htmlFor="daytime" className="mr-2">Daytime?</label>
                 <input type="checkbox" name="daytime" id="daytime"
                     checked={sighting.daytime} onChange={handleChange}></input>
             </div>
