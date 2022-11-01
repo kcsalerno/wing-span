@@ -15,7 +15,6 @@ public class SightingService {
 
     public SightingService(SightingRepository repository, SightingTraitRepository sightingTraitRepository) {
         this.repository = repository;
-//        this.validator = validator;
         this.sightingTraitRepository = sightingTraitRepository;
     }
 
@@ -125,10 +124,6 @@ public class SightingService {
                 return result;
             }
         }
-//        if (repository.findAll().stream().anyMatch(i ->
-//                i.getSightingUserId() == (sighting.getSightingUserId()))) {
-//            result.addMessage(ResultType.DUPLICATE, "Sighting cannot be duplicated");
-//        }
 
         return result;
     }
