@@ -82,12 +82,13 @@ public class SightingJdbcTemplateRepository implements SightingRepository {
         }, keyHolder);
 
         if (rowsAffected <= 0) {
-            sighting.setSightingId(keyHolder.getKey().intValue());
-            updateTraits(sighting);
-            return sighting;
+            return null;
         }
 
-        return null;
+        sighting.setSightingId(keyHolder.getKey().intValue());
+        updateTraits(sighting);
+        return sighting;
+
     }
 
     @Override
