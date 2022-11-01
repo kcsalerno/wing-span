@@ -15,6 +15,7 @@ public class SightingService {
 
     public SightingService(SightingRepository repository, SightingTraitRepository sightingTraitRepository) {
         this.repository = repository;
+//        this.validator = validator;
         this.sightingTraitRepository = sightingTraitRepository;
     }
 
