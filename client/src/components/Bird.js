@@ -1,4 +1,11 @@
+import { useContext } from "react";
+import { Link } from "react-router-dom";
+import AuthContext from "../contexts/AuthContext";
+
 function Bird({ bird }) {
+
+    const auth = useContext(AuthContext);
+
     return (
         <div className="col">
             <div className="card mb-5">
@@ -7,6 +14,12 @@ function Bird({ bird }) {
                     <h5 className="card-title">Common Name: {bird.commonName}</h5>
                     <h5>Scientific Name: {bird.scientificName}</h5>
                 </div>
+                {auth.user && <div className="card-footer">
+                    <Link to={`/birds/edit/${bird.birdId}`} className="btn btn-primary">Edit</Link>
+                    {auth.user.hasRole('ADMIN') &&
+                        <Link to={`/birds/delete/${bird.birdId}`} className="btn btn-danger">Delete</Link>}
+                    </div>
+                }
             </div>
         </div>
     )

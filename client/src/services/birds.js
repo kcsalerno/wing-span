@@ -49,7 +49,7 @@ async function update(bird) {
         body: JSON.stringify(bird)
     };
 
-    const response = await fetch(`${BIRD_API_URL}/${bird.birdID}`, init);
+    const response = await fetch(`${BIRD_API_URL}/${bird.birdId}`, init);
     if (response.ok) {
         return Promise.resolve();
     } else if (response.status === 400) {
@@ -68,7 +68,7 @@ export async function deleteById(birdId) {
     const init = {
         method: "DELETE",
         headers: {
-            "Authorization": `Bearer ${BIRD_API_URL}/${birdId}`
+            "Authorization": `Bearer ${localStorage.getItem("jwt")}`
         }
     };
 

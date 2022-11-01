@@ -4,10 +4,8 @@ import { findBySightingId, save } from "../services/sightings";
 import {findAllBirds} from "../services/birds";
 import { findAllTraits } from "../services/traits";
 import Select from "react-select";
-
 import { useContext } from 'react';
 import AuthContext from "../contexts/AuthContext";
-
 
 function SightingForm() {
     const auth = useContext(AuthContext);
@@ -25,9 +23,8 @@ function SightingForm() {
 
     const [birds, setBirds] = useState([]);
     const [traits, setTraits] = useState([]);
+    const [selectedTraits, setSelectedTraits] = useState([]);
     const [errors, setErrors] = useState([]);
-    
-
     const history = useHistory();
     const { sightingId, sightingBirdId } = useParams();
 
@@ -50,7 +47,7 @@ function SightingForm() {
                 }
             })
             .catch(() => history.push("/error"));
-    }, [history, sightingBirdId]);
+    }, [history, sightingBirdId, sighting, sightingId]);
 
     useEffect(() => {
         findAllTraits()
@@ -60,6 +57,8 @@ function SightingForm() {
             .catch(() => history.push("/error"));
     },[history, sightingId])
 
+    console.log(traits);
+
     function handleChange(event) {
         const nextSighting = { ...sighting };
         if (event.target.name === "daytime") {
@@ -68,24 +67,16 @@ function SightingForm() {
             nextSighting[event.target.name] = event.target.value;
         }
 
-        if (event.target.name === "traits") {
-            nextSighting.traits = event.target.checked;
-        //     const traitId = parseInt(event.target.value);
-        //     if (event.target.checked) {
-        //         nextSighting.traits.push(traits.find(t => t.traitId === traitId));
-        //     } else {
-        //         nextSighting.traits = nextSighting.traits.filter(t => t.traitId !== traitId);
-        //     }
-        // } else {
-        //     nextSighting[event.target.name] = event.target.value;
-        }
         setSighting(nextSighting);
     }
 
     function handleSubmit(event) {
         event.preventDefault();
 
-        save(sighting)
+        const temp = selectedTraits.map((trait) => trait.value)
+        console.log(temp);
+
+        save({...sighting, traits: temp})
             .then(() => history.push("/sightings"))
             .catch(errors => {
                 if (errors) {
@@ -128,23 +119,22 @@ function SightingForm() {
             </div>
 
             <div className="mt-2">
-                {traits.map(trait => (
                     <div>
-                        <label htmlFor={"trait" + trait.traitId}>{trait.name}</label>
-                        {/* <input type="checkbox"
+                        <Select
+                            isMulti
                             name="traits"
-                            id="traits"
-                            value={trait.traitId}
-                            checked={sighting.traitId}
-                            // {traits.find(t => t.traitId === trait.traitId) !== undefined}
-                            onChange={handleChange}>
-                        </input> */}
-                        <select name="traits" closeMenuOnSelect={false} onChange={handleChange} isMulti options={traits.map((t, key) => ({
-                            label: t,
-                            value: key,
-                        }))}></select>
+                            options={traits.map(trait => {
+                                return {
+                                    value : trait.traitId,
+                                    label : trait.name
+                                }
+                            })}
+                            className="basic-multi-select"
+                            classNamePrefix="select"
+                            onChange={setSelectedTraits}
+                            value={selectedTraits}
+                        />
                     </div>
-                ))}
             </div>
             {errors.length !== 0 && <div className="alert alert-danger">
                 <ul>
@@ -157,7 +147,6 @@ function SightingForm() {
             </div>
         </form>
     );
-
 }
 
 export default SightingForm;
