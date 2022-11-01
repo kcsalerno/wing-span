@@ -1,6 +1,5 @@
 import AuthContext from "../contexts/AuthContext";
 import { useContext, useState, useEffect } from 'react';
-import { Link } from "react-router-dom";
 import { findAllSightings } from "../services/sightings";
 import Sighting from "./Sighting";
 
