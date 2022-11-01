@@ -131,7 +131,7 @@ function App() {
           </Route>
           <Route path="/birds/delete/:birdId">
             {auth.user ? 
-            (<BirdConfirmDelete />) : (<Redirect to="/login" />)}
+            (<BirdConfirmDelete />) : (<Redirect to="/birds" />)}
           </Route>
           <Route path="/login">
             {!auth.user ? <Login /> : <Redirect to="/" />}
