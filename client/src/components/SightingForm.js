@@ -27,9 +27,6 @@ function SightingForm() {
     const [traits, setTraits] = useState([]);
     const [selectedTraits, setSelectedTraits] = useState([]);
     const [errors, setErrors] = useState([]);
-    const [isChecked, setIsChecked] = useState(false);
-    
-
     const history = useHistory();
     const { sightingId, sightingBirdId } = useParams();
 
@@ -52,7 +49,7 @@ function SightingForm() {
                 }
             })
             .catch(() => history.push("/error"));
-    }, [history, sightingBirdId]);
+    }, [history, sightingBirdId, sighting, sightingId]);
 
     useEffect(() => {
         findAllTraits()
@@ -70,17 +67,6 @@ function SightingForm() {
             nextSighting[event.target.name] = event.target.value;
         }
 
-        if (event.target.name === "traits") {
-            nextSighting.traits = event.target.checked;
-        //     const traitId = parseInt(event.target.value);
-        //     if (event.target.checked) {
-        //         nextSighting.traits.push(traits.find(t => t.traitId === traitId));
-        //     } else {
-        //         nextSighting.traits = nextSighting.traits.filter(t => t.traitId !== traitId);
-        //     }
-        // } else {
-        //     nextSighting[event.target.name] = event.target.value;
-        }
         setSighting(nextSighting);
     }
 
@@ -148,15 +134,6 @@ function SightingForm() {
                             onChange={setSelectedTraits}
                             value={selectedTraits}
                         />
-                        {/* <label htmlFor={"trait" + trait.traitId}>{trait.name}</label>
-                        <input type="checkbox"
-                            name="traits"
-                            id="traits"
-                            value={trait.traitId}
-                            checked={sighting.traitId}
-                            // {traits.find(t => t.traitId === trait.traitId) !== undefined}
-                            onChange={handleChange}>
-                        </input> */}
                     </div>
             </div>
             {errors.length !== 0 && <div className="alert alert-danger">

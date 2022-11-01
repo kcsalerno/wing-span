@@ -3,7 +3,6 @@ import { Link, useHistory, useParams } from "react-router-dom";
 import { deleteById, findBySightingId } from "../services/sightings";
 
 function SightingConfirmDelete() {
-    // const endpoint = "http://localhost:8080/api/sighting";
     const [sighting, setSighting] = useState({});
 
     const history = useHistory;
@@ -19,39 +18,10 @@ function SightingConfirmDelete() {
             .catch(() => history.push("/"));
     }, [history, sightingId])
 
-    // useEffect(() => {
-    //     if (sightingId) {
-    //         fetch(`${endpoint}/${sightingId}`)
-    //             .then(response => response.json())
-    //             .then((data) => setSighting(data));
-    //     }
-    // }, [sightingId]);
-
-
     function handleDelete() {
-
         deleteById(sighting.sightingId)
-            .then(() => history.push("/"))
-            .catch(() => history.push("/error"));
-
-        // const remove = {
-        //     method: `DELETE`,
-        //     headers: {
-        //         "Authorization": `Bearer ${localStorage.getItem("jwt")}`
-        //     }
-        // };
-        // fetch(`${endpoint}/${sightingId}`, remove)
-        //     .then(response => {
-        //         if (response.ok) {
-        //             history.push('/sightings');
-        //             return null;
-        //         }
-        //         else {
-        //             return Promise.reject();
-        //         }
-        //     })
-        //     .catch(console.log);
-    
+        .then(() => history.push("/"))
+        .catch(() => history.push("/error"));
     };
 
     return (
