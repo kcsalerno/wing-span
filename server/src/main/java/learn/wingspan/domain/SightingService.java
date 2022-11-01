@@ -1,6 +1,7 @@
 package learn.wingspan.domain;
 
 import learn.wingspan.data.SightingRepository;
+import learn.wingspan.data.SightingTraitRepository;
 import learn.wingspan.models.Sighting;
 import org.springframework.stereotype.Service;
 
@@ -10,11 +11,11 @@ import java.util.List;
 @Service
 public class SightingService {
     private final SightingRepository repository;
-//    private final Validator validator;
+    private final SightingTraitRepository sightingTraitRepository;
 
-    public SightingService(SightingRepository repository) {
+    public SightingService(SightingRepository repository, SightingTraitRepository sightingTraitRepository) {
         this.repository = repository;
-//        this.validator = validator;
+        this.sightingTraitRepository = sightingTraitRepository;
     }
 
     public List<Sighting> findAll() {
@@ -25,7 +26,7 @@ public class SightingService {
         return repository.findById(sightingId);
     }
 
-    public Result<Sighting> create(Sighting sighting) {
+    public Result<Sighting> create(Sighting sighting, int traitId) {
         Result<Sighting> result = validate(sighting);
 
         if (!result.isSuccess()) {
@@ -39,6 +40,7 @@ public class SightingService {
         if (result.isSuccess()) {
             sighting = repository.create(sighting);
             // add trait
+            sightingTraitRepository.add(sighting.getSightingId(), traitId);
             result.setPayload(sighting);
         }
 
