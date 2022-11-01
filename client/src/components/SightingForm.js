@@ -3,6 +3,7 @@ import { Link, useHistory, useParams } from "react-router-dom";
 import { findBySightingId, save } from "../services/sightings";
 import {findAllBirds} from "../services/birds";
 import { findAllTraits } from "../services/traits";
+import Select from 'react-select';
 
 import { useContext } from 'react';
 import AuthContext from "../contexts/AuthContext";
@@ -24,6 +25,7 @@ function SightingForm() {
 
     const [birds, setBirds] = useState([]);
     const [traits, setTraits] = useState([]);
+    const [selectedTraits, setSelectedTraits] = useState([]);
     const [errors, setErrors] = useState([]);
     const [isChecked, setIsChecked] = useState(false);
     
@@ -58,6 +60,8 @@ function SightingForm() {
             .catch(() => history.push("/error"));
     },[history, sightingId])
 
+    console.log(traits);
+
     function handleChange(event) {
         const nextSighting = { ...sighting };
         if (event.target.name === "daytime") {
@@ -83,7 +87,10 @@ function SightingForm() {
     function handleSubmit(event) {
         event.preventDefault();
 
-        save(sighting)
+        const temp = selectedTraits.map((trait) => trait.value)
+        console.log(temp);
+
+        save({...sighting, traits: temp})
             .then(() => history.push("/sightings"))
             .catch(errors => {
                 if (errors) {
@@ -126,9 +133,22 @@ function SightingForm() {
             </div>
 
             <div className="mt-2">
-                {traits.map(trait => (
                     <div>
-                        <label htmlFor={"trait" + trait.traitId}>{trait.name}</label>
+                        <Select
+                            isMulti
+                            name="traits"
+                            options={traits.map(trait => {
+                                return {
+                                    value : trait.traitId,
+                                    label : trait.name
+                                }
+                            })}
+                            className="basic-multi-select"
+                            classNamePrefix="select"
+                            onChange={setSelectedTraits}
+                            value={selectedTraits}
+                        />
+                        {/* <label htmlFor={"trait" + trait.traitId}>{trait.name}</label>
                         <input type="checkbox"
                             name="traits"
                             id="traits"
@@ -136,9 +156,8 @@ function SightingForm() {
                             checked={sighting.traitId}
                             // {traits.find(t => t.traitId === trait.traitId) !== undefined}
                             onChange={handleChange}>
-                        </input>
+                        </input> */}
                     </div>
-                ))}
             </div>
             {errors.length !== 0 && <div className="alert alert-danger">
                 <ul>
