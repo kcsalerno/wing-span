@@ -2,18 +2,13 @@ import { useState, useEffect, useContext } from "react";
 import { useHistory, Link } from "react-router-dom";
 import { findAllSightings } from "../services/sightings";
 import { findAllBirds } from "../services/birds";
-import { deleteById } from "../services/sightings"
 import Bird from "./Bird";
 import AuthContext from "../contexts/AuthContext";
 
 function SightingList() {
     const [sightings, setSightings] = useState([]);
     const history = useHistory();
-
     const auth = useContext(AuthContext);
-
-    // console.log(auth);
-    // console.log(auth.user);
 
     useEffect(() => {
         findAllSightings()
@@ -36,7 +31,6 @@ function SightingList() {
             <h2>Sightings</h2>
             <Link className="btn btn-success" to="/sightings/add" id="add">Add Sighting</Link>
             <table className="table table-bordered table-hover table-striped">
-                {/* <caption>List of user sightings</caption> */}
                 <thead className="thead-dark">
                     <tr>
                         <th scope="col">Date</th>

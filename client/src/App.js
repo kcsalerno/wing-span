@@ -10,6 +10,7 @@ import SightingForm from './components/SightingForm';
 import SightingConfirmDelete from './components/SightingConfirmDelete';
 import BirdGrid from './components/BirdGrid';
 import BirdForm from './components/BirdForm';
+import BirdConfirmDelete from './components/BirdConfirmDelete';
 import Login from './components/Login';
 import NotFound from './components/NotFound';
 import Error from './components/Error';
@@ -127,6 +128,10 @@ function App() {
             ) : (
               <Redirect to='/login' />
             )}
+          </Route>
+          <Route path="/birds/delete/:birdId">
+            {auth.user ? 
+            (<BirdConfirmDelete />) : (<Redirect to="/birds" />)}
           </Route>
           <Route path="/login">
             {!auth.user ? <Login /> : <Redirect to="/" />}

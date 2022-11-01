@@ -1,4 +1,11 @@
+import { useContext } from "react";
+import { Link } from "react-router-dom";
+import AuthContext from "../contexts/AuthContext";
+
 function Sighting({ sighting }) {
+
+    const auth = useContext(AuthContext);
+
     return (
         <div className="col">
             <div className="card mb-5">
@@ -12,6 +19,10 @@ function Sighting({ sighting }) {
                     <h5>State: {sighting.state}</h5>
                     <h5>Traits: {sighting.traits ? sighting.traits.map(t => `${t.name} `) : ''}</h5>
                 </div>
+                {auth.user && <div className="card-footer">
+                    <Link className="btn btn-primary" to={`/sightings/edit/${sighting.sightingId}`}>Edit</Link>
+                    <Link className="btn btn-danger" to={`/sightings/delete/${sighting.sightingId}`}>Delete</Link>
+                </div>}
             </div>
         </div>
     )
