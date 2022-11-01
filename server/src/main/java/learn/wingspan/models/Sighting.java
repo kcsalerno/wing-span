@@ -96,7 +96,7 @@ public class Sighting {
     }
 
     public List<Trait> getTraits() {
-        return traits;
+        return new ArrayList<>(traits);
     }
 
     public void setTraits(List<Trait> traits) {
