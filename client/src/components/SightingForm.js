@@ -3,11 +3,9 @@ import { Link, useHistory, useParams } from "react-router-dom";
 import { findBySightingId, save } from "../services/sightings";
 import {findAllBirds} from "../services/birds";
 import { findAllTraits } from "../services/traits";
-import Select from 'react-select';
-
+import Select from "react-select";
 import { useContext } from 'react';
 import AuthContext from "../contexts/AuthContext";
-
 
 function SightingForm() {
     const auth = useContext(AuthContext);
@@ -53,7 +51,9 @@ function SightingForm() {
 
     useEffect(() => {
         findAllTraits()
-            .then(setTraits)
+            .then((data) => {
+                setTraits(data)
+            })
             .catch(() => history.push("/error"));
     },[history, sightingId])
 

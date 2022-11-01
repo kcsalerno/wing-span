@@ -4,6 +4,7 @@ import learn.wingspan.data.mappers.BirdMapper;
 import learn.wingspan.data.mappers.SightingMapper;
 import learn.wingspan.data.mappers.TraitMapper;
 import learn.wingspan.models.Sighting;
+import learn.wingspan.models.Trait;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
@@ -85,7 +86,9 @@ public class SightingJdbcTemplateRepository implements SightingRepository {
         }
 
         sighting.setSightingId(keyHolder.getKey().intValue());
+        updateTraits(sighting);
         return sighting;
+
     }
 
     @Override
@@ -107,7 +110,11 @@ public class SightingJdbcTemplateRepository implements SightingRepository {
                 sighting.isDaytime(),
                 sighting.getSightingId());
 
-        return rowsUpdated > 0;
+        if (rowsUpdated > 0) {
+            updateTraits(sighting);
+            return true;
+        }
+        return false;
     }
 
 
@@ -129,6 +136,16 @@ public class SightingJdbcTemplateRepository implements SightingRepository {
         sighting.setTraits(traits);
     }
 
+    private void updateTraits(Sighting sighting) {
+        jdbcTemplate.update("delete from sighting_trait where sighting_id = ?;", sighting.getSightingId());
+        for (Trait t : sighting.getTraits()) {
+            jdbcTemplate.update(
+                    "insert into sighting_trait (sighting_id, trait_id) values (?, ?);",
+                    sighting.getSightingId(),
+                    t.getTraitId());
+        }
+    }
+
     private void addBird(Sighting sighting) {
         final String sql = "select b.bird_id, b.common_name, b.scientific_name, b.img_url from bird b "
                 + "inner join sighting s on s.bird_id = b.bird_id "
@@ -137,4 +154,5 @@ public class SightingJdbcTemplateRepository implements SightingRepository {
         var bird = jdbcTemplate.queryForObject(sql, new BirdMapper(), sighting.getSightingId());
         sighting.setBird(bird);
     }
+
 }

@@ -41,6 +41,8 @@ public class SightingController {
             return new ResponseEntity<>(result.getPayload(), HttpStatus.CREATED);
         }
         return ErrorResponse.build(result);
+
+        //list of traits
     }
 
     @PutMapping("/{sightingId}")
