@@ -145,9 +145,6 @@ insert into app_role (`name`) values
 -- Data: app_user
 -- -----------------------------------------------------
 -- Initial data to get started, passwords are set to "P@ssw0rd!" for now
--- insert into app_user (username, password_hash, email, user_first_name, user_last_name) values
---     ('admin1', '$2a$10$ntB7CsRKQzuLoKY3rfoAQen5nNyiC/U60wBsWnnYrtQQi8Z3IZzQa', 'admin@admin.com', 'Test', 'McTesterson'),
---     ('user1', '$2a$10$ntB7CsRKQzuLoKY3rfoAQen5nNyiC/U60wBsWnnYrtQQi8Z3IZzQa', 'user@user.com', 'User', 'McUser');
 insert into app_user (username, password_hash, email) values
 	('admin1', '$2a$10$ntB7CsRKQzuLoKY3rfoAQen5nNyiC/U60wBsWnnYrtQQi8Z3IZzQa', 'john@smith.com'),
     ('user1', '$2a$10$ntB7CsRKQzuLoKY3rfoAQen5nNyiC/U60wBsWnnYrtQQi8Z3IZzQa', 'sally@jones.com');
@@ -163,11 +160,11 @@ insert into app_user_role (app_user_id, app_role_id) values
 -- -----------------------------------------------------
 -- Data: badge
 -- -----------------------------------------------------
-insert into badge (badge_name, badge_description, badge_img_url) values
-	('5 Sightings', "You've made 5 sightings!", 'https://static.thenounproject.com/png/1120113-200.png'),
-    ('10 Sightings', "You've made 10 sightings!", 'https://static.thenounproject.com/png/1188264-200.png'),
-    ('20 Sightings', "You've made 20 sightings!", 'https://static.thenounproject.com/png/4451522-200.png'),
-    ('50 Sightings', "You've made 50 sightings!", 'https://static.thenounproject.com/png/1511937-200.png');
+-- insert into badge (badge_name, badge_description, badge_img_url) values
+-- 	('5 Sightings', "You've made 5 sightings!", 'https://static.thenounproject.com/png/1120113-200.png'),
+--     ('10 Sightings', "You've made 10 sightings!", 'https://static.thenounproject.com/png/1188264-200.png'),
+--     ('20 Sightings', "You've made 20 sightings!", 'https://static.thenounproject.com/png/4451522-200.png'),
+--     ('50 Sightings', "You've made 50 sightings!", 'https://static.thenounproject.com/png/1511937-200.png');
 
 -- -----------------------------------------------------
 -- Data: avatar
@@ -203,7 +200,7 @@ insert into sighting_trait (sighting_id, trait_id) values
 	(1, 3),
 	(3, 4),
 	(2, 5),
-	(2, 10),
+	(2, 9),
 	(2, 7),
 	(3, 8),
 	(3, 9),
@@ -217,5 +214,5 @@ insert into sighting_trait (sighting_id, trait_id) values
 -- -----------------------------------------------------
 -- Data: user_badge
 -- -----------------------------------------------------
-insert into user_badge (app_user_id, badge_id) values
-	(1, 1);
+-- insert into user_badge (app_user_id, badge_id) values
+-- 	(1, 1);

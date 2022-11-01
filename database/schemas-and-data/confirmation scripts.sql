@@ -42,3 +42,17 @@ select * from app_user;
 select * from app_user_role;
 
 select * from bird;
+
+select au.username, a.avatar_img_url, a.avatar_description from app_user au
+	inner join user_avatar ua on au.app_user_id = ua.app_user_id
+    inner join avatar a on ua.avatar_id = a.avatar_id
+where au.app_user_id = 1;
+    
+select * from trait t
+	inner join sighting_trait st on t.trait_id = st.trait_id
+    inner join sighting s on st.sighting_id = s.sighting_id
+where s.sighting_id = 1;
+
+select b.bird_id, b.common_name, b.scientific_name, b.img_url from bird b
+	inner join sighting s on s.bird_id = b.bird_id
+where s.sighting_id = 1;
