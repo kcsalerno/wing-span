@@ -68,7 +68,7 @@ export async function deleteById(birdId) {
     const init = {
         method: "DELETE",
         headers: {
-            "Authorization": `Bearer ${BIRD_API_URL}/${birdId}`
+            "Authorization": `Bearer ${localStorage.getItem("jwt")}`
         }
     };
 
