@@ -147,7 +147,6 @@ function SightingForm() {
             </div>
         </form>
     );
-
 }
 
 export default SightingForm;
