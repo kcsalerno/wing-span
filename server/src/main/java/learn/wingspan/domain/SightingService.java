@@ -38,6 +38,7 @@ public class SightingService {
 
         if (result.isSuccess()) {
             sighting = repository.create(sighting);
+            // add trait
             result.setPayload(sighting);
         }
 

@@ -3,6 +3,7 @@ import { Link, useHistory, useParams } from "react-router-dom";
 import { findBySightingId, save } from "../services/sightings";
 import {findAllBirds} from "../services/birds";
 import { findAllTraits } from "../services/traits";
+import Select from "react-select";
 
 import { useContext } from 'react';
 import AuthContext from "../contexts/AuthContext";
@@ -53,7 +54,9 @@ function SightingForm() {
 
     useEffect(() => {
         findAllTraits()
-            .then(setTraits)
+            .then((data) => {
+                setTraits(data)
+            })
             .catch(() => history.push("/error"));
     },[history, sightingId])
 
@@ -128,14 +131,18 @@ function SightingForm() {
                 {traits.map(trait => (
                     <div>
                         <label htmlFor={"trait" + trait.traitId}>{trait.name}</label>
-                        <input type="checkbox"
+                        {/* <input type="checkbox"
                             name="traits"
                             id="traits"
                             value={trait.traitId}
                             checked={sighting.traitId}
                             // {traits.find(t => t.traitId === trait.traitId) !== undefined}
                             onChange={handleChange}>
-                        </input>
+                        </input> */}
+                        <select name="traits" closeMenuOnSelect={false} onChange={handleChange} isMulti options={traits.map((t, key) => ({
+                            label: t,
+                            value: key,
+                        }))}></select>
                     </div>
                 ))}
             </div>
