@@ -14,6 +14,11 @@ public class UserAvatarJdbcTemplateRepository implements UserAvatarRepository{
     }
 
     @Override
+    public void add(int avatarId) {
+
+    }
+
+    @Override
     public void add(int appUserId, int avatarId) {
         final String sql = "insert into user_avatar (app_user_id, avatar_id) "
                 + "values (?, ?);";

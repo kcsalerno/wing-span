@@ -25,7 +25,6 @@ function SightingForm() {
     const [birds, setBirds] = useState([]);
     const [traits, setTraits] = useState([]);
     const [errors, setErrors] = useState([]);
-    const [isChecked, setIsChecked] = useState(false);
     
 
     const history = useHistory();
