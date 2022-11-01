@@ -36,7 +36,8 @@ public class SightingController {
 
     @PostMapping
     public ResponseEntity<Object> create(@RequestBody Sighting sighting) {
-        Result<Sighting> result = service.create(sighting);
+        int traitId = Integer.parseInt(String.valueOf(sighting.getTraits().get(Integer.parseInt("traitId"))));
+        Result<Sighting> result = service.create(sighting, traitId);
         if (result.isSuccess()) {
             return new ResponseEntity<>(result.getPayload(), HttpStatus.CREATED);
         }

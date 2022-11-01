@@ -15,7 +15,7 @@ public class SightingTraitJdbcTemplateRepository implements SightingTraitReposit
     @Override
     public void add(int sightingId, int traitId) {
         final String sql = "insert into sighting_trait (sighting_id, trait_id) "
-        + "values (?, ?);";
+                + "values (?, ?);";
 
         int rowsAffected = jdbcTemplate.update(connection -> {
             PreparedStatement ps = connection.prepareStatement(sql);
@@ -29,6 +29,7 @@ public class SightingTraitJdbcTemplateRepository implements SightingTraitReposit
             return;
         }
     }
+
 
     //update
 }
