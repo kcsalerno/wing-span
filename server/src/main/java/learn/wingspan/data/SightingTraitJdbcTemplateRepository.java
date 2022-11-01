@@ -1,9 +1,11 @@
 package learn.wingspan.data;
 
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Repository;
 
 import java.sql.PreparedStatement;
 
+@Repository
 public class SightingTraitJdbcTemplateRepository implements SightingTraitRepository {
     private final JdbcTemplate jdbcTemplate;
 
