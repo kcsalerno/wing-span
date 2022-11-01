@@ -3,7 +3,6 @@ import { Link, useHistory, useParams } from "react-router-dom";
 import { findBySightingId, save } from "../services/sightings";
 import {findAllBirds} from "../services/birds";
 import { findAllTraits } from "../services/traits";
-import { findAllBirds } from "../services/birds";
 
 import { useContext } from 'react';
 import AuthContext from "../contexts/AuthContext";
@@ -51,7 +50,7 @@ function SightingForm() {
                 }
             })
             .catch(() => history.push("/error"));
-    }, [history, sightingBirdId, sighting, sightingId]);
+    }, [history, sightingBirdId]);
 
     useEffect(() => {
         findAllTraits()
