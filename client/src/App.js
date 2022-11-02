@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import jwtDecode from "jwt-decode";
 
 import Home from './components/Home';
-import Navigation from './components/Navigation';
 import SightingList from './components/SightingList';
 import SightingForm from './components/SightingForm';
 import SightingConfirmDelete from './components/SightingConfirmDelete';
