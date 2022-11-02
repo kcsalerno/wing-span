@@ -50,7 +50,7 @@ function SightingList() {
                             <td>{s.date}</td>
                             <td>{s.username}</td>
                             <td>
-                                <Link to={`/birds/${Bird.birdId}`}>{s.birdCommonName}</Link>
+                                <Link to={`/birds`}>{s.birdCommonName}</Link>
                             </td>
                             <td>{s.city}</td>
                             <td>{s.state}</td>

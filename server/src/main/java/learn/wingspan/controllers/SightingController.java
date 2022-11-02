@@ -37,7 +37,6 @@ public class SightingController {
 
     @PostMapping
     public ResponseEntity<Object> create(@RequestBody Sighting sighting) {
-//        int traitId = Integer.parseInt(String.valueOf(sighting.getTraits().get(Integer.parseInt("traitId"))));
 
         Result<Sighting> result = service.create(sighting);
 
@@ -46,7 +45,6 @@ public class SightingController {
         }
         return ErrorResponse.build(result);
 
-        //list of traits
     }
 
     @PutMapping("/{sightingId}")

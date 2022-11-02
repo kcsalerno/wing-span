@@ -33,5 +33,6 @@ public class SightingTraitJdbcTemplateRepository implements SightingTraitReposit
     }
 
 
+
     //update
 }

@@ -58,8 +58,6 @@ function SightingForm() {
             .catch(() => history.push("/error"));
     },[history, sightingId])
 
-    console.log(traits);
-
     function handleChange(event) {
         const nextSighting = { ...sighting };
         if (event.target.name === "daytime") {
