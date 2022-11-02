@@ -86,8 +86,10 @@ public class AuthController {
         String password = credentials.get("password");
         String email = credentials.get("email");
         int avatarId = Integer.parseInt(credentials.get("avatarId"));
+        String avatarDescription = credentials.get("avatarDescription");
+        String avatarImgageUrl = credentials.get("avatarImageUrl");
 
-        Result<AppUser> result = appUserService.create(username, password, email, avatarId);
+        Result<AppUser> result = appUserService.create(username, password, email, avatarId, avatarDescription, avatarImgageUrl);
 
         // unhappy path...
         if (!result.isSuccess()) {
