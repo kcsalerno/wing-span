@@ -13,7 +13,6 @@ public interface SightingRepository {
     Sighting create(Sighting sighting);
 
     boolean update(Sighting sighting);
-    // boolean deleteByKey(int sightingId, int appUserId, int birdId) throws DataAccessException;
 
     @Transactional
     boolean deleteById(int sightingId);

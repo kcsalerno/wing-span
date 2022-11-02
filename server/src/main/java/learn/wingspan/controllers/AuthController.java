@@ -20,15 +20,10 @@ import java.util.Map;
 
 @RestController
 public class AuthController {
-    // The `AuthenticationManager` interface defines a single method `authenticate()`
-    // that processes an Authentication request.
     private final AuthenticationManager authenticationManager;
-    // New
     private final JwtConverter converter;
-    // New
     private final AppUserService appUserService;
 
-    // Updated for JWT
     public AuthController(AuthenticationManager authenticationManager, JwtConverter converter,
                           AppUserService appUserService) {
         this.authenticationManager = authenticationManager;
@@ -38,19 +33,13 @@ public class AuthController {
 
     @PostMapping("/authenticate")
     public ResponseEntity<?> authenticate(@RequestBody Map<String, String> credentials) {
-        // The `UsernamePasswordAuthenticationToken` class is an `Authentication` implementation
-        // that is designed for simple presentation of a username and password.
         UsernamePasswordAuthenticationToken authToken =
                 new UsernamePasswordAuthenticationToken(credentials.get("username"), credentials.get("password"));
 
         try {
-            // The `Authentication` interface Represents the token for an authentication request
-            // or for an authenticated principal once the request has been processed by the //
-            // `AuthenticationManager.authenticate(Authentication)` method.
             Authentication authentication = authenticationManager.authenticate(authToken);
 
             if (authentication.isAuthenticated()) {
-                // Added JWT, updated cast to AppUser instead of UserDetails
                 String jwtToken = converter.getTokenFromUser((AppUser) authentication.getPrincipal());
 
                 HashMap<String, String> map = new HashMap<>();
@@ -67,11 +56,8 @@ public class AuthController {
     }
 
     @PostMapping("/refresh_token")
-    // new... inject our `AppUser`, set by the `JwtRequestFilter`
     public ResponseEntity<Map<String, String>> refreshToken(@AuthenticationPrincipal AppUser appUser) {
         String jwtToken = converter.getTokenFromUser(appUser);
-//        User user = new User(principal.getName(), principal.getName(), principal.getAuthorities());
-//        String jwtToken = converter.getTokenFromUser(user);
 
         HashMap<String, String> map = new HashMap<>();
         map.put("jwt_token", jwtToken);
@@ -87,16 +73,14 @@ public class AuthController {
         String email = credentials.get("email");
         int avatarId = Integer.parseInt(credentials.get("avatarId"));
         String avatarDescription = credentials.get("avatarDescription");
-        String avatarImgageUrl = credentials.get("avatarImageUrl");
+        String avatarImageUrl = credentials.get("avatarImageUrl");
 
-        Result<AppUser> result = appUserService.create(username, password, email, avatarId, avatarDescription, avatarImgageUrl);
+        Result<AppUser> result = appUserService.create(username, password, email, avatarId, avatarDescription, avatarImageUrl);
 
-        // unhappy path...
         if (!result.isSuccess()) {
             return new ResponseEntity<>(result.getMessages(), HttpStatus.BAD_REQUEST);
         }
 
-        // happy path...
         HashMap<String, Integer> map = new HashMap<>();
         map.put("appUserId", result.getPayload().getAppUserId());
 

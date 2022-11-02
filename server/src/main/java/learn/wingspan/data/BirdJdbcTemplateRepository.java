@@ -14,7 +14,6 @@ import java.util.List;
 
 @Repository
 public class BirdJdbcTemplateRepository implements BirdRepository {
-
     private final JdbcTemplate jdbcTemplate;
 
     public BirdJdbcTemplateRepository(JdbcTemplate jdbcTemplate) {

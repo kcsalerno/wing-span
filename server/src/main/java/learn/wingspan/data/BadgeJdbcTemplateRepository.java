@@ -14,7 +14,6 @@ import java.util.List;
 
 @Repository
 public class BadgeJdbcTemplateRepository implements BadgeRepository {
-
     private final JdbcTemplate jdbcTemplate;
 
     public BadgeJdbcTemplateRepository(JdbcTemplate jdbcTemplate) {
@@ -27,7 +26,6 @@ public class BadgeJdbcTemplateRepository implements BadgeRepository {
 
         return jdbcTemplate.query(sql, new BadgeMapper());
     }
-
 
     @Override
     public Badge findById(int badgeId) {

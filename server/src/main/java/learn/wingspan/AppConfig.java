@@ -9,19 +9,13 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
 public class AppConfig {
-
     @Bean
     public PasswordEncoder getPasswordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
-    // new...
     @Bean
     public WebMvcConfigurer corsConfigurer() {
-
-        // Configure CORS globally versus
-        // controller-by-controller.
-        // Can be combined with @CrossOrigin.
         return new WebMvcConfigurer() {
 
             @Override

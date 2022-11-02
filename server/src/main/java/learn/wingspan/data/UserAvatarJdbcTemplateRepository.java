@@ -6,13 +6,12 @@ import org.springframework.stereotype.Repository;
 import java.sql.PreparedStatement;
 
 @Repository
-public class UserAvatarJdbcTemplateRepository implements UserAvatarRepository{
+public class UserAvatarJdbcTemplateRepository implements UserAvatarRepository {
     private final JdbcTemplate jdbcTemplate;
 
     public UserAvatarJdbcTemplateRepository(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
-
 
     @Override
     public void add(int appUserId, int avatarId) {
@@ -28,7 +27,6 @@ public class UserAvatarJdbcTemplateRepository implements UserAvatarRepository{
         });
 
         if (rowsAffected <= 0) {
-            return;
         }
     }
 }

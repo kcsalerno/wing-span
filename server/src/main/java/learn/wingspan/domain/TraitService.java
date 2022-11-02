@@ -75,6 +75,7 @@ public class TraitService {
 
         if (trait == null) {
             result.addMessage(ResultType.INVALID, "Trait cannot be null.");
+            return result;
         }
         if (Validations.isNullOrBlank(trait.getName())) {
             result.addMessage(ResultType.INVALID, "A trait name is required.");
