@@ -20,7 +20,7 @@ function Sighting({ sighting }) {
                     <h5>Traits: {sighting.traits ? sighting.traits.map(t => `${t.name} `) : ''}</h5>
                 </div>
                 {auth.user && <div className="card-footer">
-                    <Link className="btn btn-primary" to={`/sightings/edit/${sighting.sightingId}`}>Edit</Link>
+                    <Link className="btn btn-primary mr-2" to={`/sightings/edit/${sighting.sightingId}`}>Edit</Link>
                     <Link className="btn btn-danger" to={`/sightings/delete/${sighting.sightingId}`}>Delete</Link>
                 </div>}
             </div>
