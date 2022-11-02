@@ -8,17 +8,53 @@
 html {
   font-size: 62.5%;
 }
+header nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  width: 100%;
+  padding: .5% 0;
+  z-index: 999;
+  background-color: rgba(250, 250, 250, .8);
+  top: 0;
+}
+header ul {
+  width: 50%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.logo {
+  width: 15%;
+}
+.logo h2 {
+  font-size: 3rem;
+  margin-left: 2%;
+}
+.text-center {
+  margin-top: .3%;
+  text-align: center;
+  font-size: 2rem;
+}
 body {
   font-size: 2rem;
+  font-family: 'Montserrat', sans-serif;
+}
+.wrapper {
+  margin-top: 3.7%;
 }
 h1 {
   font-size: 5rem;
   text-align: center;
   margin: 2% 0;
+  font-family: 'Poiret One', cursive;
 }
 h2 {
   font-size: 4rem;
   margin: 1% 0;
+  font-family: 'Poiret One', cursive;
 }
 nav {
   text-align: center;
@@ -27,9 +63,33 @@ li {
   display: inline-block;
   margin: 0 5%;
 }
+a {
+  color: #ae5c04;
+  transition: 2s;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2rem;
+}
+a:hover {
+  color: #146971;
+}
 .home {
   text-align: center;
-  margin: 3% 0;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url("https://images.unsplash.com/photo-1486365227551-f3f90034a57c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80");
+}
+.titles {
+  width: 30%;
+  margin-left: 5%;
+}
+.login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 70vh;
 }
 .notFound {
   text-align: center;
@@ -50,46 +110,41 @@ td {
   font-size: 2rem;
   margin-bottom: 2%;
 }
-/* .card-footer {
-  
-} */
 .buttonContainer {
   display: flex;
   justify-content: space-evenly;
 }
-/* .home .sliderContainer {
-  overflow: hidden;
-  height: 800px;
-  width: 1200px;
-  margin-top: 5%;
+
+.add {
+  background-color: #146971;
+  color: white;
+  border: 2px solid #146971;
+  transition: 2s;
 }
-@keyframes slide_animation {
-  0% {left: 0px;}
-  10% {left: 0px;}
-  20% {left: 1200px;}
-  30% {left: 1200px;}
-  40% {left: 2400px;}
-  50% {left: 2400px;}
-  60% {left: 1200px;}
-  70% {left: 1200px;}
-  80% {left: 0px;}
-  90% {left: 0px;}
-  100% {left: 0px;}
+.add:hover {
+  color: #146971;
+  background-color: white;
 }
-.home .slideImages {
-  width: 3600px;
-  height: 800px;
-  margin: 0 0 0 -2400px;
-  position: relative;
-  animation-name: slide_animation;
-  animation-duration: 2s;
-  animation-iteration-count: infinite;
-  animation-direction: alternate;
-  animation-play-state: running;
+.delete {
+  background-color: #cf1804;
+  color: white;
+  border: 2px solid #cf1804;
+  transition: 2s;
 }
-.home .imageContainer {
-  height: 800px;
-  width: 1200px;
-  position: relative;
-  float: left;
-} */
+.delete:hover {
+  color: #cf1804;
+  background-color: white;
+}
+
+.button-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.button-head-birds {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-right: 3%;
+}
