@@ -36,7 +36,7 @@ function Login() {
             localStorage.setItem("jwt", jwt_token);
             console.log(localStorage.getItem("jwt"));
             auth.login(jwt_token);
-            history.push("/");
+            history.goBack();
         } else if (response.status === 403) {
             setErrors(["Login failed."]);
         } else {

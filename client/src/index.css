@@ -141,3 +141,10 @@ td {
   justify-content: space-between;
   align-items: center;
 }
+
+.button-head-birds {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-right: 3%;
+}
