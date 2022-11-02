@@ -47,7 +47,8 @@ function SightingForm() {
                 }
             })
             .catch(() => history.push("/error"));
-    }, [history, sightingBirdId, sighting, sightingId]);
+            // eslint-disable-next-line
+    }, [history, sightingBirdId]);
 
     useEffect(() => {
         findAllTraits()
@@ -71,10 +72,17 @@ function SightingForm() {
     function handleSubmit(event) {
         event.preventDefault();
 
-        const temp = selectedTraits.map((trait) => trait.value)
+        const temp = selectedTraits.map((trait) => trait)
         console.log(temp);
 
-        save({...sighting, traits: temp})
+        const returnedTraits = selectedTraits.map(temp => {
+            return {
+                traitId : temp.value,
+                name : temp.label
+            }
+        })
+
+        save({...sighting, traits: returnedTraits})
             .then(() => history.push("/sightings"))
             .catch(errors => {
                 if (errors) {

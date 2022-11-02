@@ -4,6 +4,7 @@ import learn.wingspan.App;
 import learn.wingspan.data.AppUserJdbcTemplateRepository;
 import learn.wingspan.domain.Result;
 import learn.wingspan.models.AppUser;
+import learn.wingspan.models.Avatar;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -46,30 +47,35 @@ class AppUserServiceTest {
     // Makes no sense why this fails. I have debugged it, and it works outside the unit test.
     // The unit test won't even allow me to step through properly, and I have no clue why that is either.
     // Worked before adding avatarId, but I'm not sure why that would cause any issues in the try/catch.
-//    @Test
-//    void shouldCreateNewUser() {
-//        String username = "testUser";
-//        String password = "P@ssw0rd!";
-//        String email = "john@smith.com";
-//        int avatarId = 1;
-//
-//        Result<AppUser> result = service.create(username, password, email, avatarId);
-//
-//        assertTrue(result.isSuccess());
-//    }
+    @Test
+    void shouldCreateNewUser() {
+        String username = "testUser";
+        String password = "P@ssw0rd!";
+        String email = "john@smith.com";
+
+        Avatar avatar = makeAvatar();
+
+        Result<AppUser> result = service.create(username, password, email,
+                avatar.getAvatarId(), avatar.getAvatarDescription(), avatar.getAvatarImageUrl());
+
+        assertTrue(result.isSuccess());
+    }
 
     @Test
     void shouldNotCreateNewUserWithNullOrBlankUsername() {
         String password = "P@ssw0rd!";
         String email = "john@smith.com";
-        int avatarId = 1;
-        Result<AppUser> result = service.create(null, password, email, avatarId);
+        Avatar avatar = makeAvatar();
+
+        Result<AppUser> result = service.create(null, password, email,
+                avatar.getAvatarId(), avatar.getAvatarDescription(), avatar.getAvatarImageUrl());
 
         assertFalse(result.isSuccess());
         assertEquals(1, result.getMessages().size());
         assertEquals("username is required", result.getMessages().get(0));
 
-        result = service.create("", password, email, avatarId);
+        result = service.create("", password, email,
+                avatar.getAvatarId(), avatar.getAvatarDescription(), avatar.getAvatarImageUrl());
 
         assertFalse(result.isSuccess());
         assertEquals(1, result.getMessages().size());
@@ -81,13 +87,16 @@ class AppUserServiceTest {
         String username = "testUser";
         String email = "john@smith.com";
         int avatarId = 1;
-        Result<AppUser> result = service.create(username, null, email, avatarId);
+        Avatar avatar = makeAvatar();
+
+        Result<AppUser> result = service.create(username, null, email,
+                avatar.getAvatarId(), avatar.getAvatarDescription(), avatar.getAvatarImageUrl());
 
         assertFalse(result.isSuccess());
         assertEquals(1, result.getMessages().size());
         assertEquals("password is required", result.getMessages().get(0));
 
-        result = service.create(username, "", email, avatarId);
+        result = service.create(username, "", email, avatar.getAvatarId(), avatar.getAvatarDescription(), avatar.getAvatarImageUrl());
 
         assertFalse(result.isSuccess());
         assertEquals(1, result.getMessages().size());
@@ -99,9 +108,10 @@ class AppUserServiceTest {
         String username = "thisTestUserUsernameIsJustWayWayWayTooLongToBeValid";
         String password = "P@ssw0rd!";
         String email = "john@smith.com";
-        int avatarId = 1;
+        Avatar avatar = makeAvatar();
 
-        Result<AppUser> result = service.create(username, password, email, avatarId);
+        Result<AppUser> result = service.create(username, password, email,
+                avatar.getAvatarId(), avatar.getAvatarDescription(), avatar.getAvatarImageUrl());
 
         assertFalse(result.isSuccess());
         assertEquals(1, result.getMessages().size());
@@ -113,9 +123,10 @@ class AppUserServiceTest {
         String username = "testUser";
         String password = "short";
         String email = "john@smith.com";
-        int avatarId = 1;
+        Avatar avatar = makeAvatar();
 
-        Result<AppUser> result = service.create(username, password, email, avatarId);
+        Result<AppUser> result = service.create(username, password, email,
+                avatar.getAvatarId(), avatar.getAvatarDescription(), avatar.getAvatarImageUrl());
 
         assertFalse(result.isSuccess());
         assertEquals(1, result.getMessages().size());
@@ -123,7 +134,8 @@ class AppUserServiceTest {
 
         password = "ABCDEFGHI";
 
-        result = service.create(username, password, email, avatarId);
+        result = service.create(username, password, email,
+                avatar.getAvatarId(), avatar.getAvatarDescription(), avatar.getAvatarImageUrl());
 
         assertFalse(result.isSuccess());
         assertEquals(1, result.getMessages().size());
@@ -131,7 +143,8 @@ class AppUserServiceTest {
 
         password = "123456789";
 
-        result = service.create(username, password, email, avatarId);
+        result = service.create(username, password, email,
+                avatar.getAvatarId(), avatar.getAvatarDescription(), avatar.getAvatarImageUrl());
 
         assertFalse(result.isSuccess());
         assertEquals(1, result.getMessages().size());
@@ -139,7 +152,8 @@ class AppUserServiceTest {
 
         password = "ABCD12345";
 
-        result = service.create(username, password, email, avatarId);
+        result = service.create(username, password, email,
+                avatar.getAvatarId(), avatar.getAvatarDescription(), avatar.getAvatarImageUrl());
 
         assertFalse(result.isSuccess());
         assertEquals(1, result.getMessages().size());
@@ -151,15 +165,17 @@ class AppUserServiceTest {
     void shouldNotCreateNewUserWithNullOrBlankEmail() {
         String username = "testUser";
         String password = "P@ssw0rd!";
-        int avatarId = 1;
+        Avatar avatar = makeAvatar();
 
-        Result<AppUser> result = service.create(username, password, null, avatarId);
+        Result<AppUser> result = service.create(username, password, null,
+                avatar.getAvatarId(), avatar.getAvatarDescription(), avatar.getAvatarImageUrl());
 
         assertFalse(result.isSuccess());
         assertEquals(1, result.getMessages().size());
         assertEquals("email is required", result.getMessages().get(0));
 
-        result = service.create(username, password, "", avatarId);
+        result = service.create(username, password, "",
+                avatar.getAvatarId(), avatar.getAvatarDescription(), avatar.getAvatarImageUrl());
 
         assertFalse(result.isSuccess());
         assertEquals(1, result.getMessages().size());
@@ -171,20 +187,23 @@ class AppUserServiceTest {
         String username = "testUser";
         String password = "P@ssw0rd!";
         String email = "not_valid_email";
-        int avatarId = 1;
+        Avatar avatar = makeAvatar();
 
-        Result<AppUser> result = service.create(username, password, email, avatarId);
+        Result<AppUser> result = service.create(username, password, email,
+                avatar.getAvatarId(), avatar.getAvatarDescription(), avatar.getAvatarImageUrl());
 
         assertFalse(result.isSuccess());
         assertEquals(1, result.getMessages().size());
         assertTrue(result.getMessages().get(0).contains("email must be valid"));
     }
 
-    private AppUser makeAppUser() {
-        List<String> roles = new ArrayList<>();
-        roles.add("USER");
+    private Avatar makeAvatar() {
+        int avatarId = 1;
+        String avatarDescription = "TEST";
+        String avatarImageUrl = "test.com";
 
-        return new AppUser(0, "test", "test", true,
-                "test@test.com", roles);
+        Avatar avatar = new Avatar(avatarId, avatarDescription, avatarImageUrl);
+
+        return avatar;
     }
 }
