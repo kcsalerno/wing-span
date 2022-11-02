@@ -1,7 +1,6 @@
 package learn.wingspan.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonSetter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -12,7 +11,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class AppUser implements UserDetails {
-
     private final String username;
     private final String password;
     private final Collection<GrantedAuthority> authorities;
