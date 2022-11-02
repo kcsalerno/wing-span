@@ -27,7 +27,7 @@ function Navigation() {
                 {!auth.user ?
                     <li className="list-inline-item"><Link to="/login">Login/Register</Link></li>
                     :
-                    <li className="list-inline-item"><Link to="/profile/:username">Profile</Link></li>
+                    <li className="list-inline-item"><Link to={`/profile/${auth.user.username}`}>Profile</Link></li>
                 }
             </ul>
         </nav>

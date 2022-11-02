@@ -15,9 +15,11 @@ function Bird({ bird }) {
                     <h5>Scientific Name: {bird.scientificName}</h5>
                 </div>
                 {auth.user && <div className="card-footer">
-                    <Link to={`/birds/edit/${bird.birdId}`} className="btn btn-primary me-2 mr-2">Edit</Link>
+
+                    <Link to={`/birds/edit/${bird.birdId}`} className="btn btn-primary mr-2"><i className='bi bi-pencil-square'></i> Edit</Link>
+
                     {auth.user.hasRole('ADMIN') &&
-                        <Link to={`/birds/delete/${bird.birdId}`} className="btn btn-danger">Delete</Link>}
+                        <Link to={`/birds/delete/${bird.birdId}`} className="btn btn-danger"><i className='bi bi-trash'></i> Delete</Link>}
                     </div>
                 }
             </div>

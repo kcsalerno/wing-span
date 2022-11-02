@@ -80,18 +80,15 @@ function SightingForm() {
     function handleSubmit(event) {
         event.preventDefault();
 
-        const temp = selectedTraits.map((trait) => trait)
-        console.log(temp);
-
-        const returnedTraits = selectedTraits.map((temp, index) => {
+        const returnedTraits = selectedTraits.map(temp => {
             return {
                 traitId : temp.value,
-                name : selectedTraits[index].label
+                name : temp.label
             }
         })
 
         save({...sighting, traits: returnedTraits})
-            .then(() => history.push("/sightings"))
+            .then(() => history.goBack())
             .catch(errors => {
                 if (errors) {
                     setErrors(errors);
@@ -146,6 +143,7 @@ function SightingForm() {
                             })}
                             className="basic-multi-select"
                             classNamePrefix="select"
+                            defaultValue={[]}
                             onChange={setSelectedTraits}
                             value={selectedTraits}
                         />
@@ -157,8 +155,8 @@ function SightingForm() {
                 </ul>
             </div>}
             <div className="mt-4">
-                <button className="btn btn-primary me-2 mr-2" type="submit">Save</button>
-                <Link to="/sightings" className="btn btn-warning">Cancel</Link>
+                <button className="btn btn-primary me-2 mr-2" type="submit"><i className='bi bi-file-earmark-check'></i> Save</button>
+                <Link to="/sightings" className="btn btn-warning"><i className='bi bi-file-earmark-excel'></i> Cancel</Link>
             </div>
         </form>
     );

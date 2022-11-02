@@ -2,7 +2,6 @@ import { useState, useEffect, useContext } from "react";
 import { useHistory, Link } from "react-router-dom";
 import { findAllSightings } from "../services/sightings";
 import { findAllBirds } from "../services/birds";
-import Bird from "./Bird";
 import AuthContext from "../contexts/AuthContext";
 
 function SightingList() {
@@ -24,12 +23,13 @@ function SightingList() {
                 console.log(temp);
             })
             .catch(() => history.push("/error"))
-    }, [history]);
+            // eslint-disable-next-line
+    }, []);
 
     return (
         <>
             <h2>Sightings</h2>
-            <Link className="btn btn-success" to="/sightings/add" id="add">Add Sighting</Link>
+            <Link className="btn btn-success" to="/sightings/add" id="add"><i className='bi bi-plus-circle'></i> Add Sighting</Link>
             <table className="table table-bordered table-hover table-striped">
                 <thead className="thead-dark">
                     <tr>
@@ -55,11 +55,10 @@ function SightingList() {
                             <td>{s.city}</td>
                             <td>{s.state}</td>
                             <td>{s.daytime ? "Yes" : "No"}</td>
-                            {/* Just a quick test of conditional rendering for matching usernames, this is temporary - will implement in Profile */}
-                            {((auth.user && auth.user.hasRole('ADMIN')) || (auth.user && auth.user.hasRole('USER') && auth.user.username  === s.username)) &&
+                            {((auth.user && auth.user.hasRole('ADMIN')) || (auth.user && auth.user.hasRole('USER'))) &&
                                 <td className="buttonContainer">
-                                    <Link className="btn btn-primary" to={`/sightings/edit/${s.sightingId}`}>Edit</Link>
-                                    <Link className="btn btn-danger" to={`/sightings/delete/${s.sightingId}`}>Delete</Link>
+                                    <Link className="btn btn-primary" to={`/sightings/edit/${s.sightingId}`}><i className='bi bi-pencil-square'></i> Edit</Link>
+                                    <Link className="btn btn-danger" to={`/sightings/delete/${s.sightingId}`}><i className='bi bi-trash'></i> Delete</Link>
                                 </td>}
                         </tr>
                     ))}
