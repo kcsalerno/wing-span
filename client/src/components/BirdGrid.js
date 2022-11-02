@@ -18,6 +18,8 @@ function BirdGrid() {
     return (
         <>
             <h2>Birds</h2>
+
+
             <Link className="btn btn-success" to="/birds/add" id="addBird"><i className='bi bi-plus-circle'></i> Add Bird</Link>
             <div className="row row-cols-3 g-2">
                 {birds.map(b => <Bird key={b.birdId} bird={b} />)}
