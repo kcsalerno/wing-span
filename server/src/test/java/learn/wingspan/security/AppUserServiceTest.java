@@ -1,6 +1,7 @@
 package learn.wingspan.security;
 
 import learn.wingspan.data.AppUserJdbcTemplateRepository;
+import learn.wingspan.data.AppUserRepository;
 import learn.wingspan.domain.Result;
 import learn.wingspan.models.AppUser;
 import learn.wingspan.models.Avatar;
@@ -19,7 +20,7 @@ import static org.mockito.Mockito.when;
 class AppUserServiceTest {
 
     @MockBean
-    AppUserJdbcTemplateRepository repository;
+    AppUserRepository repository;
 
     @Autowired
     AppUserService service;
@@ -53,6 +54,7 @@ class AppUserServiceTest {
 //        String email = "john@smith.com";
 //
 //        Avatar avatar = makeAvatar();
+//        when(repository.create(makeAppUser())).thenReturn(makeAppUser());
 //
 //        Result<AppUser> result = service.create(username, password, email,
 //                avatar.getAvatarId(), avatar.getAvatarDescription(), avatar.getAvatarImageUrl());
@@ -201,5 +203,20 @@ class AppUserServiceTest {
         String avatarImageUrl = "test.com";
 
         return new Avatar(avatarId, avatarDescription, avatarImageUrl);
+    }
+
+    private AppUser makeAppUser() {
+        String username = "testUser";
+        String password = "P@ssw0rd!";
+        String email = "john@smith.com";
+        Avatar avatar = makeAvatar();
+        List<String> roles = new ArrayList<>();
+        roles.add("USER");
+
+        AppUser appUser = new AppUser(0, username, password, true, email, roles);
+
+        appUser.setAvatar(avatar);
+
+        return appUser;
     }
 }

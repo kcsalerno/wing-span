@@ -146,7 +146,7 @@ insert into app_role (`name`) values
 -- -----------------------------------------------------
 -- Initial data to get started, passwords are set to "P@ssw0rd!" for now
 insert into app_user (username, password_hash, email) values
-	('admin-John', '$2a$10$ntB7CsRKQzuLoKY3rfoAQen5nNyiC/U60wBsWnnYrtQQi8Z3IZzQa', 'john.smith@gmail.com'),
+	('johnjsmith', '$2a$10$ntB7CsRKQzuLoKY3rfoAQen5nNyiC/U60wBsWnnYrtQQi8Z3IZzQa', 'john.smith@gmail.com'),
     ('sallyjones1989', '$2a$10$ntB7CsRKQzuLoKY3rfoAQen5nNyiC/U60wBsWnnYrtQQi8Z3IZzQa', 'sallymjones1989@hotmail.com');
 
 -- -----------------------------------------------------

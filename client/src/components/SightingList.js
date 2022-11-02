@@ -29,7 +29,7 @@ function SightingList() {
     return (
         <>
             <h2>Sightings</h2>
-            <Link className="btn btn-success" to="/sightings/add" id="add">Add Sighting</Link>
+            <Link className="btn btn-success" to="/sightings/add" id="add"><i className='bi bi-plus-circle'></i> Add Sighting</Link>
             <table className="table table-bordered table-hover table-striped">
                 <thead className="thead-dark">
                     <tr>
@@ -57,8 +57,8 @@ function SightingList() {
                             <td>{s.daytime ? "Yes" : "No"}</td>
                             {((auth.user && auth.user.hasRole('ADMIN')) || (auth.user && auth.user.hasRole('USER'))) &&
                                 <td className="buttonContainer">
-                                    <Link className="btn btn-primary" to={`/sightings/edit/${s.sightingId}`}>Edit</Link>
-                                    <Link className="btn btn-danger" to={`/sightings/delete/${s.sightingId}`}>Delete</Link>
+                                    <Link className="btn btn-primary" to={`/sightings/edit/${s.sightingId}`}><i className='bi bi-pencil-square'></i> Edit</Link>
+                                    <Link className="btn btn-danger" to={`/sightings/delete/${s.sightingId}`}><i className='bi bi-trash'></i> Delete</Link>
                                 </td>}
                         </tr>
                     ))}

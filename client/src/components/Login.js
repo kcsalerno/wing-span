@@ -76,9 +76,9 @@ function Login() {
                     />
                 </div>
                 <div className="mb-2">
-                    <button className="btn btn-primary me-2 mr-2" type="submit">Login</button>
-                    <Link className="btn btn-success me-2 mr-2" to="/register">Register</Link>
-                    <Link className="btn btn-warning me-2" to="/">Cancel</Link>
+                    <button className="btn btn-primary me-2 mr-2" type="submit"><i class="bi bi-box-arrow-in-right"></i> Login</button>
+                    <Link className="btn btn-success me-2 mr-2" to="/register"><i className='bi bi-file-earmark-check'></i> Register</Link>
+                    <Link className="btn btn-warning me-2" to="/"><i className='bi bi-file-earmark-excel'></i> Cancel</Link>
                 </div>
             </form>
         </>
