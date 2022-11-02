@@ -17,13 +17,7 @@ function Profile() {
             })
     }, []);
 
-    console.log(sightings);
-
     const userSightings = sightings.filter((sighting) => sighting.sightingUserId === auth.user.userId)
-
-    console.log(userSightings);
-
-    console.log(userSightings[0]);
 
     return (
         <>
