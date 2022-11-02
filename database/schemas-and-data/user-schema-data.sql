@@ -146,8 +146,8 @@ insert into app_role (`name`) values
 -- -----------------------------------------------------
 -- Initial data to get started, passwords are set to "P@ssw0rd!" for now
 insert into app_user (username, password_hash, email) values
-	('admin1', '$2a$10$ntB7CsRKQzuLoKY3rfoAQen5nNyiC/U60wBsWnnYrtQQi8Z3IZzQa', 'john@smith.com'),
-    ('user1', '$2a$10$ntB7CsRKQzuLoKY3rfoAQen5nNyiC/U60wBsWnnYrtQQi8Z3IZzQa', 'sally@jones.com');
+	('admin-John', '$2a$10$ntB7CsRKQzuLoKY3rfoAQen5nNyiC/U60wBsWnnYrtQQi8Z3IZzQa', 'john.smith@gmail.com'),
+    ('sallyjones1989', '$2a$10$ntB7CsRKQzuLoKY3rfoAQen5nNyiC/U60wBsWnnYrtQQi8Z3IZzQa', 'sallymjones1989@hotmail.com');
 
 -- -----------------------------------------------------
 -- Data: app_user_role
@@ -156,15 +156,6 @@ insert into app_user (username, password_hash, email) values
 insert into app_user_role (app_user_id, app_role_id) values 
 	(1, 2),
     (2, 1);
-    
--- -----------------------------------------------------
--- Data: badge
--- -----------------------------------------------------
--- insert into badge (badge_name, badge_description, badge_img_url) values
--- 	('5 Sightings', "You've made 5 sightings!", 'https://static.thenounproject.com/png/1120113-200.png'),
---     ('10 Sightings', "You've made 10 sightings!", 'https://static.thenounproject.com/png/1188264-200.png'),
---     ('20 Sightings', "You've made 20 sightings!", 'https://static.thenounproject.com/png/4451522-200.png'),
---     ('50 Sightings', "You've made 50 sightings!", 'https://static.thenounproject.com/png/1511937-200.png');
 
 -- -----------------------------------------------------
 -- Data: avatar
@@ -185,34 +176,48 @@ insert into user_avatar (app_user_id, avatar_id) values
 -- Data: sighting
 -- -----------------------------------------------------
 insert into sighting (app_user_id, bird_id, sighting_date, city, state, daytime) values
-	(1, 1, '2020-10-01', 'Test City', 'Test State', true),
-	(1, 2, '2021-11-01', 'Test City', 'Test State', true),
-	(1, 3, '2021-12-01', 'Test City', 'Test State', false),
-	(2, 4, '2022-04-01', 'Test City', 'Test State', false),
-	(2, 5, '2022-06-01', 'Test City', 'Test State', true);
-        
+	(1, 1, '2020-10-01', 'Harlingen', 'Texas', true),
+	(1, 2, '2021-11-01', 'New York', 'New York', true),
+	(1, 3, '2021-12-01', 'Toledo', 'Ohio', false),
+	(2, 4, '2022-02-01', 'Point Reyes N.S', 'California', false),
+	(2, 5, '2022-02-07', 'Tucson', 'Arizona', true),
+    (2, 6, '2022-03-16', 'Cape May', 'New Jersey', false),
+    (2, 7, '2022-03-07', 'Cave Creek Canyon', 'Arizona', true),
+    (1, 8, '2020-10-02', 'Dauphin Island', 'Alabama', true),
+    (2, 9, '2021-12-15', 'Grand Isle', 'Louisiana', true),
+    (1, 10, '2022-06-01', 'Nome', 'Alaska', false),
+    (1, 18, '2022-06-06', 'Santa Maria Valley', 'California', false),
+    (1, 16, '2020-04-05', 'Rio Grande Valley', 'Texas', true),
+    (2, 13, '2020-06-10', 'Wisconsin Point', 'Wisconsin', true),
+    (2, 2, '2020-05-12', 'Plum Island', 'Massachusetts', true);
+    
 -- -----------------------------------------------------
 -- Data: sighting_trait
 -- -----------------------------------------------------
 insert into sighting_trait (sighting_id, trait_id) values
 	(1, 1),
-	(1, 2),
-	(1, 3),
-	(3, 4),
-	(2, 5),
-	(2, 9),
-	(2, 7),
-	(3, 8),
-	(3, 9),
-	(4, 1),
-	(4, 2),
-	(4, 3),
-	(5, 5),
-	(5, 7),
-	(5, 9);
-        
--- -----------------------------------------------------
--- Data: user_badge
--- -----------------------------------------------------
--- insert into user_badge (app_user_id, badge_id) values
--- 	(1, 1);
+    (1, 6),
+    (2, 2),
+    (3, 7),
+    (3, 8),
+    (4, 3),
+    (4, 4),
+    (5, 6),
+    (5, 8),
+    (6, 1),
+    (6, 6),
+    (6, 9),
+    (7, 5),
+    (8, 2),
+    (9, 8),
+    (9, 7),
+    (10, 4),
+    (10, 8),
+    (11, 1),
+    (12, 9),
+    (13, 6),
+    (13, 9),
+    (14, 1),
+    (14, 6),
+    (14, 9),
+    (14, 7);

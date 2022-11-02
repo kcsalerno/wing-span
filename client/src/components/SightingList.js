@@ -55,8 +55,7 @@ function SightingList() {
                             <td>{s.city}</td>
                             <td>{s.state}</td>
                             <td>{s.daytime ? "Yes" : "No"}</td>
-                            {/* Just a quick test of conditional rendering for matching usernames, this is temporary - will implement in Profile */}
-                            {((auth.user && auth.user.hasRole('ADMIN')) || (auth.user && auth.user.hasRole('USER') && auth.user.username  === s.username)) &&
+                            {((auth.user && auth.user.hasRole('ADMIN')) || (auth.user && auth.user.hasRole('USER'))) &&
                                 <td className="buttonContainer">
                                     <Link className="btn btn-primary" to={`/sightings/edit/${s.sightingId}`}>Edit</Link>
                                     <Link className="btn btn-danger" to={`/sightings/delete/${s.sightingId}`}>Delete</Link>

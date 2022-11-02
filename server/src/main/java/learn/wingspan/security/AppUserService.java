@@ -20,17 +20,13 @@ import java.util.regex.Pattern;
 
 @Service
 public class AppUserService implements UserDetailsService {
-    // New
     private final AppUserRepository appUserRepository;
     private final UserAvatarRepository userAvatarRepository;
     private final PasswordEncoder passwordEncoder;
     String regex = "^[\\w!#$%&'*+/=?`{|}~^-]+(?:\\.[\\w!#$%&'*+/=?`{|}~^-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$";
     Pattern pattern = Pattern.compile(regex);
-    // We will store our users in memory for now so that we can focus
-    // on authentication. Later we will get our users from the database.
     private List<UserDetails> users;
 
-    // Updated
     public AppUserService(AppUserRepository appUserRepository, UserAvatarRepository userAvatarRepository, PasswordEncoder passwordEncoder) {
         this.appUserRepository = appUserRepository;
         this.userAvatarRepository = userAvatarRepository;
@@ -41,21 +37,6 @@ public class AppUserService implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         AppUser appUser = appUserRepository.findByUsername(username);
 
-//        // Find a matching user
-//        UserDetails userDetails = users.stream()
-//                .filter(user -> user.getUsername().equals(username))
-//                .findFirst()
-//                .orElse(null);
-//
-//        // Returning `null` is an interface violation,
-//        // if the username is not found a `UsernameNotFoundException` must be thrown.
-//        if (userDetails == null) {
-//            throw new UsernameNotFoundException(username + " not found.");
-//        }
-//
-//        return userDetails;
-
-        // Updated
         if (appUser == null || !appUser.isEnabled()) {
             throw new UsernameNotFoundException(username + " not found");
         }

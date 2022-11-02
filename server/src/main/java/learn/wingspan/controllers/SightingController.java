@@ -4,7 +4,6 @@ import learn.wingspan.domain.Result;
 import learn.wingspan.domain.ResultType;
 import learn.wingspan.domain.SightingService;
 import learn.wingspan.models.Sighting;
-import learn.wingspan.models.Trait;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -37,14 +36,12 @@ public class SightingController {
 
     @PostMapping
     public ResponseEntity<Object> create(@RequestBody Sighting sighting) {
-
         Result<Sighting> result = service.create(sighting);
 
         if (result.isSuccess()) {
             return new ResponseEntity<>(result.getPayload(), HttpStatus.CREATED);
         }
         return ErrorResponse.build(result);
-
     }
 
     @PutMapping("/{sightingId}")

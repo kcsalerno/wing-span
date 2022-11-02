@@ -3,7 +3,6 @@ package learn.wingspan.data;
 import learn.wingspan.data.mappers.AppUserMapper;
 import learn.wingspan.data.mappers.AvatarMapper;
 import learn.wingspan.models.AppUser;
-import learn.wingspan.models.Avatar;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.security.core.GrantedAuthority;
@@ -47,7 +46,6 @@ public class AppUserJdbcTemplateRepository implements AppUserRepository {
     @Override
     @Transactional
     public AppUser create(AppUser user) {
-
         final String sql = "insert into app_user (username, password_hash, email) values (?, ?, ?);";
 
         GeneratedKeyHolder keyHolder = new GeneratedKeyHolder();
@@ -73,17 +71,12 @@ public class AppUserJdbcTemplateRepository implements AppUserRepository {
     @Override
     @Transactional
     public boolean update(AppUser user) {
-
         final String sql = "update app_user set "
                 + "username = ?, "
                 + "enabled = ?, "
                 + "email = ? "
                 + "where app_user_id = ?";
 
-//        jdbcTemplate.update(sql,
-//                user.getUsername(), user.isEnabled(), user.getEmail(), user.getAppUserId());
-//
-//        updateRoles(user);
         boolean updated = jdbcTemplate.update(sql,
                 user.getUsername(), user.isEnabled(), user.getEmail(), user.getAppUserId()) > 0;
 
@@ -131,27 +124,3 @@ public class AppUserJdbcTemplateRepository implements AppUserRepository {
         appUser.setAvatar(avatar);
     }
 }
-
-//    @Override
-//    @Transactional
-//    public AppUser findByEmail(String email) {
-//        List<String> roles = getRolesByEmail(email);
-//
-//        final String sql = "select app_user_id, username, password_hash, enabled, email, user_first_name, user_last_name "
-//                + "from app_user "
-//                + "where email = ?;";
-//
-//        return jdbcTemplate.query(sql, new AppUserMapper(roles), email)
-//                .stream()
-//                .findFirst().orElse(null);
-//    }
-
-//    private List<String> getRolesByEmail(String email) {
-//        final String sql = "select r.name "
-//                + "from app_user_role ur "
-//                + "inner join app_role r on ur.app_role_id = r.app_role_id "
-//                + "inner join app_user au on ur.app_user_id = au.app_user_id "
-//                + "where au.email = ?;";
-//
-//        return jdbcTemplate.query(sql, (rs, rowId) -> rs.getString("name"), email);
-//    }

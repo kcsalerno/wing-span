@@ -11,39 +11,26 @@ import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
 public class SecurityConfig {
-    // SecurityFilterChain allows configuring
-    // web based security for specific http requests.
-
-    // JWT
     private final JwtConverter converter;
 
     public SecurityConfig(JwtConverter converter) {
         this.converter = converter;
     }
 
-    // new... add the parameter: `AuthenticationConfiguration authConfig`
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http, AuthenticationConfiguration authConfig) throws Exception {
-        // we're not using HTML forms in our app
-        //so disable CSRF (Cross Site Request Forgery)
         http.csrf().disable();
 
-        // this configures Spring Security to allow
-        //CORS related requests (such as preflight checks)
         http.cors();
 
-        // the order of the antMatchers() method calls is important
-        // as they're evaluated in the order that they're added
         http.authorizeRequests()
                 .antMatchers("/authenticate").permitAll()
-                // new
                 .antMatchers("/create_account").permitAll()
-                // new...
                 .antMatchers("/refresh_token").authenticated()
                 .antMatchers(HttpMethod.GET, "/api/sighting", "/api/sighting/*").permitAll()
                 .antMatchers(HttpMethod.POST, "/api/sighting").hasAnyAuthority("USER", "ADMIN")
                 .antMatchers(HttpMethod.PUT, "/api/sighting/*").hasAnyAuthority("USER", "ADMIN")
-                .antMatchers(HttpMethod.DELETE, "/api/sighting/*").hasAnyAuthority("USER" ,"ADMIN")
+                .antMatchers(HttpMethod.DELETE, "/api/sighting/*").hasAnyAuthority("USER", "ADMIN")
                 .antMatchers(HttpMethod.GET, "/api/trait", "/api/trait/*").permitAll()
                 .antMatchers(HttpMethod.POST, "/api/trait").hasAnyAuthority("ADMIN")
                 .antMatchers(HttpMethod.PUT, "/api/trait/*").hasAnyAuthority("ADMIN")
@@ -62,7 +49,6 @@ public class SecurityConfig {
                 .antMatchers(HttpMethod.DELETE, "/api/avatar/*").hasAnyAuthority("ADMIN")
                 .antMatchers("/**").denyAll()
                 .and()
-                // New...
                 .addFilter(new JwtRequestFilter(authenticationManager(authConfig), converter))
                 .sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
