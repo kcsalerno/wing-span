@@ -23,7 +23,8 @@ function SightingList() {
                 console.log(temp);
             })
             .catch(() => history.push("/error"))
-    }, [history]);
+            // eslint-disable-next-line
+    }, []);
 
     return (
         <>
