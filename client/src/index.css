@@ -50,6 +50,9 @@ td {
   font-size: 2rem;
   margin-bottom: 2%;
 }
+/* .card-footer {
+  
+} */
 .buttonContainer {
   display: flex;
   justify-content: space-evenly;
