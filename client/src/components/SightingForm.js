@@ -80,13 +80,10 @@ function SightingForm() {
     function handleSubmit(event) {
         event.preventDefault();
 
-        const temp = selectedTraits.map((trait) => trait)
-        console.log(temp);
-
-        const returnedTraits = selectedTraits.map((temp, index) => {
+        const returnedTraits = selectedTraits.map(temp => {
             return {
                 traitId : temp.value,
-                name : selectedTraits[index].label
+                name : temp.label
             }
         })
 

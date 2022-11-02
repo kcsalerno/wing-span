@@ -3,7 +3,7 @@ import { useHistory, Link } from "react-router-dom";
 import { findAllBirds } from "../services/birds"
 import Bird from "./Bird";
 
-function BirdGrid({ handleEdit, handleDelete }) {
+function BirdGrid() {
     const [birds, setBirds] = useState([]);
 
     const history = useHistory();
