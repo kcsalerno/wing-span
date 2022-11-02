@@ -20,7 +20,7 @@ function BirdConfirmDelete() {
 
     function handleDelete() {
         deleteById(bird.birdId)
-        .then(() => history.push("/"))
+        .then(() => history.push("/birds"))
         .catch(() => history.push("/error"));
     };
 
@@ -33,7 +33,7 @@ function BirdConfirmDelete() {
                 </p>
             </div>
             <div>
-                <Link to="/birds" className="btn btn-danger me-2" onClick={handleDelete}>Delete</Link>
+                <button className="btn btn-danger me-2" onClick={handleDelete}>Delete</button>
                 <Link to="/birds" className="btn btn-warning">Cancel</Link>
             </div>
         </div>

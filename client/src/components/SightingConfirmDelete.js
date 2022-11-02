@@ -5,7 +5,7 @@ import { deleteById, findBySightingId } from "../services/sightings";
 function SightingConfirmDelete() {
     const [sighting, setSighting] = useState({});
 
-    const history = useHistory;
+    const history = useHistory();
     const {sightingId} =useParams();
 
     useEffect(() => {
@@ -20,24 +20,24 @@ function SightingConfirmDelete() {
 
     function handleDelete() {
         deleteById(sighting.sightingId)
-        .then(() => history.push("/"))
+        .then(() => history.push("/sightings"))
         .catch(() => history.push("/error"));
     };
 
     return (
         <div>
-            {/* <h2>Confirm Delete</h2>
+            <h2>Confirm Delete</h2>
             <div className="alert alert-danger">
                 <p>
                     This will permantely delete sighting for bird {sighting.sightingBirdId}.
                 </p>
             </div>
             <div>
-                <Link className="btn btn-danger me-2" onClick={handleDelete} to="/sightings">Delete</Link>
+                <button className="btn btn-danger me-2" onClick={handleDelete}>Delete</button>
                 <Link to="/sightings" className="btn btn-warning">Cancel</Link>
-            </div> */}
+            </div>
 
-<button onclick="document.getElementById('id01').style.display='block'">Open Modal</button>
+{/* <button onclick="document.getElementById('id01').style.display='block'">Open Modal</button>
 
 <div id="id01" class="modal">
   <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
@@ -52,7 +52,7 @@ function SightingConfirmDelete() {
       </div>
     </div>
   </form>
-</div>
+    </div>*/}
         </div>
     )
 }

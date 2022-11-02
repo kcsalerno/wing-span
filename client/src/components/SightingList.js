@@ -2,7 +2,6 @@ import { useState, useEffect, useContext } from "react";
 import { useHistory, Link } from "react-router-dom";
 import { findAllSightings } from "../services/sightings";
 import { findAllBirds } from "../services/birds";
-import Bird from "./Bird";
 import AuthContext from "../contexts/AuthContext";
 
 function SightingList() {
@@ -24,7 +23,8 @@ function SightingList() {
                 console.log(temp);
             })
             .catch(() => history.push("/error"))
-    }, [history]);
+            // eslint-disable-next-line
+    }, []);
 
     return (
         <>
