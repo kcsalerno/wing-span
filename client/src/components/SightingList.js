@@ -27,9 +27,11 @@ function SightingList() {
     }, []);
 
     return (
-        <>
-            <h2>Sightings</h2>
-            <Link className="btn btn-success" to="/sightings/add" id="add"><i className='bi bi-plus-circle'></i> Add Sighting</Link>
+        <div className="container">
+            <div className="button-head">
+                <h2>Sightings</h2>
+                <Link className="btn add" to="/sightings/add" id="add"><i className='bi bi-plus-circle'></i> Add Sighting</Link>
+            </div>
             <table className="table table-bordered table-hover table-striped">
                 <thead className="thead-dark">
                     <tr>
@@ -49,22 +51,20 @@ function SightingList() {
                         <tr key={s.sightingId}>
                             <td>{s.date}</td>
                             <td>{s.username}</td>
-                            <td>
-                                <Link to={`/birds`}>{s.birdCommonName}</Link>
-                            </td>
+                            <td>{s.birdCommonName}</td>
                             <td>{s.city}</td>
                             <td>{s.state}</td>
                             <td>{s.daytime ? "Yes" : "No"}</td>
                             {auth.user && auth.user.hasRole('ADMIN') &&
                                 <td className="buttonContainer">
-                                    <Link className="btn btn-primary" to={`/sightings/edit/${s.sightingId}`}><i className='bi bi-pencil-square'></i> Edit</Link>
-                                    <Link className="btn btn-danger" to={`/sightings/delete/${s.sightingId}`}><i className='bi bi-trash'></i> Delete</Link>
+                                    <Link className="btn add" to={`/sightings/edit/${s.sightingId}`}><i className='bi bi-pencil-square'></i> Edit</Link>
+                                    <Link className="btn delete" to={`/sightings/delete/${s.sightingId}`}><i className='bi bi-trash'></i> Delete</Link>
                                 </td>}
                         </tr>
                     ))}
                 </tbody>
             </table>
-        </>
+        </div>
     )
 }
 

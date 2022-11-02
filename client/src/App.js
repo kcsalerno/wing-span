@@ -17,6 +17,7 @@ import Error from './components/Error';
 import AuthContext from "./contexts/AuthContext";
 import Register from './components/Register';
 import Profile from './components/Profile';
+import Header from './components/Header';
 
 import { refresh } from "./services/auth"
 
@@ -99,60 +100,61 @@ function App() {
   return (
     <AuthContext.Provider value={auth}>
       <Router>
-        <h1>WingSpan 🦉</h1>
-        <Navigation />
-        <Switch>
-          <Route path="/" exact>
-            <Home />
-          </Route>
-          <Route path="/sightings" exact>
-            <SightingList />
-          </Route>
-          <Route path={["/sightings/add", "/sightings/edit/:sightingId"]}>
+        <Header />
+        <div className="wrapper">
+          <Switch>
+            <Route path="/" exact>
+              <Home />
+            </Route>
+            <Route path="/sightings" exact>
+              <SightingList />
+            </Route>
+            <Route path={["/sightings/add", "/sightings/edit/:sightingId"]}>
+              {auth.user ? (
+                <SightingForm />
+              ) : (
+                <Redirect to='/login' />
+              )}
+            </Route>
+            <Route path="/sightings/delete/:sightingId">
+              {auth.user ? 
+              (<SightingConfirmDelete />) : (<Redirect to='/sightings' />)}
+            </Route>
+            <Route path="/birds" exact>
+              <BirdGrid />
+            </Route>
+            <Route path={["/birds/add", "/birds/edit/:birdId"]}>
+              {auth.user ? (
+                <BirdForm />
+              ) : (
+                <Redirect to='/login' />
+              )}
+            </Route>
+            <Route path="/birds/delete/:birdId">
+              {auth.user ? 
+              (<BirdConfirmDelete />) : (<Redirect to="/birds" />)}
+            </Route>
+            <Route path="/login">
+              {!auth.user ? <Login /> : <Redirect to="/" />}
+            </Route>
+            <Route path="/register">
+              {!auth.user ? <Register /> : <Redirect to="/" />}
+            </Route>
+            <Route>
             {auth.user ? (
-              <SightingForm />
-            ) : (
-              <Redirect to='/login' />
-            )}
-          </Route>
-          <Route path="/sightings/delete/:sightingId">
-            {auth.user ? 
-            (<SightingConfirmDelete />) : (<Redirect to='/sightings' />)}
-          </Route>
-          <Route path="/birds" exact>
-            <BirdGrid />
-          </Route>
-          <Route path={["/birds/add", "/birds/edit/:birdId"]}>
-            {auth.user ? (
-              <BirdForm />
-            ) : (
-              <Redirect to='/login' />
-            )}
-          </Route>
-          <Route path="/birds/delete/:birdId">
-            {auth.user ? 
-            (<BirdConfirmDelete />) : (<Redirect to="/birds" />)}
-          </Route>
-          <Route path="/login">
-            {!auth.user ? <Login /> : <Redirect to="/" />}
-          </Route>
-          <Route path="/register">
-            {!auth.user ? <Register /> : <Redirect to="/" />}
-          </Route>
-          <Route>
-          {auth.user ? (
-              <Profile />
-            ) : (
-              <Redirect to='/login' />
-            )}
-          </Route>
-          <Route path="/error">
-            <Error />
-          </Route>
-          <Route path="*">
-            <NotFound />
-          </Route>
-        </Switch>
+                <Profile />
+              ) : (
+                <Redirect to='/login' />
+              )}
+            </Route>
+            <Route path="/error">
+              <Error />
+            </Route>
+            <Route path="*">
+              <NotFound />
+            </Route>
+          </Switch>
+        </div>
       </Router>
     </AuthContext.Provider>
   )
