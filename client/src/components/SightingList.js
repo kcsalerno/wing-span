@@ -2,7 +2,6 @@ import { useState, useEffect, useContext } from "react";
 import { useHistory, Link } from "react-router-dom";
 import { findAllSightings } from "../services/sightings";
 import { findAllBirds } from "../services/birds";
-import Bird from "./Bird";
 import AuthContext from "../contexts/AuthContext";
 
 function SightingList() {
@@ -55,8 +54,7 @@ function SightingList() {
                             <td>{s.city}</td>
                             <td>{s.state}</td>
                             <td>{s.daytime ? "Yes" : "No"}</td>
-                            {/* Just a quick test of conditional rendering for matching usernames, this is temporary - will implement in Profile */}
-                            {((auth.user && auth.user.hasRole('ADMIN')) || (auth.user && auth.user.hasRole('USER') && auth.user.username  === s.username)) &&
+                            {((auth.user && auth.user.hasRole('ADMIN')) || (auth.user && auth.user.hasRole('USER'))) &&
                                 <td className="buttonContainer">
                                     <Link className="btn btn-primary" to={`/sightings/edit/${s.sightingId}`}>Edit</Link>
                                     <Link className="btn btn-danger" to={`/sightings/delete/${s.sightingId}`}>Delete</Link>
