@@ -20,7 +20,7 @@ function SightingConfirmDelete() {
 
     function handleDelete() {
         deleteById(sighting.sightingId)
-        .then(() => history.push("/sightings"))
+        .then(() => history.goBack())
         .catch(() => history.push("/error"));
     };
 
