@@ -129,7 +129,6 @@ function SightingForm() {
                     <input type="checkbox" name="daytime" id="daytime"
                         checked={sighting.daytime} onChange={handleChange}></input>
                 </div>
-
                 <div className="form-group mb-3">
                 <label htmlFor="traits" className="mr-2">Traits</label>
                         <div>
@@ -161,6 +160,7 @@ function SightingForm() {
                 </div>
             </form>
         </div>
+
     );
 }
 

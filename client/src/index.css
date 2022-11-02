@@ -91,6 +91,7 @@ a:hover {
   align-items: center;
   height: 70vh;
 }
+
 .notFound {
   text-align: center;
   margin: 3% 0;
@@ -115,6 +116,20 @@ td {
   justify-content: space-evenly;
 }
 
+.sidebar {
+  background-color: #146971;
+  color: white;
+  height: 100%;
+}
+.card-body {
+  justify-content: center;
+}
+/* .home .sliderContainer {
+  overflow: hidden;
+  height: 800px;
+  width: 1200px;
+  margin-top: 5%;
+}
 .add {
   background-color: #146971;
   color: white;
@@ -148,3 +163,4 @@ td {
   align-items: center;
   margin-right: 3%;
 }
+
