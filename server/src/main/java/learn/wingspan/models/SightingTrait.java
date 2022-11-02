@@ -7,6 +7,7 @@ public class SightingTrait {
     public SightingTrait() {
 
     }
+
     public SightingTrait(int sighting_id, int trait_id) {
         this.sighting_id = sighting_id;
         this.trait_id = trait_id;

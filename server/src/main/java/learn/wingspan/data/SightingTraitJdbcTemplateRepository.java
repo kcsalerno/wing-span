@@ -28,11 +28,6 @@ public class SightingTraitJdbcTemplateRepository implements SightingTraitReposit
         });
 
         if (rowsAffected <= 0) {
-            return;
         }
     }
-
-
-
-    //update
 }

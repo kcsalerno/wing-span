@@ -47,27 +47,6 @@ class AppUserJdbcTemplateRepositoryTest {
         assertNull(actual);
     }
 
-//    @Test
-//    void shouldFindAdminByEmail() {
-//        AppUser actual = repository.findByEmail("admin@admin.com");
-//        assertNotNull(actual);
-//    }
-//
-//    @Test
-//    void shouldFindUserByEmail() {
-//        AppUser actual = repository.findByEmail("user@user.com");
-//        assertNotNull(actual);
-//    }
-//
-//    @Test
-//    void shouldNotFindNullOrBlankEmail() {
-//        AppUser actual = repository.findByEmail("");
-//        assertNull(actual);
-//
-//        actual = repository.findByEmail(null);
-//        assertNull(actual);
-//    }
-
     @Test
     void shouldCreateNewUser() {
         AppUser actual = repository.create(makeAppUser());

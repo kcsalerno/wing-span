@@ -8,7 +8,6 @@ import java.util.List;
 
 @Service
 public class BadgeService {
-
     private final BadgeJdbcTemplateRepository repository;
 
     public BadgeService(BadgeJdbcTemplateRepository repository) {
@@ -75,6 +74,7 @@ public class BadgeService {
 
         if (badge == null) {
             result.addMessage(ResultType.INVALID, "Badge cannot be null.");
+            return result;
         }
         if (Validations.isNullOrBlank(badge.getBadgeName())) {
             result.addMessage(ResultType.INVALID, "A badge name is required.");

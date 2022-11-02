@@ -128,11 +128,12 @@ public class Sighting {
                 && Objects.equals(date, sighting.date)
                 && Objects.equals(city, sighting.city)
                 && Objects.equals(state, sighting.state)
-                && Objects.equals(daytime, sighting.daytime));
+                && Objects.equals(daytime, sighting.daytime)
+                && Objects.equals(traits, sighting.traits));
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(sightingUserId, sightingBirdId, date, city, state, daytime);
+        return Objects.hash(sightingUserId, sightingBirdId, date, city, state, daytime, traits);
     }
 }
