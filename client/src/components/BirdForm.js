@@ -65,8 +65,8 @@ function BirdForm() {
                 </ul>
             </div>}
             <div className="mb-3">
-                <button className="btn btn-primay btn-lg btn-success " type="submit">Save</button>
-                <Link to="/birds" className="btn btn-lg btn-warning">Cancel</Link>
+                <button className="btn btn-primay btn-lg btn-success " type="submit"><i className='bi bi-file-earmark-check'></i> Save</button>
+                <Link to="/birds" className="btn btn-lg btn-warning"><i className='bi bi-file-earmark-excel'></i> Cancel</Link>
             </div>
         </form>
     );

@@ -17,7 +17,7 @@ function BirdGrid({ handleEdit, handleDelete}) {
     return (
         <>
             <h2>Birds</h2>
-            <Link className="btn btn-dark" to="/birds/add" id="addBird">Add Bird</Link>
+            <Link className="btn btn-success" to="/birds/add" id="addBird"><i className='bi bi-plus-circle'></i> Add Bird</Link>
             <div className="row row-cols-3 g-2">
                 {birds.map(b => <Bird key={b.birdId} bird={b} handleEdit={handleEdit} handleDelete={handleDelete} />)}
             </div>
