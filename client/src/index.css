@@ -31,6 +31,7 @@ li {
   text-align: center;
   margin: 3% 0;
 }
+
 .notFound {
   text-align: center;
   margin: 3% 0;
@@ -50,12 +51,17 @@ td {
   font-size: 2rem;
   margin-bottom: 2%;
 }
-/* .card-footer {
-  
-} */
 .buttonContainer {
   display: flex;
   justify-content: space-evenly;
+}
+.sidebar {
+  background-color: #146971;
+  color: white;
+  height: 100%;
+}
+.card-body {
+  justify-content: center;
 }
 /* .home .sliderContainer {
   overflow: hidden;

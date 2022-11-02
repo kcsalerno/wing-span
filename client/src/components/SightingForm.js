@@ -155,7 +155,9 @@ function SightingForm() {
                 </ul>
             </div>}
             <div className="mt-4">
-                <button className="btn btn-primary me-2 mr-2" type="submit"><i className='bi bi-file-earmark-check'></i> Save</button>
+                <button className="btn btn-primary me-2 mr-2" type="submit">
+                    <i className='bi bi-file-earmark-check'></i> Save
+                </button>
                 <Link to="/sightings" className="btn btn-warning"><i className='bi bi-file-earmark-excel'></i> Cancel</Link>
             </div>
         </form>
