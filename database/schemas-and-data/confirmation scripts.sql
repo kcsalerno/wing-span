@@ -56,3 +56,13 @@ where s.sighting_id = 1;
 select b.bird_id, b.common_name, b.scientific_name, b.img_url from bird b
 	inner join sighting s on s.bird_id = b.bird_id
 where s.sighting_id = 1;
+
+select * from sighting s
+	inner join sighting_trait st on s.sighting_id = st.sighting_id
+    inner join trait t on st.trait_id = t.trait_id;
+    
+    select t.trait_id, t.name from trait t 
+                inner join sighting_trait st on t.trait_id = st.trait_id 
+                inner join sighting s on st.sighting_id = s.sighting_id 
+                where s.sighting_id = 17;
+    

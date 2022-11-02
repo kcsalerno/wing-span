@@ -33,7 +33,7 @@ function SightingConfirmDelete() {
                 </p>
             </div>
             <div>
-                <button className="btn btn-danger me-2" onClick={handleDelete}><i className='bi bi-trash'></i> Delete</button>
+                <button className="btn btn-danger me-2 mr-2" onClick={handleDelete}><i className='bi bi-trash'></i> Delete</button>
                 <Link to="/sightings" className="btn btn-warning"><i className='bi bi-file-earmark-excel'></i> Cancel</Link>
             </div>
         </div>
