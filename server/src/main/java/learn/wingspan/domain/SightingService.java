@@ -3,6 +3,7 @@ package learn.wingspan.domain;
 import learn.wingspan.data.SightingRepository;
 import learn.wingspan.data.SightingTraitRepository;
 import learn.wingspan.models.Sighting;
+import learn.wingspan.models.Trait;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -26,8 +27,15 @@ public class SightingService {
         return repository.findById(sightingId);
     }
 
-    public Result<Sighting> create(Sighting sighting, int traitId) {
+    public Result<Sighting> create(Sighting sighting) {
         Result<Sighting> result = validate(sighting);
+
+        List<Sighting> sightings = repository.findAll();
+        for (Sighting s : sightings) {
+            if (s.equals(sighting)) {
+                result.addMessage(ResultType.DUPLICATE, "Sighting cannot be duplicated");
+            }
+        }
 
         if (!result.isSuccess()) {
             return result;
@@ -39,8 +47,6 @@ public class SightingService {
 
         if (result.isSuccess()) {
             sighting = repository.create(sighting);
-            // add trait
-            sightingTraitRepository.add(sighting.getSightingId(), traitId);
             result.setPayload(sighting);
         }
 
@@ -117,12 +123,8 @@ public class SightingService {
             return result;
         }
 
-        List<Sighting> sightings = repository.findAll();
-        for (Sighting s : sightings) {
-            if (s.equals(sighting)) {
-                result.addMessage(ResultType.DUPLICATE, "Sighting cannot be duplicated");
-                return result;
-            }
+        if (sighting.getTraits().size() < 1) {
+            result.addMessage(ResultType.INVALID, "At least one trait is required");
         }
 
         return result;

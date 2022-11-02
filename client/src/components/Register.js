@@ -14,6 +14,8 @@ function Register() {
     const [avatars, setAvatars] = useState([findAllAvatars]);
     const [avatar, setAvatar] = useState([]);
     const [avatarId, setAvatarId] = useState("");
+    const [avatarDescription, setAvatarDescription] = useState("");
+    const [avatarImageUrl, setAvatarImageUrl] = useState("");
 
     const auth = useContext(AuthContext);
     const history = useHistory();
@@ -51,7 +53,9 @@ function Register() {
                 username,
                 password,
                 email,
-                avatarId
+                avatarId,
+                avatarDescription,
+                avatarImageUrl
             })
         };
 
@@ -138,6 +142,8 @@ function Register() {
         findById(event.target.value)
         .then(data => {
             setAvatar(data);
+            setAvatarDescription(avatar.avatarDescription);
+            setAvatarImageUrl(avatar.avatarImageUrl);
         })
     }
 

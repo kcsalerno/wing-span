@@ -6,6 +6,7 @@ import learn.wingspan.domain.Result;
 import learn.wingspan.domain.ResultType;
 import learn.wingspan.domain.Validations;
 import learn.wingspan.models.AppUser;
+import learn.wingspan.models.Avatar;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -62,7 +63,7 @@ public class AppUserService implements UserDetailsService {
         return appUser;
     }
 
-    public Result<AppUser> create(String username, String password, String email, int avatarId) {
+    public Result<AppUser> create(String username, String password, String email, int avatarId, String avatarDescription, String avatarImageUrl) {
         Result<AppUser> result = validate(username, password, email);
         if (!result.isSuccess()) {
             return result;
@@ -71,6 +72,10 @@ public class AppUserService implements UserDetailsService {
         password = passwordEncoder.encode(password);
 
         AppUser appUser = new AppUser(0, username, password, true, email, List.of("USER"));
+
+        Avatar avatar = new Avatar(avatarId, avatarDescription, avatarImageUrl);
+
+        appUser.setAvatar(avatar);
 
         try {
             appUser = appUserRepository.create(appUser);
