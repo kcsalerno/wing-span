@@ -88,7 +88,7 @@ function SightingForm() {
         })
 
         save({...sighting, traits: returnedTraits})
-            .then(() => history.push("/sightings"))
+            .then(() => history.goBack())
             .catch(errors => {
                 if (errors) {
                     setErrors(errors);
