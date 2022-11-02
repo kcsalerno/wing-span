@@ -1,6 +1,3 @@
--- -----------------------------------------------------
--- Note: This file must be run first.
--- -----------------------------------------------------
 drop database if exists wing_span;
 create database wing_span;
 
