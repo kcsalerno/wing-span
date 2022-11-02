@@ -30,7 +30,7 @@ header ul {
   width: 15%;
 }
 .logo h2 {
-  font-size: 2rem;
+  font-size: 3rem;
   margin-left: 2%;
 }
 .text-center {
@@ -43,7 +43,7 @@ body {
   font-family: 'Montserrat', sans-serif;
 }
 .wrapper {
-  margin-top: 5%;
+  margin-top: 3.7%;
 }
 h1 {
   font-size: 5rem;
@@ -74,7 +74,7 @@ a:hover {
 }
 .home {
   text-align: center;
-  height: 95vh;
+  height: 100vh;
   display: flex;
   align-items: center;
   background-repeat: no-repeat;
