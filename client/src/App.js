@@ -117,7 +117,7 @@ function App() {
           </Route>
           <Route path="/sightings/delete/:sightingId">
             {auth.user ? 
-            (<SightingConfirmDelete />) : (<Redirect to='/login' />)}
+            (<SightingConfirmDelete />) : (<Redirect to='/sightings' />)}
           </Route>
           <Route path="/birds" exact>
             <BirdGrid />

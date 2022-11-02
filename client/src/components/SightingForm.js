@@ -31,7 +31,15 @@ function SightingForm() {
     useEffect(() => {
         if (sightingId) {
             findBySightingId(sightingId)
-                .then(setSighting)
+                .then(data => {
+                    setSighting(data)
+                    setSelectedTraits(data.traits.map(trait => {
+                        return {
+                            value: trait.traitId,
+                            label: trait.name
+                        }
+                    }))
+                })
                 .catch(() => history.push("/"));
         }
     }, [history, sightingId]);
@@ -72,9 +80,6 @@ function SightingForm() {
     function handleSubmit(event) {
         event.preventDefault();
 
-        const temp = selectedTraits.map((trait) => trait)
-        console.log(temp);
-
         const returnedTraits = selectedTraits.map(temp => {
             return {
                 traitId : temp.value,
@@ -83,7 +88,7 @@ function SightingForm() {
         })
 
         save({...sighting, traits: returnedTraits})
-            .then(() => history.push("/sightings"))
+            .then(() => history.goBack())
             .catch(errors => {
                 if (errors) {
                     setErrors(errors);
@@ -124,12 +129,13 @@ function SightingForm() {
                     checked={sighting.daytime} onChange={handleChange}></input>
             </div>
 
-            <div className="mt-2">
+            <div className="mt-3">
+            <label htmlFor="traits" className="mr-2">Traits</label>
                     <div>
                         <Select
                             isMulti
                             name="traits"
-                            options={traits.map(trait => {
+                            options={traits.map((trait) => {
                                 return {
                                     value : trait.traitId,
                                     label : trait.name
@@ -137,6 +143,7 @@ function SightingForm() {
                             })}
                             className="basic-multi-select"
                             classNamePrefix="select"
+                            defaultValue={[]}
                             onChange={setSelectedTraits}
                             value={selectedTraits}
                         />
