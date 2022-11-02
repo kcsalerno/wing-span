@@ -143,6 +143,7 @@ function SightingForm() {
                             })}
                             className="basic-multi-select"
                             classNamePrefix="select"
+                            defaultValue={[]}
                             onChange={setSelectedTraits}
                             value={selectedTraits}
                         />
