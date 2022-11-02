@@ -55,7 +55,7 @@ function SightingList() {
                             <td>{s.city}</td>
                             <td>{s.state}</td>
                             <td>{s.daytime ? "Yes" : "No"}</td>
-                            {((auth.user && auth.user.hasRole('ADMIN')) || (auth.user && auth.user.hasRole('USER'))) &&
+                            {auth.user && auth.user.hasRole('ADMIN') &&
                                 <td className="buttonContainer">
                                     <Link className="btn btn-primary" to={`/sightings/edit/${s.sightingId}`}><i className='bi bi-pencil-square'></i> Edit</Link>
                                     <Link className="btn btn-danger" to={`/sightings/delete/${s.sightingId}`}><i className='bi bi-trash'></i> Delete</Link>
