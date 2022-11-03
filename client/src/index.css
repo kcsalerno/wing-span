@@ -82,9 +82,6 @@ header a:hover {
   background-size: cover;
   background-image: url("https://images.unsplash.com/photo-1486365227551-f3f90034a57c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80");
 }
-.about {
-  
-}
 .titles {
   width: 30%;
   margin-left: 5%;
@@ -94,6 +91,7 @@ header a:hover {
   justify-content: center;
   align-items: center;
   height: 70vh;
+  margin-bottom: 2%;
 }
 
 .notFound {
@@ -161,7 +159,16 @@ td {
   color: #cf1804;
   background-color: white;
 }
-
+.register {
+  background-color: #ae5c04;
+  color: white;
+  border: 2px solid #ae5c04;
+  transition: 2s;
+}
+.register:hover {
+  color: #ae5c04;
+  background-color: white;
+}
 .button-head {
   display: flex;
   justify-content: space-between;
@@ -213,7 +220,7 @@ footer img {
 .about {
   display: flex;
   margin-top: 7%;
-  margin-bottom: 7%;
+  margin-bottom: 6%;
 }
 .about div {
   width: 100%;
