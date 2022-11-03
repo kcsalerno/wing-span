@@ -99,7 +99,7 @@ function SightingForm() {
     }
 
     return (
-        <div className="container">
+        <div className="container" id="sighting-form">
             <form onSubmit={handleSubmit}>
                 <h2>{sightingId > 0 ? "Edit Sighting" : "Add Sighting"}</h2>
                 <div className="form-group mb-3">

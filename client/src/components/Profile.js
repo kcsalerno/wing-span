@@ -30,7 +30,6 @@ function Profile() {
                             <div className="mt-3">
                                 <h3>{auth.user.username}</h3>
                                 <h3>{auth.user.email}</h3>
-
                             </div>
                         </div>
                     </div>
@@ -38,11 +37,12 @@ function Profile() {
                 <div className="col-md-8 mt-3">
                     <div className="card mb-3 content">
                         <h2 className="m-5">Badges</h2>
+                        <div className="lead list-inline-item">
                             {userSightings.length >= 5 &&
                                 (
                                     <>
-                                        <div className="lead list-inline-item ml-5 mr-5">
-                                            <img src="https://static.thenounproject.com/png/1120113-200.png" alt="5 Sightings Badge. A bird in a circle."
+                                        <div className="lead list-inline-item ml-4 mr-2">
+                                            <img src="https://static.thenounproject.com/png/944533-200.png" alt="5 Sightings Badge. Black and white crow"
                                             style={{ width: "100px" }} className="mb-2" />
                                             <br />
                                             <h4>5 Bird Sightings</h4>
@@ -51,8 +51,8 @@ function Profile() {
                             {userSightings.length >= 10 &&
                                 (
                                     <>
-                                        <div className="lead list-inline-item ml-5 mr-5">
-                                            <img src="https://static.thenounproject.com/png/1188264-200.png" alt="10 Sightings Badge. A bird in binocular view-finder."
+                                        <div className="lead list-inline-item ml-2 mr-2">
+                                            <img src="https://static.thenounproject.com/png/944546-200.png" alt="10 Sightings Badge. Black and white flamingo."
                                                 style={{ width: "100px" }} className="mb-2" />
                                             <br />
                                             <h4>10 Bird Sightings</h4>
@@ -63,8 +63,8 @@ function Profile() {
                             {userSightings.length >= 20 &&
                                 (
                                     <>
-                                        <div className="lead list-inline-item ml-5 mr-5">
-                                            <img src="https://static.thenounproject.com/png/4451522-200.png" alt="20 Sightings Badge. A bird sitting on top of binoculars."
+                                        <div className="lead list-inline-item ml-2 mr-2">
+                                            <img src="https://static.thenounproject.com/png/944545-200.png" alt="20 Sightings Badge. Black and white penguin"
                                                     style={{ width: "100px" }} className="mb-2" />
                                                 <br />
                                                 <h4>20 Bird Sightings</h4>
@@ -75,8 +75,8 @@ function Profile() {
                                 {userSightings.length >= 50 &&
                                     (
                                         <>
-                                            <div className="lead list-inline-item ml-5 mr-5">
-                                                <img src="https://static.thenounproject.com/png/1511937-200.png" alt="50 Sightings Badge. Outline of an eye with a bird inside it."
+                                            <div className="lead list-inline-item ml-2 mr-2">
+                                                <img src="https://static.thenounproject.com/png/944528-200.png" alt="50 Sightings Badge. Black and white hawk."
                                                     style={{ width: "100px" }} className="mb-2" />
                                                 <br />
                                                 <h4>50 Bird Sightings</h4>
@@ -84,6 +84,19 @@ function Profile() {
                                         </>
                                     )
                                 }
+                                {userSightings.length >= 100 &&
+                                    (
+                                        <>
+                                            <div className="lead list-inline-item ml-2 mr-2">
+                                                <img src="https://static.thenounproject.com/png/944535-200.png" alt="100 Sightings Badge. Black and white crane."
+                                                    style={{ width: "100px" }} className="mb-2" />
+                                                <br />
+                                                <h4>100 Bird Sightings</h4>
+                                            </div>
+                                        </>
+                                    )
+                                }
+                                </div>
                                 {userSightings.length < 5 &&
                                     (
                                         <h3 className="ml-5 mt-3 mb-3">
@@ -109,6 +122,13 @@ function Profile() {
                                     (
                                         <h3 className="ml-5 mt-3 mb-3">
                                             You need {50 - userSightings.length} more sightings to reach your next badge!
+                                        </h3>
+                                    )
+                                }
+                                {userSightings.length < 100 && userSightings.length >= 500 &&
+                                    (
+                                        <h3 className="ml-5 mt-3 mb-3">
+                                            You need {100 - userSightings.length} more sightings to reach your next badge!
                                         </h3>
                                     )
                                 }       
