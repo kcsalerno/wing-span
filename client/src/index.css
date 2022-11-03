@@ -163,7 +163,7 @@ td {
 }
 footer {
   background-color: #146971;
-  color: #ae5c04;
+  color: #e27a01;
   display: flex;
   justify-content: space-around;
   text-align: center;
@@ -174,7 +174,7 @@ footer div {
   width: 40%;
 }
 footer a {
-  color: #ae5c04;
+  color: #e27a01;
   transition: 2s;
 }
 footer a:hover {
