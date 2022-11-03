@@ -91,6 +91,7 @@ header a:hover {
   justify-content: center;
   align-items: center;
   height: 70vh;
+  margin-bottom: 2%;
 }
 
 .notFound {
@@ -158,7 +159,16 @@ td {
   color: #cf1804;
   background-color: white;
 }
-
+.register {
+  background-color: #ae5c04;
+  color: white;
+  border: 2px solid #ae5c04;
+  transition: 2s;
+}
+.register:hover {
+  color: #ae5c04;
+  background-color: white;
+}
 .button-head {
   display: flex;
   justify-content: space-between;
@@ -206,4 +216,27 @@ footer img {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
+}
+.about {
+  display: flex;
+  margin-top: 7%;
+  margin-bottom: 6%;
+}
+.about div {
+  width: 100%;
+}
+.text{
+  margin-left: 3%;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.image-container img {
+  width: 75%;
 }

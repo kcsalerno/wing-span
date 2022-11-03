@@ -18,6 +18,7 @@ import Register from './components/Register';
 import Profile from './components/Profile';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import About from './components/About';
 
 import { refresh } from "./services/auth"
 
@@ -105,6 +106,9 @@ function App() {
           <Switch>
             <Route path="/" exact>
               <Home />
+            </Route>
+            <Route path="/about">
+              <About />
             </Route>
             <Route path="/sightings" exact>
               <SightingList />
