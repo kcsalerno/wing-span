@@ -130,7 +130,7 @@ function SightingForm() {
                         value={sighting.state} onChange={handleChange}></input>
                 </div>
                 <div>
-                    <label htmlFor="daytime" className="form-group mb-3">Daytime?</label>
+                    <label htmlFor="daytime" className="form-group mb-3 mr-2">Daytime?</label>
                     <input type="checkbox" name="daytime" id="daytime"
                         checked={sighting.daytime} onChange={handleChange}></input>
                 </div>

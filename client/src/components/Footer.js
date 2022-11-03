@@ -10,9 +10,9 @@ function Footer() {
             <div className="footer-one" id="footer">
                 <h2>Contact Us</h2>
                 <address>
-                Gracia Kaneza: <a href="mailto: gkaneza@dev-10.com">gkaneza@dev-10.com</a><br/>
-                Kristopher Salerno: <a href="mailto: ksalerno@dev-10.com">ksalerno@dev-10.com</a><br/>
-                Collin Shawyer: <a href="mailto: cshawyer@dev-10.com">cshawyer@dev-10.com</a>
+                <a href="mailto: gkaneza@dev-10.com">Gracia Kaneza</a><br/>
+                <a href="mailto: ksalerno@dev-10.com">Kristopher Salerno</a><br/>
+                <a href="mailto: cshawyer@dev-10.com">Collin Shawyer</a>
                 </address>
             </div>
             <div>

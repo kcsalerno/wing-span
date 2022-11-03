@@ -2,7 +2,6 @@ import { useState, useContext, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
 
 import AuthContext from "../contexts/AuthContext.js";
-import Error from "./Error.js";
 import { findAllAvatars, findById } from "../services/avatars.js";
 
 function Register() {
@@ -151,7 +150,11 @@ function Register() {
         <div className="login">
             <div>
             <h2 className="mb-3">Register</h2>
-            <Error errors={errors} />
+            {errors.length !== 0 && <div className="alert alert-danger">
+                    <ul>
+                        {errors.map(error => <li key={error}>{error}</li>)}
+                    </ul>
+                </div>}
             <form onSubmit={handleSubmit}>
                 <div className="mb-2">
                     <label htmlFor="username" className="mr-1">Username: </label>
