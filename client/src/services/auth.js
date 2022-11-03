@@ -4,7 +4,7 @@
 
 import jwtDecode from "jwt-decode";
 
-const API_URL = "http://wing-span-app.us-east-1.elasticbeanstalk.com";
+const API_URL = "http://wing-span-web-app.us-east-1.elasticbeanstalk.com";
 
 const LOCAL_STORAGE_TOKEN_KEY = "wingspanToken";
 
@@ -26,7 +26,7 @@ export async function refresh() {
 
         const { jwt_token } = await response.json();
 
-        console.log(jwt_token);
+        // console.log(jwt_token);
 
         localStorage.setItem("jwt", jwt_token);
 

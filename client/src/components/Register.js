@@ -59,7 +59,7 @@ function Register() {
             })
         };
 
-        fetch("http://wing-span-app.us-east-1.elasticbeanstalk.com/create_account", init)
+        fetch("http://wing-span-web-app.us-east-1.elasticbeanstalk.com/create_account", init)
             .then(response => {
                 if (response.status === 201 || response.status === 400) {
                     return response.json();
@@ -70,7 +70,7 @@ function Register() {
             })
             .then(data => {
                 if (data.appUserId) {
-                    fetch("http://wing-span-app.us-east-1.elasticbeanstalk.com/authenticate", {
+                    fetch("http://wing-span-web-app.us-east-1.elasticbeanstalk.com/authenticate", {
                         method: "POST",
                         headers: {
                             "Content-Type": "application/json",
