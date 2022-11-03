@@ -7,8 +7,8 @@ function Footer() {
 
     return (
         <footer>
-            <div className="footer-one">
-                <h3>Contact Us</h3>
+            <div className="footer-one" id="footer">
+                <h2>Contact Us</h2>
                 <address>
                 Gracia Kaneza: <a href="mailto: gkaneza@dev-10.com">gkaneza@dev-10.com</a><br/>
                 Kristopher Salerno: <a href="mailto: ksalerno@dev-10.com">ksalerno@dev-10.com</a><br/>

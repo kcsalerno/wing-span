@@ -181,6 +181,10 @@ td {
   align-items: center;
   margin-right: 3%;
 }
+
+#rows {
+  display: flexbox !important;
+}
 footer {
   background-color: #146971;
   color: #e27a01;
@@ -188,8 +192,11 @@ footer {
   justify-content: space-around;
   text-align: center;
   align-items: center;
-  height: 150px;
+  height: 170px !important;
 }
+/* #footer {
+  min-height: 100px;
+} */
 footer div {
   width: 40%;
 }
