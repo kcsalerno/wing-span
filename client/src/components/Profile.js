@@ -34,9 +34,9 @@ function Profile() {
                         </div>
                     </div>
                 </div>
-                <div className="col-md-8 mt-1">
+                <div className="col-md-8 mt-3">
                     <div className="card mb-3 content">
-                        <h2 className="m-3">Badges</h2>
+                        <h2 className="m-5">Badges</h2>
                             {userSightings.length >= 5 &&
                                 (
                                     <>
@@ -114,7 +114,7 @@ function Profile() {
                     </div>
                 </div>
 
-                <div className="card mb-3 content">
+                <div className="card mt-5 mb-5 content">
                     <h2 className="m-3">Sightings</h2>
                         <div className="card-body">
                             <div className="ml-4 row row-cols-3 g-2">
