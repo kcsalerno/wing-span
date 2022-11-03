@@ -63,17 +63,18 @@ li {
   display: inline-block;
   margin: 0 5%;
 }
-a {
+header a {
   color: #ae5c04;
   transition: 2s;
   font-family: 'Montserrat', sans-serif;
   font-size: 2rem;
 }
-a:hover {
+header a:hover {
   color: #146971;
 }
 .home {
   text-align: center;
+  color: #146971;
   height: 100vh;
   display: flex;
   align-items: center;
@@ -99,7 +100,10 @@ a:hover {
 table {
   width: 100%;
   text-align: center;
-  margin: 2% 0;
+  margin-top: 2%;
+}
+.table {
+  margin-bottom: 3%;
 }
 td {
   margin: 4% 0;
@@ -167,4 +171,39 @@ td {
   align-items: center;
   margin-right: 3%;
 }
-
+footer {
+  background-color: #146971;
+  color: #e27a01;
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+  align-items: center;
+  height: 150px;
+}
+footer div {
+  width: 40%;
+}
+footer a {
+  color: #e27a01;
+  transition: 2s;
+}
+footer a:hover {
+  color: white;
+}
+footer nav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+footer nav a {
+  margin: 2% 0;
+}
+.footer-one {
+  margin: 4%;
+}
+footer img {
+  width: 45%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}

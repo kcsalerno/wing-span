@@ -57,7 +57,7 @@ function SightingList() {
                             <td>{s.daytime ? "Yes" : "No"}</td>
                             {auth.user && auth.user.hasRole('ADMIN') &&
                                 <td className="buttonContainer">
-                                    <Link className="btn add" to={`/sightings/edit/${s.sightingId}`}><i className='bi bi-pencil-square'></i> Edit</Link>
+                                    <Link className="btn add mr-2" to={`/sightings/edit/${s.sightingId}`}><i className='bi bi-pencil-square'></i> Edit</Link>
                                     <Link className="btn delete" to={`/sightings/delete/${s.sightingId}`}><i className='bi bi-trash'></i> Delete</Link>
                                 </td>}
                         </tr>

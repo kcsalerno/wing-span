@@ -20,21 +20,6 @@ function Profile() {
     const userSightings = sightings.filter((sighting) => sighting.sightingUserId === auth.user.userId)
 
     return (
-
-
-        <>
-            <div className="container">
-                <div className="row">
-                    <div className="col-md-4 mt-1">
-                        <div className="card text-center sidebar">
-                            <div className="card-body">
-                                <h2>Profile</h2>
-                                <img src={avatar.avatarImageUrl} className="ml-5" style={{ width: '200px' }} alt={avatar.avatarDescription}></img>
-                                <div className="mt-3">
-                                    <h3>{auth.user.username}</h3>
-                                    <h3>{auth.user.email}</h3>
-                                </div>
-
         <div className="container">
             <div className="row">
                 <div className="col-md-4 mt-1">
@@ -49,36 +34,37 @@ function Profile() {
                             </div>
                         </div>
                     </div>
-                    <div className="col-md-8 mt-1">
-                        <div className="card mb-3 content">
-                            <h2 className="m-3">Badges</h2>
-                                {userSightings.length >= 5 &&
-                                    (
-                                        <>
-                                            <div className="lead list-inline-item ml-5 mr-5">
-                                                <img src="https://static.thenounproject.com/png/1120113-200.png" alt="5 Sightings Badge. A bird in a circle."
+                </div>
+                <div className="col-md-8 mt-3">
+                    <div className="card mb-3 content">
+                        <h2 className="m-5">Badges</h2>
+                            {userSightings.length >= 5 &&
+                                (
+                                    <>
+                                        <div className="lead list-inline-item ml-5 mr-5">
+                                            <img src="https://static.thenounproject.com/png/1120113-200.png" alt="5 Sightings Badge. A bird in a circle."
+                                            style={{ width: "100px" }} className="mb-2" />
+                                            <br />
+                                            <h4>5 Bird Sightings</h4>
+                                        </div>
+                                    </>)}
+                            {userSightings.length >= 10 &&
+                                (
+                                    <>
+                                        <div className="lead list-inline-item ml-5 mr-5">
+                                            <img src="https://static.thenounproject.com/png/1188264-200.png" alt="10 Sightings Badge. A bird in binocular view-finder."
                                                 style={{ width: "100px" }} className="mb-2" />
-                                                <br />
-                                                <h4>5 Bird Sightings</h4>
-                                            </div>
-                                        </>)}
-                                {userSightings.length >= 10 &&
-                                    (
-                                        <>
-                                            <div className="lead list-inline-item ml-5 mr-5">
-                                                <img src="https://static.thenounproject.com/png/1188264-200.png" alt="10 Sightings Badge. A bird in binocular view-finder."
-                                                    style={{ width: "100px" }} className="mb-2" />
-                                                <br />
-                                                <h4>10 Bird Sightings</h4>
-                                            </div>
-                                        </>
-                                    )
-                                }
-                                {userSightings.length >= 20 &&
-                                    (
-                                        <>
-                                            <div className="lead list-inline-item ml-5 mr-5">
-                                                <img src="https://static.thenounproject.com/png/4451522-200.png" alt="20 Sightings Badge. A bird sitting on top of binoculars."
+                                            <br />
+                                            <h4>10 Bird Sightings</h4>
+                                        </div>
+                                    </>
+                                )
+                            }
+                            {userSightings.length >= 20 &&
+                                (
+                                    <>
+                                        <div className="lead list-inline-item ml-5 mr-5">
+                                            <img src="https://static.thenounproject.com/png/4451522-200.png" alt="20 Sightings Badge. A bird sitting on top of binoculars."
                                                     style={{ width: "100px" }} className="mb-2" />
                                                 <br />
                                                 <h4>20 Bird Sightings</h4>
@@ -128,8 +114,7 @@ function Profile() {
                                 }       
                         </div>
                     </div>
-
-                    <div className="card mb-3 content">
+                    <div className="card mt-5 mb-5 content">
                         <h2 className="m-3">Sightings</h2>
                             <div className="card-body">
                                 <div className="ml-4 row row-cols-3 g-2">
