@@ -60,7 +60,7 @@ function Profile() {
                                     </>
                                 )
                             }
-                            {userSightings.length >= 2 &&
+                            {userSightings.length >= 20 &&
                                 (
                                     <>
                                         <div className="lead list-inline-item ml-2 mr-2">
@@ -72,7 +72,7 @@ function Profile() {
                                         </>
                                     )
                                 }
-                                {userSightings.length >= 5 &&
+                                {userSightings.length >= 50 &&
                                     (
                                         <>
                                             <div className="lead list-inline-item ml-2 mr-2">
@@ -84,7 +84,7 @@ function Profile() {
                                         </>
                                     )
                                 }
-                                {userSightings.length >= 10 &&
+                                {userSightings.length >= 100 &&
                                     (
                                         <>
                                             <div className="lead list-inline-item ml-2 mr-2">

@@ -240,3 +240,11 @@ footer img {
 .image-container img {
   width: 75%;
 }
+#sighting-form {
+  margin-top: 5%;
+  margin-bottom: 2%;
+}
+#bird-form {
+  margin-top:8%;
+  margin-bottom: 13%;
+}
