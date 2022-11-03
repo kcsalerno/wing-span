@@ -135,7 +135,7 @@ function Profile() {
                         </div>
                     </div>
                     <div className="col">
-                        <h2 className="m-3">Sightings</h2>
+                        <h2 className="mb-5 mt-5">Sightings</h2>
                             <div>
                                 <div className="ml-4 row row-cols-3 g-2 mr-4">
                                     {userSightings.map(s => <Sighting key={s.sightingId} sighting={s} />)}
