@@ -25,7 +25,8 @@ function BirdConfirmDelete() {
     };
 
     return (
-        <div>
+        <div className="login">
+            <div>
             <h2>Confirm Delete</h2>
             <div className="alert alert-danger">
                 <p>
@@ -35,6 +36,7 @@ function BirdConfirmDelete() {
             <div>
                 <button className="btn btn-danger me-2 mr-2" onClick={handleDelete}><i className='bi bi-trash'></i> Delete</button>
                 <Link to="/birds" className="btn btn-warning"><i className='bi bi-file-earmark-excel'></i> Cancel</Link>
+            </div>
             </div>
         </div>
     )

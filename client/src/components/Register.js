@@ -148,7 +148,8 @@ function Register() {
     }
 
     return (
-        <>
+        <div className="login">
+            <div>
             <h2 className="mb-3">Register</h2>
             <Error errors={errors} />
             <form onSubmit={handleSubmit}>
@@ -202,12 +203,13 @@ function Register() {
                     <img className="ml-4" src={avatar.avatarImageUrl} alt={avatar.avatarDescription} style={{width: '150px'}}/>
                 </div>
                 <div className="mb-2">
-                    <button className="btn btn-primary me-2 mr-2" type="submit"><i className='bi bi-file-earmark-check'></i> Register</button>
-                    <Link className="btn btn-success me-2 mr-2" to="/login"><i class="bi bi-person-check"></i> I Already Have An Account</Link>
-                    <Link className="btn btn-warning me-2" to="/"><i className='bi bi-file-earmark-excel'></i> Cancel</Link>
+                    <button className="btn add me-2 mr-2" type="submit"><i className='bi bi-file-earmark-check'></i> Register</button>
+                    <Link className="btn register me-2 mr-2" to="/login"><i class="bi bi-person-check"></i> I Already Have An Account</Link>
+                    <Link className="btn delete me-2" to="/"><i className='bi bi-file-earmark-excel'></i> Cancel</Link>
                 </div>
             </form>
-        </>
+            </div>
+        </div>
     );
 }
 

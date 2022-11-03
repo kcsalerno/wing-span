@@ -102,6 +102,11 @@ function SightingForm() {
         <div className="container" id="sighting-form">
             <form onSubmit={handleSubmit}>
                 <h2>{sightingId > 0 ? "Edit Sighting" : "Add Sighting"}</h2>
+                {errors.length !== 0 && <div className="alert alert-danger">
+                    <ul>
+                        {errors.map(error => <li key={error}>{error}</li>)}
+                    </ul>
+                </div>}
                 <div className="form-group mb-3">
                     <label htmlFor="sightingBirdId">Bird:</label>
                     <select name="sightingBirdId" id="sightingBirdId" className="form-control form-control-lg"
@@ -149,11 +154,6 @@ function SightingForm() {
                             />
                         </div>
                 </div>
-                {errors.length !== 0 && <div className="alert alert-danger">
-                    <ul>
-                        {errors.map(error => <li key={error}>{error}</li>)}
-                    </ul>
-                </div>}
                 <div className="mt-4">
                     <button className="btn add btn-lg me-2 mr-2" type="submit"><i className='bi bi-file-earmark-check'></i> Save</button>
                     <Link to="/sightings" className="btn delete btn-lg "><i className='bi bi-file-earmark-excel'></i> Cancel</Link>
