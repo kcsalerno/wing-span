@@ -21,6 +21,7 @@ function Profile() {
 
     return (
 
+
         <>
             <div className="container">
                 <div className="row">
@@ -33,6 +34,18 @@ function Profile() {
                                     <h3>{auth.user.username}</h3>
                                     <h3>{auth.user.email}</h3>
                                 </div>
+
+        <div className="container">
+            <div className="row">
+                <div className="col-md-4 mt-1">
+                    <div className="card text-center sidebar">
+                        <div className="card-body">
+                            <h2>Profile</h2>
+                            <img src={avatar.avatarImageUrl} className="ml-5" style={{ width: '200px' }} alt={avatar.avatarDescription}></img>
+                            <div className="mt-3">
+                                <h3>{auth.user.username}</h3>
+                                <h3>{auth.user.email}</h3>
+
                             </div>
                         </div>
                     </div>
@@ -126,7 +139,6 @@ function Profile() {
                     </div>
                 </div>
             </div>
-
         </>
     );
 }
