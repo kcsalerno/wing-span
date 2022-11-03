@@ -45,6 +45,11 @@ function BirdForm() {
         <div className="container" id="bird-form">
             <form onSubmit={handleSubmit}>
                 <h2>{birdId > 0 ? "Edit Bird" : "Add Bird"}</h2>
+                {errors.length !== 0 && <div className="alert alert-danger">
+                    <ul>
+                        {errors.map(error => <li key={error}>{error}</li>)}
+                    </ul>
+                </div>}
                 <div className="form-group mb-3">
                     <label htmlFor="commonName" className="form-label">Common Name:</label>
                     <input type="text" name="commonName" id="commonName" className="form-control form-control-lg"
@@ -60,11 +65,6 @@ function BirdForm() {
                     <input type="text" name="birdImageUrl" id="birdImageUrl" className="form-control form-control-lg"
                         value={bird.birdImageUrl} onChange={handleChange}></input>
                 </div>
-                {errors.length !== 0 && <div className="alert alert-danger">
-                    <ul>
-                        {errors.map(error => <li key={error}>{error}</li>)}
-                    </ul>
-                </div>}
                 <div className="mb-3">
                     <button className="btn add btn-lg me-2 mr-2" type="submit"><i className='bi bi-file-earmark-check'></i> Save</button>
                     <Link to="/birds" className="btn delete btn-lg "><i className='bi bi-file-earmark-excel'></i> Cancel</Link>
