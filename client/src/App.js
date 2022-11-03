@@ -17,6 +17,7 @@ import AuthContext from "./contexts/AuthContext";
 import Register from './components/Register';
 import Profile from './components/Profile';
 import Header from './components/Header';
+import Footer from './components/Footer';
 
 import { refresh } from "./services/auth"
 
@@ -154,6 +155,7 @@ function App() {
             </Route>
           </Switch>
         </div>
+        <Footer />
       </Router>
     </AuthContext.Provider>
   )
