@@ -1,5 +1,4 @@
-@base_url = http://localhost:8080/api/sighting
-
+@base_url = http://wing-span-app.us-east-1.elasticbeanstalk.com/api/sighting
 
 GET {{base_url}} HTTP/1.1
 

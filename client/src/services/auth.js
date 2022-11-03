@@ -4,7 +4,7 @@
 
 import jwtDecode from "jwt-decode";
 
-const API_URL = "http://localhost:8080";
+const API_URL = "http://wing-span-app.us-east-1.elasticbeanstalk.com";
 
 const LOCAL_STORAGE_TOKEN_KEY = "wingspanToken";
 
