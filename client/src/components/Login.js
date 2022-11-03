@@ -36,7 +36,7 @@ function Login() {
             localStorage.setItem("jwt", jwt_token);
             console.log(localStorage.getItem("jwt"));
             auth.login(jwt_token);
-            history.push("/");
+            history.goBack();
         } else if (response.status === 403) {
             setErrors(["Login failed."]);
         } else {
@@ -53,7 +53,8 @@ function Login() {
     }
 
     return (
-        <>
+        <div className="login">
+            <div>
             <h2 className="mb-3">Login</h2>
             <Error errors={errors} />
             <form onSubmit={handleSubmit}>
@@ -81,7 +82,8 @@ function Login() {
                     <Link className="btn btn-warning me-2" to="/"><i className='bi bi-file-earmark-excel'></i> Cancel</Link>
                 </div>
             </form>
-        </>
+            </div>
+        </div>
     );
 }
 

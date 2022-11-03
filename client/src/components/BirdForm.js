@@ -42,33 +42,35 @@ function BirdForm() {
     }
 
     return (
-        <form onSubmit={handleSubmit}>
-            <h2>{birdId > 0 ? "Edit Bird" : "Add Bird"}</h2>
-            <div className="form-group mb-3">
-                <label htmlFor="commonName" className="form-label">Common Name:</label>
-                <input type="text" name="commonName" id="commonName" className="form-control form-control-lg"
-                    value={bird.commonName} onChange={handleChange}></input>
-            </div>
-            <div className="form-group mb-3">
-                <label htmlFor="scientificName" className="form-label">Scientific Name:</label>
-                <input type="text" name="scientificName" id="scientificName" className="form-control form-control-lg"
-                    value={bird.scientificName} onChange={handleChange}></input>
-            </div>
-            <div className="form-group mb-3">
-                <label htmlFor="birdImageUrl" className="form-label">Bird Image URL:</label>
-                <input type="text" name="birdImageUrl" id="birdImageUrl" className="form-control form-control-lg"
-                    value={bird.birdImageUrl} onChange={handleChange}></input>
-            </div>
-            {errors.length !== 0 && <div className="alert alert-danger">
-                <ul>
-                    {errors.map(error => <li key={error}>{error}</li>)}
-                </ul>
-            </div>}
-            <div className="mb-3">
-                <button className="btn btn-primay btn-lg btn-success " type="submit"><i className='bi bi-file-earmark-check'></i> Save</button>
-                <Link to="/birds" className="btn btn-lg btn-warning"><i className='bi bi-file-earmark-excel'></i> Cancel</Link>
-            </div>
-        </form>
+        <div className="container">
+            <form onSubmit={handleSubmit}>
+                <h2>{birdId > 0 ? "Edit Bird" : "Add Bird"}</h2>
+                <div className="form-group mb-3">
+                    <label htmlFor="commonName" className="form-label">Common Name:</label>
+                    <input type="text" name="commonName" id="commonName" className="form-control form-control-lg"
+                        value={bird.commonName} onChange={handleChange}></input>
+                </div>
+                <div className="form-group mb-3">
+                    <label htmlFor="scientificName" className="form-label">Scientific Name:</label>
+                    <input type="text" name="scientificName" id="scientificName" className="form-control form-control-lg"
+                        value={bird.scientificName} onChange={handleChange}></input>
+                </div>
+                <div className="form-group mb-3">
+                    <label htmlFor="birdImageUrl" className="form-label">Bird Image URL:</label>
+                    <input type="text" name="birdImageUrl" id="birdImageUrl" className="form-control form-control-lg"
+                        value={bird.birdImageUrl} onChange={handleChange}></input>
+                </div>
+                {errors.length !== 0 && <div className="alert alert-danger">
+                    <ul>
+                        {errors.map(error => <li key={error}>{error}</li>)}
+                    </ul>
+                </div>}
+                <div className="mb-3">
+                    <button className="btn add btn-lg me-2 mr-2" type="submit"><i className='bi bi-file-earmark-check'></i> Save</button>
+                    <Link to="/birds" className="btn delete btn-lg "><i className='bi bi-file-earmark-excel'></i> Cancel</Link>
+                </div>
+            </form>
+        </div>
     );
 
 }

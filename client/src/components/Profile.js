@@ -20,6 +20,7 @@ function Profile() {
     const userSightings = sightings.filter((sighting) => sighting.sightingUserId === auth.user.userId)
 
     return (
+
         <>
             <div className="container">
                 <div className="row">
@@ -127,6 +128,10 @@ function Profile() {
             </div>
 
             {/* <h2>Profile</h2>
+
+        <div className="container">
+            <h2>Profile</h2>
+
             <section className="mt-4 mb-3">
                 <h3 className="mt-2">Username: {auth.user.username}</h3>
                 <h3>Email: {auth.user.email}</h3>
@@ -220,8 +225,7 @@ function Profile() {
                 <div className="ml-4 row row-cols-3 g-2">
                     {userSightings.map(s => <Sighting key={s.sightingId} sighting={s} />)}
                 </div>
-            </section> */}
-        </>
+
     );
 }
 
