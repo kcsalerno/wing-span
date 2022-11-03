@@ -126,7 +126,7 @@ td {
   display: flex;
   flex-direction: column;
 }
-/* .home .sliderContainer {
+.home .sliderContainer {
   overflow: hidden;
   height: 800px;
   width: 1200px;
