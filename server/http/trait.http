@@ -1,4 +1,4 @@
-@url = http://localhost:8080/api/trait
+@url = http://wing-span-web-app.us-east-1.elasticbeanstalk.com/api/trait
 
 ### GET all traits
 
