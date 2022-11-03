@@ -60,8 +60,10 @@ td {
   color: white;
   height: 100%;
 }
-.card-body {
-  justify-content: center;
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
 }
 /* .home .sliderContainer {
   overflow: hidden;
