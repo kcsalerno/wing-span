@@ -42,7 +42,7 @@ function BirdForm() {
     }
 
     return (
-        <div className="container">
+        <div className="container" id="bird-form">
             <form onSubmit={handleSubmit}>
                 <h2>{birdId > 0 ? "Edit Bird" : "Add Bird"}</h2>
                 <div className="form-group mb-3">
