@@ -1,4 +1,4 @@
-const AVATAR_API_URL = "http://wing-span-app.us-east-1.elasticbeanstalk.com/api/avatar";
+const AVATAR_API_URL = "http://wing-span-web-app.us-east-1.elasticbeanstalk.com/api/avatar";
 
 export async function findAllAvatars() {
     const response = await fetch(AVATAR_API_URL);

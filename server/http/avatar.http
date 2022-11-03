@@ -1,4 +1,4 @@
-@base_url = http://localhost:8080/api/avatar
+@base_url = http://wing-span-web-app.us-east-1.elasticbeanstalk.com/api/avatar
 
 GET {{base_url}} HTTP/1.1
 

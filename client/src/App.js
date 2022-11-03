@@ -45,7 +45,7 @@ function App() {
   }, []);
 
   // Refresh the token after 10 minutes. If no one is logged in the request is blocked, if they are, they will always have a valid token.
-  setTimeout(() => refresh().then(setUser).catch(logout), 600000);
+  setTimeout(() => refresh().then(setUser).catch(logout), 3000000);
 
   const login = (token) => {
     // NEW: set the token in localStorage
@@ -71,7 +71,7 @@ function App() {
     };
 
     // Log the user for debugging purposes
-    console.log(user);
+    // console.log(user);
 
     // Update the user state
     setUser(user);

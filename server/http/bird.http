@@ -1,4 +1,4 @@
-@base_url = http://wing-span-app.us-east-1.elasticbeanstalk.com/api/bird
+@base_url = http://wing-span-web-app.us-east-1.elasticbeanstalk.com/api/bird
 
 GET {{base_url}} HTTP/1.1
 

@@ -1,4 +1,4 @@
-@url = http://localhost:8080/api/badge
+@url = http://wing-span-web-app.us-east-1.elasticbeanstalk.com/api/badge
 
 ### GET all badges
 
