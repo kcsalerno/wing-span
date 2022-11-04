@@ -44,7 +44,8 @@ function App() {
     setRestoreLoginAttemptCompleted(true);
   }, []);
 
-  // Refresh the token after 10 minutes. If no one is logged in the request is blocked, if they are, they will always have a valid token.
+  // Refresh the token after 50 minutes. If no one is logged in the request is blocked, if they are, they will always
+  // have a valid token because it expires after 60 minutes.
   setTimeout(() => refresh().then(setUser).catch(logout), 3000000);
 
   const login = (token) => {
