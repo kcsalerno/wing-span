@@ -161,9 +161,23 @@ insert into app_user_role (app_user_id, app_role_id) values
 -- Data: avatar
 -- -----------------------------------------------------
 insert into avatar (avatar_img_url, avatar_description) values
-	('https://cdn.pixabay.com/photo/2017/05/25/21/26/bird-feeder-2344414__480.jpg', "Birdhouse"),
-    ('https://cdn.pixabay.com/photo/2022/09/29/08/39/european-robin-7486889__480.jpg', "Birdbath"),
-    ('https://cdn.pixabay.com/photo/2015/10/19/10/32/binoculars-995779__480.jpg', "Binoculars");
+	('https://static.thenounproject.com/png/3826021-200.png', 'Winter Bird Watcher'),
+    ('https://static.thenounproject.com/png/77049-200.png', 'Bird Watching Buddies'),
+    ('https://static.thenounproject.com/png/203210-200.png', 'Owl In a Tree'),
+    ('https://static.thenounproject.com/png/411938-200.png', 'Telephoto Lens Watcher'),
+    ('https://static.thenounproject.com/png/2946574-200.png', 'Bird Family'),
+    ('https://static.thenounproject.com/png/2946575-200.png', 'Bird Eating'),
+    ('https://static.thenounproject.com/png/3890960-200.png', 'Bird House'),
+    ('https://static.thenounproject.com/png/1188264-200.png', 'Bird in Binoculars'),
+    ('https://static.thenounproject.com/png/1043242-200.png', 'Trees'),
+    ('https://static.thenounproject.com/png/6811-200.png', 'Crow'),
+    ('https://static.thenounproject.com/png/502014-200.png', 'Binoculars'),
+    ('https://static.thenounproject.com/png/464142-200.png', 'Owl'),
+    ('https://static.thenounproject.com/png/4451522-200.png', 'Bird on Binoculars'),
+    ('https://static.thenounproject.com/png/4273916-200.png', 'Feather'),
+    ('https://static.thenounproject.com/png/203166-200.png', 'Wheelchair Watcher'),
+    ('https://static.thenounproject.com/png/92148-200.png', 'Telephoto Lens Camera');
+    
     
 -- -----------------------------------------------------
 -- Data: user_avatar
@@ -171,7 +185,7 @@ insert into avatar (avatar_img_url, avatar_description) values
 insert into user_avatar (app_user_id, avatar_id) values
 	(1, 1),
     (2, 2);
-
+    
 -- -----------------------------------------------------
 -- Data: sighting
 -- -----------------------------------------------------
