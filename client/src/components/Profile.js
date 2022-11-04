@@ -22,11 +22,11 @@ function Profile() {
     return (
         <div className="container">
             <div className="row">
-                <div className="col-md-4 mt-1">
+                <div className="col-md-4 mt-3">
                     <div className="card text-center sidebar">
                         <div className="card-body">
                             <h2>Profile</h2>
-                            <img src={avatar.avatarImageUrl} className="ml-5" style={{ width: '200px' }} alt={avatar.avatarDescription}></img>
+                            <img src={avatar.avatarImageUrl} className="ml-3" style={{ width: '200px' }} alt={avatar.avatarDescription}></img>
                             <div className="mt-3">
                                 <h3>{auth.user.username}</h3>
                                 <h3>{auth.user.email}</h3>
@@ -36,12 +36,12 @@ function Profile() {
                 </div>
                 <div className="col-md-8 mt-3">
                     <div className="card mb-3 content">
-                        <h2 className="m-5">Badges</h2>
+                        <h2 className="mt-4 mb-4 ml-5">Badges</h2>
                         <div className="lead list-inline-item">
                             {userSightings.length >= 5 &&
                                 (
                                     <>
-                                        <div className="lead list-inline-item ml-4 mr-2">
+                                        <div className="lead list-inline-item ml-5 mr-2">
                                             <img src="https://static.thenounproject.com/png/944533-200.png" alt="5 Sightings Badge. Black and white crow"
                                             style={{ width: "100px" }} className="mb-2" />
                                             <br />
@@ -97,41 +97,43 @@ function Profile() {
                                     )
                                 }
                                 </div>
+                                <div className="mt-3 mb-3">
                                 {userSightings.length < 5 &&
                                     (
-                                        <h3 className="ml-5 mt-3 mb-3">
+                                        <h3 className="ml-5">
                                             You need {5 - userSightings.length} more sightings to reach your next badge!
                                         </h3>
                                     )
                                 }
                                 {userSightings.length < 10 && userSightings.length >= 5 &&
                                     (
-                                        <h3 className="ml-5 mt-3 mb-3">
+                                        <h3 className="ml-5">
                                             You need {10 - userSightings.length} more sightings to reach your next badge!
                                         </h3>
                                     )
                                 }
                                 {userSightings.length < 20 && userSightings.length >= 10 &&
                                     (
-                                        <h3 className="ml-5 mt-3 mb-3">
+                                        <h3 className="ml-5">
                                             You need {20 - userSightings.length} more sightings to reach your next badge!
                                         </h3>
                                     )
                                 }
                                 {userSightings.length < 50 && userSightings.length >= 20 &&
                                     (
-                                        <h3 className="ml-5 mt-3 mb-3">
+                                        <h3 className="ml-5">
                                             You need {50 - userSightings.length} more sightings to reach your next badge!
                                         </h3>
                                     )
                                 }
                                 {userSightings.length < 100 && userSightings.length >= 500 &&
                                     (
-                                        <h3 className="ml-5 mt-3 mb-3">
+                                        <h3 className="ml-5">
                                             You need {100 - userSightings.length} more sightings to reach your next badge!
                                         </h3>
                                     )
-                                }       
+                                }
+                                </div>       
                         </div>
                     </div>
                     <div className="col">

@@ -26,7 +26,7 @@ export async function refresh() {
 
         const { jwt_token } = await response.json();
 
-        // console.log(jwt_token);
+        console.log(jwt_token);
 
         localStorage.setItem("jwt", jwt_token);
 
