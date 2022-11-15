@@ -1,4 +1,4 @@
-const BADGE_API_URL = "http://wing-span-web-app.us-east-1.elasticbeanstalk.com/api/badge";
+const BADGE_API_URL = "http://wing-span-app.us-east-1.elasticbeanstalk.com/api/badge";
 
 export async function findAllBadges() {
     const response = await fetch(BADGE_API_URL);

@@ -1,4 +1,4 @@
-const BIRD_API_URL = "http://wing-span-web-app.us-east-1.elasticbeanstalk.com/api/bird";
+const BIRD_API_URL = "http://wing-span-app.us-east-1.elasticbeanstalk.com/api/bird";
 
 export async function findAllBirds() {
     const response = await fetch(BIRD_API_URL);

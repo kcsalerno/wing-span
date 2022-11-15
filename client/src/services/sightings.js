@@ -1,4 +1,4 @@
-const SIGHTING_API_URL = "http://wing-span-web-app.us-east-1.elasticbeanstalk.com/api/sighting";
+const SIGHTING_API_URL = "http://wing-span-app.us-east-1.elasticbeanstalk.com/api/sighting";
 
 export async function findAllSightings() {
     const response = await fetch(SIGHTING_API_URL);

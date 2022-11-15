@@ -7,7 +7,7 @@ function Navigation() {
     const auth = useContext(AuthContext);
 
     return (
-        <nav>
+        <nav className="container">
             {auth.user && (
                 <div className="text-center">
                     Welcome, {auth.user.username}!
