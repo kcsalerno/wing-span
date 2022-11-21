@@ -46,7 +46,7 @@
          * If a sighting is deleted, it will be deleted from the user.
    * I will be able to logout and returned to the home page when I do.
  
-## Proposal
+## Outline
 
 ### 1. Problem Statement
 
