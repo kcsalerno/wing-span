@@ -1,4 +1,4 @@
-# Capstone Project: Wing\<Span/>
+# Project: Wing\<Span/>
 
 ## User Stories
 * As new user:
@@ -46,7 +46,7 @@
          * If a sighting is deleted, it will be deleted from the user.
    * I will be able to logout and returned to the home page when I do.
  
-## Capstone Proposal
+## Proposal
 
 ### 1. Problem Statement
 
@@ -57,8 +57,6 @@ Currently, there is no wold-wide competitive birding organization. Stepping in t
 Having a "Life List" is great, but it's also nice to see how you stack up to other birders across the globe! Plus, this provides valuable insights into which birds are likely to be seen in certain locations on various dates.
 
 ### 2. Technical Solution
-
-Briefly describe a technical solution to your problem with a couple concrete scenarios.
 
 #### Solution
 
@@ -95,8 +93,6 @@ John has been an avid bird watcher all of his life. He has a journal that he kee
 
 ### 4. High Level Requirement
 
-Briefly describe what each user role/authority can do. (These are user stories.)
-
 * Create a sightings (MEMBER, ADMIN).
 * Edit a sighting (MEMBER, ADMIN).
 * Delete a sighting attached to their profile (MEMBER).
@@ -116,8 +112,6 @@ Briefly describe what each user role/authority can do. (These are user stories.)
 * Browse and use an avatar (MEMBER, ADMIN).
 
 ### 5. User Stories/Scenarios
-
-Elaborate user stories.
 
 #### Create a Sighting
  
@@ -250,36 +244,16 @@ View a list of all avatars available to use by a MEMBER.
  
 **Precondition**: User must be logged in with the MEMBER or ADMIN role.
  
-**Post-condition**: None. 
-
-## High Level Requirements
-*  A schedule of concrete tasks (at most 4 hours per task) that represent all work required to finish your project along with task statuses
-* Diagrams: database schema, class, layer, flow
-* Wireframes: roughly sketch your UI and how one view transitions to another. You can also use design tools to create wireframes.
-* A short presentation, 4 to 6 slides, describing who you are, how you found programming, and your project
-* Complete project source code free of compiler errors
-* A schema creation script along with any DML for data needed to run the application (security roles, default data, etc)
-* If it isn't straight-forward, instructions to set up and run your application
-* A complete test suite with all tests passing
-
-## Technical Requirements
-* Manage 4-7 database tables (entities) that are independent concepts. A simple bridge table doesn't count.
-* Relational database for data management
-* Spring Boot, MVC (@RestController), JdbcTemplate, Testing
-* An HTML and CSS UI built with React
-* Sensible layering and pattern choices
-* At least one UI secured by role
-* A full test suite that covers the domain and data layers.
-* Learning Goal: AWS Hosting
+**Post-condition**: None.
 
 ## High Level Tasks
 * [X] Database Layer Tasks (9 hours)
 * [X] API Data Layer Tasks (40 hours)
 * [X] API Domain Layer Tasks (23 hours)
-* [ ] API Model and Controller Layer Tasks (21 hours)
-* [ ] UI Front End Layer Tasks (22 hours)
-* [ ] Security Layer Tasks (24 hours)
-* [ ] AWS Hosting Tasks (24 hours)
+* [X] API Model and Controller Layer Tasks (21 hours)
+* [X] UI Front End Layer Tasks (22 hours)
+* [x] Security Layer Tasks (24 hours)
+* [X] AWS Hosting Tasks (24 hours)
 * [ ] Further Development Tasks (20 hours)
 
 ### Database Layer Tasks (9 hours)
@@ -425,18 +399,18 @@ View a list of all avatars available to use by a MEMBER.
 * [X] ErrorResponse Class (1 hours)
 * [X] Create GlobalExceptionHandler (1 hours)
 * [X] Create AuthController (1.5 hours)
-* [ ] Create BirdController (1.5 hours)
-* [ ] Create SightingController (1.5 hours)
-* [ ] Create TraitController (1.5 hours)
-* [ ] Create BadgeController (1.5 hours)
-* [ ] Create AvatarController (1.5 hours)
+* [X] Create BirdController (1.5 hours)
+* [X] Create SightingController (1.5 hours)
+* [X] Create TraitController (1.5 hours)
+* [X] Create BadgeController (1.5 hours)
+* [X] Create AvatarController (1.5 hours)
 #### In the `model` package
-* [ ] Create AppUser model (1 hours)
-* [ ] Create Bird model (1 hours)
-* [ ] Create Sighting model (1 hours)
-* [ ] Create Trait model (1 hours)
-* [ ] Create Badge model (1 hours)
-* [ ] Create Avatar model (1 hours)
+* [X] Create AppUser model (1 hours)
+* [X] Create Bird model (1 hours)
+* [X] Create Sighting model (1 hours)
+* [X] Create Trait model (1 hours)
+* [X] Create Badge model (1 hours)
+* [X] Create Avatar model (1 hours)
 #### In the `wing-span` package
 * [X] Create App Class (1 hours)
 * [X] Create AppConfig Class (1 hours)
@@ -444,70 +418,70 @@ View a list of all avatars available to use by a MEMBER.
 * [x] Create the resources package (.5 hours)
 * [X] Create application properties (.5 hours)
 * [X] Configure enviroment variables (.5 hours)
-* [ ] Double check all annotations (.5 hours)
+* [X] Double check all annotations (.5 hours)
 
 ### UI (Front End) Layer Tasks (22 hours)
 #### Sightings
 ##### Part 1
-* [ ] Create a new React project with CRA (create-react-app) (1 hours)
-  * [ ] Remove the cruft
-* [ ] Add Bootstrap (or other CSS framework) to the `public/index.html` file (1 hours)
-  * [ ] Add a link to the Bootstrap CSS using the [CDN from the official docs](https://getbootstrap.com/docs/4.6/getting-started/introduction/#css) 
-  * [ ] Add the [`container` CSS class](https://getbootstrap.com/docs/4.6/layout/overview/#containers) to the `<div id="root"></div>` element
-* [ ] Create `Sightings` component (2 hours)
-  * [ ] Update `App` component to render `sightings`
-* [ ] Update `Sightings` to render list of sightings (2 hours)
-  * [ ] Use `fetch` to `GET` a list of sightings from the Wingspan API when the component is first loaded
-  * [ ] Write JSX to render the sightings array
-  * [ ] Stub out click event handlers ("Add Sighting", "Edit Sighting", "Delete Sighting") as necessary
+* [x] Create a new React project with CRA (create-react-app) (1 hours)
+  * [X] Remove the cruft
+* [X] Add Bootstrap (or other CSS framework) to the `public/index.html` file (1 hours)
+  * [X] Add a link to the Bootstrap CSS using the [CDN from the official docs](https://getbootstrap.com/docs/4.6/getting-started/introduction/#css) 
+  * [X] Add the [`container` CSS class](https://getbootstrap.com/docs/4.6/layout/overview/#containers) to the `<div id="root"></div>` element
+* [X] Create `Sightings` component (2 hours)
+  * [X] Update `App` component to render `sightings`
+* [X] Update `Sightings` to render list of sightings (2 hours)
+  * [X] Use `fetch` to `GET` a list of sightings from the Wingspan API when the component is first loaded
+  * [X] Write JSX to render the sightings array
+  * [X] Stub out click event handlers ("Add Sighting", "Edit Sighting", "Delete Sighting") as necessary
 ##### Part 2
-* [ ] Create a form to add a sighting (2 hours)
-  * [ ] Add form JSX
-  * [ ] Decide between using individual state variables for input elements or a single object
-  * [ ] Add onChange event handlers to input elements
-  * [ ] Add onSubmit event handler to form element (be sure to prevent the form from submitting!)
-  * [ ] Create sighting object
-  * [ ] Use `fetch` to `POST` the new sighting's information to the wingspan API
-  * [ ] On success, update the sightings array (don't modify the original array!), or on failure, display any validation errors from the API in the UI
-* [ ] Support deleting sightings (2 hours)
-  * [ ] Confirm the deletion with the user/admin
-  * [ ] Use `fetch` to `DELETE` the sighting from the sighting API
-  * [ ] On success, update the sighting array (don't modify the original array!)
-* [ ] Conditionally render sections of the component (2 hours)
-  * [ ] Add state variable to track the current view
-  * [ ] Add conditional logic to the JSX to display the appropriate view
+* [X] Create a form to add a sighting (2 hours)
+  * [X] Add form JSX
+  * [X] Decide between using individual state variables for input elements or a single object
+  * [X] Add onChange event handlers to input elements
+  * [X] Add onSubmit event handler to form element (be sure to prevent the form from submitting!)
+  * [X] Create sighting object
+  * [X] Use `fetch` to `POST` the new sighting's information to the wingspan API
+  * [X] On success, update the sightings array (don't modify the original array!), or on failure, display any validation errors from the API in the UI
+* [X] Support deleting sightings (2 hours)
+  * [X] Confirm the deletion with the user/admin
+  * [X] Use `fetch` to `DELETE` the sighting from the sighting API
+  * [X] On success, update the sighting array (don't modify the original array!)
+* [X] Conditionally render sections of the component (2 hours)
+  * [X] Add state variable to track the current view
+  * [X] Add conditional logic to the JSX to display the appropriate view
 ##### Part 3
-* [ ] Support editing sightings (2 hours)
-  * [ ] Store the "edit sighting ID" in a new state variable
-  * [ ] Retrieve the sighting to edit
-  * [ ] Update form state variable(s)
-  * [ ] Add form JSX
-  * [ ] Add onChange event handlers to input elements
-  * [ ] Add onSubmit event handler to form element (be sure to prevent the form from submitting!)
-  * [ ] Create sighting object
-  * [ ] Use `fetch` to `PUT` the updated sighting's information to the wingspan API
-  * [ ] On success, update the sightings array (don't modify the original array!), or on failure, display any validation errors from the API in the UI
-* [ ] Apply Bootstrap styling (as needed) (3 hours)
-  * [ ] Update the sightings list
-  * [ ] Update the add sighting form
-  * [ ] Update the edit sighting form
-  * [ ] Update the delete sighting confirmation
+* [X] Support editing sightings (2 hours)
+  * [X] Store the "edit sighting ID" in a new state variable
+  * [X] Retrieve the sighting to edit
+  * [X] Update form state variable(s)
+  * [X] Add form JSX
+  * [X] Add onChange event handlers to input elements
+  * [X] Add onSubmit event handler to form element (be sure to prevent the form from submitting!)
+  * [X] Create sighting object
+  * [X] Use `fetch` to `PUT` the updated sighting's information to the wingspan API
+  * [X] On success, update the sightings array (don't modify the original array!), or on failure, display any validation errors from the API in the UI
+* [X] Apply Bootstrap styling (as needed) (3 hours)
+  * [X] Update the sightings list
+  * [X] Update the add sighting form
+  * [X] Update the edit sighting form
+  * [X] Update the delete sighting confirmation
 ##### Part 4
-* [ ] Implement the required client-side routes (2 hours)
-  * [ ] Install `react-router-dom`
-  * [ ] Define the necessary client-side routes
-  * [ ] Stub out any components that are needed to support the client-side routes
-  * [ ] Display a "Not Found" message if a route doesn't match one of the defined routes
+* [X] Implement the required client-side routes (2 hours)
+  * [X] Install `react-router-dom`
+  * [X] Define the necessary client-side routes
+  * [X] Stub out any components that are needed to support the client-side routes
+  * [X] Display a "Not Found" message if a route doesn't match one of the defined routes
 ##### Part 5
-* [ ] Update the "Sightings" list component (2 hours)
-  * [ ] Link the "Add sighting" button to to the "Add sighting" route
-  * [ ] Link the "Edit Sighting" button to redirect the user to the appropriate route
-* [ ] Update the "Add Sighting" form component (1 hours)
-  * [ ] After a successful `POST` to the wingspan API, redirect the user to the "sightings" route
-* [ ] Update the "Edit Sighting" form component (1 hours)
-  * [ ] Use the `useParams` hook to get the sighting's ID from the route
-  * [ ] Use `fetch` to `GET` the sighting from the Field Agent API when the component is first loaded
-  * [ ] After a successful `PUT` to the Field Agent API, redirect the user to the "sightings" route
+* [X] Update the "Sightings" list component (2 hours)
+  * [X] Link the "Add sighting" button to to the "Add sighting" route
+  * [X] Link the "Edit Sighting" button to redirect the user to the appropriate route
+* [x] Update the "Add Sighting" form component (1 hours)
+  * [X] After a successful `POST` to the wingspan API, redirect the user to the "sightings" route
+* [X] Update the "Edit Sighting" form component (1 hours)
+  * [X] Use the `useParams` hook to get the sighting's ID from the route
+  * [X] Use `fetch` to `GET` the sighting from the Field Agent API when the component is first loaded
+  * [X] After a successful `PUT` to the Field Agent API, redirect the user to the "sightings" route
 
 ### Security Layer Tasks (24 Hours)
 #### Security - Back End
@@ -535,69 +509,69 @@ View a list of all avatars available to use by a MEMBER.
 * [X] Configure AuthController, SecurityConfig, and AppUser Repo & Service to allow for creating an account (1 hours)
 * [X] Configure AuthController, SecurityConfig, and AppUser Repo & Service to allow for editing an account (1 hours)
 #### Security - Front End
-* [ ] Login Component (1 hours)
-  * [ ] Add a Login component and an accompanying /login route to your React project
-  * [ ] Prompt the user for their username and password
-  * [ ] Redirect the user to the "Home" page (i.e. /) after they submit the form
-* [ ] NavBar Component (1 hours)
-  * [ ] Add a NavBar component to your React project (if it's not already defined)
-  * [ ] Include links to the "Home", "Sightings List", "About", and "Contact" pages
-  * [ ] Within the component, define a user variable and initialize it to null
-  * [ ] If user is null, then display links to the "Login" and "Register" pages
-  * [ ] If user is not null, then display their username and a "Logout" button
- * [ ] Global State and Props (1.5 hours)
-  * [ ] Add a global user state property to the App component
-  * [ ] Define login() and logout() functions that update the user state property
-  * [ ] Pass an auth object literal containing user, login, and logout to the Login and NavBar components
-  * [ ] Update the Login and NavBar components to call the login and logout methods (respectively)
-* [ ] Protecting Routes (1 hours)
-  * [ ] Use conditional rendering to protect all of the sighting related routes (/sightings, /soightings/add, /sightings/update/:id, and /sightings/delete/:id if defined):
- * [ ] Context API (1.5 hours)
-  * [ ] Leverage the Context API to manage global state
-  * [ ] Create a context object in its own module (so it can be imported into any module that needs access to the global state)
-  * [ ] update the App component so that the context can provide its value to any component that needs access to the global state
+* [X] Login Component (1 hours)
+  * [X] Add a Login component and an accompanying /login route to your React project
+  * [X] Prompt the user for their username and password
+  * [X] Redirect the user to the "Home" page (i.e. /) after they submit the form
+* [X] NavBar Component (1 hours)
+  * [X] Add a NavBar component to your React project (if it's not already defined)
+  * [X] Include links to the "Home", "Sightings List", "About", and "Contact" pages
+  * [X] Within the component, define a user variable and initialize it to null
+  * [X] If user is null, then display links to the "Login" and "Register" pages
+  * [X] If user is not null, then display their username and a "Logout" button
+ * [X] Global State and Props (1.5 hours)
+  * [X] Add a global user state property to the App component
+  * [X] Define login() and logout() functions that update the user state property
+  * [X] Pass an auth object literal containing user, login, and logout to the Login and NavBar components
+  * [X] Update the Login and NavBar components to call the login and logout methods (respectively)
+* [X] Protecting Routes (1 hours)
+  * [X] Use conditional rendering to protect all of the sighting related routes (/sightings, /soightings/add, /sightings/update/:id, and /sightings/delete/:id if defined):
+ * [X] Context API (1.5 hours)
+  * [X] Leverage the Context API to manage global state
+  * [X] Create a context object in its own module (so it can be imported into any module that needs access to the global state)
+  * [X] update the App component so that the context can provide its value to any component that needs access to the global state
     * Import AuthContext
     * Wrap Router in AuthContext.Provider
     * Set the AuthContext.Provider component's value property to the auth object
     * Remove auth props from all other components
     * Use the useContext Hook to listening for changes to the global state.
- * [ ] Getting a Token (1 hours)
-  * [ ] Update the Login component to use the secured Solar Farm API to authenticate the user
-  * [ ] POST the username and password values to the API's /authenticate endpoint
+ * [X] Getting a Token (1 hours)
+  * [X] Update the Login component to use the secured Solar Farm API to authenticate the user
+  * [X] POST the username and password values to the API's /authenticate endpoint
     * On a successful response (200 OK), get the JWT token from the response body and pass it to the auth.login() method
     * Redirect the user to the default route (/)
     * On an unsuccessful response (403 Forbidden) display a "Login failed" message
- * [ ] Parsing the Token (jwt-decode) (1 hours)
-  * [ ] Install the jwt-decode npm package:
+ * [X] Parsing the Token (jwt-decode) (1 hours)
+  * [X] Install the jwt-decode npm package:
     * npm install jwt-decode
-  * [ ] Use it to decode the token within the App component's login() function (1 hours)
+  * [X] Use it to decode the token within the App component's login() function (1 hours)
     * You could decode and destructure like this: const { sub: username, roles } = jwt_decode(token);
- * [ ] Passing the Token when Making HTTP Requests (1 hours)
-  * [ ] set the Authorization header on your Fetch calls
+ * [X] Passing the Token when Making HTTP Requests (1 hours)
+  * [X] set the Authorization header on your Fetch calls
     * If you don't add the JWT token to the request, the server will return a response with a 403 Forbidden HTTP status code
     * Use `await` or `then` and handle the errors based on the response's `status`, `error` and `error.message`.
 fetch("http://localhost:8080/api/solarpanels", init);
- * [ ] Persisting the Login State (1 hours)
-  * [ ] Update the App component's login() function to persist the token to localStorage
-  * [ ] Update the App component's logout() function to remove the token from localStorage
-* [ ] Register Component (2 hours)
-  * [ ] Add a Register component and an accompanying /register route to your React project
+ * [X] Persisting the Login State (1 hours)
+  * [X] Update the App component's login() function to persist the token to localStorage
+  * [X] Update the App component's logout() function to remove the token from localStorage
+* [X] Register Component (2 hours)
+  * [X] Add a Register component and an accompanying /register route to your React project
     * The Register component is similar in form and function to the Login component
     * Need to make two Fetch calls when the user submits the form
       * Use Fetch to create the account
       * If you get a 201 (i.e. "Success") then use Fetch to authenticate and get the token
       * After receiving the token from the server, pass the token to the auth.login() function to login the newly created user
- * [ ] Refresh the Token (1 hours)
-  * [ ] Automatically refresh the user's authentication token before it can expire
+ * [X] Refresh the Token (1 hours)
+  * [X] Automatically refresh the user's authentication token before it can expire
 
 ### AWS Hosting Tasks (24 Hours)
-* [ ] Research necessary AWS technology (12 hours)
-  * [ ] Read/view tutorials
-  * [ ] Create deployment plan
-* [ ] Connect DB to AWS RDS (3 hours)
-* [ ] Connect API to AWS Elastic Beanstalk (3 hours)
-* [ ] Connect React UI to AWS S3 (3 hours)
-* [ ] Configure Deployment (3 hours)
+* [X] Research necessary AWS technology (12 hours)
+  * [X] Read/view tutorials
+  * [X] Create deployment plan
+* [X] Connect DB to AWS RDS (3 hours)
+* [X] Connect API to AWS Elastic Beanstalk (3 hours)
+* [X] Connect React UI to AWS S3 (3 hours)
+* [X] Configure Deployment (3 hours)
 
 ### Further Development (30 Hours)
 * [ ] Create leaderboard page (8 hours)
@@ -625,12 +599,12 @@ fetch("http://localhost:8080/api/solarpanels", init);
 * [X] API Model and Controller Layer Tasks (9 hours)
   * 3 Hours per team member
 ### Thursday (10/27)
-* [ ] API Model and Controller Layer Tasks (12 hours)
+* [X] API Model and Controller Layer Tasks (12 hours)
   * 4 Hours per team member 
 * [X] UI Front End Layer Tasks (12 hours)
   * 4 Hours per team member 
 ### Friday (10/28)
-* [ ] UI Front End Layer Tasks (9 hours)
+* [X] UI Front End Layer Tasks (9 hours)
   * 3 Hours per team member
 * [ ] Further Development/Flex Time Tasks (15 hours)
   * 5 Hours per team member
@@ -641,21 +615,21 @@ fetch("http://localhost:8080/api/solarpanels", init);
 * [ ] Further Development/Flex Time Tasks (24 hours)
   * 8 Hours per team member
 ### Monday (10/31)
-* [ ] AWS Hosting Tasks (24 hours)
+* [X] AWS Hosting Tasks (24 hours)
   * 8 Hours per team member
 ### Tuesday (11/1)
-* [ ] Further Development Tasks (24 hours)
+* [X] Further Development Tasks (24 hours)
   * 8 Hours per team member
 ### Wednesday (11/2)
 * [ ] Further Development Tasks (24 hours)
   * 8 Hours per team member
 ### Thursday (11/3)
-* [ ] Work on Presentation (3 hours)
+* [X] Work on Presentation (3 hours)
   * 1 Hour per team member
-* [ ] Practice Presentation (3 hours)
+* [X] Practice Presentation (3 hours)
   * 1 Hour per team member 
 ### Friday (11/4)
-* [ ] Present Project (.5 hours)
+* [X] Present Project (.5 hours)
 
 ## Class Diagram
 ```
@@ -790,16 +764,3 @@ wing-span
               └───resources
                           application.properties
 ```
-
-## Approach
-* Planning is absolutely essential for a project this large.
-    * Create a complete list of concrete tasks required to finish
-    * Tasks should take no longer than 4 hours. Schedule each task for a specific day.
-    * At the end of each day, take stock. Are you ahead of schedule, on schedule, or behind?
-        * If ahead, how can you put the extra time to use?
-        * If behind, what do you have to adjust to complete the project? Don't just hope that things will improve. Take concrete steps to simplify or remove features.
-* Ask questions. Even though you control the specification, your classmates and instructors are invaluable resources.
-    * Ask clarifying questions. Don't make assumptions when things aren't clear.
-* Work back to front - either by method or by layer.
-* Test as you go.
-* Get the main CRUD features working back to front, then add in Security and extra features/pages.
