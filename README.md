@@ -505,7 +505,7 @@ View a list of all avatars available to use by a MEMBER.
   * [X] Create the SecurityConfig class connecting the above steps.
 * [X] Create AuthController (1 hours)
   * [X] Create the AuthController in the controllers package to implement the /api/authenticate and /api/create_account endpoints.
-  * [ ] Update the security configuration to allow these endpoints to be accessed without credentials.
+  * [X] Update the security configuration to allow these endpoints to be accessed without credentials.
 * [X] Configure AuthController, SecurityConfig, and AppUser Repo & Service to allow for creating an account (1 hours)
 * [X] Configure AuthController, SecurityConfig, and AppUser Repo & Service to allow for editing an account (1 hours)
 #### Security - Front End
@@ -581,55 +581,6 @@ fetch("http://localhost:8080/api/solarpanels", init);
   * [ ] Create necessary componenets, services, and configure routes
   * [ ] Create HTTP requests to support different queries
 * [ ] Implement CRUD methods from back to front for an ADMIN UI that works for Badges, Birds, Traits and Avatars (24 hours)
-
-## Schedule
-### Monday (10/24)
-* [X] Database Layer Tasks (9 hours)
-  * 3 Hours per team member
-* [X] API Data Layer Tasks (18 Hours)
-  * 6 Hours per team member
-### Tuesday (10/25)
-* [X] API Data Layer Tasks (22 Hours)
-  * 7 Hours per team member
-* [X] API Domain Layer Tasks (9 hours)
-  * 3 Hours per team member 
-### Wednesday (10/26)
-* [X] API Domain Layer Tasks (14 hours)
-  * 4.5 Hours per team member
-* [X] API Model and Controller Layer Tasks (9 hours)
-  * 3 Hours per team member
-### Thursday (10/27)
-* [X] API Model and Controller Layer Tasks (12 hours)
-  * 4 Hours per team member 
-* [X] UI Front End Layer Tasks (12 hours)
-  * 4 Hours per team member 
-### Friday (10/28)
-* [X] UI Front End Layer Tasks (9 hours)
-  * 3 Hours per team member
-* [ ] Further Development/Flex Time Tasks (15 hours)
-  * 5 Hours per team member
-### Saturday (10/29)
-* [X] Security Layer Tasks (24 hours)
-  * 8 Hours per team member 
-### Sunday (10/30)
-* [ ] Further Development/Flex Time Tasks (24 hours)
-  * 8 Hours per team member
-### Monday (10/31)
-* [X] AWS Hosting Tasks (24 hours)
-  * 8 Hours per team member
-### Tuesday (11/1)
-* [X] Further Development Tasks (24 hours)
-  * 8 Hours per team member
-### Wednesday (11/2)
-* [ ] Further Development Tasks (24 hours)
-  * 8 Hours per team member
-### Thursday (11/3)
-* [X] Work on Presentation (3 hours)
-  * 1 Hour per team member
-* [X] Practice Presentation (3 hours)
-  * 1 Hour per team member 
-### Friday (11/4)
-* [X] Present Project (.5 hours)
 
 ## Class Diagram
 ```
