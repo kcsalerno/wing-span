@@ -25,17 +25,13 @@ import { refresh } from "./services/auth"
 const LOCAL_STORAGE_TOKEN_KEY = "wingspanToken";
 
 function App() {
-  // I know this is not the best way to do this, but it was the easiest and fastest to get things going.
-  // I would rather move some of this into the auth service, but for now this will do.
+  // I would rather move some of this into the auth service.
 
   // null means a no user is logged in.
   const [user, setUser] = useState(null);
-  // NEW: Define a state variable to track if 
-  // the restore login attempt has completed
+
   const [restoreLoginAttemptCompleted, setRestoreLoginAttemptCompleted] = useState(false);
 
-  // NEW: Define a useEffect hook callback function to attempt
-  // to restore the user's token from localStorage
   useEffect(() => {
     const token = localStorage.getItem(LOCAL_STORAGE_TOKEN_KEY);
     if (token) {
@@ -49,7 +45,7 @@ function App() {
   setTimeout(() => refresh().then(setUser).catch(logout), 3000000);
 
   const login = (token) => {
-    // NEW: set the token in localStorage
+    // set the token in localStorage
     localStorage.setItem(LOCAL_STORAGE_TOKEN_KEY, token);
 
     // Decode the token
@@ -83,7 +79,7 @@ function App() {
 
   const logout = () => {
     setUser(null);
-    // NEW: remove the token from localStorage
+    // remove the token from localStorage
     localStorage.removeItem(LOCAL_STORAGE_TOKEN_KEY);
   };
 
@@ -93,7 +89,7 @@ function App() {
     logout
   };
 
-  // NEW: If we haven't attempted to restore the login yet...
+  // If we haven't attempted to restore the login yet...
   // then don't render the App component
   if (!restoreLoginAttemptCompleted) {
     return null;
