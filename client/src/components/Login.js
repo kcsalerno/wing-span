@@ -14,8 +14,6 @@ function Login() {
     const handleSubmit = async (event) => {
         event.preventDefault();
 
-         // I know this is not the best way to do this, but it was the easiest and fastest to get things going.
-        // I would rather move things into the auth service, but for now this will do.
         const response = await fetch("http://wing-span-app.us-east-1.elasticbeanstalk.com/authenticate", {
             method: "POST",
             headers: {
@@ -30,10 +28,7 @@ function Login() {
         // This code executes if the request is successful
         if (response.status === 200) {
             const { jwt_token } = await response.json();
-            // console.log(jwt_token);
-            // NEW: login!
             localStorage.setItem("jwt", jwt_token);
-            // console.log(localStorage.getItem("jwt"));
             auth.login(jwt_token);
             history.goBack();
         } else if (response.status === 403) {
