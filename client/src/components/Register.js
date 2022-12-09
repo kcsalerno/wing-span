@@ -40,9 +40,6 @@ function Register() {
             return;
         }
 
-        // I know this is not the best way to do this, but it was the easiest and fastest to get things going.
-        // I would rather move things into the auth service, but for now this will do.
-
         const init = {
             method: "POST",
             headers: {
