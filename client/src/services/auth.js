@@ -1,6 +1,4 @@
-// I know this is not the best way to do this, but it was the easiest and fastest to get things going.
-// This definitely needs cleaned up because there is plenty of duplicated code going on in multiple places.
-// I would have liked to move more things in here, but again, for now this is going to have to do.
+// Will move more auth related services (login, register, etc.) into here.
 
 import jwtDecode from "jwt-decode";
 
